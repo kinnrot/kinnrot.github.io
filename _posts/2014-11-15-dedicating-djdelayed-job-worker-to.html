@@ -1,0 +1,18 @@
+---
+layout: post
+title: Dedicating a DJ(Delayed job) worker to a specific queue in heroku.
+date: '2014-11-15T07:34:00.002-08:00'
+author: Chen Kinnrot
+tags:
+- asynctask
+- heroku
+- rails
+- queueing
+- delayed job
+- Ruby
+modified_time: '2014-11-15T07:35:37.413-08:00'
+blogger_id: tag:blogger.com,1999:blog-8908829452516573489.post-1948817847041071638
+blogger_orig_url: http://kinnrot.blogspot.com/2014/11/dedicating-djdelayed-job-worker-to.html
+---
+
+Let's say you have a vey important procedure that takes a while, and you need to process it in background, but you still want to execute ASAP.<br /><br />I'm using Delayed Job on Heroku, and could not find a lot of tutorials to do this simple task.<br /><br />So here is the simplest way to achieve this ability, you can raise a process/deamon &nbsp;that will have only one queue to work on. (Dealyed job worker by default is queue agnostic, just process all jobs)<br /><br />In procfile:<br /><br /><blockquote class="tr_bq">urgentworker: &nbsp;QUEUE=urgent bundle exec rake jobs:work</blockquote><br />You can call the worker in any name you want and even define multiple workers for multiple queues.<br />And in the "urgent" job just define the queue name to be "urgent" the worker will process only jobs in this queue.<br /><br />example:<br /><br /><blockquote class="tr_bq">handle_asynchronously :some_job, :queue =&gt; "urgent'</blockquote><br />This will also work for Resque.<br /><br />Notice that for rescue you can write QUEUE=* <b>but for delayed job you can't.</b>

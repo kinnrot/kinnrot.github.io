@@ -1,0 +1,11 @@
+---
+layout: post
+title: fluent nhibernate conventions error handling
+date: '2011-04-17T08:28:00.001-07:00'
+author: Chen Kinnrot
+tags: 
+modified_time: '2011-04-23T11:38:33.075-07:00'
+blogger_id: tag:blogger.com,1999:blog-8908829452516573489.post-1182144866341392475
+---
+
+Tip for the fluent nhibernate users:<br /><br /><u>For mapping conventions</u><br />If your code inside the Apply method throw exceptions (meaning you do more than put comments inside)<br />allways wrap it with try catch block, and write that the exception was throwned there for future maintainablity of your code.<br /><br />It took me 5 minutes to understand where and why I get exception when I added a new entity mapping that didn't follow all other entities conventions.

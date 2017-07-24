@@ -1,0 +1,13 @@
+---
+layout: post
+title: Watch out for reference duplication instead of instance duplication
+date: '2017-07-18T04:42:00.003-07:00'
+author: Chen Kinnrot
+tags:
+- Ruby
+modified_time: '2017-07-18T04:49:45.290-07:00'
+blogger_id: tag:blogger.com,1999:blog-8908829452516573489.post-2160205927889625651
+blogger_orig_url: http://kinnrot.blogspot.com/2017/07/watch-out-for-reference-duplication.html
+---
+
+<br /><pre style="background-color: #2b2b2b; color: #c7bab9; font-family: 'mononoki'; font-size: 11.3pt;"><span style="color: white;"># This code will generate 96 instances</span></pre><pre style="background-color: #2b2b2b; color: #c7bab9; font-family: 'mononoki'; font-size: 11.3pt;"><span style="color: white;">ViewStatData </span><span style="color: #cc7833;">= </span><span style="color: #6d9cbe;">Struct</span>.new(<span style="color: #6d9cbe;">:</span><span style="background-color: #283b5e; color: #6d9cbe;">total</span>, <span style="color: #6d9cbe;">:target</span>, <span style="color: #6d9cbe;">:ratio</span>)</pre><pre style="background-color: #2b2b2b; color: #c7bab9; font-family: 'mononoki'; font-size: 11.3pt;"><pre style="font-family: mononoki; font-size: 11.3pt;"><span style="color: #a5c261;">96</span>.times.map {<span style="color: #cc7833;">|</span>_<span style="color: #cc7833;">|</span><span style="color: #6d9cbe;">ViewStatData</span>.new(<span style="color: #a5c261;">0</span>, <span style="color: #a5c261;">0</span>, <span style="color: #a5c261;">0</span>)}</pre><pre style="font-family: mononoki; font-size: 11.3pt;"></pre><pre style="font-family: mononoki; font-size: 11.3pt;"># And this will not, it'll generate 96 pointers</pre><pre style="font-family: mononoki; font-size: 11.3pt;"><pre style="font-family: mononoki; font-size: 11.3pt;"><span style="color: #6d9cbe;">[ViewStatData</span>.new(<span style="color: #a5c261;">0</span>, <span style="color: #a5c261;">0</span>, <span style="color: #a5c261;">0</span>)] * 96</pre><pre style="font-family: mononoki; font-size: 11.3pt;"># So Watch out!!!</pre></pre></pre>

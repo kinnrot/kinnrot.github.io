@@ -1,0 +1,15 @@
+---
+layout: post
+title: Prevent setting a property value after already been set
+date: '2011-04-04T08:52:00.000-07:00'
+author: Chen Kinnrot
+tags:
+- Design
+- Nhibernate
+- C#
+modified_time: '2011-04-04T08:53:34.159-07:00'
+blogger_id: tag:blogger.com,1999:blog-8908829452516573489.post-8390947456610524809
+blogger_orig_url: http://kinnrot.blogspot.com/2011/04/preventing-from-setting-property-value.html
+---
+
+Let's say we write an infrastructure of entities and their interaction with Nhibernate and the rest of the server side logic.<br />We want Nhibernate to do whatever it needs. But we also want to limit the application programmer from doing crazy things, for example: Setting the Unique Identifier of an existing entity to another value. I know it sounds crazy but in a medium-sized team, anything can happen and this stuff is critical for the future.<br /><br />So I thought about a very KIS way to implement this kind of protection.<br /><br />* What I write here is the most readable version of my code, you can extract method, use interceptor, AOP, whatever works for you.<br /><br /><pre class="brush: csharp;">private long _id;<br /><br />public long ID<br />{<br />  get { return _id; }<br />  set<br />  {<br />    if (!_id.Equals(default(long)) &amp;&amp; !_id.Equals(value))<br />    {<br />      throw new InvalidOperationException(<br />        "You can't set this property, it has already been set");<br />    }<br />    _id = value;<br />  }<br />}<br /><br /></pre><br />Very simple, easy to test, and it works with NHibernate proxy.
