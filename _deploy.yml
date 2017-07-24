@@ -10,5 +10,5 @@ git_url: https://git.heroku.com/kinnrot-blog.git  # remote repository url, e.g. 
 git_branch: master                        # Git branch where static site files are commited
 
 deploy_dir: .deploy
-remote: heroku
+
 # remote_path:                            # Destination directory
