@@ -5,8 +5,6 @@ github_username: kinnrot
 twitter_username: kinnrot
 description: Every time I get to an obstacle while programming, I make sure to write it down, it's all here, enjoy.
 theme: minima
-disqus:
-  shortname: cdblg
 
 # Default extension for new posts and pages
 post_ext: markdown
@@ -24,3 +22,6 @@ titlecase: true
 post_template: post
 page_template: page
 draft_template: draft
+
+disqus:
+  shortname: cdblg
