@@ -1,0 +1,90 @@
+---
+layout: post
+title: "Octopress 101"
+date: 2017-07-25T22:45:07+03:00
+author: 
+tags: jekyll octopress ruby
+---
+
+I decided to develop my own blog like all the other cool developers.
+If you got here, this is what I got so far, it's not too much, but it's mine.
+
+When I develop something my rules are very simple
+
+- Avoid writing any code
+- Keep it simple
+- Should be easy to deploy on free hosting environment
+- Should have decent code syntax highlight
+
+So I heard(mostly in www) people talking about jekyll as a static web site generator and began to dig dipper,
+I searched a few ruby gems for blogging and found a gem called [octopress](https://github.com/octopress/octopress octopress v3).
+They, the guys who developed it, calls it Jekyll's Ferrari, sounds good to me, looked pretty straight forward so I gave it a spin.
+
+First thing you need to do it to create a new project for your blog (just a new folder)
+
+{% highlight bash %}
+mkdir my-blog
+{% endhighlight %}
+
+Next you should create a Gemfile for easy dependency management.
+
+{% highlight bash %}
+gem install bundler
+bundle init
+{% endhighlight %}
+
+Now lets add octopress as a dependency, inside your Gemfile add
+
+{% highlight ruby %}
+gem 'octopress', '~> 3.0'
+{% endhighlight %}
+
+Now we should tell bundle to install gems from Gemfile, in terminal run
+
+{% highlight ruby %}
+bundle
+{% endhighlight %}
+
+Everything is set up, now according to [octopress](https://github.com/octopress/octopress octopress) all we need to do
+is to run
+{% highlight bash %}
+octopress init <PATH>
+{% endhighlight %}
+
+and we have a blog ready.
+
+Now you probably have a blog somewhere, mine is at [blogger](kinnrot.blogspot.com)
+
+And I thought to my self it would be nice to import all my posts to the new blog, well it's super easy, jekyll has many importers
+read more about it [here](https://import.jekyllrb.com/docs/home/ migrations)
+
+So after 3 clicks and one script I got all my old posts on my new blog.
+
+Whats next?
+Well I need some theme, cause I can't design at all, I just know how to design code, when it comes to colors layout and fonts, I suck.
+
+ I googled a bit and found [this](http://jekyllthemes.org/) and [that](https://github.com/planetjekyll/awesome-jekyll-themes) and chose to start simple
+ with minima, which is minimal and simple to install and work with
+
+you just need to add it to your Gemfile
+
+{% highlight ruby %}
+gem 'minima'
+{% endhighlight %}
+
+set the theme property in _config.yaml to minima and you are good to go, by running 'jekyll build' you'll be able to see your blog
+site generated in the _site filder.
+
+Now we just need to deploy it the easy way
+
+
+
+
+
+
+
+
+
+
+
+
