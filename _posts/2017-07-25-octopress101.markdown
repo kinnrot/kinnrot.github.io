@@ -2,19 +2,19 @@
 layout: post
 title: "Octopress 101"
 date: 2017-07-25T22:45:07+03:00
-author: 
+author: Chen Kinnrot
 tags: jekyll octopress ruby
 ---
 
 I decided to develop my own blog like all the other cool developers.
-If you got here, this is what I got so far, it's not too much, but it's mine.
+If you got here, this is what I got so far, it's not too much, but it's a start.
 
 When I develop something my rules are very simple
 
-- Avoid writing any code
-- Keep it simple
-- Should be easy to deploy on free hosting environment
-- Should have decent code syntax highlight
+- Avoid writing any code.
+- Keep it simple.
+- Easy to deploy on free hosting environment.
+- Decent code syntax highlight
 
 So I heard(mostly in www) people talking about jekyll as a static web site generator and began to dig dipper,
 I searched a few ruby gems for blogging and found a gem called [octopress](https://github.com/octopress/octopress octopress v3).
@@ -75,7 +75,36 @@ gem 'minima'
 set the theme property in _config.yaml to minima and you are good to go, by running 'jekyll build' you'll be able to see your blog
 site generated in the _site filder.
 
-Now we just need to deploy it the easy way
+
+
+Now we just need to deploy it the easy way, this is where octopress helps.
+I use github pages, which is very simple to set up, you just need to create a github repo named:
+> '<your user name>.github.io'
+
+then run
+
+{% highlight bash %}
+ocopress deploy init git <your full repo url>
+{% endhighlight %}
+
+now make sure you are not on master branch and run
+
+{% highlight bash %}
+JEKYLL_ENV=production jekyll build
+JEKYLL_ENV=production octopress deploy
+{% endhighlight %}
+
+thats it you got your blog on jekyll published on git hub.
+
+#### Refereces
+
+[Octopress](https://github.com/octopress/octopress) <br />
+[Jekyll](https://jekyllrb.com/)<br />
+[Minima](https://github.com/jekyll/minima)<br />
+[Github pages](http://jmcglone.com/guides/github-pages/)
+
+
+
 
 
 
