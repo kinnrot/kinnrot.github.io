@@ -14,6 +14,19 @@
   <link rel="alternate" type="application/rss+xml" title="cdblg" href="/feed.xml">
   
   
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-103259749-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  
+
+  
 </head>
 
 
@@ -65,18 +78,18 @@
   <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">Watch out for reference duplication instead of instance duplication</h1>
+    <h1 class="post-title" itemprop="name headline">Octopress 101</h1>
     <p class="post-meta">
 
-      <time datetime="2017-07-18T14:42:00+03:00" itemprop="datePublished">
+      <time datetime="2017-07-25T22:45:07+03:00" itemprop="datePublished">
         
-        Jul 18, 2017
+        Jul 25, 2017
       </time>
       
         • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Chen Kinnrot</span></span>
       
 
-      • Ruby
+      • jekyll, octopress, and ruby
     </p>
 
 
@@ -84,7 +97,91 @@
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <br /><pre style="background-color: #2b2b2b; color: #c7bab9; font-family: 'mononoki'; font-size: 11.3pt;"><span style="color: white;"># This code will generate 96 instances</span></pre><pre style="background-color: #2b2b2b; color: #c7bab9; font-family: 'mononoki'; font-size: 11.3pt;"><span style="color: white;">ViewStatData </span><span style="color: #cc7833;">= </span><span style="color: #6d9cbe;">Struct</span>.new(<span style="color: #6d9cbe;">:</span><span style="background-color: #283b5e; color: #6d9cbe;">total</span>, <span style="color: #6d9cbe;">:target</span>, <span style="color: #6d9cbe;">:ratio</span>)</pre><pre style="background-color: #2b2b2b; color: #c7bab9; font-family: 'mononoki'; font-size: 11.3pt;"><pre style="font-family: mononoki; font-size: 11.3pt;"><span style="color: #a5c261;">96</span>.times.map {<span style="color: #cc7833;">|</span>_<span style="color: #cc7833;">|</span><span style="color: #6d9cbe;">ViewStatData</span>.new(<span style="color: #a5c261;">0</span>, <span style="color: #a5c261;">0</span>, <span style="color: #a5c261;">0</span>)}</pre><pre style="font-family: mononoki; font-size: 11.3pt;"></pre><pre style="font-family: mononoki; font-size: 11.3pt;"># And this will not, it'll generate 96 pointers</pre><pre style="font-family: mononoki; font-size: 11.3pt;"><pre style="font-family: mononoki; font-size: 11.3pt;"><span style="color: #6d9cbe;">[ViewStatData</span>.new(<span style="color: #a5c261;">0</span>, <span style="color: #a5c261;">0</span>, <span style="color: #a5c261;">0</span>)] * 96</pre><pre style="font-family: mononoki; font-size: 11.3pt;"># So Watch out!!!</pre></pre></pre>
+    <p>I decided to develop my own blog like all the other cool developers.
+If you got here, this is what I got so far, it’s not too much, but it’s a start.</p>
+
+<p>When I develop something my rules are very simple</p>
+
+<ul>
+  <li>Avoid writing any code.</li>
+  <li>Keep it simple.</li>
+  <li>Easy to deploy on free hosting environment.</li>
+  <li>Decent code syntax highlight</li>
+</ul>
+
+<p>So I heard(mostly in www) people talking about jekyll as a static web site generator and began to dig dipper,
+I searched a few ruby gems for blogging and found a gem called <a href="https://github.com/octopress/octopress octopress v3">octopress</a>.
+They, the guys who developed it, calls it Jekyll’s Ferrari, sounds good to me, looked pretty straight forward so I gave it a spin.</p>
+
+<p>First thing you need to do it to create a new project for your blog (just a new folder)</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">mkdir my-blog</code></pre></figure>
+
+<p>Next you should create a Gemfile for easy dependency management.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">gem install bundler
+bundle init</code></pre></figure>
+
+<p>Now lets add octopress as a dependency, inside your Gemfile add</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">gem</span> <span class="s1">'octopress'</span><span class="p">,</span> <span class="s1">'~&gt; 3.0'</span></code></pre></figure>
+
+<p>Now we should tell bundle to install gems from Gemfile, in terminal run</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">bundle</span></code></pre></figure>
+
+<p>Everything is set up, now according to <a href="https://github.com/octopress/octopress octopress">octopress</a> all we need to do
+is to run</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">octopress init &lt;PATH&gt;</code></pre></figure>
+
+<p>and we have a blog ready.</p>
+
+<p>Now you probably have a blog somewhere, mine is at <a href="kinnrot.blogspot.com">blogger</a></p>
+
+<p>And I thought to my self it would be nice to import all my posts to the new blog, well it’s super easy, jekyll has many importers
+read more about it <a href="https://import.jekyllrb.com/docs/home/ migrations">here</a></p>
+
+<p>So after 3 clicks and one script I got all my old posts on my new blog.</p>
+
+<p>Whats next?
+Well I need some theme, cause I can’t design at all, I just know how to design code, when it comes to colors layout and fonts, I suck.</p>
+
+<p>I googled a bit and found <a href="http://jekyllthemes.org/">this</a> and <a href="https://github.com/planetjekyll/awesome-jekyll-themes">that</a> and chose to start simple
+ with minima, which is minimal and simple to install and work with</p>
+
+<p>you just need to add it to your Gemfile</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">gem</span> <span class="s1">'minima'</span></code></pre></figure>
+
+<p>set the theme property in _config.yaml to minima and you are good to go, by running ‘jekyll build’ you’ll be able to see your blog
+site generated in the _site filder.</p>
+
+<p>Now we just need to deploy it the easy way, this is where octopress helps.
+I use github pages, which is very simple to set up, you just need to create a github repo named:</p>
+<blockquote>
+  <p>‘<your user="" name="">.github.io'</your></p>
+</blockquote>
+
+<p>then run</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">ocopress deploy init git &lt;your full repo url&gt;</code></pre></figure>
+
+<p>now make sure you are not on master branch and run</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">JEKYLL_ENV</span><span class="o">=</span>production jekyll build
+<span class="nv">JEKYLL_ENV</span><span class="o">=</span>production octopress deploy</code></pre></figure>
+
+<p>thats it you got your blog on jekyll published on git hub.</p>
+
+<h4 id="refereces">Refereces</h4>
+
+<p><a href="https://github.com/octopress/octopress">Octopress</a> <br />
+<a href="https://jekyllrb.com/">Jekyll</a><br />
+<a href="https://github.com/jekyll/minima">Minima</a><br />
+<a href="http://jmcglone.com/guides/github-pages/">Github pages</a></p>
+
+
   </div>
 
   
@@ -93,8 +190,8 @@
   <div id="disqus_thread"></div>
   <script>
     var disqus_config = function () {
-      this.page.url = 'https://kinnrot.hithub.io/2017/07/18/watch-out-for-reference-duplication.html';
-      this.page.identifier = 'https://kinnrot.hithub.io/2017/07/18/watch-out-for-reference-duplication.html';
+      this.page.url = 'https://kinnrot.hithub.io/2017/07/25/octopress101.html';
+      this.page.identifier = 'https://kinnrot.hithub.io/2017/07/25/octopress101.html';
     };
 
     (function() {
@@ -116,6 +213,15 @@
 
 
   <ul class="post-list">
+    
+      <li>
+        
+        <span class="post-meta">Jul 25, 2017</span>
+
+        <h2>
+          <a class="post-link" href="/2017/07/25/octopress101.html">Octopress 101</a>
+        </h2>
+      </li>
     
       <li>
         
