@@ -1,1 +1,1 @@
-Sitemap: https://kinnrot.hithub.io/sitemap.xml
+Sitemap: https://kinnrot.github.io/sitemap.xml
