@@ -1,0 +1,450 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.4.2 by Michael Rose
+  Copyright 2017 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE.txt
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Use FactoryGirl And Faker for easy data generation in unit testing (Part1) - cdblg</title>
+
+
+
+
+<meta name="description" content="The  most irritating thing in writing tests is the data generation preparation process, sometimes you want to create an object with 20 fields that 10 of them are mandatory but you only care about the value of 1, and you don’t want to mock, cause you interact with other methods and object that fetch this model from db.To me it happens a lot so I found the FactoryGirl + Faker combination that made my life much more easy and now I can write tests in peace.To add them just put in Gemfile: gem “factory_girl_rails”, “~&gt; 4.0”  gem “faker”So lets take a complex sample to explain all there is to know.We have a User, the User belongs to a Company, User has many tasks.Company has many irritating mandatory fieldsLets define the Company Factory:&lt;pre style=&quot;background-color: #2b2b2b; border: 0.01mm solid rgb(0, 0, 0); font-size: 12pt; line-height: 100%;&quot;&gt;FactoryGirl.define do    factory :company do      name {Faker::Name.name}      trp {Faker::Number.between(0,10)}      grp {Faker::Number.between(0,5)}      budget {Faker::Number.number(4)}      cpm {Faker::Number.between(1,70)}      trp_price {Faker::Number.between(100,700)}      viewer {Faker::Number.between(0,100000)}      total_viewer {Faker::Number.between(0,200000)}      unique_viewer {Faker::Number.between(0,50000)}      spots {Faker::Number.between(0,1000)}    end  end&lt;/pre&gt;As you can see I define lots of fields with random values.Now we can create a company by writing&lt;blockquote class=&quot;tr_bq&quot;&gt;create(:company)&lt;/blockquote&gt;Or just build one (without save to db) by calling&lt;blockquote class=&quot;tr_bq&quot;&gt;build(:company) &lt;/blockquote&gt;That’s all for now, I’ll continue in part2.&lt;blockquote class=&quot;tr_bq&quot;&gt; &lt;/blockquote&gt;&lt;blockquote class=&quot;tr_bq&quot;&gt; &lt;/blockquote&gt;">
+
+
+
+
+<meta name="author" content="Chen Kinnrot">
+
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="cdblg">
+<meta property="og:title" content="Use FactoryGirl And Faker for easy data generation in unit testing (Part1)">
+
+
+  <link rel="canonical" href="https://kinnrot.hithub.io/use-factorygirl-and-faker-for-easy-data/">
+  <meta property="og:url" content="https://kinnrot.hithub.io/use-factorygirl-and-faker-for-easy-data/">
+
+
+
+  <meta property="og:description" content="The  most irritating thing in writing tests is the data generation preparation process, sometimes you want to create an object with 20 fields that 10 of them are mandatory but you only care about the value of 1, and you don’t want to mock, cause you interact with other methods and object that fetch this model from db.To me it happens a lot so I found the FactoryGirl + Faker combination that made my life much more easy and now I can write tests in peace.To add them just put in Gemfile: gem “factory_girl_rails”, “~&gt; 4.0”  gem “faker”So lets take a complex sample to explain all there is to know.We have a User, the User belongs to a Company, User has many tasks.Company has many irritating mandatory fieldsLets define the Company Factory:&lt;pre style=&quot;background-color: #2b2b2b; border: 0.01mm solid rgb(0, 0, 0); font-size: 12pt; line-height: 100%;&quot;&gt;FactoryGirl.define do    factory :company do      name {Faker::Name.name}      trp {Faker::Number.between(0,10)}      grp {Faker::Number.between(0,5)}      budget {Faker::Number.number(4)}      cpm {Faker::Number.between(1,70)}      trp_price {Faker::Number.between(100,700)}      viewer {Faker::Number.between(0,100000)}      total_viewer {Faker::Number.between(0,200000)}      unique_viewer {Faker::Number.between(0,50000)}      spots {Faker::Number.between(0,1000)}    end  end&lt;/pre&gt;As you can see I define lots of fields with random values.Now we can create a company by writing&lt;blockquote class=&quot;tr_bq&quot;&gt;create(:company)&lt;/blockquote&gt;Or just build one (without save to db) by calling&lt;blockquote class=&quot;tr_bq&quot;&gt;build(:company) &lt;/blockquote&gt;That’s all for now, I’ll continue in part2.&lt;blockquote class=&quot;tr_bq&quot;&gt; &lt;/blockquote&gt;&lt;blockquote class=&quot;tr_bq&quot;&gt; &lt;/blockquote&gt;">
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2014-11-15T17:52:00+02:00">
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Chen Kinnrot",
+      "url" : "https://kinnrot.hithub.io",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="https://kinnrot.hithub.io/feed.xml" type="application/atom+xml" rel="alternate" title="cdblg Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="https://kinnrot.hithub.io/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+<meta http-equiv="cleartype" content="on">
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+  </head>
+
+  <body class="layout--post">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="https://kinnrot.hithub.io/">cdblg</a>
+        <ul class="visible-links">
+          
+        </ul>
+        <button><div class="navicon"></div></button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+          <a href="https://kinnrot.hithub.io/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        <li class="current">Use FactoryGirl And Faker for easy data generation in unit testing (Part1)</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="https://secure.gravatar.com/avatar/094c0ec476b95ed7619d6a4cb918da78" alt="Chen Kinnrot" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name" itemprop="name">Chen Kinnrot</h3>
+    
+      <p class="author__bio" itemprop="description">
+        This is my code blog
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
+          <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> <span itemprop="name">Israel</span>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:kinnrot@gmail.com">
+            <meta itemprop="email" content="kinnrot@gmail.com" />
+            <i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> Email
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://twitter.com/kinnrot" itemprop="sameAs">
+            <i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter
+          </a>
+        </li>
+      
+
+      
+        <li>
+          <a href="https://www.facebook.com/kinnrot" itemprop="sameAs">
+            <i class="fa fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://www.linkedin.com/in/chen-kinnrot-b9125448" itemprop="sameAs">
+            <i class="fa fa-fw fa-linkedin-square" aria-hidden="true"></i> LinkedIn
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://instagram.com/kinnrot" itemprop="sameAs">
+            <i class="fa fa-fw fa-instagram" aria-hidden="true"></i> Instagram
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://bitbucket.org/kinnrot" itemprop="sameAs">
+            <i class="fa fa-fw fa-bitbucket" aria-hidden="true"></i> Bitbucket
+          </a>
+        </li>
+      
+
+      
+        <li>
+          <a href="https://github.com/kinnrot" itemprop="sameAs">
+            <i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub
+          </a>
+        </li>
+      
+
+      
+        <li>
+          <a href="https://gitlab.com/kinnrot" itemprop="sameAs">
+            <i class="fa fa-fw fa-gitlab" aria-hidden="true"></i> Gitlab
+          </a>
+        </li>
+      
+
+      
+        <li>
+          <a href="https://www.stackoverflow.com/users/67505/chen-kinnrot" itemprop="sameAs">
+            <i class="fa fa-fw fa-stack-overflow" aria-hidden="true"></i> Stackoverflow
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
+      <i class="fa fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Use FactoryGirl And Faker for easy data generation in unit testing (Part1)">
+    <meta itemprop="description" content="The  most irritating thing in writing tests is the data generation preparation process, sometimes you want to create an object with 20 fields that 10 of them are mandatory but you only care about the value of 1, and you don’t want to mock, cause you interact with other methods and object that fetch this model from db.To me it happens a lot so I found the FactoryGirl + Faker combination that made my life much more easy and now I can write tests in peace.To add them just put in Gemfile: gem “factory_girl_rails”, “~&gt; 4.0”  gem “faker”So lets take a complex sample to explain all there is to know.We have a User, the User belongs to a Company, User has many tasks.Company has many irritating mandatory fieldsLets define the Company Factory:&lt;pre style=&quot;background-color: #2b2b2b; border: 0.01mm solid rgb(0, 0, 0); font-size: 12pt; line-height: 100%;&quot;&gt;FactoryGirl.define do    factory :company do      name {Faker::Name.name}      trp {Faker::Number.between(0,10)}      grp {Faker::Number.between(0,5)}      budget {Faker::Number.number(4)}      cpm {Faker::Number.between(1,70)}      trp_price {Faker::Number.between(100,700)}      viewer {Faker::Number.between(0,100000)}      total_viewer {Faker::Number.between(0,200000)}      unique_viewer {Faker::Number.between(0,50000)}      spots {Faker::Number.between(0,1000)}    end  end&lt;/pre&gt;As you can see I define lots of fields with random values.Now we can create a company by writing&lt;blockquote class=&quot;tr_bq&quot;&gt;create(:company)&lt;/blockquote&gt;Or just build one (without save to db) by calling&lt;blockquote class=&quot;tr_bq&quot;&gt;build(:company) &lt;/blockquote&gt;That’s all for now, I’ll continue in part2.&lt;blockquote class=&quot;tr_bq&quot;&gt; &lt;/blockquote&gt;&lt;blockquote class=&quot;tr_bq&quot;&gt; &lt;/blockquote&gt;">
+    <meta itemprop="datePublished" content="November 15, 2014">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Use FactoryGirl And Faker for easy data generation in unit testing (Part1)
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        The &nbsp;most irritating thing in writing tests is the data generation preparation process, sometimes you want to create an object with 20 fields that 10 of them are mandatory but you only care about the value of 1, and you don't want to mock, cause you interact with other methods and object that fetch this model from db.<br /><br />To me it happens a lot so I found the FactoryGirl + Faker combination that made my life much more easy and now I can write tests in peace.<br /><br />To add them just put in Gemfile:<br /><br />&nbsp;gem "factory_girl_rails", "~&gt; 4.0"<br />&nbsp; gem "faker"<br /><br />So lets take a complex sample to explain all there is to know.<br /><br />We have a User, the User belongs to a Company, User has many tasks.<br /><br />Company has many irritating mandatory fields<br /><br />Lets define the Company Factory:<br /><br /><pre style="background-color: #2b2b2b; border: 0.01mm solid rgb(0, 0, 0); font-size: 12pt; line-height: 100%;"><span style="color: #6d9cbe;">FactoryGirl</span><span style="color: #e6e1dc;">.define </span><span style="color: #cc7833;">do<br /></span><span style="color: #e6e1dc;">    factory </span><span style="color: #6d9cbe;">:company</span><span style="color: #e6e1dc;"> </span><span style="color: #cc7833;">do<br /></span><span style="color: #e6e1dc;">      name {</span><span style="color: #6d9cbe;">Faker</span><span style="color: #e6e1dc;">::</span><span style="color: #6d9cbe;">Name</span><span style="color: #e6e1dc;">.name}<br />      trp {</span><span style="color: #6d9cbe;">Faker</span><span style="color: #e6e1dc;">::</span><span style="color: #6d9cbe;">Number</span><span style="color: #e6e1dc;">.between(</span><span style="color: #a5c261;">0</span><span style="color: #e6e1dc;">,</span><span style="color: #a5c261;">10</span><span style="color: #e6e1dc;">)}<br />      grp {</span><span style="color: #6d9cbe;">Faker</span><span style="color: #e6e1dc;">::</span><span style="color: #6d9cbe;">Number</span><span style="color: #e6e1dc;">.between(</span><span style="color: #a5c261;">0</span><span style="color: #e6e1dc;">,</span><span style="color: #a5c261;">5</span><span style="color: #e6e1dc;">)}<br />      budget {</span><span style="color: #6d9cbe;">Faker</span><span style="color: #e6e1dc;">::</span><span style="color: #6d9cbe;">Number</span><span style="color: #e6e1dc;">.number(</span><span style="color: #a5c261;">4</span><span style="color: #e6e1dc;">)}<br />      cpm {</span><span style="color: #6d9cbe;">Faker</span><span style="color: #e6e1dc;">::</span><span style="color: #6d9cbe;">Number</span><span style="color: #e6e1dc;">.between(</span><span style="color: #a5c261;">1</span><span style="color: #e6e1dc;">,</span><span style="color: #a5c261;">70</span><span style="color: #e6e1dc;">)}<br />      trp_price {</span><span style="color: #6d9cbe;">Faker</span><span style="color: #e6e1dc;">::</span><span style="color: #6d9cbe;">Number</span><span style="color: #e6e1dc;">.between(</span><span style="color: #a5c261;">100</span><span style="color: #e6e1dc;">,</span><span style="color: #a5c261;">700</span><span style="color: #e6e1dc;">)}<br />      viewer {</span><span style="color: #6d9cbe;">Faker</span><span style="color: #e6e1dc;">::</span><span style="color: #6d9cbe;">Number</span><span style="color: #e6e1dc;">.between(</span><span style="color: #a5c261;">0</span><span style="color: #e6e1dc;">,</span><span style="color: #a5c261;">100000</span><span style="color: #e6e1dc;">)}<br />      total_viewer {</span><span style="color: #6d9cbe;">Faker</span><span style="color: #e6e1dc;">::</span><span style="color: #6d9cbe;">Number</span><span style="color: #e6e1dc;">.between(</span><span style="color: #a5c261;">0</span><span style="color: #e6e1dc;">,</span><span style="color: #a5c261;">200000</span><span style="color: #e6e1dc;">)}<br />      unique_viewer {</span><span style="color: #6d9cbe;">Faker</span><span style="color: #e6e1dc;">::</span><span style="color: #6d9cbe;">Number</span><span style="color: #e6e1dc;">.between(</span><span style="color: #a5c261;">0</span><span style="color: #e6e1dc;">,</span><span style="color: #a5c261;">50000</span><span style="color: #e6e1dc;">)}<br />      spots {</span><span style="color: #6d9cbe;">Faker</span><span style="color: #e6e1dc;">::</span><span style="color: #6d9cbe;">Number</span><span style="color: #e6e1dc;">.between(</span><span style="color: #a5c261;">0</span><span style="color: #e6e1dc;">,</span><span style="color: #a5c261;">1000</span><span style="color: #e6e1dc;">)}<br />    </span><span style="color: #cc7833;">end<br /></span><span style="color: #e6e1dc;">  </span><span style="color: #cc7833;">end</span></pre><br />As you can see I define lots of fields with random values.<br /><br />Now we can create a company by writing<br /><blockquote class="tr_bq">create(:company)</blockquote>Or just build one (without save to db) by calling<br /><br /><blockquote class="tr_bq">build(:company)&nbsp;</blockquote><br />That's all for now, I'll continue in part2.<br /><blockquote class="tr_bq">&nbsp;</blockquote><blockquote class="tr_bq">&nbsp;</blockquote>
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2014-11-15T17:52:00+02:00">November 15, 2014</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Use FactoryGirl And Faker for easy data generation in unit testing (Part1) https://kinnrot.hithub.io/use-factorygirl-and-faker-for-easy-data/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://kinnrot.hithub.io/use-factorygirl-and-faker-for-easy-data/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=https://kinnrot.hithub.io/use-factorygirl-and-faker-for-easy-data/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://kinnrot.hithub.io/use-factorygirl-and-faker-for-easy-data/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="https://kinnrot.hithub.io/get-user-locale-from-http-headers/" class="pagination--pager" title="Get the user locale from http headers
+">Previous</a>
+    
+    
+      <a href="https://kinnrot.hithub.io/rubymine-on-osx/" class="pagination--pager" title="Rubymine on OSX memory issues
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+    
+    
+    
+      <li><a href="http://github.com/kinnrot"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+      <li><a href="http://gitlab.com/kinnrot"><i class="fa fa-fw fa-gitlab" aria-hidden="true"></i> Gitlab</a></li>
+    
+    
+      <li><a href="http://bitbucket.org/kinnrot"><i class="fa fa-fw fa-bitbucket" aria-hidden="true"></i> Bitbucket</a></li>
+    
+    <li><a href="https://kinnrot.hithub.io/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2017 Chen Kinnrot. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    <script src="https://kinnrot.hithub.io/assets/js/main.min.js"></script>
+
+
+
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-103259749-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+
+
+
+  </body>
+</html>

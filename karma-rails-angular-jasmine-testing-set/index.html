@@ -1,0 +1,450 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.4.2 by Michael Rose
+  Copyright 2017 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE.txt
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Karma Rails Angular Jasmine testing - set up in 5 minutes - cdblg</title>
+
+
+
+
+<meta name="description" content="It took me about an hours and a half because google is not up to date, so here it is:First - as a rails developer, if you don’t have node.js, this is the time to install it.If you don’t use RubyMine as you IDE, I recommend it as well, but whatever you prefer is fine by me.Here you’ll fins instructions about karma installation, follow them carefully.You’ll see that you need to tell karma where is your sources and test sources.I’m working with jasmine, and using angular as a gem, check my configuration:frameworks: [‘jasmine’],        // list of files / patterns to load in the browser        files: [            //libs            ‘http://0.0.0.0:3000/assets/application.js’,            ‘/Users/chen/.rvm/gems/ruby-1.9.3-p448/gems/angularjs-rails-1.2.9/vendor/assets/javascripts/angular-mocks.js’,            ‘spec/javascripts/controllers/sample.js’,            ‘spec/javascripts/controllers//_spec.js.coffee’,            ‘spec/javascripts/controllers//_spec.js.coffee’,            ‘spec/javascripts/controllers/**/_spec.coffee’,            ‘spec/javascripts/controllers//*_spec.js’]To things you should notice:1. I use rails assets pipeline to give all my app code js, (just run your server before you test)2. I add the angular mocks libAll other stuff are basic, I got code in coffee and js so needed a little more lines to find all my tests.this is the way to make this work pretty fast.">
+
+
+
+
+<meta name="author" content="Chen Kinnrot">
+
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="cdblg">
+<meta property="og:title" content="Karma Rails Angular Jasmine testing - set up in 5 minutes">
+
+
+  <link rel="canonical" href="https://kinnrot.hithub.io/karma-rails-angular-jasmine-testing-set/">
+  <meta property="og:url" content="https://kinnrot.hithub.io/karma-rails-angular-jasmine-testing-set/">
+
+
+
+  <meta property="og:description" content="It took me about an hours and a half because google is not up to date, so here it is:First - as a rails developer, if you don’t have node.js, this is the time to install it.If you don’t use RubyMine as you IDE, I recommend it as well, but whatever you prefer is fine by me.Here you’ll fins instructions about karma installation, follow them carefully.You’ll see that you need to tell karma where is your sources and test sources.I’m working with jasmine, and using angular as a gem, check my configuration:frameworks: [‘jasmine’],        // list of files / patterns to load in the browser        files: [            //libs            ‘http://0.0.0.0:3000/assets/application.js’,            ‘/Users/chen/.rvm/gems/ruby-1.9.3-p448/gems/angularjs-rails-1.2.9/vendor/assets/javascripts/angular-mocks.js’,            ‘spec/javascripts/controllers/sample.js’,            ‘spec/javascripts/controllers//_spec.js.coffee’,            ‘spec/javascripts/controllers//_spec.js.coffee’,            ‘spec/javascripts/controllers/**/_spec.coffee’,            ‘spec/javascripts/controllers//*_spec.js’]To things you should notice:1. I use rails assets pipeline to give all my app code js, (just run your server before you test)2. I add the angular mocks libAll other stuff are basic, I got code in coffee and js so needed a little more lines to find all my tests.this is the way to make this work pretty fast.">
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2014-02-03T09:32:00+02:00">
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Chen Kinnrot",
+      "url" : "https://kinnrot.hithub.io",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="https://kinnrot.hithub.io/feed.xml" type="application/atom+xml" rel="alternate" title="cdblg Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="https://kinnrot.hithub.io/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+<meta http-equiv="cleartype" content="on">
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+  </head>
+
+  <body class="layout--post">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="https://kinnrot.hithub.io/">cdblg</a>
+        <ul class="visible-links">
+          
+        </ul>
+        <button><div class="navicon"></div></button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+          <a href="https://kinnrot.hithub.io/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        <li class="current">Karma Rails Angular Jasmine testing - set up in 5 minutes</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="https://secure.gravatar.com/avatar/094c0ec476b95ed7619d6a4cb918da78" alt="Chen Kinnrot" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name" itemprop="name">Chen Kinnrot</h3>
+    
+      <p class="author__bio" itemprop="description">
+        This is my code blog
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
+          <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> <span itemprop="name">Israel</span>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:kinnrot@gmail.com">
+            <meta itemprop="email" content="kinnrot@gmail.com" />
+            <i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> Email
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://twitter.com/kinnrot" itemprop="sameAs">
+            <i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter
+          </a>
+        </li>
+      
+
+      
+        <li>
+          <a href="https://www.facebook.com/kinnrot" itemprop="sameAs">
+            <i class="fa fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://www.linkedin.com/in/chen-kinnrot-b9125448" itemprop="sameAs">
+            <i class="fa fa-fw fa-linkedin-square" aria-hidden="true"></i> LinkedIn
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://instagram.com/kinnrot" itemprop="sameAs">
+            <i class="fa fa-fw fa-instagram" aria-hidden="true"></i> Instagram
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://bitbucket.org/kinnrot" itemprop="sameAs">
+            <i class="fa fa-fw fa-bitbucket" aria-hidden="true"></i> Bitbucket
+          </a>
+        </li>
+      
+
+      
+        <li>
+          <a href="https://github.com/kinnrot" itemprop="sameAs">
+            <i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub
+          </a>
+        </li>
+      
+
+      
+        <li>
+          <a href="https://gitlab.com/kinnrot" itemprop="sameAs">
+            <i class="fa fa-fw fa-gitlab" aria-hidden="true"></i> Gitlab
+          </a>
+        </li>
+      
+
+      
+        <li>
+          <a href="https://www.stackoverflow.com/users/67505/chen-kinnrot" itemprop="sameAs">
+            <i class="fa fa-fw fa-stack-overflow" aria-hidden="true"></i> Stackoverflow
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
+      <i class="fa fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Karma Rails Angular Jasmine testing - set up in 5 minutes">
+    <meta itemprop="description" content="It took me about an hours and a half because google is not up to date, so here it is:First - as a rails developer, if you don’t have node.js, this is the time to install it.If you don’t use RubyMine as you IDE, I recommend it as well, but whatever you prefer is fine by me.Here you’ll fins instructions about karma installation, follow them carefully.You’ll see that you need to tell karma where is your sources and test sources.I’m working with jasmine, and using angular as a gem, check my configuration:frameworks: [‘jasmine’],        // list of files / patterns to load in the browser        files: [            //libs            ‘http://0.0.0.0:3000/assets/application.js’,            ‘/Users/chen/.rvm/gems/ruby-1.9.3-p448/gems/angularjs-rails-1.2.9/vendor/assets/javascripts/angular-mocks.js’,            ‘spec/javascripts/controllers/sample.js’,            ‘spec/javascripts/controllers//_spec.js.coffee’,            ‘spec/javascripts/controllers//_spec.js.coffee’,            ‘spec/javascripts/controllers/**/_spec.coffee’,            ‘spec/javascripts/controllers//*_spec.js’]To things you should notice:1. I use rails assets pipeline to give all my app code js, (just run your server before you test)2. I add the angular mocks libAll other stuff are basic, I got code in coffee and js so needed a little more lines to find all my tests.this is the way to make this work pretty fast.">
+    <meta itemprop="datePublished" content="February 03, 2014">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Karma Rails Angular Jasmine testing - set up in 5 minutes
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        It took me about an hours and a half because google is not up to date, so here it is:<br /><br />First - as a rails developer, if you don't have node.js, this is the time to <a href="http://nodejs.org/">install</a> it.<br />If you don't use RubyMine as you IDE, I recommend it as well, but whatever you prefer is fine by me.<br /><a href="http://www.jetbrains.com/ruby/webhelp/preparing-to-use-karma-test-runner.html">Here</a>&nbsp;you'll fins instructions about karma installation, follow them carefully.<br /><br />You'll see that you need to tell karma where is your sources and test sources.<br /><br />I'm working with jasmine, and using angular as a gem, check my configuration:<br /><br />frameworks: ['jasmine'],<br /><br /><br />&nbsp; &nbsp; &nbsp; &nbsp; // list of files / patterns to load in the browser<br />&nbsp; &nbsp; &nbsp; &nbsp; files: [<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //libs<br /><br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 'http://0.0.0.0:3000/assets/application.js',<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="background-color: yellow;">'/Users/chen/.rvm/gems/ruby-1.9.3-p448/gems/angularjs-rails-1.2.9/vendor/assets/javascripts/angular-mocks.js',</span><br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 'spec/javascripts/controllers/sample.js',<br /><br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 'spec/javascripts/controllers/*/*_spec.js.coffee',<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 'spec/javascripts/controllers/**/*_spec.js.coffee',<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 'spec/javascripts/controllers/**/*_spec.coffee',<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 'spec/javascripts/controllers/**/*_spec.js'<br />]<br /><br /><br />To things you should notice:<br />1. I use rails assets pipeline to give all my app code js, (just run your server before you test)<br />2. I add the angular mocks lib<br /><br /><br />All other stuff are basic, I got code in coffee and js so needed a little more lines to find all my tests.<br /><br />this is the way to make this work pretty fast.<br /><br />
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2014-02-03T09:32:00+02:00">February 03, 2014</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Karma Rails Angular Jasmine testing - set up in 5 minutes https://kinnrot.hithub.io/karma-rails-angular-jasmine-testing-set/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://kinnrot.hithub.io/karma-rails-angular-jasmine-testing-set/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=https://kinnrot.hithub.io/karma-rails-angular-jasmine-testing-set/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://kinnrot.hithub.io/karma-rails-angular-jasmine-testing-set/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="https://kinnrot.hithub.io/export-hebrew-or-any-non-english/" class="pagination--pager" title="Export Hebrew (or any non english language) with php to excel
+">Previous</a>
+    
+    
+      <a href="https://kinnrot.hithub.io/clustetv-is-hiring/" class="pagination--pager" title="ClusteTV is hiring
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+    
+    
+    
+      <li><a href="http://github.com/kinnrot"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+      <li><a href="http://gitlab.com/kinnrot"><i class="fa fa-fw fa-gitlab" aria-hidden="true"></i> Gitlab</a></li>
+    
+    
+      <li><a href="http://bitbucket.org/kinnrot"><i class="fa fa-fw fa-bitbucket" aria-hidden="true"></i> Bitbucket</a></li>
+    
+    <li><a href="https://kinnrot.hithub.io/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2017 Chen Kinnrot. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    <script src="https://kinnrot.hithub.io/assets/js/main.min.js"></script>
+
+
+
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-103259749-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+
+
+
+  </body>
+</html>

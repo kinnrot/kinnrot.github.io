@@ -1,0 +1,477 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.4.2 by Michael Rose
+  Copyright 2017 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE.txt
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Simple way to avoid hard coded strings in xaml - cdblg</title>
+
+
+
+
+<meta name="description" content="Hard coded strings are annoying,In XAML, we have a lot of cases of hard coded strings.Here is a simple way of implementing static naming class, and use it instead of hard coded strings.Suppose this is my xaml:&lt;pre class=&quot;brush: csharp;&quot;&gt;&lt;Window x:Class=”How.MainWindow”        xmlns=”http://schemas.microsoft.com/winfx/2006/xaml/presentation”        xmlns:x=”http://schemas.microsoft.com/winfx/2006/xaml”        xmlns:local=”clr-namespace:How”        Title=”MainWindow” Height=”350” Width=”525”&gt;    &lt;Window.Resources&gt;        &lt;Style TargetType=”{x:Type Button}” x:Key=”LazyGuyMeaninglessName”&gt;            &lt;Setter Property=”Margin” Value=”30”/&gt;            &lt;Setter Property=”Height” Value=”30”/&gt;            &lt;Setter Property=”Width” Value=”200”/&gt;        &lt;/Style&gt;    &lt;/Window.Resources&gt;    &lt;StackPanel&gt;            &lt;Button Click=”Button_Click”&gt;Click me to activate my style&lt;/Button&gt;        &lt;Button Style=”{DynamicResource LazyGuyMeaninglessName}”/&gt;    &lt;/StackPanel&gt;&lt;/Window&gt;&lt;/pre&gt;This is code behind:&lt;pre class=&quot;brush: csharp;&quot;&gt;private void Button_Click(object sender, RoutedEventArgs e){  var button = sender as Button;  if (button != null)  {    button.Style = (Style)this.FindResource(“LazyGuyMeaninglessNameWithMistake”);  }}&lt;/pre&gt;I have a mistake in my code behind, and the program will crash, not so fun, and not simple to test this kind of stuff.There is a very simple solution, Lets define this class:&lt;pre class=&quot;brush: csharp;&quot;&gt;public static class StyleNames{  public static string ButtonStyleName = “Some Hard To write style name”;}&lt;/pre&gt;The benefits of using this class instead of hard coded strings are:&lt;ul&gt;&lt;li&gt;No need to avoid long meaningful names, cause you have auto complete built in the IDE.&lt;/li&gt;&lt;li&gt;The obvious: avoid type mistakes, and unexpected crashes.&lt;/li&gt;&lt;li&gt;Make your programmers less lazy, they’ll be able to change the resource name in a single place, and even his member name if needed, VS will rename it in all references and in XAML(VS 2010) (with a “Ctrl + .” after editing the member name).&lt;/li&gt;&lt;li&gt;If the style name is not readonly(like in my sample), I’m sure there is a simple way to support theming and dynamic style changing, by just assigning new names for all the resource names inside StyleNames class, and telling the app to do something that will reload all styles, I’m not sure about it, so don’t count on it.&lt;/li&gt;&lt;li&gt;No crashes of “could not find resource bla bla”.&lt;/li&gt;&lt;/ul&gt;Here is the code after the use of static class:&lt;pre class=&quot;brush: csharp;&quot;&gt;&lt;Window x:Class=”How.MainWindow”    xmlns=”http://schemas.microsoft.com/winfx/2006/xaml/presentation”    xmlns:x=”http://schemas.microsoft.com/winfx/2006/xaml”    xmlns:local=”clr-namespace:How”    Title=”MainWindow” Height=”350” Width=”525”&gt;&lt;Window.Resources&gt;    &lt;Style TargetType=”{x:Type Button}” x:Key=”{x:Static local:StyleNames.ButtonStyleName}”&gt;        &lt;Setter Property=”Margin” Value=”30”/&gt;        &lt;Setter Property=”Height” Value=”30”/&gt;        &lt;Setter Property=”Width” Value=”200”/&gt;    &lt;/Style&gt;&lt;/Window.Resources&gt;&lt;StackPanel&gt;        &lt;Button Click=”Button_Click”&gt;Click me to activate my style&lt;/Button&gt;    &lt;Button Style=”{DynamicResource ResourceKey={x:Static local:StyleNames.ButtonStyleName}}”/&gt;&lt;/StackPanel&gt;&lt;/Window&gt;private void Button_Click(object sender, RoutedEventArgs e){  var button = sender as Button;  if (button != null)  {    button.Style = (Style)this.FindResource(StyleNames.ButtonStyleName);  }}&lt;/pre&gt;Enjoy :)">
+
+
+
+
+<meta name="author" content="Chen Kinnrot">
+
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="cdblg">
+<meta property="og:title" content="Simple way to avoid hard coded strings in xaml">
+
+
+  <link rel="canonical" href="https://kinnrot.hithub.io/simple-way-to-avoid-hard-coded-strings/">
+  <meta property="og:url" content="https://kinnrot.hithub.io/simple-way-to-avoid-hard-coded-strings/">
+
+
+
+  <meta property="og:description" content="Hard coded strings are annoying,In XAML, we have a lot of cases of hard coded strings.Here is a simple way of implementing static naming class, and use it instead of hard coded strings.Suppose this is my xaml:&lt;pre class=&quot;brush: csharp;&quot;&gt;&lt;Window x:Class=”How.MainWindow”        xmlns=”http://schemas.microsoft.com/winfx/2006/xaml/presentation”        xmlns:x=”http://schemas.microsoft.com/winfx/2006/xaml”        xmlns:local=”clr-namespace:How”        Title=”MainWindow” Height=”350” Width=”525”&gt;    &lt;Window.Resources&gt;        &lt;Style TargetType=”{x:Type Button}” x:Key=”LazyGuyMeaninglessName”&gt;            &lt;Setter Property=”Margin” Value=”30”/&gt;            &lt;Setter Property=”Height” Value=”30”/&gt;            &lt;Setter Property=”Width” Value=”200”/&gt;        &lt;/Style&gt;    &lt;/Window.Resources&gt;    &lt;StackPanel&gt;            &lt;Button Click=”Button_Click”&gt;Click me to activate my style&lt;/Button&gt;        &lt;Button Style=”{DynamicResource LazyGuyMeaninglessName}”/&gt;    &lt;/StackPanel&gt;&lt;/Window&gt;&lt;/pre&gt;This is code behind:&lt;pre class=&quot;brush: csharp;&quot;&gt;private void Button_Click(object sender, RoutedEventArgs e){  var button = sender as Button;  if (button != null)  {    button.Style = (Style)this.FindResource(“LazyGuyMeaninglessNameWithMistake”);  }}&lt;/pre&gt;I have a mistake in my code behind, and the program will crash, not so fun, and not simple to test this kind of stuff.There is a very simple solution, Lets define this class:&lt;pre class=&quot;brush: csharp;&quot;&gt;public static class StyleNames{  public static string ButtonStyleName = “Some Hard To write style name”;}&lt;/pre&gt;The benefits of using this class instead of hard coded strings are:&lt;ul&gt;&lt;li&gt;No need to avoid long meaningful names, cause you have auto complete built in the IDE.&lt;/li&gt;&lt;li&gt;The obvious: avoid type mistakes, and unexpected crashes.&lt;/li&gt;&lt;li&gt;Make your programmers less lazy, they’ll be able to change the resource name in a single place, and even his member name if needed, VS will rename it in all references and in XAML(VS 2010) (with a “Ctrl + .” after editing the member name).&lt;/li&gt;&lt;li&gt;If the style name is not readonly(like in my sample), I’m sure there is a simple way to support theming and dynamic style changing, by just assigning new names for all the resource names inside StyleNames class, and telling the app to do something that will reload all styles, I’m not sure about it, so don’t count on it.&lt;/li&gt;&lt;li&gt;No crashes of “could not find resource bla bla”.&lt;/li&gt;&lt;/ul&gt;Here is the code after the use of static class:&lt;pre class=&quot;brush: csharp;&quot;&gt;&lt;Window x:Class=”How.MainWindow”    xmlns=”http://schemas.microsoft.com/winfx/2006/xaml/presentation”    xmlns:x=”http://schemas.microsoft.com/winfx/2006/xaml”    xmlns:local=”clr-namespace:How”    Title=”MainWindow” Height=”350” Width=”525”&gt;&lt;Window.Resources&gt;    &lt;Style TargetType=”{x:Type Button}” x:Key=”{x:Static local:StyleNames.ButtonStyleName}”&gt;        &lt;Setter Property=”Margin” Value=”30”/&gt;        &lt;Setter Property=”Height” Value=”30”/&gt;        &lt;Setter Property=”Width” Value=”200”/&gt;    &lt;/Style&gt;&lt;/Window.Resources&gt;&lt;StackPanel&gt;        &lt;Button Click=”Button_Click”&gt;Click me to activate my style&lt;/Button&gt;    &lt;Button Style=”{DynamicResource ResourceKey={x:Static local:StyleNames.ButtonStyleName}}”/&gt;&lt;/StackPanel&gt;&lt;/Window&gt;private void Button_Click(object sender, RoutedEventArgs e){  var button = sender as Button;  if (button != null)  {    button.Style = (Style)this.FindResource(StyleNames.ButtonStyleName);  }}&lt;/pre&gt;Enjoy :)">
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2011-01-03T21:20:00+02:00">
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Chen Kinnrot",
+      "url" : "https://kinnrot.hithub.io",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="https://kinnrot.hithub.io/feed.xml" type="application/atom+xml" rel="alternate" title="cdblg Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="https://kinnrot.hithub.io/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+<meta http-equiv="cleartype" content="on">
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+  </head>
+
+  <body class="layout--post">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="https://kinnrot.hithub.io/">cdblg</a>
+        <ul class="visible-links">
+          
+        </ul>
+        <button><div class="navicon"></div></button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+          <a href="https://kinnrot.hithub.io/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        <li class="current">Simple way to avoid hard coded strings in xaml</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="https://secure.gravatar.com/avatar/094c0ec476b95ed7619d6a4cb918da78" alt="Chen Kinnrot" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name" itemprop="name">Chen Kinnrot</h3>
+    
+      <p class="author__bio" itemprop="description">
+        This is my code blog
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
+          <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> <span itemprop="name">Israel</span>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:kinnrot@gmail.com">
+            <meta itemprop="email" content="kinnrot@gmail.com" />
+            <i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> Email
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://twitter.com/kinnrot" itemprop="sameAs">
+            <i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter
+          </a>
+        </li>
+      
+
+      
+        <li>
+          <a href="https://www.facebook.com/kinnrot" itemprop="sameAs">
+            <i class="fa fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://www.linkedin.com/in/chen-kinnrot-b9125448" itemprop="sameAs">
+            <i class="fa fa-fw fa-linkedin-square" aria-hidden="true"></i> LinkedIn
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://instagram.com/kinnrot" itemprop="sameAs">
+            <i class="fa fa-fw fa-instagram" aria-hidden="true"></i> Instagram
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://bitbucket.org/kinnrot" itemprop="sameAs">
+            <i class="fa fa-fw fa-bitbucket" aria-hidden="true"></i> Bitbucket
+          </a>
+        </li>
+      
+
+      
+        <li>
+          <a href="https://github.com/kinnrot" itemprop="sameAs">
+            <i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub
+          </a>
+        </li>
+      
+
+      
+        <li>
+          <a href="https://gitlab.com/kinnrot" itemprop="sameAs">
+            <i class="fa fa-fw fa-gitlab" aria-hidden="true"></i> Gitlab
+          </a>
+        </li>
+      
+
+      
+        <li>
+          <a href="https://www.stackoverflow.com/users/67505/chen-kinnrot" itemprop="sameAs">
+            <i class="fa fa-fw fa-stack-overflow" aria-hidden="true"></i> Stackoverflow
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
+      <i class="fa fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Simple way to avoid hard coded strings in xaml">
+    <meta itemprop="description" content="Hard coded strings are annoying,In XAML, we have a lot of cases of hard coded strings.Here is a simple way of implementing static naming class, and use it instead of hard coded strings.Suppose this is my xaml:&lt;pre class=&quot;brush: csharp;&quot;&gt;&lt;Window x:Class=”How.MainWindow”        xmlns=”http://schemas.microsoft.com/winfx/2006/xaml/presentation”        xmlns:x=”http://schemas.microsoft.com/winfx/2006/xaml”        xmlns:local=”clr-namespace:How”        Title=”MainWindow” Height=”350” Width=”525”&gt;    &lt;Window.Resources&gt;        &lt;Style TargetType=”{x:Type Button}” x:Key=”LazyGuyMeaninglessName”&gt;            &lt;Setter Property=”Margin” Value=”30”/&gt;            &lt;Setter Property=”Height” Value=”30”/&gt;            &lt;Setter Property=”Width” Value=”200”/&gt;        &lt;/Style&gt;    &lt;/Window.Resources&gt;    &lt;StackPanel&gt;            &lt;Button Click=”Button_Click”&gt;Click me to activate my style&lt;/Button&gt;        &lt;Button Style=”{DynamicResource LazyGuyMeaninglessName}”/&gt;    &lt;/StackPanel&gt;&lt;/Window&gt;&lt;/pre&gt;This is code behind:&lt;pre class=&quot;brush: csharp;&quot;&gt;private void Button_Click(object sender, RoutedEventArgs e){  var button = sender as Button;  if (button != null)  {    button.Style = (Style)this.FindResource(“LazyGuyMeaninglessNameWithMistake”);  }}&lt;/pre&gt;I have a mistake in my code behind, and the program will crash, not so fun, and not simple to test this kind of stuff.There is a very simple solution, Lets define this class:&lt;pre class=&quot;brush: csharp;&quot;&gt;public static class StyleNames{  public static string ButtonStyleName = “Some Hard To write style name”;}&lt;/pre&gt;The benefits of using this class instead of hard coded strings are:&lt;ul&gt;&lt;li&gt;No need to avoid long meaningful names, cause you have auto complete built in the IDE.&lt;/li&gt;&lt;li&gt;The obvious: avoid type mistakes, and unexpected crashes.&lt;/li&gt;&lt;li&gt;Make your programmers less lazy, they’ll be able to change the resource name in a single place, and even his member name if needed, VS will rename it in all references and in XAML(VS 2010) (with a “Ctrl + .” after editing the member name).&lt;/li&gt;&lt;li&gt;If the style name is not readonly(like in my sample), I’m sure there is a simple way to support theming and dynamic style changing, by just assigning new names for all the resource names inside StyleNames class, and telling the app to do something that will reload all styles, I’m not sure about it, so don’t count on it.&lt;/li&gt;&lt;li&gt;No crashes of “could not find resource bla bla”.&lt;/li&gt;&lt;/ul&gt;Here is the code after the use of static class:&lt;pre class=&quot;brush: csharp;&quot;&gt;&lt;Window x:Class=”How.MainWindow”    xmlns=”http://schemas.microsoft.com/winfx/2006/xaml/presentation”    xmlns:x=”http://schemas.microsoft.com/winfx/2006/xaml”    xmlns:local=”clr-namespace:How”    Title=”MainWindow” Height=”350” Width=”525”&gt;&lt;Window.Resources&gt;    &lt;Style TargetType=”{x:Type Button}” x:Key=”{x:Static local:StyleNames.ButtonStyleName}”&gt;        &lt;Setter Property=”Margin” Value=”30”/&gt;        &lt;Setter Property=”Height” Value=”30”/&gt;        &lt;Setter Property=”Width” Value=”200”/&gt;    &lt;/Style&gt;&lt;/Window.Resources&gt;&lt;StackPanel&gt;        &lt;Button Click=”Button_Click”&gt;Click me to activate my style&lt;/Button&gt;    &lt;Button Style=”{DynamicResource ResourceKey={x:Static local:StyleNames.ButtonStyleName}}”/&gt;&lt;/StackPanel&gt;&lt;/Window&gt;private void Button_Click(object sender, RoutedEventArgs e){  var button = sender as Button;  if (button != null)  {    button.Style = (Style)this.FindResource(StyleNames.ButtonStyleName);  }}&lt;/pre&gt;Enjoy :)">
+    <meta itemprop="datePublished" content="January 03, 2011">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Simple way to avoid hard coded strings in xaml
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        Hard coded strings are annoying,<br />In XAML, we have a lot of cases of hard coded strings.<br /><br />Here is a simple way of implementing static naming class, and use it instead of hard coded strings.<br /><br />Suppose this is my xaml:<br /><br /><pre class="brush: csharp;">&lt;Window x:Class="How.MainWindow"<br />        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"<br />        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"<br />        xmlns:local="clr-namespace:How"<br />        Title="MainWindow" Height="350" Width="525"&gt;<br />    &lt;Window.Resources&gt;<br />        &lt;Style TargetType="{x:Type Button}" x:Key="LazyGuyMeaninglessName"&gt;<br />            &lt;Setter Property="Margin" Value="30"/&gt;<br />            &lt;Setter Property="Height" Value="30"/&gt;<br />            &lt;Setter Property="Width" Value="200"/&gt;<br />        &lt;/Style&gt;<br />    &lt;/Window.Resources&gt;<br />    &lt;StackPanel&gt;<br />            &lt;Button Click="Button_Click"&gt;Click me to activate my style&lt;/Button&gt;<br />        &lt;Button Style="{DynamicResource LazyGuyMeaninglessName}"/&gt;<br />    &lt;/StackPanel&gt;<br />&lt;/Window&gt;<br /><br /></pre><br />This is code behind:<br /><br /><pre class="brush: csharp;">private void Button_Click(object sender, RoutedEventArgs e)<br />{<br />  var button = sender as Button;<br />  if (button != null)<br />  {<br />    button.Style = (Style)this.FindResource("LazyGuyMeaninglessNameWithMistake");<br />  }<br />}<br /></pre><br />I have a mistake in my code behind, and the program will crash, not so fun, and not simple to test this kind of stuff.<br /><br />There is a very simple solution, Lets define this class:<br /><br /><pre class="brush: csharp;">public static class StyleNames<br />{<br />  public static string ButtonStyleName = "Some Hard To write style name";<br />}<br /></pre><br />The benefits of using this class instead of hard coded strings are:<br /><br /><ul><li>No need to avoid long&nbsp;meaningful&nbsp;names, cause you have auto complete built in the IDE.</li><li>The obvious: avoid type mistakes, and unexpected crashes.</li><li>Make your programmers less lazy, they'll be able to change the resource name in a single place, and even his member name if needed, VS will rename it in all references and in XAML(VS 2010)&nbsp;(with a "Ctrl + ." after editing the member name).</li><li>If the style name is not readonly(like in my sample), I'm sure there is a simple way to support theming and dynamic style changing, by just assigning new names for all the resource names inside StyleNames class, and telling the app to do&nbsp;something&nbsp;that will reload all styles, I'm not sure about it, so don't count on it.</li><li>No crashes of "could not find resource bla bla".</li></ul><br />Here is the code after the use of static class:<br /><br /><pre class="brush: csharp;">&lt;Window x:Class="How.MainWindow"<br />    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"<br />    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"<br />    xmlns:local="clr-namespace:How"<br />    Title="MainWindow" Height="350" Width="525"&gt;<br />&lt;Window.Resources&gt;<br />    &lt;Style TargetType="{x:Type Button}" x:Key="{x:Static local:StyleNames.ButtonStyleName}"&gt;<br />        &lt;Setter Property="Margin" Value="30"/&gt;<br />        &lt;Setter Property="Height" Value="30"/&gt;<br />        &lt;Setter Property="Width" Value="200"/&gt;<br />    &lt;/Style&gt;<br />&lt;/Window.Resources&gt;<br />&lt;StackPanel&gt;<br />        &lt;Button Click="Button_Click"&gt;Click me to activate my style&lt;/Button&gt;<br />    &lt;Button Style="{DynamicResource ResourceKey={x:Static local:StyleNames.ButtonStyleName}}"/&gt;<br />&lt;/StackPanel&gt;<br />&lt;/Window&gt;<br /><br />private void Button_Click(object sender, RoutedEventArgs e)<br />{<br />  var button = sender as Button;<br />  if (button != null)<br />  {<br />    button.Style = (Style)this.FindResource(StyleNames.ButtonStyleName);<br />  }<br />}<br /></pre><br />Enjoy :)
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="https://kinnrot.hithub.io/tags/#resources" class="page__taxonomy-item" rel="tag">Resources</a><span class="sep">, </span>
+    
+      
+      
+      <a href="https://kinnrot.hithub.io/tags/#styles" class="page__taxonomy-item" rel="tag">Styles</a><span class="sep">, </span>
+    
+      
+      
+      <a href="https://kinnrot.hithub.io/tags/#wpf" class="page__taxonomy-item" rel="tag">WPF</a>
+    
+    </span>
+  </p>
+
+
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2011-01-03T21:20:00+02:00">January 03, 2011</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Simple way to avoid hard coded strings in xaml https://kinnrot.hithub.io/simple-way-to-avoid-hard-coded-strings/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://kinnrot.hithub.io/simple-way-to-avoid-hard-coded-strings/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=https://kinnrot.hithub.io/simple-way-to-avoid-hard-coded-strings/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://kinnrot.hithub.io/simple-way-to-avoid-hard-coded-strings/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="https://kinnrot.hithub.io/nice-php-ide/" class="pagination--pager" title="Nice PHP IDE
+">Previous</a>
+    
+    
+      <a href="https://kinnrot.hithub.io/what-do-you-think/" class="pagination--pager" title="What do you think?
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+    
+    
+    
+      <li><a href="http://github.com/kinnrot"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+      <li><a href="http://gitlab.com/kinnrot"><i class="fa fa-fw fa-gitlab" aria-hidden="true"></i> Gitlab</a></li>
+    
+    
+      <li><a href="http://bitbucket.org/kinnrot"><i class="fa fa-fw fa-bitbucket" aria-hidden="true"></i> Bitbucket</a></li>
+    
+    <li><a href="https://kinnrot.hithub.io/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2017 Chen Kinnrot. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    <script src="https://kinnrot.hithub.io/assets/js/main.min.js"></script>
+
+
+
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-103259749-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,477 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.4.2 by Michael Rose
+  Copyright 2017 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE.txt
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Building a business tier with Nhibernate - Tools - cdblg</title>
+
+
+
+
+<meta name="description" content="I got a new task: Build Nhibernate based infrastructure, so I decided to check the existing third party tools and my boss gave me a day at home to check them  ;-D . I only check tools that:&lt;ul&gt;&lt;li&gt;based on existing DB &lt;/li&gt;&lt;li&gt;support oracle &lt;/li&gt;&lt;li&gt;works with NH 3&lt;/li&gt;&lt;/ul&gt;First tool I got my hands on is NH3SQLLogger NH3SQLLogger - Nhibernate 3 SQL logger, this is a cool utility that will help you understand what the hell nhibernate is doing , where he is doing his stuff (yes yes a stack trace) and all parameters of queries are also reflected, this is the perfect development time logger. do not active it on production by default, only if you need to debug prod.Here is a sample output of this util:&lt;pre class=&quot;brush: sql&quot;&gt;—+ 01/24/2011 10:14:42.57 +—– Void Logic.Test.UserRepositoryTest.SaveUser() [File=UserRepositoryTest.cs, Line=86]INSERT     INTO        “User”        (FirstName, LastName, BirthDate, Gender, PhoneNumber, IsDeleted, Created, LastUpdated, Name, Address_id, FacebookProfile_id)     VALUES        (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10);select        last_insert_rowid();@p0 = ‘Chen’ [Type: String (0)]@p1 = ‘Kinnrot’ [Type: String (0)]@p2 = 24/01/2011 00:00:00 [Type: DateTime (0)]@p3 = ‘Male’ [Type: String (0)]@p4 = ‘0578149177’ [Type: String (0)]@p5 = False [Type: Boolean (0)]@p6 = 01/01/0001 00:00:00 [Type: DateTime (0)]@p7 = 01/01/0001 00:00:00 [Type: DateTime (0)]@p8 = ‘kinnrot’ [Type: String (0)]@p9 = 1 [Type: Int64 (0)]@p10 = 1 [Type: Int64 (0)]&lt;/pre&gt;NHibernator&lt;ul&gt;&lt;li&gt;Allows you to load db configuration by a key in the configuration file, good for application that works with more than one DB.&lt;/li&gt;&lt;li&gt;Wraps sessions and transactions for session per HTTP session and session per thread.  &lt;/li&gt;&lt;li&gt;No download available only code&lt;/li&gt;&lt;/ul&gt;&lt;div style=&quot;text-align: -webkit-auto;&quot;&gt;&lt;/div&gt;&lt;h2 class=&quot;ph-title&quot; style=&quot;display: inline; margin-bottom: 0px !important; margin-left: 0px !important; margin-right: 0px !important; margin-top: 0px !important; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px; text-align: left;&quot;&gt;NHibernateIt&lt;/h2&gt;&lt;div style=&quot;text-align: -webkit-auto;&quot;&gt;&lt;/div&gt;&lt;ul&gt;&lt;li&gt; Allows you to do some basic crud through a generic repository implementation.&lt;/li&gt;&lt;li&gt; Has the same session and transaction encapsulation as in Nhibernator.&lt;/li&gt;&lt;/ul&gt;Nhibenrate Mapping Generator - Don’t know if working(Need to test on a big DB), but should generate mappings and classes from existing db, support MSSQL,Oracle and Postgre SQL.If you got a DB and don’t go fluent, this is probably good solution for a quick start.Fluent Nhibernate - Framework with fluent interface based mapping and configuration.Has an auto map feature with a lot of flexible convention over configuration options. One more thing they supply is an easy to use mapping test classes (called PersistenceSpecification ). You should consider auto mapping if your DB got name conventions, but you loose the flexibility of the mapping file per entity built in Nhibernate, and non conventional changes will make you write patches (AutoMappingOverride).">
+
+
+
+
+<meta name="author" content="Chen Kinnrot">
+
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="cdblg">
+<meta property="og:title" content="Building a business tier with Nhibernate - Tools">
+
+
+  <link rel="canonical" href="https://kinnrot.hithub.io/building-business-tier-with-nhibernate/">
+  <meta property="og:url" content="https://kinnrot.hithub.io/building-business-tier-with-nhibernate/">
+
+
+
+  <meta property="og:description" content="I got a new task: Build Nhibernate based infrastructure, so I decided to check the existing third party tools and my boss gave me a day at home to check them  ;-D . I only check tools that:&lt;ul&gt;&lt;li&gt;based on existing DB &lt;/li&gt;&lt;li&gt;support oracle &lt;/li&gt;&lt;li&gt;works with NH 3&lt;/li&gt;&lt;/ul&gt;First tool I got my hands on is NH3SQLLogger NH3SQLLogger - Nhibernate 3 SQL logger, this is a cool utility that will help you understand what the hell nhibernate is doing , where he is doing his stuff (yes yes a stack trace) and all parameters of queries are also reflected, this is the perfect development time logger. do not active it on production by default, only if you need to debug prod.Here is a sample output of this util:&lt;pre class=&quot;brush: sql&quot;&gt;—+ 01/24/2011 10:14:42.57 +—– Void Logic.Test.UserRepositoryTest.SaveUser() [File=UserRepositoryTest.cs, Line=86]INSERT     INTO        “User”        (FirstName, LastName, BirthDate, Gender, PhoneNumber, IsDeleted, Created, LastUpdated, Name, Address_id, FacebookProfile_id)     VALUES        (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10);select        last_insert_rowid();@p0 = ‘Chen’ [Type: String (0)]@p1 = ‘Kinnrot’ [Type: String (0)]@p2 = 24/01/2011 00:00:00 [Type: DateTime (0)]@p3 = ‘Male’ [Type: String (0)]@p4 = ‘0578149177’ [Type: String (0)]@p5 = False [Type: Boolean (0)]@p6 = 01/01/0001 00:00:00 [Type: DateTime (0)]@p7 = 01/01/0001 00:00:00 [Type: DateTime (0)]@p8 = ‘kinnrot’ [Type: String (0)]@p9 = 1 [Type: Int64 (0)]@p10 = 1 [Type: Int64 (0)]&lt;/pre&gt;NHibernator&lt;ul&gt;&lt;li&gt;Allows you to load db configuration by a key in the configuration file, good for application that works with more than one DB.&lt;/li&gt;&lt;li&gt;Wraps sessions and transactions for session per HTTP session and session per thread.  &lt;/li&gt;&lt;li&gt;No download available only code&lt;/li&gt;&lt;/ul&gt;&lt;div style=&quot;text-align: -webkit-auto;&quot;&gt;&lt;/div&gt;&lt;h2 class=&quot;ph-title&quot; style=&quot;display: inline; margin-bottom: 0px !important; margin-left: 0px !important; margin-right: 0px !important; margin-top: 0px !important; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px; text-align: left;&quot;&gt;NHibernateIt&lt;/h2&gt;&lt;div style=&quot;text-align: -webkit-auto;&quot;&gt;&lt;/div&gt;&lt;ul&gt;&lt;li&gt; Allows you to do some basic crud through a generic repository implementation.&lt;/li&gt;&lt;li&gt; Has the same session and transaction encapsulation as in Nhibernator.&lt;/li&gt;&lt;/ul&gt;Nhibenrate Mapping Generator - Don’t know if working(Need to test on a big DB), but should generate mappings and classes from existing db, support MSSQL,Oracle and Postgre SQL.If you got a DB and don’t go fluent, this is probably good solution for a quick start.Fluent Nhibernate - Framework with fluent interface based mapping and configuration.Has an auto map feature with a lot of flexible convention over configuration options. One more thing they supply is an easy to use mapping test classes (called PersistenceSpecification ). You should consider auto mapping if your DB got name conventions, but you loose the flexibility of the mapping file per entity built in Nhibernate, and non conventional changes will make you write patches (AutoMappingOverride).">
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2011-01-24T18:06:00+02:00">
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Chen Kinnrot",
+      "url" : "https://kinnrot.hithub.io",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="https://kinnrot.hithub.io/feed.xml" type="application/atom+xml" rel="alternate" title="cdblg Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="https://kinnrot.hithub.io/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+<meta http-equiv="cleartype" content="on">
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+  </head>
+
+  <body class="layout--post">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="https://kinnrot.hithub.io/">cdblg</a>
+        <ul class="visible-links">
+          
+        </ul>
+        <button><div class="navicon"></div></button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+          <a href="https://kinnrot.hithub.io/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        <li class="current">Building a business tier with Nhibernate - Tools</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="https://secure.gravatar.com/avatar/094c0ec476b95ed7619d6a4cb918da78" alt="Chen Kinnrot" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name" itemprop="name">Chen Kinnrot</h3>
+    
+      <p class="author__bio" itemprop="description">
+        This is my code blog
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
+          <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> <span itemprop="name">Israel</span>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:kinnrot@gmail.com">
+            <meta itemprop="email" content="kinnrot@gmail.com" />
+            <i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> Email
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://twitter.com/kinnrot" itemprop="sameAs">
+            <i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter
+          </a>
+        </li>
+      
+
+      
+        <li>
+          <a href="https://www.facebook.com/kinnrot" itemprop="sameAs">
+            <i class="fa fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://www.linkedin.com/in/chen-kinnrot-b9125448" itemprop="sameAs">
+            <i class="fa fa-fw fa-linkedin-square" aria-hidden="true"></i> LinkedIn
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://instagram.com/kinnrot" itemprop="sameAs">
+            <i class="fa fa-fw fa-instagram" aria-hidden="true"></i> Instagram
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://bitbucket.org/kinnrot" itemprop="sameAs">
+            <i class="fa fa-fw fa-bitbucket" aria-hidden="true"></i> Bitbucket
+          </a>
+        </li>
+      
+
+      
+        <li>
+          <a href="https://github.com/kinnrot" itemprop="sameAs">
+            <i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub
+          </a>
+        </li>
+      
+
+      
+        <li>
+          <a href="https://gitlab.com/kinnrot" itemprop="sameAs">
+            <i class="fa fa-fw fa-gitlab" aria-hidden="true"></i> Gitlab
+          </a>
+        </li>
+      
+
+      
+        <li>
+          <a href="https://www.stackoverflow.com/users/67505/chen-kinnrot" itemprop="sameAs">
+            <i class="fa fa-fw fa-stack-overflow" aria-hidden="true"></i> Stackoverflow
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
+      <i class="fa fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Building a business tier with Nhibernate - Tools">
+    <meta itemprop="description" content="I got a new task: Build Nhibernate based infrastructure, so I decided to check the existing third party tools and my boss gave me a day at home to check them  ;-D . I only check tools that:&lt;ul&gt;&lt;li&gt;based on existing DB &lt;/li&gt;&lt;li&gt;support oracle &lt;/li&gt;&lt;li&gt;works with NH 3&lt;/li&gt;&lt;/ul&gt;First tool I got my hands on is NH3SQLLogger NH3SQLLogger - Nhibernate 3 SQL logger, this is a cool utility that will help you understand what the hell nhibernate is doing , where he is doing his stuff (yes yes a stack trace) and all parameters of queries are also reflected, this is the perfect development time logger. do not active it on production by default, only if you need to debug prod.Here is a sample output of this util:&lt;pre class=&quot;brush: sql&quot;&gt;—+ 01/24/2011 10:14:42.57 +—– Void Logic.Test.UserRepositoryTest.SaveUser() [File=UserRepositoryTest.cs, Line=86]INSERT     INTO        “User”        (FirstName, LastName, BirthDate, Gender, PhoneNumber, IsDeleted, Created, LastUpdated, Name, Address_id, FacebookProfile_id)     VALUES        (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10);select        last_insert_rowid();@p0 = ‘Chen’ [Type: String (0)]@p1 = ‘Kinnrot’ [Type: String (0)]@p2 = 24/01/2011 00:00:00 [Type: DateTime (0)]@p3 = ‘Male’ [Type: String (0)]@p4 = ‘0578149177’ [Type: String (0)]@p5 = False [Type: Boolean (0)]@p6 = 01/01/0001 00:00:00 [Type: DateTime (0)]@p7 = 01/01/0001 00:00:00 [Type: DateTime (0)]@p8 = ‘kinnrot’ [Type: String (0)]@p9 = 1 [Type: Int64 (0)]@p10 = 1 [Type: Int64 (0)]&lt;/pre&gt;NHibernator&lt;ul&gt;&lt;li&gt;Allows you to load db configuration by a key in the configuration file, good for application that works with more than one DB.&lt;/li&gt;&lt;li&gt;Wraps sessions and transactions for session per HTTP session and session per thread.  &lt;/li&gt;&lt;li&gt;No download available only code&lt;/li&gt;&lt;/ul&gt;&lt;div style=&quot;text-align: -webkit-auto;&quot;&gt;&lt;/div&gt;&lt;h2 class=&quot;ph-title&quot; style=&quot;display: inline; margin-bottom: 0px !important; margin-left: 0px !important; margin-right: 0px !important; margin-top: 0px !important; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px; text-align: left;&quot;&gt;NHibernateIt&lt;/h2&gt;&lt;div style=&quot;text-align: -webkit-auto;&quot;&gt;&lt;/div&gt;&lt;ul&gt;&lt;li&gt; Allows you to do some basic crud through a generic repository implementation.&lt;/li&gt;&lt;li&gt; Has the same session and transaction encapsulation as in Nhibernator.&lt;/li&gt;&lt;/ul&gt;Nhibenrate Mapping Generator - Don’t know if working(Need to test on a big DB), but should generate mappings and classes from existing db, support MSSQL,Oracle and Postgre SQL.If you got a DB and don’t go fluent, this is probably good solution for a quick start.Fluent Nhibernate - Framework with fluent interface based mapping and configuration.Has an auto map feature with a lot of flexible convention over configuration options. One more thing they supply is an easy to use mapping test classes (called PersistenceSpecification ). You should consider auto mapping if your DB got name conventions, but you loose the flexibility of the mapping file per entity built in Nhibernate, and non conventional changes will make you write patches (AutoMappingOverride).">
+    <meta itemprop="datePublished" content="January 24, 2011">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Building a business tier with Nhibernate - Tools
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        I got a new task: Build Nhibernate based infrastructure, so I decided to check the existing third party tools and my boss gave me a day at home to check them &nbsp;;-D .<br /><br />&nbsp;I only check tools that:<br /><ul><li>based on existing DB&nbsp;</li><li>support oracle&nbsp;</li><li>works with NH 3</li></ul>First tool I got my hands on is <a href="http://nh3sqllogger.codeplex.com/">NH3SQLLogger</a> <br /><br />NH3SQLLogger - Nhibernate 3 SQL logger, this is a&nbsp;cool utility that will help you understand what the hell nhibernate is&nbsp;doing&nbsp;, where he is doing his stuff (yes yes a stack trace) and all parameters of queries are also reflected, this is the perfect development time logger.<br /><br />*&nbsp;<span class="Apple-style-span" style="color: red;"><b>do not </b>active it on production by default, only if you need to debug prod</span>.<br /><br />Here is a sample output of this util:<br /><br /><pre class="brush: sql">---+ 01/24/2011 10:14:42.57 +---<br />-- Void Logic.Test.UserRepositoryTest.SaveUser() [File=UserRepositoryTest.cs, Line=86]<br /><br />INSERT <br />    INTO<br />        "User"<br />        (FirstName, LastName, BirthDate, Gender, PhoneNumber, IsDeleted, Created, LastUpdated, Name, Address_id, FacebookProfile_id) <br />    VALUES<br />        (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10);<br /><br />select<br />        last_insert_rowid();<br /><br />@p0 = 'Chen' [Type: String (0)]<br />@p1 = 'Kinnrot' [Type: String (0)]<br />@p2 = 24/01/2011 00:00:00 [Type: DateTime (0)]<br />@p3 = 'Male' [Type: String (0)]<br />@p4 = '0578149177' [Type: String (0)]<br />@p5 = False [Type: Boolean (0)]<br />@p6 = 01/01/0001 00:00:00 [Type: DateTime (0)]<br />@p7 = 01/01/0001 00:00:00 [Type: DateTime (0)]<br />@p8 = 'kinnrot' [Type: String (0)]<br />@p9 = 1 [Type: Int64 (0)]<br />@p10 = 1 [Type: Int64 (0)]<br /><br /></pre><br /><a href="http://nhibernator.sourceforge.net/">NHibernator</a><br /><a href="http://nhibernator.sourceforge.net/"></a><br /><ul><li>Allows you to load db configuration by a key in the configuration file, good for application that works with more than one DB.</li><li>Wraps sessions and transactions for session per HTTP session and&nbsp;session&nbsp;per thread. &nbsp;</li><li><b>No download available only code</b></li></ul><div style="text-align: -webkit-auto;"><span class="Apple-style-span" style="line-height: 16px;"><span class="Apple-style-span" style="font-family: Arial, Helvetica, sans-serif; font-size: xx-small;"></span></span></div><h2 class="ph-title" style="display: inline; margin-bottom: 0px !important; margin-left: 0px !important; margin-right: 0px !important; margin-top: 0px !important; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px; text-align: left;"><span class="Apple-style-span" style="font-family: Arial, Helvetica, sans-serif; font-size: x-small;"><a href="http://nhibernateit.sourceforge.net/">NHibernateIt</a></span></h2><div style="text-align: -webkit-auto;"></div><ul><li><span class="Apple-style-span" style="line-height: 16px;"><span class="Apple-style-span" style="font-family: Arial, Helvetica, sans-serif; font-size: xx-small;">&nbsp;</span></span>Allows you to do some basic crud&nbsp;through&nbsp;a generic repository implementation.</li><li>&nbsp;Has the same session and transaction encapsulation as in Nhibernator.</li></ul><a href="http://nmg.codeplex.com/">Nhibenrate Mapping Generator</a> - Don't know if working(Need to test on a big DB), but should generate mappings and classes from existing db, support MSSQL,Oracle and Postgre SQL.<br />If you got a DB and don't go fluent, this is probably good solution for a quick start.<br /><br /><a href="http://fluentnhibernate.org/">Fluent Nhibernate</a>&nbsp;- Framework with fluent interface based mapping and configuration.<br />Has an auto map feature with a lot of&nbsp;flexible&nbsp;convention over configuration options. One more thing they supply is an easy to use mapping test classes (called&nbsp;<span class="Apple-style-span" style="font-family: arial, sans-serif; line-height: 19px;"><a class="spell" href="http://www.google.co.il/search?hl=iw&amp;rlz=1C1CHEU_enIL389IL389&amp;&amp;sa=X&amp;ei=35s9Tc6WOszNswbag8HzBg&amp;ved=0CCYQBSgA&amp;q=PersistenceSpecification&amp;spell=1" style="color: #2200c1; cursor: pointer;"><b><i>PersistenceSpecification</i></b></a>&nbsp;</span>).<br /><br />* You should consider auto mapping if your DB got name conventions, but you loose the flexibility of the mapping file per entity built in Nhibernate, and non conventional changes will make you write patches (<span class="Apple-style-span" style="font-family: Monaco, 'Courier New', Courier, Fixed; font-size: 12px; line-height: 15px; white-space: pre;"><a href="http://wiki.fluentnhibernate.org/Auto_mapping#Altering_entities">AutoMappingOverride</a><span class="Apple-style-span" style="color: #784838;">).</span></span><br /><span class="Apple-style-span" style="font-family: Monaco, 'Courier New', Courier, Fixed; font-size: 12px; line-height: 15px; white-space: pre;"><span class="Apple-style-span" style="color: #784838;"><br /></span></span><br /><span class="Apple-style-span" style="font-family: Monaco, 'Courier New', Courier, Fixed; font-size: 12px; line-height: 15px; white-space: pre;"><span class="Apple-style-span" style="color: #784838;"><br /></span></span>
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="https://kinnrot.hithub.io/tags/#fluent-nhibernate" class="page__taxonomy-item" rel="tag">Fluent Nhibernate</a><span class="sep">, </span>
+    
+      
+      
+      <a href="https://kinnrot.hithub.io/tags/#nhibernate" class="page__taxonomy-item" rel="tag">Nhibernate</a><span class="sep">, </span>
+    
+      
+      
+      <a href="https://kinnrot.hithub.io/tags/#utilities" class="page__taxonomy-item" rel="tag">Utilities</a>
+    
+    </span>
+  </p>
+
+
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2011-01-24T18:06:00+02:00">January 24, 2011</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Building a business tier with Nhibernate - Tools https://kinnrot.hithub.io/building-business-tier-with-nhibernate/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://kinnrot.hithub.io/building-business-tier-with-nhibernate/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=https://kinnrot.hithub.io/building-business-tier-with-nhibernate/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://kinnrot.hithub.io/building-business-tier-with-nhibernate/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="https://kinnrot.hithub.io/wpf-binding-and-why-you-should-write/" class="pagination--pager" title="WPF Binding and Why you should write defensive code.
+">Previous</a>
+    
+    
+      <a href="https://kinnrot.hithub.io/per-db-conventions-with/" class="pagination--pager" title="Per DB Conventions With FluentNhibernate
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+    
+    
+    
+      <li><a href="http://github.com/kinnrot"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+      <li><a href="http://gitlab.com/kinnrot"><i class="fa fa-fw fa-gitlab" aria-hidden="true"></i> Gitlab</a></li>
+    
+    
+      <li><a href="http://bitbucket.org/kinnrot"><i class="fa fa-fw fa-bitbucket" aria-hidden="true"></i> Bitbucket</a></li>
+    
+    <li><a href="https://kinnrot.hithub.io/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2017 Chen Kinnrot. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    <script src="https://kinnrot.hithub.io/assets/js/main.min.js"></script>
+
+
+
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-103259749-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+
+
+
+  </body>
+</html>

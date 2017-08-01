@@ -1,0 +1,450 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.4.2 by Michael Rose
+  Copyright 2017 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE.txt
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Per DB Conventions With FluentNhibernate - cdblg</title>
+
+
+
+
+<meta name="description" content="I need to support 2 db types on my app, so I thought about a nice pattern that will help me achieve this.// I’m working with latest Fluent Nhibernate version.Define a folder for each db type you want to support like this:&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;/div&gt;&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;/div&gt;contain conventions for MSSQLCE and the second will contain conventions for OracleClient.For example: Oracle support schemas and sequences, SQLCE does not. lets define some simple conventionsFor Oracle:public class SchemaConvention : IClassConvention&lt;pre class=&quot;brush: csharp;&quot;&gt;{  public void Apply(IClassInstance instance)  {    instance.Schema(“MY_ORACLE_SPECIFIC_SCHEMA”);  }}&lt;/pre&gt;&lt;pre class=&quot;brush: csharp;&quot;&gt;public class SequenceConvention : IIdConvention{  public void Apply(IIdentityInstance instance)  {    instance.GeneratedBy.Sequence(instance.Columns.First().Name + “_SEQ”);  }}&lt;/pre&gt;And for SqlCe:&lt;pre class=&quot;brush: csharp;&quot;&gt;class IdentityConvention : IIdConvention{  public void Apply(IIdentityInstance instance)  {     instance.GeneratedBy.Identity();  }}&lt;/pre&gt;&lt;pre class=&quot;brush: csharp;&quot;&gt;&lt;/pre&gt;&lt;pre class=&quot;brush: csharp;&quot;&gt;So the folders will look like this:&lt;/pre&gt;&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;/div&gt;&lt;pre class=&quot;brush: csharp;&quot;&gt;&lt;/pre&gt;Next thing that we will need is some kind of type retriever that knows what conventions to load according to the db we are currently configuring his nhibernate stuff.Lets call it PerDBConventionSource and this is how its implemented:&lt;pre class=&quot;brush: csharp;&quot;&gt;internal class PerDBConventionSource : ITypeSource{  private readonly string _name;  private IEnumerable&lt;Type&gt; _types;  public PerDBConventionSource(string name)  {    _name = name;  }  public IEnumerable&lt;Type&gt; GetTypes()  {    _types = typeof (PerDBConventionSource).Assembly.GetTypes().Where(t =&gt;        t.Namespace.EndsWith(_name));    return _types;  }  /// &lt;summary&gt;  /// Logs the activity of this type source.  /// &lt;/summary&gt;  /// &lt;param name=”logger”&gt;The logger.&lt;/param&gt;  public void LogSource(IDiagnosticLogger logger)  {    // TODO : Log if you want  }  public string GetIdentifier()  {    return _name;  }}&lt;/pre&gt;Notice that i’m implementing ITypeSource, an interface belong to FluentNhibernate, this is how i tell FluentNhibernate to use this as a convention source: (I used only fluentMappings so I add the conventions only on fluentMappings)&lt;pre class=&quot;brush: csharp;&quot;&gt;private static IPersistenceConfigurer _persistenceConfigurer;private static void ConfigureNH(IPersistenceConfigurer persistenceConfigurer){  _persistenceConfigurer = persistenceConfigurer;  Fluently.    Configure().    Database(persistenceConfigurer).    Diagnostics(x =&gt; x.Enable(true).OutputToConsole()).    Mappings(SomeMappings).    BuildConfiguration();}private static void SomeMappings(MappingConfiguration mappingConfiguration){  string name = _persistenceConfigurer.GetType().Name.Replace(“Configuration”, string.Empty);  mappingConfiguration.FluentMappings.Conventions.AddSource(new PerDBConventionSource(name));}&lt;/pre&gt;So when I’ll run the following code:&lt;pre class=&quot;brush: csharp;&quot;&gt;Console.BackgroundColor = ConsoleColor.DarkGreen;Console.ForegroundColor= ConsoleColor.Green;ConfigureNH(OracleClientConfiguration.Oracle10.ConnectionString(“some OracleClient connection”));Console.BackgroundColor = ConsoleColor.DarkBlue;Console.ForegroundColor = ConsoleColor.Blue;ConfigureNH(MsSqlCeConfiguration.Standard.ConnectionString(“some MsSqlCe connection”));&lt;/pre&gt;The result will be&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;/div&gt;&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;/div&gt;&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;/div&gt;Why you should use his pattern anyway(even if you work with 1 db):1. unit testing with sqlite in memory will not work with sequence conventions, so you shouldn’t load them when you are unit testing.2. If you’ll some day change the db type, you’ll know where to add its own conventions, just create a folder with db name and add it’s conventions inside no other  change is necessary.You can find the source here:&lt;iframe title =&quot;Preview&quot; scrolling=&quot;no&quot; marginheight=&quot;0&quot; marginwidth=&quot;0&quot; frameborder=&quot;0&quot; style=&quot;width:98px;height:115px;padding:0;background-color:#fcfcfc;&quot; src=&quot;http://cid-b7c55b5696998a0e.office.live.com/embedicon.aspx/BLGR/PerDBConventions.7z&quot;&gt;&lt;/iframe&gt;">
+
+
+
+
+<meta name="author" content="Chen Kinnrot">
+
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="cdblg">
+<meta property="og:title" content="Per DB Conventions With FluentNhibernate">
+
+
+  <link rel="canonical" href="https://kinnrot.hithub.io/per-db-conventions-with/">
+  <meta property="og:url" content="https://kinnrot.hithub.io/per-db-conventions-with/">
+
+
+
+  <meta property="og:description" content="I need to support 2 db types on my app, so I thought about a nice pattern that will help me achieve this.// I’m working with latest Fluent Nhibernate version.Define a folder for each db type you want to support like this:&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;/div&gt;&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;/div&gt;contain conventions for MSSQLCE and the second will contain conventions for OracleClient.For example: Oracle support schemas and sequences, SQLCE does not. lets define some simple conventionsFor Oracle:public class SchemaConvention : IClassConvention&lt;pre class=&quot;brush: csharp;&quot;&gt;{  public void Apply(IClassInstance instance)  {    instance.Schema(“MY_ORACLE_SPECIFIC_SCHEMA”);  }}&lt;/pre&gt;&lt;pre class=&quot;brush: csharp;&quot;&gt;public class SequenceConvention : IIdConvention{  public void Apply(IIdentityInstance instance)  {    instance.GeneratedBy.Sequence(instance.Columns.First().Name + “_SEQ”);  }}&lt;/pre&gt;And for SqlCe:&lt;pre class=&quot;brush: csharp;&quot;&gt;class IdentityConvention : IIdConvention{  public void Apply(IIdentityInstance instance)  {     instance.GeneratedBy.Identity();  }}&lt;/pre&gt;&lt;pre class=&quot;brush: csharp;&quot;&gt;&lt;/pre&gt;&lt;pre class=&quot;brush: csharp;&quot;&gt;So the folders will look like this:&lt;/pre&gt;&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;/div&gt;&lt;pre class=&quot;brush: csharp;&quot;&gt;&lt;/pre&gt;Next thing that we will need is some kind of type retriever that knows what conventions to load according to the db we are currently configuring his nhibernate stuff.Lets call it PerDBConventionSource and this is how its implemented:&lt;pre class=&quot;brush: csharp;&quot;&gt;internal class PerDBConventionSource : ITypeSource{  private readonly string _name;  private IEnumerable&lt;Type&gt; _types;  public PerDBConventionSource(string name)  {    _name = name;  }  public IEnumerable&lt;Type&gt; GetTypes()  {    _types = typeof (PerDBConventionSource).Assembly.GetTypes().Where(t =&gt;        t.Namespace.EndsWith(_name));    return _types;  }  /// &lt;summary&gt;  /// Logs the activity of this type source.  /// &lt;/summary&gt;  /// &lt;param name=”logger”&gt;The logger.&lt;/param&gt;  public void LogSource(IDiagnosticLogger logger)  {    // TODO : Log if you want  }  public string GetIdentifier()  {    return _name;  }}&lt;/pre&gt;Notice that i’m implementing ITypeSource, an interface belong to FluentNhibernate, this is how i tell FluentNhibernate to use this as a convention source: (I used only fluentMappings so I add the conventions only on fluentMappings)&lt;pre class=&quot;brush: csharp;&quot;&gt;private static IPersistenceConfigurer _persistenceConfigurer;private static void ConfigureNH(IPersistenceConfigurer persistenceConfigurer){  _persistenceConfigurer = persistenceConfigurer;  Fluently.    Configure().    Database(persistenceConfigurer).    Diagnostics(x =&gt; x.Enable(true).OutputToConsole()).    Mappings(SomeMappings).    BuildConfiguration();}private static void SomeMappings(MappingConfiguration mappingConfiguration){  string name = _persistenceConfigurer.GetType().Name.Replace(“Configuration”, string.Empty);  mappingConfiguration.FluentMappings.Conventions.AddSource(new PerDBConventionSource(name));}&lt;/pre&gt;So when I’ll run the following code:&lt;pre class=&quot;brush: csharp;&quot;&gt;Console.BackgroundColor = ConsoleColor.DarkGreen;Console.ForegroundColor= ConsoleColor.Green;ConfigureNH(OracleClientConfiguration.Oracle10.ConnectionString(“some OracleClient connection”));Console.BackgroundColor = ConsoleColor.DarkBlue;Console.ForegroundColor = ConsoleColor.Blue;ConfigureNH(MsSqlCeConfiguration.Standard.ConnectionString(“some MsSqlCe connection”));&lt;/pre&gt;The result will be&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;/div&gt;&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;/div&gt;&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;/div&gt;Why you should use his pattern anyway(even if you work with 1 db):1. unit testing with sqlite in memory will not work with sequence conventions, so you shouldn’t load them when you are unit testing.2. If you’ll some day change the db type, you’ll know where to add its own conventions, just create a folder with db name and add it’s conventions inside no other  change is necessary.You can find the source here:&lt;iframe title =&quot;Preview&quot; scrolling=&quot;no&quot; marginheight=&quot;0&quot; marginwidth=&quot;0&quot; frameborder=&quot;0&quot; style=&quot;width:98px;height:115px;padding:0;background-color:#fcfcfc;&quot; src=&quot;http://cid-b7c55b5696998a0e.office.live.com/embedicon.aspx/BLGR/PerDBConventions.7z&quot;&gt;&lt;/iframe&gt;">
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2011-02-18T21:30:00+02:00">
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Chen Kinnrot",
+      "url" : "https://kinnrot.hithub.io",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="https://kinnrot.hithub.io/feed.xml" type="application/atom+xml" rel="alternate" title="cdblg Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="https://kinnrot.hithub.io/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+<meta http-equiv="cleartype" content="on">
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+  </head>
+
+  <body class="layout--post">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="https://kinnrot.hithub.io/">cdblg</a>
+        <ul class="visible-links">
+          
+        </ul>
+        <button><div class="navicon"></div></button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+          <a href="https://kinnrot.hithub.io/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        <li class="current">Per DB Conventions With FluentNhibernate</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="https://secure.gravatar.com/avatar/094c0ec476b95ed7619d6a4cb918da78" alt="Chen Kinnrot" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name" itemprop="name">Chen Kinnrot</h3>
+    
+      <p class="author__bio" itemprop="description">
+        This is my code blog
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
+          <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> <span itemprop="name">Israel</span>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:kinnrot@gmail.com">
+            <meta itemprop="email" content="kinnrot@gmail.com" />
+            <i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> Email
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://twitter.com/kinnrot" itemprop="sameAs">
+            <i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter
+          </a>
+        </li>
+      
+
+      
+        <li>
+          <a href="https://www.facebook.com/kinnrot" itemprop="sameAs">
+            <i class="fa fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://www.linkedin.com/in/chen-kinnrot-b9125448" itemprop="sameAs">
+            <i class="fa fa-fw fa-linkedin-square" aria-hidden="true"></i> LinkedIn
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://instagram.com/kinnrot" itemprop="sameAs">
+            <i class="fa fa-fw fa-instagram" aria-hidden="true"></i> Instagram
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://bitbucket.org/kinnrot" itemprop="sameAs">
+            <i class="fa fa-fw fa-bitbucket" aria-hidden="true"></i> Bitbucket
+          </a>
+        </li>
+      
+
+      
+        <li>
+          <a href="https://github.com/kinnrot" itemprop="sameAs">
+            <i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub
+          </a>
+        </li>
+      
+
+      
+        <li>
+          <a href="https://gitlab.com/kinnrot" itemprop="sameAs">
+            <i class="fa fa-fw fa-gitlab" aria-hidden="true"></i> Gitlab
+          </a>
+        </li>
+      
+
+      
+        <li>
+          <a href="https://www.stackoverflow.com/users/67505/chen-kinnrot" itemprop="sameAs">
+            <i class="fa fa-fw fa-stack-overflow" aria-hidden="true"></i> Stackoverflow
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
+      <i class="fa fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Per DB Conventions With FluentNhibernate">
+    <meta itemprop="description" content="I need to support 2 db types on my app, so I thought about a nice pattern that will help me achieve this.// I’m working with latest Fluent Nhibernate version.Define a folder for each db type you want to support like this:&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;/div&gt;&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;/div&gt;contain conventions for MSSQLCE and the second will contain conventions for OracleClient.For example: Oracle support schemas and sequences, SQLCE does not. lets define some simple conventionsFor Oracle:public class SchemaConvention : IClassConvention&lt;pre class=&quot;brush: csharp;&quot;&gt;{  public void Apply(IClassInstance instance)  {    instance.Schema(“MY_ORACLE_SPECIFIC_SCHEMA”);  }}&lt;/pre&gt;&lt;pre class=&quot;brush: csharp;&quot;&gt;public class SequenceConvention : IIdConvention{  public void Apply(IIdentityInstance instance)  {    instance.GeneratedBy.Sequence(instance.Columns.First().Name + “_SEQ”);  }}&lt;/pre&gt;And for SqlCe:&lt;pre class=&quot;brush: csharp;&quot;&gt;class IdentityConvention : IIdConvention{  public void Apply(IIdentityInstance instance)  {     instance.GeneratedBy.Identity();  }}&lt;/pre&gt;&lt;pre class=&quot;brush: csharp;&quot;&gt;&lt;/pre&gt;&lt;pre class=&quot;brush: csharp;&quot;&gt;So the folders will look like this:&lt;/pre&gt;&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;/div&gt;&lt;pre class=&quot;brush: csharp;&quot;&gt;&lt;/pre&gt;Next thing that we will need is some kind of type retriever that knows what conventions to load according to the db we are currently configuring his nhibernate stuff.Lets call it PerDBConventionSource and this is how its implemented:&lt;pre class=&quot;brush: csharp;&quot;&gt;internal class PerDBConventionSource : ITypeSource{  private readonly string _name;  private IEnumerable&lt;Type&gt; _types;  public PerDBConventionSource(string name)  {    _name = name;  }  public IEnumerable&lt;Type&gt; GetTypes()  {    _types = typeof (PerDBConventionSource).Assembly.GetTypes().Where(t =&gt;        t.Namespace.EndsWith(_name));    return _types;  }  /// &lt;summary&gt;  /// Logs the activity of this type source.  /// &lt;/summary&gt;  /// &lt;param name=”logger”&gt;The logger.&lt;/param&gt;  public void LogSource(IDiagnosticLogger logger)  {    // TODO : Log if you want  }  public string GetIdentifier()  {    return _name;  }}&lt;/pre&gt;Notice that i’m implementing ITypeSource, an interface belong to FluentNhibernate, this is how i tell FluentNhibernate to use this as a convention source: (I used only fluentMappings so I add the conventions only on fluentMappings)&lt;pre class=&quot;brush: csharp;&quot;&gt;private static IPersistenceConfigurer _persistenceConfigurer;private static void ConfigureNH(IPersistenceConfigurer persistenceConfigurer){  _persistenceConfigurer = persistenceConfigurer;  Fluently.    Configure().    Database(persistenceConfigurer).    Diagnostics(x =&gt; x.Enable(true).OutputToConsole()).    Mappings(SomeMappings).    BuildConfiguration();}private static void SomeMappings(MappingConfiguration mappingConfiguration){  string name = _persistenceConfigurer.GetType().Name.Replace(“Configuration”, string.Empty);  mappingConfiguration.FluentMappings.Conventions.AddSource(new PerDBConventionSource(name));}&lt;/pre&gt;So when I’ll run the following code:&lt;pre class=&quot;brush: csharp;&quot;&gt;Console.BackgroundColor = ConsoleColor.DarkGreen;Console.ForegroundColor= ConsoleColor.Green;ConfigureNH(OracleClientConfiguration.Oracle10.ConnectionString(“some OracleClient connection”));Console.BackgroundColor = ConsoleColor.DarkBlue;Console.ForegroundColor = ConsoleColor.Blue;ConfigureNH(MsSqlCeConfiguration.Standard.ConnectionString(“some MsSqlCe connection”));&lt;/pre&gt;The result will be&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;/div&gt;&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;/div&gt;&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;/div&gt;Why you should use his pattern anyway(even if you work with 1 db):1. unit testing with sqlite in memory will not work with sequence conventions, so you shouldn’t load them when you are unit testing.2. If you’ll some day change the db type, you’ll know where to add its own conventions, just create a folder with db name and add it’s conventions inside no other  change is necessary.You can find the source here:&lt;iframe title =&quot;Preview&quot; scrolling=&quot;no&quot; marginheight=&quot;0&quot; marginwidth=&quot;0&quot; frameborder=&quot;0&quot; style=&quot;width:98px;height:115px;padding:0;background-color:#fcfcfc;&quot; src=&quot;http://cid-b7c55b5696998a0e.office.live.com/embedicon.aspx/BLGR/PerDBConventions.7z&quot;&gt;&lt;/iframe&gt;">
+    <meta itemprop="datePublished" content="February 18, 2011">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Per DB Conventions With FluentNhibernate
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        I need to support 2 db types on my app, so I thought about a nice pattern that will help me achieve this.<br /><br /><span class="Apple-style-span" style="color: lime;">// I'm working with latest Fluent Nhibernate version.</span><br /><br />Define a folder for each db type you want to support like this:<br /><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-MfFJJoXqa-I/TVwVwTgRK9I/AAAAAAAACNY/bZojqTwNd1A/s1600/Tree.PNG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://4.bp.blogspot.com/-MfFJJoXqa-I/TVwVwTgRK9I/AAAAAAAACNY/bZojqTwNd1A/s1600/Tree.PNG" /></a></div><br />contain conventions for MSSQLCE and the second will contain conventions for OracleClient.<br /><br />For example: Oracle support schemas and sequences, SQLCE does not. lets define some simple conventions<br /><br />For Oracle:<br /><br /><span class="Apple-style-span" style="font-family: monospace; white-space: pre;">public class SchemaConvention : IClassConvention</span><br /><pre class="brush: csharp;">{<br />  public void Apply(IClassInstance instance)<br />  {<br />    instance.Schema("MY_ORACLE_SPECIFIC_SCHEMA");<br />  }<br />}<br /></pre><br /><pre class="brush: csharp;">public class SequenceConvention : IIdConvention<br />{<br />  public void Apply(IIdentityInstance instance)<br />  {<br />    instance.GeneratedBy.Sequence(instance.Columns.First().Name + "_SEQ");<br />  }<br />}<br /></pre><br />And for SqlCe:<br /><br /><pre class="brush: csharp;">class IdentityConvention : IIdConvention<br />{<br />  public void Apply(IIdentityInstance instance)<br />  {<br />     instance.GeneratedBy.Identity();<br />  }<br />}<br /></pre><pre class="brush: csharp;"></pre><pre class="brush: csharp;">So the folders will look like this:</pre><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-hhY8AdZIj9U/TVwYkml_xUI/AAAAAAAACNk/yhmHGgp29gs/s1600/files.GIF" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://1.bp.blogspot.com/-hhY8AdZIj9U/TVwYkml_xUI/AAAAAAAACNk/yhmHGgp29gs/s1600/files.GIF" /></a></div><pre class="brush: csharp;"></pre><br />Next thing that we will need is some kind of type&nbsp;retriever&nbsp;that knows what conventions to load according to the db we are currently configuring his nhibernate stuff.<br /><br />Lets call it PerDBConventionSource and this is how its implemented:<br /><br /><pre class="brush: csharp;">internal class PerDBConventionSource : ITypeSource<br />{<br />  private readonly string _name;<br />  private IEnumerable&lt;Type&gt; _types;<br /><br />  public PerDBConventionSource(string name)<br />  {<br />    _name = name;<br />  }<br /><br />  public IEnumerable&lt;Type&gt; GetTypes()<br />  {<br />    _types = typeof (PerDBConventionSource).Assembly.GetTypes().Where(t =&gt;        t.Namespace.EndsWith(_name));<br />    return _types;<br />  }<br /><br />  /// &lt;summary&gt;<br />  /// Logs the activity of this type source.<br />  /// &lt;/summary&gt;<br />  /// &lt;param name="logger"&gt;The logger.&lt;/param&gt;<br />  public void LogSource(IDiagnosticLogger logger)<br />  {<br />    // TODO : Log if you want<br />  }<br /><br />  public string GetIdentifier()<br />  {<br />    return _name;<br />  }<br />}<br /></pre><br />Notice that i'm implementing ITypeSource, an interface belong to FluentNhibernate, this is how i tell FluentNhibernate to use this as a convention source: (I used only fluentMappings so I add the conventions only on fluentMappings)<br /><br /><br /><pre class="brush: csharp;">private static IPersistenceConfigurer _persistenceConfigurer;<br /><br />private static void ConfigureNH(IPersistenceConfigurer persistenceConfigurer)<br />{<br />  _persistenceConfigurer = persistenceConfigurer;<br />  Fluently.<br />    Configure().<br />    Database(persistenceConfigurer).<br />    Diagnostics(x =&gt; x.Enable(true).OutputToConsole()).<br />    Mappings(SomeMappings).<br />    BuildConfiguration();<br />}<br /><br />private static void SomeMappings(MappingConfiguration mappingConfiguration)<br />{<br />  string name = _persistenceConfigurer.GetType().Name.Replace("Configuration", string.Empty);<br /><br />  mappingConfiguration.FluentMappings.Conventions.AddSource(new PerDBConventionSource(name));<br />}<br /></pre><br /><br />So when I'll run the following code:<br /><br /><pre class="brush: csharp;">Console.BackgroundColor = ConsoleColor.DarkGreen;<br />Console.ForegroundColor= ConsoleColor.Green;<br /><br />ConfigureNH(OracleClientConfiguration.Oracle10.ConnectionString("some OracleClient connection"));<br /><br />Console.BackgroundColor = ConsoleColor.DarkBlue;<br />Console.ForegroundColor = ConsoleColor.Blue;<br /><br />ConfigureNH(MsSqlCeConfiguration.Standard.ConnectionString("some MsSqlCe connection"));<br /></pre><br />The result will be<br /><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-7JDQlxsnsNs/TV56uparJZI/AAAAAAAACN4/waScYrGm_tY/s1600/or2.GIF" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="144" src="http://1.bp.blogspot.com/-7JDQlxsnsNs/TV56uparJZI/AAAAAAAACN4/waScYrGm_tY/s640/or2.GIF" width="640" /></a></div><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-wRwtcdZh_z8/TV56xcqDA2I/AAAAAAAACN8/nSsaowp2GTc/s1600/sql2.GIF" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="118" src="http://3.bp.blogspot.com/-wRwtcdZh_z8/TV56xcqDA2I/AAAAAAAACN8/nSsaowp2GTc/s640/sql2.GIF" width="640" /></a></div><br /><div class="separator" style="clear: both; text-align: center;"></div><br />Why you should use his pattern anyway(even if you work with 1 db):<br />1. unit testing with sqlite in memory will not work with sequence conventions, so you shouldn't load them when you are unit testing.<br />2. If you'll some day change the db type, you'll know where to add its own conventions, just create a folder with db name and add it's conventions inside no other  change is necessary.<br /><br />You can find the source here:<br /><iframe title ="Preview" scrolling="no" marginheight="0" marginwidth="0" frameborder="0" style="width:98px;height:115px;padding:0;background-color:#fcfcfc;" src="http://cid-b7c55b5696998a0e.office.live.com/embedicon.aspx/BLGR/PerDBConventions.7z"></iframe>
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2011-02-18T21:30:00+02:00">February 18, 2011</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Per DB Conventions With FluentNhibernate https://kinnrot.hithub.io/per-db-conventions-with/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://kinnrot.hithub.io/per-db-conventions-with/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=https://kinnrot.hithub.io/per-db-conventions-with/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://kinnrot.hithub.io/per-db-conventions-with/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="https://kinnrot.hithub.io/building-business-tier-with-nhibernate/" class="pagination--pager" title="Building a business tier with Nhibernate - Tools
+">Previous</a>
+    
+    
+      <a href="https://kinnrot.hithub.io/preventing-from-setting-property-value/" class="pagination--pager" title="Prevent setting a property value after already been set
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+    
+    
+    
+      <li><a href="http://github.com/kinnrot"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+      <li><a href="http://gitlab.com/kinnrot"><i class="fa fa-fw fa-gitlab" aria-hidden="true"></i> Gitlab</a></li>
+    
+    
+      <li><a href="http://bitbucket.org/kinnrot"><i class="fa fa-fw fa-bitbucket" aria-hidden="true"></i> Bitbucket</a></li>
+    
+    <li><a href="https://kinnrot.hithub.io/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2017 Chen Kinnrot. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    <script src="https://kinnrot.hithub.io/assets/js/main.min.js"></script>
+
+
+
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-103259749-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+
+
+
+  </body>
+</html>
