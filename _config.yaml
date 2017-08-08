@@ -4,24 +4,27 @@
 # which you are expected to set up once and rarely need to edit after that.
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # `jekyll serve`. If you change this file, please restart the server process.
+# Deployment:
+# 1. JEKYLL_ENV=production bundle exec jekyll build
+# 2. JEKYLL_ENV=production octopress deploy
 
 # Site Settings
 theme: minimal-mistakes-jekyll
 locale                   : "en"
-title                    : "Site Title"
+title                    : "cdblg"
 title_separator          : "-"
-name                     : "Your Name"
+name                     : "Chen Kinnrot"
 description              : "An amazing website."
-url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      : "https://kinnrot.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
-repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
+repository               : kinnrot
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
-# breadcrumbs            : false # true, false (default)
-words_per_minute         : 200
+breadcrumbs              : true
+words_per_minute         : 100
 comments:
-  provider               : # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "custom"
+  provider               : "disqus"
   disqus:
-    shortname            : # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
+    shortname            : "cdblg"
   discourse:
     server               : # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
   facebook:
@@ -71,38 +74,38 @@ social:
 
 # Analytics
 analytics:
-  provider               : false # false (default), "google", "google-universal", "custom"
+  provider               : "google"
   google:
-    tracking_id          :
+    tracking_id          : "UA-103259749-1"
 
 
 # Site Author
 author:
-  name             : "Your Name"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I am an amazing person."
-  location         : "Somewhere"
-  email            :
+  name             : "Chen Kinnrot"
+  avatar           : https://secure.gravatar.com/avatar/094c0ec476b95ed7619d6a4cb918da78 
+  bio              : "This is my code blog"
+  location         : "Israel"
+  email            : "kinnrot@gmail.com"
   uri              :
-  bitbucket        :
+  bitbucket        : kinnrot
   codepen          :
   dribbble         :
   flickr           :
-  facebook         :
+  facebook         : kinnrot
   foursquare       :
-  github           :
-  gitlab           :
-  google_plus      :
+  github           : kinnrot
+  gitlab           : kinnrot
+  google_plus      : 
   keybase          :
-  instagram        :
+  instagram        : kinnrot
   lastfm           :
-  linkedin         :
+  linkedin         : chen-kinnrot-b9125448
   pinterest        :
   soundcloud       :
-  stackoverflow    : # "123456/username" (the last part of your profile url, e.g. http://stackoverflow.com/users/123456/username)
+  stackoverflow    : 67505/chen-kinnrot
   steam            :
   tumblr           :
-  twitter          :
+  twitter          : kinnrot
   vine             :
   weibo            :
   xing             :
@@ -180,7 +183,7 @@ timezone: # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 
 # Plugins (previously gems:)
-# plugins:
+plugins:
   - jekyll-paginate
   - jekyll-sitemap
   - jekyll-gist
@@ -207,22 +210,22 @@ whitelist:
 #  - <base_path/categories/my-awesome-category/index.html ~> path: /categories/
 #  - <base_path/my-awesome-category/index.html ~> path: /
 category_archive:
-  type: liquid
+  type: jekyll-archives
   path: /categories/
 tag_archive:
-  type: liquid
+  type: jekyll-archives
   path: /tags/
 # https://github.com/jekyll/jekyll-archives
-# jekyll-archives:
-#   enabled:
-#     - categories
-#     - tags
-#   layouts:
-#     category: archive-taxonomy
-#     tag: archive-taxonomy
-#   permalinks:
-#     category: /categories/:name/
-#     tag: /tags/:name/
+jekyll-archives:
+  enabled:
+    - categories
+    - tags
+  layouts:
+    category: archive-taxonomy
+    tag: archive-taxonomy
+  permalinks:
+    category: /categories/:name/
+    tag: /tags/:name/
 
 
 # HTML Compression
@@ -243,6 +246,6 @@ defaults:
       layout: single
       author_profile: true
       read_time: true
-      comments: # true
+      comments: true
       share: true
       related: true
