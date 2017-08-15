@@ -1,0 +1,588 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.5.0 by Michael Rose
+  Copyright 2017 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE.txt
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Ruby async await - cdblg</title>
+
+
+
+
+<meta name="description" content="There is a lot of buzz about asyc await from the javascript world, the concept is very simple and make your code much morereadable.">
+
+
+
+
+<meta name="author" content="Chen Kinnrot">
+
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="cdblg">
+<meta property="og:title" content="Ruby async await">
+
+
+  <link rel="canonical" href="http://localhost:4000/ruby-async-await/">
+  <meta property="og:url" content="http://localhost:4000/ruby-async-await/">
+
+
+
+  <meta property="og:description" content="There is a lot of buzz about asyc await from the javascript world, the concept is very simple and make your code much morereadable.">
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2017-08-08T18:12:46+03:00">
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Chen Kinnrot",
+      "url" : "http://localhost:4000",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="cdblg Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+<meta http-equiv="cleartype" content="on">
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+  </head>
+
+  <body class="layout--post">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="http://localhost:4000/">cdblg</a>
+        <ul class="visible-links">
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/about">About</a></li>
+          
+        </ul>
+        <button><div class="navicon"></div></button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+          <a href="http://localhost:4000/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        <li class="current">Ruby async await</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="https://secure.gravatar.com/avatar/094c0ec476b95ed7619d6a4cb918da78" alt="Chen Kinnrot" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name" itemprop="name">Chen Kinnrot</h3>
+    
+      <p class="author__bio" itemprop="description">
+        This is my code blog
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
+          <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> <span itemprop="name">Israel</span>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:kinnrot@gmail.com">
+            <meta itemprop="email" content="kinnrot@gmail.com" />
+            <i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> Email
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://twitter.com/kinnrot" itemprop="sameAs">
+            <i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter
+          </a>
+        </li>
+      
+
+      
+        <li>
+          <a href="https://www.facebook.com/kinnrot" itemprop="sameAs">
+            <i class="fa fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://www.linkedin.com/in/chen-kinnrot-b9125448" itemprop="sameAs">
+            <i class="fa fa-fw fa-linkedin-square" aria-hidden="true"></i> LinkedIn
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://instagram.com/kinnrot" itemprop="sameAs">
+            <i class="fa fa-fw fa-instagram" aria-hidden="true"></i> Instagram
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://bitbucket.org/kinnrot" itemprop="sameAs">
+            <i class="fa fa-fw fa-bitbucket" aria-hidden="true"></i> Bitbucket
+          </a>
+        </li>
+      
+
+      
+        <li>
+          <a href="https://github.com/kinnrot" itemprop="sameAs">
+            <i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub
+          </a>
+        </li>
+      
+
+      
+        <li>
+          <a href="https://gitlab.com/kinnrot" itemprop="sameAs">
+            <i class="fa fa-fw fa-gitlab" aria-hidden="true"></i> Gitlab
+          </a>
+        </li>
+      
+
+      
+        <li>
+          <a href="https://www.stackoverflow.com/users/67505/chen-kinnrot" itemprop="sameAs">
+            <i class="fa fa-fw fa-stack-overflow" aria-hidden="true"></i> Stackoverflow
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
+      <i class="fa fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Ruby async await">
+    <meta itemprop="description" content="There is a lot of buzz about asyc await from the javascript world, the concept is very simple and make your code much morereadable.">
+    <meta itemprop="datePublished" content="August 08, 2017">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Ruby async await
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>There is a lot of buzz about asyc await from the javascript world, the concept is very simple and make your code much more
+readable.</p>
+
+<p>You want to execute something without blocking the main thread but you want the next line of code to run once the non blocking code finish, meaning continue
+code execution in its written order.</p>
+
+<p>Ruby has a great <a href="https://github.com/ruby-concurrency/concurrent-ruby">concurrency gem</a> which basically encapsulate low level threading and synchronization code
+to common patterns like Future, Promise, Actor and much more.</p>
+
+<p>I’d like to talk about concurrent-ruby async await feature, lets look at the following code.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">'concurrent'</span>
+
+<span class="k">class</span> <span class="nc">Reporter</span>
+  <span class="kp">include</span> <span class="no">Concurrent</span><span class="o">::</span><span class="no">Async</span>
+
+  <span class="k">def</span> <span class="nf">report</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">sleep_dur</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="nb">sleep</span><span class="p">(</span><span class="n">sleep_dur</span><span class="p">)</span>
+    <span class="nb">p</span> <span class="s2">"</span><span class="si">#{</span><span class="no">Thread</span><span class="p">.</span><span class="nf">current</span><span class="p">.</span><span class="nf">object_id</span><span class="si">}</span><span class="s2">"</span>
+    <span class="nb">p</span> <span class="n">message</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>The class Reporter knows to do 1 thing, report, it’ll sleep and print it’s thread id and a message
+So if we’ll open an irb and call</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="sc">?&gt;</span> <span class="n">r</span> <span class="o">=</span> <span class="no">Reporter</span><span class="p">.</span><span class="nf">new</span>
+<span class="o">=&gt;</span> <span class="c1">#&lt;Reporter:0x007f86b19e1940 @__async_initialized__=true, @__async_delegator__=#&lt;Concurrent::Async::AsyncDelegator:0x007f86b19e18a0 @__lock__=#&lt;Thread::Mutex:0x007f86b19e1850&gt;, @__condition__=#&lt;Thread::ConditionVariable:0x007f86b19e1828&gt;, @delegate=#&lt;Reporter:0x007f86b19e1940 ...&gt;, @queue=[], @executor=#&lt;Concurrent::ThreadPoolExecutor:0x007f86b19e0e78 @__lock__=#&lt;Thread::Mutex:0x007f86b19e0d88&gt;, @__condition__=#&lt;Thread::ConditionVariable:0x007f86b19e0d60&gt;, @min_length=8, @max_length=2147483647, @idletime=60, @max_queue=0, @fallback_policy=:abort, @auto_terminate=true, @pool=[], @ready=[], @queue=[], @scheduled_task_count=0, @completed_task_count=0, @largest_length=0, @ruby_pid=59753, @gc_interval=30, @next_gc_time=694963.258667, @StopEvent=#&lt;Concurrent::Event:0x007f86b19e0bd0 @__lock__=#&lt;Thread::Mutex:0x007f86b19e0b80&gt;, @__condition__=#&lt;Thread::ConditionVariable:0x007f86b19e0b58&gt;, @set=false, @iteration=0&gt;, @StoppedEvent=#&lt;Concurrent::Event:0x007f86b19e0ae0 @__lock__=#&lt;Thread::Mutex:0x007f86b19e0a90&gt;, @__condition__=#&lt;Thread::ConditionVariable:0x007f86b19e0a68&gt;, @set=false, @iteration=0&gt;&gt;&gt;, @__await_delegator__=#&lt;Concurrent::Async::AwaitDelegator:0x007f86b19e0a18 @delegate=#&lt;Concurrent::Async::AsyncDelegator:0x007f86b19e18a0 @__lock__=#&lt;Thread::Mutex:0x007f86b19e1850&gt;, @__condition__=#&lt;Thread::ConditionVariable:0x007f86b19e1828&gt;, @delegate=#&lt;Reporter:0x007f86b19e1940 ...&gt;, @queue=[], @executor=#&lt;Concurrent::ThreadPoolExecutor:0x007f86b19e0e78 @__lock__=#&lt;Thread::Mutex:0x007f86b19e0d88&gt;, @__condition__=#&lt;Thread::ConditionVariable:0x007f86b19e0d60&gt;, @min_length=8, @max_length=2147483647, @idletime=60, @max_queue=0, @fallback_policy=:abort, @auto_terminate=true, @pool=[], @ready=[], @queue=[], @scheduled_task_count=0, @completed_task_count=0, @largest_length=0, @ruby_pid=59753, @gc_interval=30, @next_gc_time=694963.258667, @StopEvent=#&lt;Concurrent::Event:0x007f86b19e0bd0 @__lock__=#&lt;Thread::Mutex:0x007f86b19e0b80&gt;, @__condition__=#&lt;Thread::ConditionVariable:0x007f86b19e0b58&gt;, @set=false, @iteration=0&gt;, @StoppedEvent=#&lt;Concurrent::Event:0x007f86b19e0ae0 @__lock__=#&lt;Thread::Mutex:0x007f86b19e0a90&gt;, @__condition__=#&lt;Thread::ConditionVariable:0x007f86b19e0a68&gt;, @set=false, @iteration=0&gt;&gt;&gt;&gt;&gt;</span>
+<span class="o">&gt;&gt;</span> <span class="n">r</span><span class="p">.</span><span class="nf">report</span><span class="p">(</span><span class="s1">'x'</span><span class="p">)</span>
+<span class="s2">"70108240336860"</span>
+<span class="s2">"x"</span></code></pre></figure>
+
+<p>And it’ll take a sec till you see output because of the sleep.</p>
+
+<p>Now lets try the same with async</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&gt;&gt;</span> <span class="n">r</span><span class="p">.</span><span class="nf">async</span><span class="p">.</span><span class="nf">report</span><span class="p">(</span><span class="s1">'x'</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="c1">#&lt;Concurrent::IVar:0x007f86b087dfc8 @__lock__=#&lt;Thread::Mutex:0x007f86b087df00&gt;, @__condition__=#&lt;Thread::ConditionVariable:0x007f86b087deb0&gt;, @event=#&lt;Concurrent::Event:0x007f86b087dde8 @__lock__=#&lt;Thread::Mutex:0x007f86b087dca8&gt;, @__condition__=#&lt;Thread::ConditionVariable:0x007f86b087dc80&gt;, @set=false, @iteration=0&gt;, @reason=nil, @value=nil, @observers=#&lt;Concurrent::Collection::CopyOnWriteObserverSet:0x007f86b087db90 @__lock__=#&lt;Thread::Mutex:0x007f86b087db18&gt;, @__condition__=#&lt;Thread::ConditionVariable:0x007f86b087daf0&gt;, @observers={}&gt;, @dup_on_deref=nil, @freeze_on_deref=nil, @copy_on_deref=nil, @do_nothing_on_deref=true, @state=:pending&gt;</span>
+<span class="s2">"70108232018840"</span>
+<span class="s2">"x"</span></code></pre></figure>
+
+<p>As you can see the method returns immediately without printing any value, it just returns a promise like object that will hold the result of report method once done.
+To prove you that report in non blocking try this</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&gt;&gt;</span> <span class="n">r</span><span class="p">.</span><span class="nf">async</span><span class="p">.</span><span class="nf">report</span><span class="p">(</span><span class="s1">'x'</span><span class="p">);</span> <span class="mi">1</span><span class="o">+</span><span class="mi">1</span>
+<span class="o">=&gt;</span> <span class="mi">2</span>
+<span class="s2">"70108231957940"</span>
+<span class="s2">"x"</span></code></pre></figure>
+
+<p>As you can see the 1+1 returns before the reporters output</p>
+
+<p>Now lets try the await method</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&gt;&gt;</span> <span class="n">r</span><span class="p">.</span><span class="nf">await</span><span class="p">.</span><span class="nf">report</span><span class="p">(</span><span class="s1">'x'</span><span class="p">);</span> <span class="mi">1</span><span class="o">+</span><span class="mi">1</span>
+<span class="s2">"70339825139340"</span>
+<span class="s2">"x"</span>
+<span class="o">=&gt;</span> <span class="mi">2</span>
+
+<span class="o">&gt;&gt;</span> <span class="no">Thread</span><span class="p">.</span><span class="nf">current</span><span class="p">.</span><span class="nf">object_id</span>
+<span class="o">=&gt;</span> <span class="mi">70339824711620</span></code></pre></figure>
+
+<p>This time code look like it run synchronously, but lets check the main thread id, as you can see the code run on
+2 different threads but in sync. this is the actual power of await, sometimes we want to run something in a background thread,
+and do something on another thread when done.</p>
+
+<p>The purpose of the Concurrent::Async is to allow a class methods to be called in a synchronized
+way, meaning the class will always be thread safe  as long as you call it via async or await.
+What actually happens in the backstage is whenever you use async/await the method invocation is inserted into a queue that got one worker thread that keep
+this queue empty. because its just one thread that invoke the methods, it is safe for many threads to use the same object.</p>
+
+<p>Hope its clear enough,</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/tags/async" class="page__taxonomy-item" rel="tag">async</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/await" class="page__taxonomy-item" rel="tag">await</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/ruby" class="page__taxonomy-item" rel="tag">ruby</a>
+    
+    </span>
+  </p>
+
+
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2017-08-08T18:12:46+03:00">August 08, 2017</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Ruby async await http://localhost:4000/ruby-async-await/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/ruby-async-await/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http://localhost:4000/ruby-async-await/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/ruby-async-await/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/octopress101/" class="pagination--pager" title="Octopress 101
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+    
+        <h4 class="page__comments-title">Leave a Comment</h4>
+        <section id="disqus_thread"></section>
+      
+</div>
+    
+  </article>
+
+  
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+    
+    
+      <li><a href="http://github.com/kinnrot"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+      <li><a href="http://gitlab.com/kinnrot"><i class="fa fa-fw fa-gitlab" aria-hidden="true"></i> Gitlab</a></li>
+    
+    
+      <li><a href="http://bitbucket.org/kinnrot"><i class="fa fa-fw fa-bitbucket" aria-hidden="true"></i> Bitbucket</a></li>
+    
+    <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2017 Chen Kinnrot. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-103259749-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+
+  
+      
+  <script type="text/javascript">
+  	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  	var disqus_shortname = 'cdblg';
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function() {
+  		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  	})();
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function () {
+  		var s = document.createElement('script'); s.async = true;
+  		s.type = 'text/javascript';
+  		s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  		(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  	}());
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    
+
+
+
+  </body>
+</html>
