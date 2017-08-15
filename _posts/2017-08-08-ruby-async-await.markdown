@@ -7,7 +7,9 @@ tags: ruby async await
 ---
 
 There is a lot of buzz about asyc await from the javascript world, the concept is very simple and make your code much more
-readable. You want to execute something without blocking the main thread but you want the next line of code to run once the non blocking code finish, meaning continue
+readable.
+
+You want to execute something without blocking the main thread but you want the next line of code to run once the non blocking code finish, meaning continue
 code execution in its written order.
 
 Ruby has a great [concurrency gem](https://github.com/ruby-concurrency/concurrent-ruby) which basically encapsulate low level threading and synchronization code
@@ -64,6 +66,30 @@ To prove you that report in non blocking try this
 As you can see the 1+1 returns before the reporters output
 
 Now lets try the await method
+
+{% highlight ruby %}
+>> r.await.report('x'); 1+1
+"70339825139340"
+"x"
+=> 2
+
+>> Thread.current.object_id
+=> 70339824711620
+{% endhighlight %}
+
+This time code look like it run synchronously, but lets check the main thread id, as you can see the code run on
+2 different threads but in sync. this is the actual power of await, sometimes we want to run something in a background thread,
+and do something on another thread when done.
+
+The purpose of the Concurrent::Async is to allow a class methods to be called in a synchronized
+way, meaning the class will always be thread safe  as long as you call it via async or await.
+What actually happens in the backstage is whenever you use async/await the method invocation is inserted into a queue that got one worker thread that keep
+this queue empty. because its just one thread that invoke the methods, it is safe for many threads to use the same object.
+
+Hope its clear enough,
+
+
+
 
 
 
