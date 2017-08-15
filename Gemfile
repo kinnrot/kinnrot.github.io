@@ -1,9 +1,8 @@
 source 'https://rubygems.org'
 
-gem "jekyll", "~> 3.4.0"
+gem "jekyll"
 gem 'minimal-mistakes-jekyll', :github => "mmistakes/minimal-mistakes"
 gem 'octopress', '~> 3.0'
-#gem "minima"
 gem 'jekyll-import'
 
 group :jekyll_plugins do
