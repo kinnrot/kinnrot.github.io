@@ -1,7 +1,7 @@
 <!doctype html>
 <!--
-  Minimal Mistakes Jekyll Theme 4.5.0 by Michael Rose
-  Copyright 2017 Michael Rose - mademistakes.com | @mmistakes
+  Minimal Mistakes Jekyll Theme 4.11.2 by Michael Rose
+  Copyright 2013-2018 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE.txt
 -->
@@ -9,36 +9,16 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin SEO -->
-
-
-
-
-
-
-
-
-
-<title>Per DB Conventions With FluentNhibernate - cdblg</title>
-
-
-
-
+<!-- begin _includes/seo.html --><title>Per DB Conventions With FluentNhibernate - cdblg</title>
 <meta name="description" content="I need to support 2 db types on my app, so I thought about a nice pattern that will help me achieve this.// I’m working with latest Fluent Nhibernate version.Define a folder for each db type you want to support like this:&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;/div&gt;&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;/div&gt;contain conventions for MSSQLCE and the second will contain conventions for OracleClient.For example: Oracle support schemas and sequences, SQLCE does not. lets define some simple conventionsFor Oracle:public class SchemaConvention : IClassConvention&lt;pre class=&quot;brush: csharp;&quot;&gt;{  public void Apply(IClassInstance instance)  {    instance.Schema(“MY_ORACLE_SPECIFIC_SCHEMA”);  }}&lt;/pre&gt;&lt;pre class=&quot;brush: csharp;&quot;&gt;public class SequenceConvention : IIdConvention{  public void Apply(IIdentityInstance instance)  {    instance.GeneratedBy.Sequence(instance.Columns.First().Name + “_SEQ”);  }}&lt;/pre&gt;And for SqlCe:&lt;pre class=&quot;brush: csharp;&quot;&gt;class IdentityConvention : IIdConvention{  public void Apply(IIdentityInstance instance)  {     instance.GeneratedBy.Identity();  }}&lt;/pre&gt;&lt;pre class=&quot;brush: csharp;&quot;&gt;&lt;/pre&gt;&lt;pre class=&quot;brush: csharp;&quot;&gt;So the folders will look like this:&lt;/pre&gt;&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;/div&gt;&lt;pre class=&quot;brush: csharp;&quot;&gt;&lt;/pre&gt;Next thing that we will need is some kind of type retriever that knows what conventions to load according to the db we are currently configuring his nhibernate stuff.Lets call it PerDBConventionSource and this is how its implemented:&lt;pre class=&quot;brush: csharp;&quot;&gt;internal class PerDBConventionSource : ITypeSource{  private readonly string _name;  private IEnumerable&lt;Type&gt; _types;  public PerDBConventionSource(string name)  {    _name = name;  }  public IEnumerable&lt;Type&gt; GetTypes()  {    _types = typeof (PerDBConventionSource).Assembly.GetTypes().Where(t =&gt;        t.Namespace.EndsWith(_name));    return _types;  }  /// &lt;summary&gt;  /// Logs the activity of this type source.  /// &lt;/summary&gt;  /// &lt;param name=”logger”&gt;The logger.&lt;/param&gt;  public void LogSource(IDiagnosticLogger logger)  {    // TODO : Log if you want  }  public string GetIdentifier()  {    return _name;  }}&lt;/pre&gt;Notice that i’m implementing ITypeSource, an interface belong to FluentNhibernate, this is how i tell FluentNhibernate to use this as a convention source: (I used only fluentMappings so I add the conventions only on fluentMappings)&lt;pre class=&quot;brush: csharp;&quot;&gt;private static IPersistenceConfigurer _persistenceConfigurer;private static void ConfigureNH(IPersistenceConfigurer persistenceConfigurer){  _persistenceConfigurer = persistenceConfigurer;  Fluently.    Configure().    Database(persistenceConfigurer).    Diagnostics(x =&gt; x.Enable(true).OutputToConsole()).    Mappings(SomeMappings).    BuildConfiguration();}private static void SomeMappings(MappingConfiguration mappingConfiguration){  string name = _persistenceConfigurer.GetType().Name.Replace(“Configuration”, string.Empty);  mappingConfiguration.FluentMappings.Conventions.AddSource(new PerDBConventionSource(name));}&lt;/pre&gt;So when I’ll run the following code:&lt;pre class=&quot;brush: csharp;&quot;&gt;Console.BackgroundColor = ConsoleColor.DarkGreen;Console.ForegroundColor= ConsoleColor.Green;ConfigureNH(OracleClientConfiguration.Oracle10.ConnectionString(“some OracleClient connection”));Console.BackgroundColor = ConsoleColor.DarkBlue;Console.ForegroundColor = ConsoleColor.Blue;ConfigureNH(MsSqlCeConfiguration.Standard.ConnectionString(“some MsSqlCe connection”));&lt;/pre&gt;The result will be&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;/div&gt;&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;/div&gt;&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;/div&gt;Why you should use his pattern anyway(even if you work with 1 db):1. unit testing with sqlite in memory will not work with sequence conventions, so you shouldn’t load them when you are unit testing.2. If you’ll some day change the db type, you’ll know where to add its own conventions, just create a folder with db name and add it’s conventions inside no other  change is necessary.You can find the source here:&lt;iframe title =&quot;Preview&quot; scrolling=&quot;no&quot; marginheight=&quot;0&quot; marginwidth=&quot;0&quot; frameborder=&quot;0&quot; style=&quot;width:98px;height:115px;padding:0;background-color:#fcfcfc;&quot; src=&quot;http://cid-b7c55b5696998a0e.office.live.com/embedicon.aspx/BLGR/PerDBConventions.7z&quot;&gt;&lt;/iframe&gt;">
 
 
 
-
-<meta name="author" content="Chen Kinnrot">
-
+<meta property="og:type" content="article">
 <meta property="og:locale" content="en">
 <meta property="og:site_name" content="cdblg">
 <meta property="og:title" content="Per DB Conventions With FluentNhibernate">
-
-
-  <link rel="canonical" href="https://kinnrot.github.io/per-db-conventions-with/">
-  <meta property="og:url" content="https://kinnrot.github.io/per-db-conventions-with/">
-
+<meta property="og:url" content="http://localhost:4000/per-db-conventions-with/">
 
 
   <meta property="og:description" content="I need to support 2 db types on my app, so I thought about a nice pattern that will help me achieve this.// I’m working with latest Fluent Nhibernate version.Define a folder for each db type you want to support like this:&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;/div&gt;&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;/div&gt;contain conventions for MSSQLCE and the second will contain conventions for OracleClient.For example: Oracle support schemas and sequences, SQLCE does not. lets define some simple conventionsFor Oracle:public class SchemaConvention : IClassConvention&lt;pre class=&quot;brush: csharp;&quot;&gt;{  public void Apply(IClassInstance instance)  {    instance.Schema(“MY_ORACLE_SPECIFIC_SCHEMA”);  }}&lt;/pre&gt;&lt;pre class=&quot;brush: csharp;&quot;&gt;public class SequenceConvention : IIdConvention{  public void Apply(IIdentityInstance instance)  {    instance.GeneratedBy.Sequence(instance.Columns.First().Name + “_SEQ”);  }}&lt;/pre&gt;And for SqlCe:&lt;pre class=&quot;brush: csharp;&quot;&gt;class IdentityConvention : IIdConvention{  public void Apply(IIdentityInstance instance)  {     instance.GeneratedBy.Identity();  }}&lt;/pre&gt;&lt;pre class=&quot;brush: csharp;&quot;&gt;&lt;/pre&gt;&lt;pre class=&quot;brush: csharp;&quot;&gt;So the folders will look like this:&lt;/pre&gt;&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;/div&gt;&lt;pre class=&quot;brush: csharp;&quot;&gt;&lt;/pre&gt;Next thing that we will need is some kind of type retriever that knows what conventions to load according to the db we are currently configuring his nhibernate stuff.Lets call it PerDBConventionSource and this is how its implemented:&lt;pre class=&quot;brush: csharp;&quot;&gt;internal class PerDBConventionSource : ITypeSource{  private readonly string _name;  private IEnumerable&lt;Type&gt; _types;  public PerDBConventionSource(string name)  {    _name = name;  }  public IEnumerable&lt;Type&gt; GetTypes()  {    _types = typeof (PerDBConventionSource).Assembly.GetTypes().Where(t =&gt;        t.Namespace.EndsWith(_name));    return _types;  }  /// &lt;summary&gt;  /// Logs the activity of this type source.  /// &lt;/summary&gt;  /// &lt;param name=”logger”&gt;The logger.&lt;/param&gt;  public void LogSource(IDiagnosticLogger logger)  {    // TODO : Log if you want  }  public string GetIdentifier()  {    return _name;  }}&lt;/pre&gt;Notice that i’m implementing ITypeSource, an interface belong to FluentNhibernate, this is how i tell FluentNhibernate to use this as a convention source: (I used only fluentMappings so I add the conventions only on fluentMappings)&lt;pre class=&quot;brush: csharp;&quot;&gt;private static IPersistenceConfigurer _persistenceConfigurer;private static void ConfigureNH(IPersistenceConfigurer persistenceConfigurer){  _persistenceConfigurer = persistenceConfigurer;  Fluently.    Configure().    Database(persistenceConfigurer).    Diagnostics(x =&gt; x.Enable(true).OutputToConsole()).    Mappings(SomeMappings).    BuildConfiguration();}private static void SomeMappings(MappingConfiguration mappingConfiguration){  string name = _persistenceConfigurer.GetType().Name.Replace(“Configuration”, string.Empty);  mappingConfiguration.FluentMappings.Conventions.AddSource(new PerDBConventionSource(name));}&lt;/pre&gt;So when I’ll run the following code:&lt;pre class=&quot;brush: csharp;&quot;&gt;Console.BackgroundColor = ConsoleColor.DarkGreen;Console.ForegroundColor= ConsoleColor.Green;ConfigureNH(OracleClientConfiguration.Oracle10.ConnectionString(“some OracleClient connection”));Console.BackgroundColor = ConsoleColor.DarkBlue;Console.ForegroundColor = ConsoleColor.Blue;ConfigureNH(MsSqlCeConfiguration.Standard.ConnectionString(“some MsSqlCe connection”));&lt;/pre&gt;The result will be&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;/div&gt;&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;/div&gt;&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;/div&gt;Why you should use his pattern anyway(even if you work with 1 db):1. unit testing with sqlite in memory will not work with sequence conventions, so you shouldn’t load them when you are unit testing.2. If you’ll some day change the db type, you’ll know where to add its own conventions, just create a folder with db name and add it’s conventions inside no other  change is necessary.You can find the source here:&lt;iframe title =&quot;Preview&quot; scrolling=&quot;no&quot; marginheight=&quot;0&quot; marginwidth=&quot;0&quot; frameborder=&quot;0&quot; style=&quot;width:98px;height:115px;padding:0;background-color:#fcfcfc;&quot; src=&quot;http://cid-b7c55b5696998a0e.office.live.com/embedicon.aspx/BLGR/PerDBConventions.7z&quot;&gt;&lt;/iframe&gt;">
@@ -47,17 +27,20 @@
 
 
 
-  
-
-  
 
 
-
-
-
-  <meta property="og:type" content="article">
   <meta property="article:published_time" content="2011-02-18T21:30:00+02:00">
 
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/per-db-conventions-with/">
 
 
 
@@ -67,11 +50,11 @@
 
   <script type="application/ld+json">
     {
-      "@context" : "http://schema.org",
-      "@type" : "Person",
-      "name" : "Chen Kinnrot",
-      "url" : "https://kinnrot.github.io",
-      "sameAs" : null
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Chen Kinnrot",
+      "url": "http://localhost:4000",
+      "sameAs": null
     }
   </script>
 
@@ -80,10 +63,11 @@
 
 
 
-<!-- end SEO -->
+
+<!-- end _includes/seo.html -->
 
 
-<link href="https://kinnrot.github.io/feed.xml" type="application/atom+xml" rel="alternate" title="cdblg Feed">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="cdblg Feed">
 
 <!-- http://t.co/dKP3o1e -->
 <meta name="HandheldFriendly" content="True">
@@ -95,7 +79,7 @@
 </script>
 
 <!-- For all browsers -->
-<link rel="stylesheet" href="https://kinnrot.github.io/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/main.css">
 
 <!--[if lte IE 9]>
   <style>
@@ -112,38 +96,47 @@
   </style>
 <![endif]-->
 
-<meta http-equiv="cleartype" content="on">
+
     <!-- start custom head snippets -->
 
-<!-- insert favicons. use http://realfavicongenerator.net/ -->
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
 
 <!-- end custom head snippets -->
+
   </head>
 
   <body class="layout--post">
 
     <!--[if lt IE 9]>
-<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
 <![endif]-->
+
     <div class="masthead">
   <div class="masthead__inner-wrap">
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
-        <a class="site-title" href="https://kinnrot.github.io/">cdblg</a>
+        <a class="site-title" href="/">cdblg</a>
         <ul class="visible-links">
           
             
-            <li class="masthead__menu-item"><a href="https://kinnrot.github.io/about">About</a></li>
+            <li class="masthead__menu-item">
+              <a href="http://localhost:4000/about" >About</a>
+            </li>
           
         </ul>
-        <button><div class="navicon"></div></button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle Menu</span>
+          <div class="navicon"></div>
+        </button>
         <ul class="hidden-links hidden"></ul>
       </nav>
     </div>
   </div>
 </div>
 
-    
+    <div class="initial-content">
+      
 
 
   
@@ -158,7 +151,7 @@
     
       
         <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-          <a href="https://kinnrot.github.io/" itemprop="item"><span itemprop="name">Home</span></a>
+          <a href="http://localhost:4000/" itemprop="item"><span itemprop="name">Home</span></a>
           <meta itemprop="position" content="1" />
         </li>
         <span class="sep">/</span>
@@ -178,22 +171,15 @@
   <div class="sidebar sticky">
   
 
+
 <div itemscope itemtype="http://schema.org/Person">
 
   
-    <div class="author__avatar">
-      
-        <img src="https://secure.gravatar.com/avatar/094c0ec476b95ed7619d6a4cb918da78" alt="Chen Kinnrot" itemprop="image">
-      
-    </div>
-  
 
   <div class="author__content">
-    <h3 class="author__name" itemprop="name">Chen Kinnrot</h3>
     
-      <p class="author__bio" itemprop="description">
-        This is my code blog
-      </p>
+      <h3 class="author__name" itemprop="name"></h3>
+    
     
   </div>
 
@@ -201,92 +187,33 @@
     <button class="btn btn--inverse">Follow</button>
     <ul class="author__urls social-icons">
       
-        <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
-          <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> <span itemprop="name">Israel</span>
-        </li>
+
+      
+
       
 
       
 
       
-        <li>
-          <a href="mailto:kinnrot@gmail.com">
-            <meta itemprop="email" content="kinnrot@gmail.com" />
-            <i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> Email
-          </a>
-        </li>
+
+      
+
       
 
       
 
       
-        <li>
-          <a href="https://twitter.com/kinnrot" itemprop="sameAs">
-            <i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter
-          </a>
-        </li>
-      
 
       
-        <li>
-          <a href="https://www.facebook.com/kinnrot" itemprop="sameAs">
-            <i class="fa fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook
-          </a>
-        </li>
+
       
 
       
 
       
-        <li>
-          <a href="https://www.linkedin.com/in/chen-kinnrot-b9125448" itemprop="sameAs">
-            <i class="fa fa-fw fa-linkedin-square" aria-hidden="true"></i> LinkedIn
-          </a>
-        </li>
-      
 
       
 
-      
-        <li>
-          <a href="https://instagram.com/kinnrot" itemprop="sameAs">
-            <i class="fa fa-fw fa-instagram" aria-hidden="true"></i> Instagram
-          </a>
-        </li>
-      
-
-      
-
-      
-        <li>
-          <a href="https://bitbucket.org/kinnrot" itemprop="sameAs">
-            <i class="fa fa-fw fa-bitbucket" aria-hidden="true"></i> Bitbucket
-          </a>
-        </li>
-      
-
-      
-        <li>
-          <a href="https://github.com/kinnrot" itemprop="sameAs">
-            <i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub
-          </a>
-        </li>
-      
-
-      
-        <li>
-          <a href="https://gitlab.com/kinnrot" itemprop="sameAs">
-            <i class="fa fa-fw fa-gitlab" aria-hidden="true"></i> Gitlab
-          </a>
-        </li>
-      
-
-      
-        <li>
-          <a href="https://www.stackoverflow.com/users/67505/chen-kinnrot" itemprop="sameAs">
-            <i class="fa fa-fw fa-stack-overflow" aria-hidden="true"></i> Stackoverflow
-          </a>
-        </li>
       
 
       
@@ -314,7 +241,7 @@
       <!--
   <li>
     <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
-      <i class="fa fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
     </a>
   </li>
 -->
@@ -369,24 +296,24 @@
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=Per DB Conventions With FluentNhibernate https://kinnrot.github.io/per-db-conventions-with/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Per+DB+Conventions+With+FluentNhibernate%20http%3A%2F%2Flocalhost%3A4000%2Fper-db-conventions-with%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https://kinnrot.github.io/per-db-conventions-with/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fper-db-conventions-with%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://plus.google.com/share?url=https://kinnrot.github.io/per-db-conventions-with/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+  <a href="https://plus.google.com/share?url=http%3A%2F%2Flocalhost%3A4000%2Fper-db-conventions-with%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://kinnrot.github.io/per-db-conventions-with/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fper-db-conventions-with%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="https://kinnrot.github.io/building-business-tier-with-nhibernate/" class="pagination--pager" title="Building a business tier with Nhibernate - Tools
+      <a href="/building-business-tier-with-nhibernate/" class="pagination--pager" title="Building a business tier with Nhibernate - Tools
 ">Previous</a>
     
     
-      <a href="https://kinnrot.github.io/preventing-from-setting-property-value/" class="pagination--pager" title="Prevent setting a property value after already been set
+      <a href="/preventing-from-setting-property-value/" class="pagination--pager" title="Prevent setting a property value after already been set
 ">Next</a>
     
   </nav>
@@ -396,18 +323,138 @@
     
       <div class="page__comments">
   
+  
+      <h4 class="page__comments-title">Leave a Comment</h4>
+      <section id="disqus_thread"></section>
     
-        <h4 class="page__comments-title">Leave a Comment</h4>
-        <section id="disqus_thread"></section>
-      
 </div>
     
   </article>
 
   
   
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/from-jquery-to-stimulus/" rel="permalink">From jQuery to Stimulus
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  6 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">I tried to build an SPA without a shiny client side framework, I wanted to build something fast with good user experience and keeping it as simple as possibl...</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/ruby-async-await/" rel="permalink">Ruby async await
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  5 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">There is a lot of buzz about asyc await from the javascript world, the concept is very simple and make your code much more
+readable.
+
+</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/octopress101/" rel="permalink">Octopress 101
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  5 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">I decided to develop my own blog like all the other cool developers.
+If you got here, this is what I got so far, it’s not too much, but it’s a start.
+
+</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/watch-out-for-reference-duplication/" rel="permalink">Watch out for reference duplication instead of instance duplication
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">&lt;pre style="background-color: #2b2b2b; color: #c7bab9; font-family: 'mononoki'; font-size: 11.3pt;"&gt;# This code will generate 96 instances&lt;/pre&gt;&...</p>
+  </article>
+</div>
+        
+      </div>
+    </div>
+  
 </div>
 
+    </div>
+
+    
 
     <div class="page__footer">
       <footer>
@@ -422,68 +469,50 @@
     
     
     
-      <li><a href="http://github.com/kinnrot"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+      <li><a href="https://github.com/kinnrot"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
     
     
-      <li><a href="http://gitlab.com/kinnrot"><i class="fa fa-fw fa-gitlab" aria-hidden="true"></i> Gitlab</a></li>
+      <li><a href="https://gitlab.com/kinnrot"><i class="fab fa-fw fa-gitlab" aria-hidden="true"></i> Gitlab</a></li>
     
     
-      <li><a href="http://bitbucket.org/kinnrot"><i class="fa fa-fw fa-bitbucket" aria-hidden="true"></i> Bitbucket</a></li>
+      <li><a href="https://bitbucket.org/kinnrot"><i class="fab fa-fw fa-bitbucket" aria-hidden="true"></i> Bitbucket</a></li>
     
-    <li><a href="https://kinnrot.github.io/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
   </ul>
 </div>
 
-<div class="page__footer-copyright">&copy; 2017 Chen Kinnrot. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+<div class="page__footer-copyright">&copy; 2018 Chen Kinnrot. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
 
       </footer>
     </div>
 
-    <script src="https://kinnrot.github.io/assets/js/main.min.js"></script>
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.13/js/all.js"></script>
 
 
 
 
-  <script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-103259749-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
 
 
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/per-db-conventions-with/";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/per-db-conventions-with"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://cdblg.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
 
   
-      
-  <script type="text/javascript">
-  	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-  	var disqus_shortname = 'cdblg';
-
-  	/* * * DON'T EDIT BELOW THIS LINE * * */
-  	(function() {
-  		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-  		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-  		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  	})();
-
-  	/* * * DON'T EDIT BELOW THIS LINE * * */
-  	(function () {
-  		var s = document.createElement('script'); s.async = true;
-  		s.type = 'text/javascript';
-  		s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-  		(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-  	}());
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
-    
-
 
 
   </body>
