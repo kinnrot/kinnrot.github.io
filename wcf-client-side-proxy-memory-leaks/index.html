@@ -18,7 +18,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:site_name" content="cdblg">
 <meta property="og:title" content="WCF client side proxy memory leaks">
-<meta property="og:url" content="http://localhost:4000/wcf-client-side-proxy-memory-leaks/">
+<meta property="og:url" content="https://kinnrot.github.io/wcf-client-side-proxy-memory-leaks/">
 
 
   <meta property="og:description" content="Today I ran into a guy who worked with me on my previous project.On that project I was responsible to rewrite the WCF channels (proxies) generation management and lifetime management of them.I decided to do some research and found some good stuff here.So this guy (aka Kurki) tells me they found a memory leak in my manager, what was the problem?So i messed up like I always do (well, only 90% of the time, like a good programmer).I wrote a code that registers to the Faulted event of the channel, kills the channel when Faulted and creates a new one to work with, everything looked fine, only one screw up (I’m sure some of you can guess).I forgot to unregister from the Faulted Event.On the web they tell you to do some unique logic to kill your channel in a safe way, what they don’t talk about is that it’ll stay in memory and fire events if you won’t unregister from stuff although you think it is dead.So please do not forget to unregister from stuff even if the object is disposable.Or consider the use of weak event listeners and problem solved.">
@@ -40,7 +40,7 @@
   
 
 
-<link rel="canonical" href="http://localhost:4000/wcf-client-side-proxy-memory-leaks/">
+<link rel="canonical" href="https://kinnrot.github.io/wcf-client-side-proxy-memory-leaks/">
 
 
 
@@ -53,7 +53,7 @@
       "@context": "http://schema.org",
       "@type": "Person",
       "name": "Chen Kinnrot",
-      "url": "http://localhost:4000",
+      "url": "https://kinnrot.github.io",
       "sameAs": null
     }
   </script>
@@ -120,7 +120,7 @@
           
             
             <li class="masthead__menu-item">
-              <a href="http://localhost:4000/about" >About</a>
+              <a href="https://kinnrot.github.io/about" >About</a>
             </li>
           
         </ul>
@@ -151,7 +151,7 @@
     
       
         <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-          <a href="http://localhost:4000/" itemprop="item"><span itemprop="name">Home</span></a>
+          <a href="https://kinnrot.github.io/" itemprop="item"><span itemprop="name">Home</span></a>
           <meta itemprop="position" content="1" />
         </li>
         <span class="sep">/</span>
@@ -319,13 +319,13 @@
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=WCF+client+side+proxy+memory+leaks%20http%3A%2F%2Flocalhost%3A4000%2Fwcf-client-side-proxy-memory-leaks%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=WCF+client+side+proxy+memory+leaks%20https%3A%2F%2Fkinnrot.github.io%2Fwcf-client-side-proxy-memory-leaks%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fwcf-client-side-proxy-memory-leaks%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fkinnrot.github.io%2Fwcf-client-side-proxy-memory-leaks%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://plus.google.com/share?url=http%3A%2F%2Flocalhost%3A4000%2Fwcf-client-side-proxy-memory-leaks%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+  <a href="https://plus.google.com/share?url=https%3A%2F%2Fkinnrot.github.io%2Fwcf-client-side-proxy-memory-leaks%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fwcf-client-side-proxy-memory-leaks%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fkinnrot.github.io%2Fwcf-client-side-proxy-memory-leaks%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
@@ -519,10 +519,27 @@ If you got here, this is what I got so far, it’s not too much, but it’s a st
 
 
 
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-103259749-1']);
+  
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+
+
     
   <script>
     var disqus_config = function () {
-      this.page.url = "http://localhost:4000/wcf-client-side-proxy-memory-leaks/";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.url = "https://kinnrot.github.io/wcf-client-side-proxy-memory-leaks/";  // Replace PAGE_URL with your page's canonical URL variable
       this.page.identifier = "/wcf-client-side-proxy-memory-leaks"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     (function() { // DON'T EDIT BELOW THIS LINE

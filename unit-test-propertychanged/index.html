@@ -18,7 +18,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:site_name" content="cdblg">
 <meta property="og:title" content="Unit Test PropertyChanged">
-<meta property="og:url" content="http://localhost:4000/unit-test-propertychanged/">
+<meta property="og:url" content="https://kinnrot.github.io/unit-test-propertychanged/">
 
 
   <meta property="og:description" content="One of the basic stuff you wanna test as a client side developer, is that all of your UI bounded classes aka Controller, Model, ViewModel, Presenter, PresentationModel, or the code behind of your view if your just having fun.&lt;div&gt;Let’s assume we have a person class with a name property:&lt;/div&gt;&lt;pre class=&quot;brush: csharp; ruler: true;&quot;&gt;public class Person : INotifyPropertyChanged{    public event PropertyChangedEventHandler PropertyChanged;    private string _name;    public virtual string Name    {        get { return _name; }        set { _name = value;        FirePropertyChanged(“Name”);        }    }    protected virtual void FirePropertyChanged(string propertyName)    {        var handlers = PropertyChanged;        if (handlers != null)        {            handlers(this, new PropertyChangedEventArgs(propertyName));        }    }}&lt;/pre&gt;&lt;pre class=&quot;brush: csharp; ruler: true;&quot;&gt;&lt;/pre&gt;&lt;div&gt;The simplest way to perform this test is to write this code:&lt;pre class=&quot;brush: csharp; ruler: true;&quot;&gt;[TestFixture]public class PersonTest{    [Test]    public void SetName_SomeNewString_FirePropertyChanged()    {        Person person = new Person();        string changedPropertyName = string.Empty;        person.PropertyChanged += (sender, args) =&gt; changedPropertyName = args.PropertyName;        person.Name = “Test”;        Assert.AreEqual(“Name”, changedPropertyName);    }}&lt;/pre&gt;&lt;/div&gt;">
@@ -40,7 +40,7 @@
   
 
 
-<link rel="canonical" href="http://localhost:4000/unit-test-propertychanged/">
+<link rel="canonical" href="https://kinnrot.github.io/unit-test-propertychanged/">
 
 
 
@@ -53,7 +53,7 @@
       "@context": "http://schema.org",
       "@type": "Person",
       "name": "Chen Kinnrot",
-      "url": "http://localhost:4000",
+      "url": "https://kinnrot.github.io",
       "sameAs": null
     }
   </script>
@@ -120,7 +120,7 @@
           
             
             <li class="masthead__menu-item">
-              <a href="http://localhost:4000/about" >About</a>
+              <a href="https://kinnrot.github.io/about" >About</a>
             </li>
           
         </ul>
@@ -151,7 +151,7 @@
     
       
         <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-          <a href="http://localhost:4000/" itemprop="item"><span itemprop="name">Home</span></a>
+          <a href="https://kinnrot.github.io/" itemprop="item"><span itemprop="name">Home</span></a>
           <meta itemprop="position" content="1" />
         </li>
         <span class="sep">/</span>
@@ -323,13 +323,13 @@
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=Unit+Test+PropertyChanged%20http%3A%2F%2Flocalhost%3A4000%2Funit-test-propertychanged%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Unit+Test+PropertyChanged%20https%3A%2F%2Fkinnrot.github.io%2Funit-test-propertychanged%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Funit-test-propertychanged%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fkinnrot.github.io%2Funit-test-propertychanged%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://plus.google.com/share?url=http%3A%2F%2Flocalhost%3A4000%2Funit-test-propertychanged%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+  <a href="https://plus.google.com/share?url=https%3A%2F%2Fkinnrot.github.io%2Funit-test-propertychanged%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Funit-test-propertychanged%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fkinnrot.github.io%2Funit-test-propertychanged%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
@@ -523,10 +523,27 @@ If you got here, this is what I got so far, it’s not too much, but it’s a st
 
 
 
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-103259749-1']);
+  
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+
+
     
   <script>
     var disqus_config = function () {
-      this.page.url = "http://localhost:4000/unit-test-propertychanged/";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.url = "https://kinnrot.github.io/unit-test-propertychanged/";  // Replace PAGE_URL with your page's canonical URL variable
       this.page.identifier = "/unit-test-propertychanged"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     (function() { // DON'T EDIT BELOW THIS LINE

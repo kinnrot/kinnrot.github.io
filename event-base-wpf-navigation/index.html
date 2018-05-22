@@ -18,7 +18,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:site_name" content="cdblg">
 <meta property="og:title" content="Event Base WPF Navigation">
-<meta property="og:url" content="http://localhost:4000/event-base-wpf-navigation/">
+<meta property="og:url" content="https://kinnrot.github.io/event-base-wpf-navigation/">
 
 
   <meta property="og:description" content="Hello,My Recent problem was: How can I implement minimal decoupling navigation between views?I thought about using the EventAggregator already built in my system and create some kind of event that represents a navigation request, so I created a NavigationRequestEvent that contains the view model I want to activate and view.Next question I asked myself was:  Who needs to request for navigation?This is easy navigation is caused 99% of the times by user interaction, views is a good answer, through their view models or some commands (if not DelegateCommands or SmarterStuff).The problem is that my view models are being created from my IOC Container (not a problem) and I don’t want all of my view models to have access to my container cause this is an anti pattern.Who’ll construct the view model and fire the event?Create a view models factory that will be responsible for creating the view models, he is not the actual factory, just a mediator between the request and the container.So far we got:&lt;ul&gt;&lt;li&gt;NavigationRequestEvent that holds the view model to show&lt;/li&gt;&lt;li&gt;ViewModelsFactory - can create view models&lt;/li&gt;&lt;/ul&gt;Now I just need someone to listen, this is the advantage of this pattern, anyone can listen and no one is also an option, but nothing will happen of course.In my case the shell is the default listener and each event would be translated to a view shown at the main region of the ui , there is also an option of a split view, when split view activated the main region unregister from event and secondary view is listening to the event.We can also expend this behavior and allow user to choose where next views will be opened.IsNice = True;">
@@ -40,7 +40,7 @@
   
 
 
-<link rel="canonical" href="http://localhost:4000/event-base-wpf-navigation/">
+<link rel="canonical" href="https://kinnrot.github.io/event-base-wpf-navigation/">
 
 
 
@@ -53,7 +53,7 @@
       "@context": "http://schema.org",
       "@type": "Person",
       "name": "Chen Kinnrot",
-      "url": "http://localhost:4000",
+      "url": "https://kinnrot.github.io",
       "sameAs": null
     }
   </script>
@@ -120,7 +120,7 @@
           
             
             <li class="masthead__menu-item">
-              <a href="http://localhost:4000/about" >About</a>
+              <a href="https://kinnrot.github.io/about" >About</a>
             </li>
           
         </ul>
@@ -151,7 +151,7 @@
     
       
         <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-          <a href="http://localhost:4000/" itemprop="item"><span itemprop="name">Home</span></a>
+          <a href="https://kinnrot.github.io/" itemprop="item"><span itemprop="name">Home</span></a>
           <meta itemprop="position" content="1" />
         </li>
         <span class="sep">/</span>
@@ -296,13 +296,13 @@
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=Event+Base+WPF+Navigation%20http%3A%2F%2Flocalhost%3A4000%2Fevent-base-wpf-navigation%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Event+Base+WPF+Navigation%20https%3A%2F%2Fkinnrot.github.io%2Fevent-base-wpf-navigation%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fevent-base-wpf-navigation%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fkinnrot.github.io%2Fevent-base-wpf-navigation%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://plus.google.com/share?url=http%3A%2F%2Flocalhost%3A4000%2Fevent-base-wpf-navigation%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+  <a href="https://plus.google.com/share?url=https%3A%2F%2Fkinnrot.github.io%2Fevent-base-wpf-navigation%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fevent-base-wpf-navigation%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fkinnrot.github.io%2Fevent-base-wpf-navigation%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
@@ -496,10 +496,27 @@ If you got here, this is what I got so far, it’s not too much, but it’s a st
 
 
 
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-103259749-1']);
+  
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+
+
     
   <script>
     var disqus_config = function () {
-      this.page.url = "http://localhost:4000/event-base-wpf-navigation/";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.url = "https://kinnrot.github.io/event-base-wpf-navigation/";  // Replace PAGE_URL with your page's canonical URL variable
       this.page.identifier = "/event-base-wpf-navigation"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     (function() { // DON'T EDIT BELOW THIS LINE

@@ -18,7 +18,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:site_name" content="cdblg">
 <meta property="og:title" content="Passing complex type through WCF header,The simple always work version.">
-<meta property="og:url" content="http://localhost:4000/passing-complex-type-through-wcf/">
+<meta property="og:url" content="https://kinnrot.github.io/passing-complex-type-through-wcf/">
 
 
   <meta property="og:description" content="Recently I tried to find a nice code sample for how to pass complex type through WCF, inside the header,  meaning I want to send the client execution context to the server side.All of the samples passes strings or uses custom header that needs to write and read the object manually, I didn’t like it.So I wrote one and it’s working!&lt;div id=&quot;stackstack-5443871&quot;&gt;&lt;/div&gt;All you need is 2 classes, and one is just a factory for the other, very simple:&lt;pre class=&quot;brush: csharp;&quot;&gt;using System;using System.Collections.Generic;using System.Linq;using System.Runtime.Serialization;using System.ServiceModel;using System.ServiceModel.Channels;using System.ServiceModel.Dispatcher;using System.Text;namespace debugniv.ComplexTypeOverWcf{  class HeaderHandler : IDispatchMessageInspector, IClientMessageInspector  {    #region Implementation of IDispatchMessageInspector    public object AfterReceiveRequest(ref Message request, IClientChannel channel, InstanceContext instanceContext)    {      // Read the complex type from header      var headerIndex = request.Headers.FindHeader(typeof(MyHeader).Name, typeof(MyHeader).Namespace);      if (headerIndex &gt;= 0) // found!      {        var serializer = GenerateDataContractSerializer&lt;MyHeader&gt;();        var myHeader = request.Headers.GetHeader&lt;MyHeader&gt;(headerIndex, serializer);        // here you can do something with your header like push it to a global per request context.      }      return null;    }    public void BeforeSendReply(ref Message reply, object correlationState)    {      // nothing here    }    #endregion    #region Implementation of IClientMessageInspector    public object BeforeSendRequest(ref Message request, IClientChannel channel)    {      var myHeader = GetMyHeader();      request.Headers.Add(myHeader);    }    public void AfterReceiveReply(ref Message reply, object correlationState)    {      // nothing to do here    }    #endregion    private DataContractSerializer GenerateDataContractSerializer&lt;T&gt;()    {      return new DataContractSerializer(typeof(T), typeof(T).Name, typeof(T).Namespace, GetKnownTypes());    }    private IEnumerable&lt;Type&gt; GetKnownTypes()    {      // here return all your types inside the header      yield return typeof(MyHeader);      yield return typeof(SubType);    }    private MessageHeader GetMyHeader()    {      var data = new MyHeader();      var serializer = GenerateDataContractSerializer&lt;MyHeader&gt;();      return MessageHeader.CreateHeader(data.GetType().Name, data.GetType().Namespace, data, serializer);    }  }  // this is the header   internal class MyHeader  {    public SubType InternalData { get; set; }  }  internal class SubType  {  }}&lt;/pre&gt;The second thing you’ll need is to attach this stuff to your service and proxy, here is one way to do this&lt;pre class=&quot;brush: csharp;&quot;&gt;using System;using System.ServiceModel.Configuration;namespace debugniv.ComplexTypeOverWcf{  public class HeaderExtensionElement : BehaviorExtensionElement  {    public override Type BehaviorType    {      get { return typeof (HeaderHandler); }    }    protected override object CreateBehavior()    {      return new HeaderHandler();    }  }}&lt;/pre&gt;In you config file add the following        ">
@@ -40,7 +40,7 @@
   
 
 
-<link rel="canonical" href="http://localhost:4000/passing-complex-type-through-wcf/">
+<link rel="canonical" href="https://kinnrot.github.io/passing-complex-type-through-wcf/">
 
 
 
@@ -53,7 +53,7 @@
       "@context": "http://schema.org",
       "@type": "Person",
       "name": "Chen Kinnrot",
-      "url": "http://localhost:4000",
+      "url": "https://kinnrot.github.io",
       "sameAs": null
     }
   </script>
@@ -120,7 +120,7 @@
           
             
             <li class="masthead__menu-item">
-              <a href="http://localhost:4000/about" >About</a>
+              <a href="https://kinnrot.github.io/about" >About</a>
             </li>
           
         </ul>
@@ -151,7 +151,7 @@
     
       
         <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-          <a href="http://localhost:4000/" itemprop="item"><span itemprop="name">Home</span></a>
+          <a href="https://kinnrot.github.io/" itemprop="item"><span itemprop="name">Home</span></a>
           <meta itemprop="position" content="1" />
         </li>
         <span class="sep">/</span>
@@ -296,13 +296,13 @@
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=Passing+complex+type+through+WCF+header%2CThe+simple+always+work+version.%20http%3A%2F%2Flocalhost%3A4000%2Fpassing-complex-type-through-wcf%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Passing+complex+type+through+WCF+header%2CThe+simple+always+work+version.%20https%3A%2F%2Fkinnrot.github.io%2Fpassing-complex-type-through-wcf%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fpassing-complex-type-through-wcf%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fkinnrot.github.io%2Fpassing-complex-type-through-wcf%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://plus.google.com/share?url=http%3A%2F%2Flocalhost%3A4000%2Fpassing-complex-type-through-wcf%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+  <a href="https://plus.google.com/share?url=https%3A%2F%2Fkinnrot.github.io%2Fpassing-complex-type-through-wcf%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fpassing-complex-type-through-wcf%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fkinnrot.github.io%2Fpassing-complex-type-through-wcf%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
@@ -496,10 +496,27 @@ If you got here, this is what I got so far, it’s not too much, but it’s a st
 
 
 
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-103259749-1']);
+  
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+
+
     
   <script>
     var disqus_config = function () {
-      this.page.url = "http://localhost:4000/passing-complex-type-through-wcf/";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.url = "https://kinnrot.github.io/passing-complex-type-through-wcf/";  // Replace PAGE_URL with your page's canonical URL variable
       this.page.identifier = "/passing-complex-type-through-wcf"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     (function() { // DON'T EDIT BELOW THIS LINE

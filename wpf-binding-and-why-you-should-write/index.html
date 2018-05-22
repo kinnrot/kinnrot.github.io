@@ -18,7 +18,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:site_name" content="cdblg">
 <meta property="og:title" content="WPF Binding and Why you should write defensive code.">
-<meta property="og:url" content="http://localhost:4000/wpf-binding-and-why-you-should-write/">
+<meta property="og:url" content="https://kinnrot.github.io/wpf-binding-and-why-you-should-write/">
 
 
   <meta property="og:description" content="I’m overriding equals and implementing IEquatable on some of my objects and bind them as an ObservableCollection to the UI.Here is a sample: (ugly code do not use)&lt;pre class=&quot;brush: csharp;&quot;&gt;&lt;Window x:Class=”BindingToItemsWithIEquality.MainWindow”        xmlns=”http://schemas.microsoft.com/winfx/2006/xaml/presentation”        xmlns:x=”http://schemas.microsoft.com/winfx/2006/xaml”        xmlns:local=”clr-namespace:BindingToItemsWithIEquality”        Title=”MainWindow” Height=”350” Width=”525”        &gt;    &lt;Window.DataContext&gt;        &lt;local:SomeContextWithCollection/&gt;    &lt;/Window.DataContext&gt;    &lt;StackPanel&gt;        &lt;ListBox DisplayMemberPath=”Name” ItemsSource=”{Binding Items}”/&gt;        &lt;Button Click=”Button_Click”&gt;clear&lt;/Button&gt;    &lt;/StackPanel&gt;&lt;/Window&gt;//code behindprivate void Button_Click(object sender, RoutedEventArgs e){  (this.DataContext as SomeContextWithCollection).Items.Clear();}public class SomeContextWithCollection {    public ObservableCollection&lt;SomeIEqutable&gt; Items { get; set; }    public SomeContextWithCollection()    {      Items = new ObservableCollection&lt;SomeIEqutable&gt;();      Items.Add(new SomeIEqutable() { Name = “1” });      Items.Add(new SomeIEqutable() { Name = “2” });    }}public class SomeIEqutable : IEquatable&lt;SomeIEqutable&gt;{  public string Name { get; set; }  public override bool Equals(object obj)  {    if (obj == null)    {      return false;    }              return Equals((SomeIEqutable)obj);  }  public bool Equals(SomeIEqutable other)  {    if (object.ReferenceEquals(this, other))    {      return true;    }    return Name == other.Name;  }  public override int GetHashCode()  {    return Name.GetHashCode();  }}&lt;/pre&gt;When calling collection.Clear() I get an invalid cast inside my equals method, when trying to cast to SomeIEquatable.This is pretty strange, object is not null and not SomeIEquatlabe, how did it get to my Equals?The answer is WPF, when working with binding and clearing a bounded collection WPF will compare his internal new MSInternal.NamedObject(named DisconnectedItem) to your SomeIEquatable object and will fail if you try to implicitly cast it to your type.The simple solution is to use the “as” keyword istead of cast.If my code didn’t smell from the start, I would never got to this dark place. But I’m glad it happened, now I have another excuse to write defensive code.">
@@ -40,7 +40,7 @@
   
 
 
-<link rel="canonical" href="http://localhost:4000/wpf-binding-and-why-you-should-write/">
+<link rel="canonical" href="https://kinnrot.github.io/wpf-binding-and-why-you-should-write/">
 
 
 
@@ -53,7 +53,7 @@
       "@context": "http://schema.org",
       "@type": "Person",
       "name": "Chen Kinnrot",
-      "url": "http://localhost:4000",
+      "url": "https://kinnrot.github.io",
       "sameAs": null
     }
   </script>
@@ -120,7 +120,7 @@
           
             
             <li class="masthead__menu-item">
-              <a href="http://localhost:4000/about" >About</a>
+              <a href="https://kinnrot.github.io/about" >About</a>
             </li>
           
         </ul>
@@ -151,7 +151,7 @@
     
       
         <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-          <a href="http://localhost:4000/" itemprop="item"><span itemprop="name">Home</span></a>
+          <a href="https://kinnrot.github.io/" itemprop="item"><span itemprop="name">Home</span></a>
           <meta itemprop="position" content="1" />
         </li>
         <span class="sep">/</span>
@@ -323,13 +323,13 @@
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=WPF+Binding+and+Why+you+should+write+defensive+code.%20http%3A%2F%2Flocalhost%3A4000%2Fwpf-binding-and-why-you-should-write%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=WPF+Binding+and+Why+you+should+write+defensive+code.%20https%3A%2F%2Fkinnrot.github.io%2Fwpf-binding-and-why-you-should-write%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fwpf-binding-and-why-you-should-write%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fkinnrot.github.io%2Fwpf-binding-and-why-you-should-write%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://plus.google.com/share?url=http%3A%2F%2Flocalhost%3A4000%2Fwpf-binding-and-why-you-should-write%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+  <a href="https://plus.google.com/share?url=https%3A%2F%2Fkinnrot.github.io%2Fwpf-binding-and-why-you-should-write%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fwpf-binding-and-why-you-should-write%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fkinnrot.github.io%2Fwpf-binding-and-why-you-should-write%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
@@ -523,10 +523,27 @@ If you got here, this is what I got so far, it’s not too much, but it’s a st
 
 
 
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-103259749-1']);
+  
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+
+
     
   <script>
     var disqus_config = function () {
-      this.page.url = "http://localhost:4000/wpf-binding-and-why-you-should-write/";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.url = "https://kinnrot.github.io/wpf-binding-and-why-you-should-write/";  // Replace PAGE_URL with your page's canonical URL variable
       this.page.identifier = "/wpf-binding-and-why-you-should-write"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     (function() { // DON'T EDIT BELOW THIS LINE

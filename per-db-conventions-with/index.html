@@ -18,7 +18,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:site_name" content="cdblg">
 <meta property="og:title" content="Per DB Conventions With FluentNhibernate">
-<meta property="og:url" content="http://localhost:4000/per-db-conventions-with/">
+<meta property="og:url" content="https://kinnrot.github.io/per-db-conventions-with/">
 
 
   <meta property="og:description" content="I need to support 2 db types on my app, so I thought about a nice pattern that will help me achieve this.// I’m working with latest Fluent Nhibernate version.Define a folder for each db type you want to support like this:&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;/div&gt;&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;/div&gt;contain conventions for MSSQLCE and the second will contain conventions for OracleClient.For example: Oracle support schemas and sequences, SQLCE does not. lets define some simple conventionsFor Oracle:public class SchemaConvention : IClassConvention&lt;pre class=&quot;brush: csharp;&quot;&gt;{  public void Apply(IClassInstance instance)  {    instance.Schema(“MY_ORACLE_SPECIFIC_SCHEMA”);  }}&lt;/pre&gt;&lt;pre class=&quot;brush: csharp;&quot;&gt;public class SequenceConvention : IIdConvention{  public void Apply(IIdentityInstance instance)  {    instance.GeneratedBy.Sequence(instance.Columns.First().Name + “_SEQ”);  }}&lt;/pre&gt;And for SqlCe:&lt;pre class=&quot;brush: csharp;&quot;&gt;class IdentityConvention : IIdConvention{  public void Apply(IIdentityInstance instance)  {     instance.GeneratedBy.Identity();  }}&lt;/pre&gt;&lt;pre class=&quot;brush: csharp;&quot;&gt;&lt;/pre&gt;&lt;pre class=&quot;brush: csharp;&quot;&gt;So the folders will look like this:&lt;/pre&gt;&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;/div&gt;&lt;pre class=&quot;brush: csharp;&quot;&gt;&lt;/pre&gt;Next thing that we will need is some kind of type retriever that knows what conventions to load according to the db we are currently configuring his nhibernate stuff.Lets call it PerDBConventionSource and this is how its implemented:&lt;pre class=&quot;brush: csharp;&quot;&gt;internal class PerDBConventionSource : ITypeSource{  private readonly string _name;  private IEnumerable&lt;Type&gt; _types;  public PerDBConventionSource(string name)  {    _name = name;  }  public IEnumerable&lt;Type&gt; GetTypes()  {    _types = typeof (PerDBConventionSource).Assembly.GetTypes().Where(t =&gt;        t.Namespace.EndsWith(_name));    return _types;  }  /// &lt;summary&gt;  /// Logs the activity of this type source.  /// &lt;/summary&gt;  /// &lt;param name=”logger”&gt;The logger.&lt;/param&gt;  public void LogSource(IDiagnosticLogger logger)  {    // TODO : Log if you want  }  public string GetIdentifier()  {    return _name;  }}&lt;/pre&gt;Notice that i’m implementing ITypeSource, an interface belong to FluentNhibernate, this is how i tell FluentNhibernate to use this as a convention source: (I used only fluentMappings so I add the conventions only on fluentMappings)&lt;pre class=&quot;brush: csharp;&quot;&gt;private static IPersistenceConfigurer _persistenceConfigurer;private static void ConfigureNH(IPersistenceConfigurer persistenceConfigurer){  _persistenceConfigurer = persistenceConfigurer;  Fluently.    Configure().    Database(persistenceConfigurer).    Diagnostics(x =&gt; x.Enable(true).OutputToConsole()).    Mappings(SomeMappings).    BuildConfiguration();}private static void SomeMappings(MappingConfiguration mappingConfiguration){  string name = _persistenceConfigurer.GetType().Name.Replace(“Configuration”, string.Empty);  mappingConfiguration.FluentMappings.Conventions.AddSource(new PerDBConventionSource(name));}&lt;/pre&gt;So when I’ll run the following code:&lt;pre class=&quot;brush: csharp;&quot;&gt;Console.BackgroundColor = ConsoleColor.DarkGreen;Console.ForegroundColor= ConsoleColor.Green;ConfigureNH(OracleClientConfiguration.Oracle10.ConnectionString(“some OracleClient connection”));Console.BackgroundColor = ConsoleColor.DarkBlue;Console.ForegroundColor = ConsoleColor.Blue;ConfigureNH(MsSqlCeConfiguration.Standard.ConnectionString(“some MsSqlCe connection”));&lt;/pre&gt;The result will be&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;/div&gt;&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;/div&gt;&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;/div&gt;Why you should use his pattern anyway(even if you work with 1 db):1. unit testing with sqlite in memory will not work with sequence conventions, so you shouldn’t load them when you are unit testing.2. If you’ll some day change the db type, you’ll know where to add its own conventions, just create a folder with db name and add it’s conventions inside no other  change is necessary.You can find the source here:&lt;iframe title =&quot;Preview&quot; scrolling=&quot;no&quot; marginheight=&quot;0&quot; marginwidth=&quot;0&quot; frameborder=&quot;0&quot; style=&quot;width:98px;height:115px;padding:0;background-color:#fcfcfc;&quot; src=&quot;http://cid-b7c55b5696998a0e.office.live.com/embedicon.aspx/BLGR/PerDBConventions.7z&quot;&gt;&lt;/iframe&gt;">
@@ -40,7 +40,7 @@
   
 
 
-<link rel="canonical" href="http://localhost:4000/per-db-conventions-with/">
+<link rel="canonical" href="https://kinnrot.github.io/per-db-conventions-with/">
 
 
 
@@ -53,7 +53,7 @@
       "@context": "http://schema.org",
       "@type": "Person",
       "name": "Chen Kinnrot",
-      "url": "http://localhost:4000",
+      "url": "https://kinnrot.github.io",
       "sameAs": null
     }
   </script>
@@ -120,7 +120,7 @@
           
             
             <li class="masthead__menu-item">
-              <a href="http://localhost:4000/about" >About</a>
+              <a href="https://kinnrot.github.io/about" >About</a>
             </li>
           
         </ul>
@@ -151,7 +151,7 @@
     
       
         <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-          <a href="http://localhost:4000/" itemprop="item"><span itemprop="name">Home</span></a>
+          <a href="https://kinnrot.github.io/" itemprop="item"><span itemprop="name">Home</span></a>
           <meta itemprop="position" content="1" />
         </li>
         <span class="sep">/</span>
@@ -296,13 +296,13 @@
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=Per+DB+Conventions+With+FluentNhibernate%20http%3A%2F%2Flocalhost%3A4000%2Fper-db-conventions-with%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Per+DB+Conventions+With+FluentNhibernate%20https%3A%2F%2Fkinnrot.github.io%2Fper-db-conventions-with%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fper-db-conventions-with%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fkinnrot.github.io%2Fper-db-conventions-with%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://plus.google.com/share?url=http%3A%2F%2Flocalhost%3A4000%2Fper-db-conventions-with%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+  <a href="https://plus.google.com/share?url=https%3A%2F%2Fkinnrot.github.io%2Fper-db-conventions-with%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fper-db-conventions-with%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fkinnrot.github.io%2Fper-db-conventions-with%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
@@ -496,10 +496,27 @@ If you got here, this is what I got so far, it’s not too much, but it’s a st
 
 
 
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-103259749-1']);
+  
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+
+
     
   <script>
     var disqus_config = function () {
-      this.page.url = "http://localhost:4000/per-db-conventions-with/";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.url = "https://kinnrot.github.io/per-db-conventions-with/";  // Replace PAGE_URL with your page's canonical URL variable
       this.page.identifier = "/per-db-conventions-with"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     (function() { // DON'T EDIT BELOW THIS LINE

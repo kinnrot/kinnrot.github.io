@@ -18,7 +18,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:site_name" content="cdblg">
 <meta property="og:title" content="Simple Rx Sample - UI Performance tuning">
-<meta property="og:url" content="http://localhost:4000/simple-rx-sample-ui-performance-tuning/">
+<meta property="og:url" content="https://kinnrot.github.io/simple-rx-sample-ui-performance-tuning/">
 
 
   <meta property="og:description" content="The case I’m talking about is Binding with the UpdateSourceTrigger = PropertyChanged, and a heavy logic behind each change that can cause bad UX, like ui freeze on each key press in a text box.Here is a nice sample that demonstrate this case:I have a window with a text box and 2 buttons, the IsEnabled of the buttons is bounded to custom properties that depends on the TextBox text bounded field to decide if the button should be enabled (just like commands).This is the window&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;/div&gt;This is the window xaml&lt;pre class=&quot;brush: csharp;&quot;&gt;&lt;Window x:Class=”ReactivlyPropertyChanged.MainWindow”        xmlns=”http://schemas.microsoft.com/winfx/2006/xaml/presentation”        xmlns:x=”http://schemas.microsoft.com/winfx/2006/xaml”        Title=”MainWindow” Height=”350” Width=”525” x:Name=”this”&gt;    &lt;Grid&gt;        &lt;StackPanel&gt;            &lt;TextBox Text=”{Binding SomeText, ElementName=this, UpdateSourceTrigger=PropertyChanged}”/&gt;            &lt;Button IsEnabled=”{Binding ElementName=this, Path=CanSplitInMiddle}”&gt;2&lt;/Button&gt;            &lt;Button IsEnabled=”{Binding ElementName=this, Path=CanSplitToThreeParts}”&gt;3&lt;/Button&gt;        &lt;/StackPanel&gt;    &lt;/Grid&gt;&lt;/Window&gt;&lt;/pre&gt;This is the bounded properties implementation (I added sleep to demonstrate long time consumers)&lt;pre class=&quot;brush: csharp;&quot;&gt;private string _someText;        public string SomeText        {            get { return _someText; }            set            {                _someText = value;                RaisePropertyChanged(“SomeText”);            }        }        public bool CanSplitInMiddle        {            get            {                if (SomeText == null)                    return false;                Thread.Sleep(100);                return SomeText.Length % 2 == 0;            }        }        public bool CanSplitToThreeParts        {            get            {                if (SomeText == null)                    return false;                Thread.Sleep(100);                return SomeText.Length % 3 == 0;            }        }&lt;/pre&gt;As you can see there is a simple length check of the entered string, now you probably think that the application would get stuck for each key press for at least 200 ms.Take a look at the property changed handling:&lt;pre class=&quot;brush: csharp;&quot;&gt;public MainWindow(){    // Sets the buffer time for property changed    var interval = 500;    InitializeComponent();      // Create observable from the property changed event    var propertyChangedObservable =         Observable.FromEvent&lt;PropertyChangedEventArgs&gt;(this, “PropertyChanged”).        BufferWithTime(TimeSpan.FromMilliseconds(interval));      // Define our query from the event, we want to get all fired propertyChanged    var query = from changedProps in propertyChangedObservable                where changedProps.Count &gt; 0                 select changedProps;                                  // start listening    query.Subscribe(listOfChangedStuff =&gt;    {// When fired group all events by property name and handle each property with Changed method        var events = from distinctEvent in listOfChangedStuff                                 group distinctEvent by distinctEvent.EventArgs.PropertyName into byPropertyName                                 select byPropertyName;        foreach (IGrouping&lt;string,IEvent&lt;PropertyChangedEventArgs&gt;&gt; groupedEvent in events)        {            Changed(groupedEvent.Key);        }    });        }public void Changed(string propertyName){    if (propertyName == “SomeText”)    {       // Make the properties recalculate themself        RaisePropertyChanged(“CanSplitInMiddle”);        RaisePropertyChanged(“CanSplitToThreeParts”);    }}public void RaisePropertyChanged(string propertyName){    var handlers = PropertyChanged;    if (handlers != null)    {        PropertyChanged(this, new PropertyChangedEventArgs(propertyName));    }}&lt;/pre&gt;So WTF?One of Rx many features is buffer,I can tell property changed event to buffer himself for some time, and when the time passed take all fired events and work with them, what I did is to group all events by the property name (like distinct in sql) and handled each group as a single event.So even if the user is a super turbo writer(or the bot that test the ui) , the event will fired only 2 times in a second, for 500 ms interval.I think this is awesome, you can configure the buffer interval according to how complex and time consuming your logic is, and avoid freezing ui.I wanted to upload the code to somewhere but o got to fly…">
@@ -40,7 +40,7 @@
   
 
 
-<link rel="canonical" href="http://localhost:4000/simple-rx-sample-ui-performance-tuning/">
+<link rel="canonical" href="https://kinnrot.github.io/simple-rx-sample-ui-performance-tuning/">
 
 
 
@@ -53,7 +53,7 @@
       "@context": "http://schema.org",
       "@type": "Person",
       "name": "Chen Kinnrot",
-      "url": "http://localhost:4000",
+      "url": "https://kinnrot.github.io",
       "sameAs": null
     }
   </script>
@@ -120,7 +120,7 @@
           
             
             <li class="masthead__menu-item">
-              <a href="http://localhost:4000/about" >About</a>
+              <a href="https://kinnrot.github.io/about" >About</a>
             </li>
           
         </ul>
@@ -151,7 +151,7 @@
     
       
         <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-          <a href="http://localhost:4000/" itemprop="item"><span itemprop="name">Home</span></a>
+          <a href="https://kinnrot.github.io/" itemprop="item"><span itemprop="name">Home</span></a>
           <meta itemprop="position" content="1" />
         </li>
         <span class="sep">/</span>
@@ -296,13 +296,13 @@
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=Simple+Rx+Sample+-+UI+Performance+tuning%20http%3A%2F%2Flocalhost%3A4000%2Fsimple-rx-sample-ui-performance-tuning%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Simple+Rx+Sample+-+UI+Performance+tuning%20https%3A%2F%2Fkinnrot.github.io%2Fsimple-rx-sample-ui-performance-tuning%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fsimple-rx-sample-ui-performance-tuning%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fkinnrot.github.io%2Fsimple-rx-sample-ui-performance-tuning%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://plus.google.com/share?url=http%3A%2F%2Flocalhost%3A4000%2Fsimple-rx-sample-ui-performance-tuning%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+  <a href="https://plus.google.com/share?url=https%3A%2F%2Fkinnrot.github.io%2Fsimple-rx-sample-ui-performance-tuning%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fsimple-rx-sample-ui-performance-tuning%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fkinnrot.github.io%2Fsimple-rx-sample-ui-performance-tuning%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
@@ -496,10 +496,27 @@ If you got here, this is what I got so far, it’s not too much, but it’s a st
 
 
 
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-103259749-1']);
+  
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+
+
     
   <script>
     var disqus_config = function () {
-      this.page.url = "http://localhost:4000/simple-rx-sample-ui-performance-tuning/";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.url = "https://kinnrot.github.io/simple-rx-sample-ui-performance-tuning/";  // Replace PAGE_URL with your page's canonical URL variable
       this.page.identifier = "/simple-rx-sample-ui-performance-tuning"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     (function() { // DON'T EDIT BELOW THIS LINE

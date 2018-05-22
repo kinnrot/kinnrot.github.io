@@ -18,7 +18,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:site_name" content="cdblg">
 <meta property="og:title" content="Ruby Lazy chunked hash like behavior">
-<meta property="og:url" content="http://localhost:4000/ruby-lazy-chunked-hash-like-behavior/">
+<meta property="og:url" content="https://kinnrot.github.io/ruby-lazy-chunked-hash-like-behavior/">
 
 
   <meta property="og:description" content="When we want to iterate a long list, we can simply write a query and get a cursor, ActiveRecord will do all the heavy lifting for us.What happens when we need to do some complicated computations on a set of data, which sometimes can be too big to be stored in memory for the entire computing process?This is when we need to start being more creational.I’d like to introduce what I came up with.The problem:- Complex calculation on time based data series for a period of 3 months.- Each calculation may depends on previous one and on future and past data.- Must be in order.- When fetching all data server crash on memory.The solution:I wanted to do the most minor code change possible, and currently the data was accessed via a hash. I decided to encapsulate the hash with something I called lazy chunked hash (tried google it see it as standard behavior in clojure).It looks like this:&lt;pre style=&quot;background-color: #2b2b2b; color: #e6e1dc; font-family: &#39;mononoki&#39;; font-size: 11.3pt;&quot;&gt;class ValuesProvider  def initialize()    @loaded_date = nil&lt;/pre&gt;&lt;pre style=&quot;background-color: #2b2b2b; color: #e6e1dc; font-family: &#39;mononoki&#39;; font-size: 11.3pt;&quot;&gt;&lt;pre style=&quot;font-family: mononoki; font-size: 11.3pt;&quot;&gt;    @hash = Hash.new(0)&lt;/pre&gt;  end  def [](time_slot)     get(time_slot)   end  private  def get(time_slot)     relevant_date = time_slot.to_date     unless relevant_date == @loaded_date      load(relevant_date)     end    @hash[time_slot.to_i]   end&lt;/pre&gt;&lt;pre style=&quot;background-color: #2b2b2b; color: #e6e1dc; font-family: &#39;mononoki&#39;; font-size: 11.3pt;&quot;&gt;end&lt;/pre&gt;Pretty simple and does the work, instead of loading the data all at once, the data is being loaded for each day separately, this way we keep it chunky but not too chunky.And best part, my code that consume the data, didn’t change because of the [] method, which makes my ValueProvider behave like an array.  This solution is good when the consumer data request(call for[]) implies on what data should be loaded, which most of the times will, but in some cases it won’t)">
@@ -40,7 +40,7 @@
   
 
 
-<link rel="canonical" href="http://localhost:4000/ruby-lazy-chunked-hash-like-behavior/">
+<link rel="canonical" href="https://kinnrot.github.io/ruby-lazy-chunked-hash-like-behavior/">
 
 
 
@@ -53,7 +53,7 @@
       "@context": "http://schema.org",
       "@type": "Person",
       "name": "Chen Kinnrot",
-      "url": "http://localhost:4000",
+      "url": "https://kinnrot.github.io",
       "sameAs": null
     }
   </script>
@@ -120,7 +120,7 @@
           
             
             <li class="masthead__menu-item">
-              <a href="http://localhost:4000/about" >About</a>
+              <a href="https://kinnrot.github.io/about" >About</a>
             </li>
           
         </ul>
@@ -151,7 +151,7 @@
     
       
         <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-          <a href="http://localhost:4000/" itemprop="item"><span itemprop="name">Home</span></a>
+          <a href="https://kinnrot.github.io/" itemprop="item"><span itemprop="name">Home</span></a>
           <meta itemprop="position" content="1" />
         </li>
         <span class="sep">/</span>
@@ -327,13 +327,13 @@
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=Ruby+Lazy+chunked+hash+like+behavior%20http%3A%2F%2Flocalhost%3A4000%2Fruby-lazy-chunked-hash-like-behavior%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Ruby+Lazy+chunked+hash+like+behavior%20https%3A%2F%2Fkinnrot.github.io%2Fruby-lazy-chunked-hash-like-behavior%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fruby-lazy-chunked-hash-like-behavior%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fkinnrot.github.io%2Fruby-lazy-chunked-hash-like-behavior%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://plus.google.com/share?url=http%3A%2F%2Flocalhost%3A4000%2Fruby-lazy-chunked-hash-like-behavior%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+  <a href="https://plus.google.com/share?url=https%3A%2F%2Fkinnrot.github.io%2Fruby-lazy-chunked-hash-like-behavior%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fruby-lazy-chunked-hash-like-behavior%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fkinnrot.github.io%2Fruby-lazy-chunked-hash-like-behavior%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
@@ -527,10 +527,27 @@ If you got here, this is what I got so far, it’s not too much, but it’s a st
 
 
 
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-103259749-1']);
+  
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+
+
     
   <script>
     var disqus_config = function () {
-      this.page.url = "http://localhost:4000/ruby-lazy-chunked-hash-like-behavior/";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.url = "https://kinnrot.github.io/ruby-lazy-chunked-hash-like-behavior/";  // Replace PAGE_URL with your page's canonical URL variable
       this.page.identifier = "/ruby-lazy-chunked-hash-like-behavior"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     (function() { // DON'T EDIT BELOW THIS LINE

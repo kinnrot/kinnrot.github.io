@@ -18,7 +18,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:site_name" content="cdblg">
 <meta property="og:title" content="TPLing Background worker in 10 min">
-<meta property="og:url" content="http://localhost:4000/tpling-background-worker-in-10-min/">
+<meta property="og:url" content="https://kinnrot.github.io/tpling-background-worker-in-10-min/">
 
 
   <meta property="og:description" content="Code Snippetusing System;using System.Collections.Generic;using System.Linq;using System.Text;using System.Threading;using System.Threading.Tasks;&nbsp;namespace WpfApplication1{    public class TBackgroundWorker&lt;TResult, TProgress&gt;    {&nbsp;        public static TBackgroundWorker&lt;TResult, TProgress&gt; New()        {            return new TBackgroundWorker&lt;TResult, TProgress&gt;();        }&nbsp;        public TBackgroundWorker&lt;TResult, TProgress&gt; StartWith(Func&lt;object, CancellationToken, TResult&gt; work)        {            Start = work;            return this;        }&nbsp;        public TBackgroundWorker&lt;TResult, TProgress&gt; FinishWith(Action&lt;TResult,object&gt; finish)        {            Finish = finish;            return this;        }&nbsp;        private readonly CancellationTokenSource _cancelationTokenSource;        private CancellationToken _cancellationToken;        private readonly TaskScheduler _uiScheduler;&nbsp;&nbsp;        public TBackgroundWorker()        {            _cancelationTokenSource = new CancellationTokenSource();            _uiScheduler = TaskScheduler.FromCurrentSynchronizationContext();        }&nbsp;        protected Func&lt;object, CancellationToken,TResult&gt; Start { get; set; }        protected Action&lt;TResult, object&gt; Finish { get; set; }&nbsp;        public void ReportProgress(Action&lt;TProgress&gt; progressReport,TProgress progress)        {            Task.Factory.StartNew(()=&gt;progressReport(progress),CancellationToken.None,TaskCreationOptions.None,_uiScheduler);        }&nbsp;        public TBackgroundWorker&lt;TResult, TProgress&gt; Begin(object state = null)        {            _cancellationToken = _cancelationTokenSource.Token;            Task&lt;TResult&gt;.Factory.                StartNew(()=&gt;Start(state,_cancellationToken),_cancellationToken).                ContinueWith(x =&gt;                                 Finish(x.Result,state),                                 _uiScheduler);&nbsp;            return this;        }&nbsp;        public void Cancel()        {            _cancelationTokenSource.Cancel(true);        }    }}usage&lt;div style=&quot;border: #000080 1px solid; color: #000; font-family: &#39;Courier New&#39;, Courier, Monospace; font-size: 10pt&quot;&gt;&lt;div style=&quot;background: #000080; color: #fff; font-family: Verdana, Tahoma, Arial, sans-serif; font-weight: bold; padding: 2px 5px&quot;&gt;Code Snippet&lt;/div&gt;&lt;div style=&quot;background: #ddd; max-height: 300px; overflow: auto&quot;&gt;&lt;ol style=&quot;background: #ffffff; margin: 0 0 0 2.5em; padding: 0 0 0 5px;&quot;&gt;&lt;li&gt;using System;&lt;/li&gt;&lt;li style=&quot;background: #f3f3f3&quot;&gt;using System.Collections.Generic;&lt;/li&gt;&lt;li&gt;using System.Linq;&lt;/li&gt;&lt;li style=&quot;background: #f3f3f3&quot;&gt;using System.Text;&lt;/li&gt;&lt;li&gt;using System.Threading;&lt;/li&gt;&lt;li style=&quot;background: #f3f3f3&quot;&gt;using System.Windows;&lt;/li&gt;&lt;li&gt;using System.Windows.Controls;&lt;/li&gt;&lt;li style=&quot;background: #f3f3f3&quot;&gt;using System.Windows.Data;&lt;/li&gt;&lt;li&gt;using System.Windows.Documents;&lt;/li&gt;&lt;li style=&quot;background: #f3f3f3&quot;&gt;using System.Windows.Input;&lt;/li&gt;&lt;li&gt;using System.Windows.Media;&lt;/li&gt;&lt;li style=&quot;background: #f3f3f3&quot;&gt;using System.Windows.Media.Imaging;&lt;/li&gt;&lt;li&gt;using System.Windows.Navigation;&lt;/li&gt;&lt;li style=&quot;background: #f3f3f3&quot;&gt;using System.Windows.Shapes;&lt;/li&gt;&lt;li&gt; &lt;/li&gt;&lt;li style=&quot;background: #f3f3f3&quot;&gt;namespace WpfApplication1&lt;/li&gt;&lt;li&gt;{&lt;/li&gt;&lt;li style=&quot;background: #f3f3f3&quot;&gt;    /// &lt;summary&gt;&lt;/li&gt;&lt;li&gt;    /// Interaction logic for MainWindow.xaml&lt;/li&gt;&lt;li style=&quot;background: #f3f3f3&quot;&gt;    /// &lt;/summary&gt;&lt;/li&gt;&lt;li&gt;    public partial class MainWindow : Window&lt;/li&gt;&lt;li style=&quot;background: #f3f3f3&quot;&gt;    {&lt;/li&gt;&lt;li&gt;        &lt;/li&gt;&lt;li style=&quot;background: #f3f3f3&quot;&gt;        private TBackgroundWorker&lt;string, int&gt; _bg;&lt;/li&gt;&lt;li&gt; &lt;/li&gt;&lt;li style=&quot;background: #f3f3f3&quot;&gt;        public MainWindow()&lt;/li&gt;&lt;li&gt;        {&lt;/li&gt;&lt;li style=&quot;background: #f3f3f3&quot;&gt;            InitializeComponent();&lt;/li&gt;&lt;li&gt;        }&lt;/li&gt;&lt;li style=&quot;background: #f3f3f3&quot;&gt; &lt;/li&gt;&lt;li&gt;        private void a_Click(object sender, RoutedEventArgs e)&lt;/li&gt;&lt;li style=&quot;background: #f3f3f3&quot;&gt;        {&lt;/li&gt;&lt;li&gt;            _bg = TBackgroundWorker&lt;string, int&gt;.New().&lt;/li&gt;&lt;li style=&quot;background: #f3f3f3&quot;&gt;                StartWith(StartSomething).&lt;/li&gt;&lt;li&gt;                FinishWith(ShowResult).&lt;/li&gt;&lt;li style=&quot;background: #f3f3f3&quot;&gt;                Begin();&lt;/li&gt;&lt;li&gt;         }&lt;/li&gt;&lt;li style=&quot;background: #f3f3f3&quot;&gt; &lt;/li&gt;&lt;li&gt;        private void ShowResult(string obj,object state)&lt;/li&gt;&lt;li style=&quot;background: #f3f3f3&quot;&gt;        {&lt;/li&gt;&lt;li&gt;            a.Content = obj;&lt;/li&gt;&lt;li style=&quot;background: #f3f3f3&quot;&gt;        }&lt;/li&gt;&lt;li&gt; &lt;/li&gt;&lt;li style=&quot;background: #f3f3f3&quot;&gt;        private string StartSomething(object arg, CancellationToken cancellationToken)&lt;/li&gt;&lt;li&gt;        {&lt;/li&gt;&lt;li style=&quot;background: #f3f3f3&quot;&gt;            int i = 0;&lt;/li&gt;&lt;li&gt;            while (i &lt; 200)&lt;/li&gt;&lt;li style=&quot;background: #f3f3f3&quot;&gt;            {&lt;/li&gt;&lt;li&gt;                if (cancellationToken.IsCancellationRequested)&lt;/li&gt;&lt;li style=&quot;background: #f3f3f3&quot;&gt;                {&lt;/li&gt;&lt;li&gt;                    return &quot;Cacncelled&quot;;&lt;/li&gt;&lt;li style=&quot;background: #f3f3f3&quot;&gt;                    &lt;/li&gt;&lt;li&gt;                }&lt;/li&gt;&lt;li style=&quot;background: #f3f3f3&quot;&gt;                i++;&lt;/li&gt;&lt;li&gt;                Thread.Sleep(50);&lt;/li&gt;&lt;li style=&quot;background: #f3f3f3&quot;&gt;                _bg.ReportProgress(Report,i);&lt;/li&gt;&lt;li&gt;            }&lt;/li&gt;&lt;li style=&quot;background: #f3f3f3&quot;&gt; &lt;/li&gt;&lt;li&gt;            return &quot;Done&quot;;&lt;/li&gt;&lt;li style=&quot;background: #f3f3f3&quot;&gt;        }&lt;/li&gt;&lt;li&gt; &lt;/li&gt;&lt;li style=&quot;background: #f3f3f3&quot;&gt;        private void Report(int obj)&lt;/li&gt;&lt;li&gt;        {&lt;/li&gt;&lt;li style=&quot;background: #f3f3f3&quot;&gt;            a.Content = obj;&lt;/li&gt;&lt;li&gt;        }&lt;/li&gt;&lt;li style=&quot;background: #f3f3f3&quot;&gt; &lt;/li&gt;&lt;li&gt;        private void Button_Click(object sender, RoutedEventArgs e)&lt;/li&gt;&lt;li style=&quot;background: #f3f3f3&quot;&gt;        {&lt;/li&gt;&lt;li&gt;            _bg.Cancel();&lt;/li&gt;&lt;li style=&quot;background: #f3f3f3&quot;&gt;        }&lt;/li&gt;&lt;li&gt; &lt;/li&gt;&lt;li style=&quot;background: #f3f3f3&quot;&gt;        &lt;/li&gt;&lt;li&gt;    }&lt;/li&gt;&lt;li style=&quot;background: #f3f3f3&quot;&gt;}&lt;/li&gt;&lt;/ol&gt;&lt;/div&gt;&lt;/div&gt;">
@@ -40,7 +40,7 @@
   
 
 
-<link rel="canonical" href="http://localhost:4000/tpling-background-worker-in-10-min/">
+<link rel="canonical" href="https://kinnrot.github.io/tpling-background-worker-in-10-min/">
 
 
 
@@ -53,7 +53,7 @@
       "@context": "http://schema.org",
       "@type": "Person",
       "name": "Chen Kinnrot",
-      "url": "http://localhost:4000",
+      "url": "https://kinnrot.github.io",
       "sameAs": null
     }
   </script>
@@ -120,7 +120,7 @@
           
             
             <li class="masthead__menu-item">
-              <a href="http://localhost:4000/about" >About</a>
+              <a href="https://kinnrot.github.io/about" >About</a>
             </li>
           
         </ul>
@@ -151,7 +151,7 @@
     
       
         <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-          <a href="http://localhost:4000/" itemprop="item"><span itemprop="name">Home</span></a>
+          <a href="https://kinnrot.github.io/" itemprop="item"><span itemprop="name">Home</span></a>
           <meta itemprop="position" content="1" />
         </li>
         <span class="sep">/</span>
@@ -319,13 +319,13 @@
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=TPLing+Background+worker+in+10+min%20http%3A%2F%2Flocalhost%3A4000%2Ftpling-background-worker-in-10-min%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=TPLing+Background+worker+in+10+min%20https%3A%2F%2Fkinnrot.github.io%2Ftpling-background-worker-in-10-min%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Ftpling-background-worker-in-10-min%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fkinnrot.github.io%2Ftpling-background-worker-in-10-min%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://plus.google.com/share?url=http%3A%2F%2Flocalhost%3A4000%2Ftpling-background-worker-in-10-min%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+  <a href="https://plus.google.com/share?url=https%3A%2F%2Fkinnrot.github.io%2Ftpling-background-worker-in-10-min%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Ftpling-background-worker-in-10-min%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fkinnrot.github.io%2Ftpling-background-worker-in-10-min%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
@@ -519,10 +519,27 @@ If you got here, this is what I got so far, it’s not too much, but it’s a st
 
 
 
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-103259749-1']);
+  
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+
+
     
   <script>
     var disqus_config = function () {
-      this.page.url = "http://localhost:4000/tpling-background-worker-in-10-min/";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.url = "https://kinnrot.github.io/tpling-background-worker-in-10-min/";  // Replace PAGE_URL with your page's canonical URL variable
       this.page.identifier = "/tpling-background-worker-in-10-min"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     (function() { // DON'T EDIT BELOW THIS LINE

@@ -18,7 +18,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:site_name" content="cdblg">
 <meta property="og:title" content="Use FactoryGirl And Faker for easy data generation in unit testing (Part1)">
-<meta property="og:url" content="http://localhost:4000/use-factorygirl-and-faker-for-easy-data/">
+<meta property="og:url" content="https://kinnrot.github.io/use-factorygirl-and-faker-for-easy-data/">
 
 
   <meta property="og:description" content="The  most irritating thing in writing tests is the data generation preparation process, sometimes you want to create an object with 20 fields that 10 of them are mandatory but you only care about the value of 1, and you don’t want to mock, cause you interact with other methods and object that fetch this model from db.To me it happens a lot so I found the FactoryGirl + Faker combination that made my life much more easy and now I can write tests in peace.To add them just put in Gemfile: gem “factory_girl_rails”, “~&gt; 4.0”  gem “faker”So lets take a complex sample to explain all there is to know.We have a User, the User belongs to a Company, User has many tasks.Company has many irritating mandatory fieldsLets define the Company Factory:&lt;pre style=&quot;background-color: #2b2b2b; border: 0.01mm solid rgb(0, 0, 0); font-size: 12pt; line-height: 100%;&quot;&gt;FactoryGirl.define do    factory :company do      name {Faker::Name.name}      trp {Faker::Number.between(0,10)}      grp {Faker::Number.between(0,5)}      budget {Faker::Number.number(4)}      cpm {Faker::Number.between(1,70)}      trp_price {Faker::Number.between(100,700)}      viewer {Faker::Number.between(0,100000)}      total_viewer {Faker::Number.between(0,200000)}      unique_viewer {Faker::Number.between(0,50000)}      spots {Faker::Number.between(0,1000)}    end  end&lt;/pre&gt;As you can see I define lots of fields with random values.Now we can create a company by writing&lt;blockquote class=&quot;tr_bq&quot;&gt;create(:company)&lt;/blockquote&gt;Or just build one (without save to db) by calling&lt;blockquote class=&quot;tr_bq&quot;&gt;build(:company) &lt;/blockquote&gt;That’s all for now, I’ll continue in part2.&lt;blockquote class=&quot;tr_bq&quot;&gt; &lt;/blockquote&gt;&lt;blockquote class=&quot;tr_bq&quot;&gt; &lt;/blockquote&gt;">
@@ -40,7 +40,7 @@
   
 
 
-<link rel="canonical" href="http://localhost:4000/use-factorygirl-and-faker-for-easy-data/">
+<link rel="canonical" href="https://kinnrot.github.io/use-factorygirl-and-faker-for-easy-data/">
 
 
 
@@ -53,7 +53,7 @@
       "@context": "http://schema.org",
       "@type": "Person",
       "name": "Chen Kinnrot",
-      "url": "http://localhost:4000",
+      "url": "https://kinnrot.github.io",
       "sameAs": null
     }
   </script>
@@ -120,7 +120,7 @@
           
             
             <li class="masthead__menu-item">
-              <a href="http://localhost:4000/about" >About</a>
+              <a href="https://kinnrot.github.io/about" >About</a>
             </li>
           
         </ul>
@@ -151,7 +151,7 @@
     
       
         <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-          <a href="http://localhost:4000/" itemprop="item"><span itemprop="name">Home</span></a>
+          <a href="https://kinnrot.github.io/" itemprop="item"><span itemprop="name">Home</span></a>
           <meta itemprop="position" content="1" />
         </li>
         <span class="sep">/</span>
@@ -296,13 +296,13 @@
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=Use+FactoryGirl+And+Faker+for+easy+data+generation+in+unit+testing+%28Part1%29%20http%3A%2F%2Flocalhost%3A4000%2Fuse-factorygirl-and-faker-for-easy-data%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Use+FactoryGirl+And+Faker+for+easy+data+generation+in+unit+testing+%28Part1%29%20https%3A%2F%2Fkinnrot.github.io%2Fuse-factorygirl-and-faker-for-easy-data%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fuse-factorygirl-and-faker-for-easy-data%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fkinnrot.github.io%2Fuse-factorygirl-and-faker-for-easy-data%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://plus.google.com/share?url=http%3A%2F%2Flocalhost%3A4000%2Fuse-factorygirl-and-faker-for-easy-data%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+  <a href="https://plus.google.com/share?url=https%3A%2F%2Fkinnrot.github.io%2Fuse-factorygirl-and-faker-for-easy-data%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fuse-factorygirl-and-faker-for-easy-data%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fkinnrot.github.io%2Fuse-factorygirl-and-faker-for-easy-data%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
@@ -496,10 +496,27 @@ If you got here, this is what I got so far, it’s not too much, but it’s a st
 
 
 
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-103259749-1']);
+  
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+
+
     
   <script>
     var disqus_config = function () {
-      this.page.url = "http://localhost:4000/use-factorygirl-and-faker-for-easy-data/";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.url = "https://kinnrot.github.io/use-factorygirl-and-faker-for-easy-data/";  // Replace PAGE_URL with your page's canonical URL variable
       this.page.identifier = "/use-factorygirl-and-faker-for-easy-data"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     (function() { // DON'T EDIT BELOW THIS LINE
