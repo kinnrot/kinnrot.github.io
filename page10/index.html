@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  Minimal Mistakes Jekyll Theme 4.11.2 by Michael Rose
+  Minimal Mistakes Jekyll Theme 4.12.1 by Michael Rose
   Copyright 2013-2018 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE.txt
@@ -41,6 +41,8 @@
 
   <link rel="prev" href="https://kinnrot.github.io/page9/">
 
+
+  <link rel="next" href="https://kinnrot.github.io/page11/">
 
 
 
@@ -114,17 +116,12 @@
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
         <a class="site-title" href="/">cdblg</a>
-        <ul class="visible-links">
-          
-            
-            <li class="masthead__menu-item">
-              <a href="https://kinnrot.github.io/about" >About</a>
-            </li>
-          
-        </ul>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about" >About</a>
+            </li></ul>
         
         <button class="greedy-nav__toggle hidden" type="button">
-          <span class="visually-hidden">Toggle Menu</span>
+          <span class="visually-hidden">Toggle menu</span>
           <div class="navicon"></div>
         </button>
         <ul class="hidden-links hidden"></ul>
@@ -132,6 +129,7 @@
     </div>
   </div>
 </div>
+
 
     <div class="initial-content">
       
@@ -147,8 +145,34 @@
     
       <h1 id="page-title" class="page__title">root</h1>
     
-    <h3 class="archive__subtitle">Recent Posts</h3>
+    <h3 class="archive__subtitle">Recent posts</h3>
 
+
+  
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/simple-abstraction-and-decoupling/" rel="permalink">Simple abstraction and decoupling example
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Just code.We have a logger and a log viewer, could be better but I wanted it to be simple.This is the window that is also the log viewer&lt;pre class="brush:...</p>
+  </article>
+</div>
 
   
 
@@ -255,33 +279,6 @@
   </article>
 </div>
 
-  
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/hello-world/" rel="permalink">Hello World
-</a>
-      
-    </h2>
-    
-      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
-
-
-
-
-  less than 1 minute read
-</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">public class Chen{  public void SayHello()  {    Console.WriteLine("Hello everyone! this is my first blog post, its about time");  }}
-</p>
-  </article>
-</div>
-
 
 
 <nav class="pagination">
@@ -325,17 +322,21 @@
         <li><a href="/page9/">9</a></li>
       
     
-
-    
-    
-
-    
-      <li><a href="#" class="disabled current">10</a></li>
+      
+        <li><a href="/page10/" class="disabled current">10</a></li>
+      
     
 
     
     
-      <li><a href="#" class="disabled"><span aria-hidden="true">Next</span></a></li>
+
+    
+      <li><a href="/page11/">11</a></li>
+    
+
+    
+    
+      <li><a href="/page11/">Next</a></li>
     
   </ul>
 </nav>
@@ -380,7 +381,7 @@
 
     
   <script src="/assets/js/main.min.js"></script>
-  <script src="https://use.fontawesome.com/releases/v5.0.13/js/all.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 
 
 
@@ -400,6 +401,7 @@
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 </script>
+
 
 
 

@@ -248,4 +248,9 @@ var store = [{
         "excerpt":"I tried to build an SPA without a shiny client side framework, I wanted to build something fast with good user experience and keeping it as simple as possible. I decided to take rails, use turbolinks and a avoid javascript till its a must. It didn’t take more than a...","categories": [],
         "tags": ["ruby","stimulus","rails","jquery"],
         "url": "https://kinnrot.github.io/from-jquery-to-stimulus/",
+        "teaser":null},{
+        "title": "Choosing the Right WordPress Hosting Service",
+        "excerpt":"I needed to choose WordPress hosting service for some of clients and decided to do some research to figure out what’s best value for each client needs. There are many service providers in this area, After lots of googling I decided to focus on the following: WordPress BlueHost KinstaWordPress If...","categories": [],
+        "tags": ["hosting","wp","wordpress","kinsta","bluehost","letsencrypt"],
+        "url": "https://kinnrot.github.io/choosing-the-right-wordpress-hosting-service/",
         "teaser":null}]
