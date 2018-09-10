@@ -3,7 +3,7 @@ layout: single
 title: "About me"
 ---
 
-I'm chen, lean thinker, programmer, ninja, :dragon:.
+I'm chen, productive lean thinker, programmer, ninja, :dragon:.
 
 Currently I'm a full stacker@[dropit](https://www.dropitshopping.com) 
 doing Akka and android development with java and kotlin.
