@@ -253,4 +253,9 @@ var store = [{
         "excerpt":"I needed to choose WordPress hosting service for some of clients and decided to do some research to figure out what’s best value for each client needs. There are many service providers in this area, After lots of googling I decided to focus on the following: WordPress BlueHost KinstaWordPress If...","categories": [],
         "tags": ["hosting","wp","wordpress","kinsta","bluehost","letsencrypt"],
         "url": "https://kinnrot.github.io/choosing-the-right-wordpress-hosting-service/",
+        "teaser":null},{
+        "title": "Live Data Pitfall You Should Be Aware Of",
+        "excerpt":"When working with MutableLiveData you can update the observable value in 2 ways: setValue postValueBoth will update the live data value as expected as long as your code is running from the main thread. If you need to update a value from other thread you can use the postValue which...","categories": [],
+        "tags": [],
+        "url": "https://kinnrot.github.io/live-data-pitfall-you-should-be-aware-of/",
         "teaser":null}]
