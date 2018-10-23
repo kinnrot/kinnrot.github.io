@@ -256,6 +256,6 @@ var store = [{
         "teaser":null},{
         "title": "Live Data Pitfall You Should Be Aware Of",
         "excerpt":"When working with MutableLiveData you can update the observable value in 2 ways: setValue postValueBoth will update the live data value as expected as long as your code is running from the main thread. If you need to update a value from other thread you can use the postValue which...","categories": [],
-        "tags": [],
+        "tags": ["android","arch","lifecycle"],
         "url": "https://kinnrot.github.io/live-data-pitfall-you-should-be-aware-of/",
         "teaser":null}]
