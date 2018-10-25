@@ -258,4 +258,9 @@ var store = [{
         "excerpt":"When working with MutableLiveData you can update the observable value in 2 ways: setValue postValueBoth will update the live data value as expected as long as your code is running from the main thread. If you need to update a value from other thread you can use the postValue which...","categories": [],
         "tags": ["android","arch","lifecycle"],
         "url": "https://kinnrot.github.io/live-data-pitfall-you-should-be-aware-of/",
+        "teaser":null},{
+        "title": "Android Lifecycle Aware Modal",
+        "excerpt":"Sometimes we want to show the user an alert when somethings wrong or we just need to give some extra info,For example; Ask the user if he is sure he wanna leave the app. This can be achieved with the following code (runs inside activity): AlertDialog.Builder(this) .setMessage(\"Are you sure you...","categories": [],
+        "tags": ["android","arch","lifecycle"],
+        "url": "https://kinnrot.github.io/android-lifecycle-aware-modal/",
         "teaser":null}]
