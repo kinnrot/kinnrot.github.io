@@ -2,6 +2,8 @@
 layout: post
 title: "Live Data Pitfall You Should Be Aware Of"
 date: 2018-10-22T08:12:18+03:00
+author: Chen Kinnrot
+tags: android arch lifecycle 
 ---
 
 

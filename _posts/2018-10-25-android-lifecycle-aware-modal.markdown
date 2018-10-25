@@ -1,7 +1,9 @@
 ---
 layout: post
 title: "Android Lifecycle Aware Modal"
-date: 2018-09-30T21:52:05+03:00
+date: 2018-10-25T18:43:04+03:00
+author: Chen Kinnrot
+tags: android arch lifecycle 
 ---
 
 Sometimes we want to show the user an alert when somethings wrong or we just need to give some extra info,
@@ -63,5 +65,9 @@ This method make every dialog lifecycle aware, meaning, if we add subscription t
   
 {% endhighlight %}
 
-Every time the
+Every time the lifecycle owner of the modal (fragment activity or custom implementation) is paused, the 
+dialog will be automatically dismissed.
+
+Lifecycle architecture opens many options related to bind ui interactions with lifecycle which is extremely important for a mobile phone
+that can get interrupts like phone calls and messages all the time.  
 
