@@ -23,6 +23,7 @@ layout: default
     {% if page.date %}<meta itemprop="datePublished" content="{{ page.date | date: "%B %d, %Y" }}">{% endif %}
     {% if page.last_modified_at %}<meta itemprop="dateModified" content="{{ page.last_modified_at | date: "%B %d, %Y" }}">{% endif %}
 
+
     <div class="page__inner-wrap">
       {% unless page.header.overlay_color or page.header.overlay_image %}
         <header>
@@ -30,6 +31,7 @@ layout: default
           {% if page.read_time %}
             <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> {% include read-time.html %}</p>
           {% endif %}
+
         </header>
       {% endunless %}
 
@@ -48,11 +50,14 @@ layout: default
         {% elsif page.date %}
           <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Updated:" }}</strong> <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time></p>
         {% endif %}
+
       </footer>
+
 
       {% if page.share %}{% include social-share.html %}{% endif %}
 
       {% include post_pagination.html %}
+
     </div>
 
     {% if site.comments.provider and page.comments %}
@@ -72,3 +77,5 @@ layout: default
     </div>
   {% endif %}
 </div>
+<div id="codefund_ad"></div>
+<script src="https://codefund.io/scripts/15927f6c-5043-4514-b0d2-ce3b9090ae4c/embed.js?template=bottom-bar"></script>

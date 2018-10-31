@@ -4,8 +4,12 @@ layout: archive
 
 <h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h3>
 
+
 {% for post in paginator.posts %}
   {% include archive-single.html %}
 {% endfor %}
 
+
+<div id="codefund_ad" ></div>
+<script src="https://codefund.io/scripts/15927f6c-5043-4514-b0d2-ce3b9090ae4c/embed.js?template=horizontal"></script>
 {% include paginator.html %}
