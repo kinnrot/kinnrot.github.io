@@ -256,6 +256,7 @@
     <meta itemprop="datePublished" content="October 25, 2018">
     
 
+
     <div class="page__inner-wrap">
       
         <header>
@@ -270,6 +271,7 @@
   2 minute read
 </p>
           
+
         </header>
       
 
@@ -298,17 +300,17 @@ Now your user experience is seeing a question about getting out of the app while
 
 <p>Every activity/fragment implements the LifecycleOwner interface so lets add the following method:</p>
 
-<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin">     <span class="k">private</span> <span class="k">fun</span> <span class="n">subscribeToLifecycleEvents</span><span class="p">(</span><span class="n">dialog</span><span class="p">:</span> <span class="n">Dialog</span><span class="p">,</span> <span class="n">lifecycleOwner</span><span class="p">:</span> <span class="n">LifecycleOwner</span><span class="p">?,</span> <span class="n">dismissHandler</span><span class="p">:</span> <span class="p">(()</span> <span class="p">-&gt;</span> <span class="n">Unit</span><span class="p">)?</span> <span class="p">=</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
-         <span class="kd">val</span> <span class="py">lifecycleObserver</span> <span class="p">=</span> <span class="n">GenericLifecycleObserver</span> <span class="p">{</span> <span class="n">_</span><span class="p">,</span> <span class="n">event</span> <span class="p">-&gt;</span>
-             <span class="k">if</span> <span class="p">(</span><span class="n">event</span> <span class="p">==</span> <span class="n">Lifecycle</span><span class="p">.</span><span class="n">Event</span><span class="p">.</span><span class="n">ON_PAUSE</span> <span class="p">&amp;&amp;</span> <span class="n">dialog</span><span class="p">.</span><span class="n">isShowing</span><span class="p">)</span> <span class="p">{</span>
-                 <span class="n">dialog</span><span class="p">.</span><span class="n">dismiss</span><span class="p">()</span>
-                 <span class="n">dismissHandler</span><span class="o">?.</span><span class="n">invoke</span><span class="p">()</span>
-             <span class="p">}</span>
-         <span class="p">}</span>
- 
-         <span class="n">lifecycleOwner</span><span class="o">?.</span><span class="n">apply</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="n">lifecycle</span><span class="p">.</span><span class="n">addObserver</span><span class="p">(</span><span class="n">lifecycleObserver</span><span class="p">)</span> <span class="p">}</span>
-         <span class="n">dialog</span><span class="p">.</span><span class="n">setOnDismissListener</span> <span class="p">{</span> <span class="n">lifecycleOwner</span><span class="o">?.</span><span class="n">apply</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="n">lifecycle</span><span class="p">.</span><span class="n">removeObserver</span><span class="p">(</span><span class="n">lifecycleObserver</span><span class="p">)</span> <span class="p">}</span> <span class="p">}</span>
-     <span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">private</span> <span class="k">fun</span> <span class="n">subscribeToLifecycleEvents</span><span class="p">(</span><span class="n">dialog</span><span class="p">:</span> <span class="n">Dialog</span><span class="p">,</span> <span class="n">lifecycleOwner</span><span class="p">:</span> <span class="n">LifecycleOwner</span><span class="p">?,</span> <span class="n">dismissHandler</span><span class="p">:</span> <span class="p">(()</span> <span class="p">-&gt;</span> <span class="n">Unit</span><span class="p">)?</span> <span class="p">=</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+   <span class="kd">val</span> <span class="py">lifecycleObserver</span> <span class="p">=</span> <span class="n">GenericLifecycleObserver</span> <span class="p">{</span> <span class="n">_</span><span class="p">,</span> <span class="n">event</span> <span class="p">-&gt;</span>
+       <span class="k">if</span> <span class="p">(</span><span class="n">event</span> <span class="p">==</span> <span class="n">Lifecycle</span><span class="p">.</span><span class="n">Event</span><span class="p">.</span><span class="n">ON_PAUSE</span> <span class="p">&amp;&amp;</span> <span class="n">dialog</span><span class="p">.</span><span class="n">isShowing</span><span class="p">)</span> <span class="p">{</span>
+           <span class="n">dialog</span><span class="p">.</span><span class="n">dismiss</span><span class="p">()</span>
+           <span class="n">dismissHandler</span><span class="o">?.</span><span class="n">invoke</span><span class="p">()</span>
+       <span class="p">}</span>
+   <span class="p">}</span>
+
+   <span class="n">lifecycleOwner</span><span class="o">?.</span><span class="n">apply</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="n">lifecycle</span><span class="p">.</span><span class="n">addObserver</span><span class="p">(</span><span class="n">lifecycleObserver</span><span class="p">)</span> <span class="p">}</span>
+   <span class="n">dialog</span><span class="p">.</span><span class="n">setOnDismissListener</span> <span class="p">{</span> <span class="n">lifecycleOwner</span><span class="o">?.</span><span class="n">apply</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="n">lifecycle</span><span class="p">.</span><span class="n">removeObserver</span><span class="p">(</span><span class="n">lifecycleObserver</span><span class="p">)</span> <span class="p">}</span> <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
 
 <p>This method make every dialog lifecycle aware, meaning, if we add subscription to the dialog display:</p>
 
@@ -371,7 +373,9 @@ that can get interrupts like phone calls and messages all the time.</p>
         
           <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-10-25T18:43:04+03:00">October 25, 2018</time></p>
         
+
       </footer>
+
 
       <section class="page__share">
   
@@ -398,6 +402,7 @@ that can get interrupts like phone calls and messages all the time.</p>
       <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
+
 
     </div>
 
@@ -534,6 +539,8 @@ readable.
     </div>
   
 </div>
+<div id="codefund_ad"></div>
+<script src="https://codefund.io/scripts/15927f6c-5043-4514-b0d2-ce3b9090ae4c/embed.js?template=bottom-bar"></script>
 
     </div>
 
