@@ -33,17 +33,17 @@ To avoid this case, I found an easy solution by making my modal lifecycle aware,
 
 Every activity/fragment implements the LifecycleOwner interface so lets add the following method:
 {% highlight kotlin %}
-     private fun subscribeToLifecycleEvents(dialog: Dialog, lifecycleOwner: LifecycleOwner?, dismissHandler: (() -> Unit)? = null) {
-         val lifecycleObserver = GenericLifecycleObserver { _, event ->
-             if (event == Lifecycle.Event.ON_PAUSE && dialog.isShowing) {
-                 dialog.dismiss()
-                 dismissHandler?.invoke()
-             }
-         }
- 
-         lifecycleOwner?.apply { this.lifecycle.addObserver(lifecycleObserver) }
-         dialog.setOnDismissListener { lifecycleOwner?.apply { this.lifecycle.removeObserver(lifecycleObserver) } }
-     }
+private fun subscribeToLifecycleEvents(dialog: Dialog, lifecycleOwner: LifecycleOwner?, dismissHandler: (() -> Unit)? = null) {
+   val lifecycleObserver = GenericLifecycleObserver { _, event ->
+       if (event == Lifecycle.Event.ON_PAUSE && dialog.isShowing) {
+           dialog.dismiss()
+           dismissHandler?.invoke()
+       }
+   }
+
+   lifecycleOwner?.apply { this.lifecycle.addObserver(lifecycleObserver) }
+   dialog.setOnDismissListener { lifecycleOwner?.apply { this.lifecycle.removeObserver(lifecycleObserver) } }
+}
 {% endhighlight %}
 
 This method make every dialog lifecycle aware, meaning, if we add subscription to the dialog display:
