@@ -9,38 +9,38 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Dont return and linq on the same line - cdblg</title>
-<meta name="description" content="Just a little tip for writing a friendlier code.If you&#39;re method returns an expression, first assign it to a variable and then return him.It&#39;ll be much easier to debug inside this method and fetch all results when watching this variable.That&#39;s it !">
+<!-- begin _includes/seo.html --><title>Building your own rails form builder - cdblg</title>
+<meta name="description" content="If you’re building forms with rails, whether you’re using a gem for it or working with pure rails forms, you should know this.">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en">
 <meta property="og:site_name" content="cdblg">
-<meta property="og:title" content="Dont return and linq on the same line">
-<meta property="og:url" content="https://kinnrot.github.io/dont-return-and-linq-on-same-line/">
+<meta property="og:title" content="Building your own rails form builder">
+<meta property="og:url" content="https://kinnrot.github.io/building-your-own-rails-form-builder/">
 
 
-  <meta property="og:description" content="Just a little tip for writing a friendlier code.If you&#39;re method returns an expression, first assign it to a variable and then return him.It&#39;ll be much easier to debug inside this method and fetch all results when watching this variable.That&#39;s it !">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2011-08-02T13:12:00+03:00">
+  <meta property="og:description" content="If you’re building forms with rails, whether you’re using a gem for it or working with pure rails forms, you should know this.">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2019-08-07T00:00:00+03:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="https://kinnrot.github.io/dont-return-and-linq-on-same-line/">
+
+<link rel="canonical" href="https://kinnrot.github.io/building-your-own-rails-form-builder/">
 
 
 
@@ -164,7 +164,7 @@
         <span class="sep">/</span>
       
       
-        <li class="current">Dont return and linq on the same line</li>
+        <li class="current">Building your own rails form builder</li>
       
     
   </ol>
@@ -263,16 +263,16 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Dont return and linq on the same line">
-    <meta itemprop="description" content="Just a little tip for writing a friendlier code.If you&#39;re method returns an expression, first assign it to a variable and then return him.It&#39;ll be much easier to debug inside this method and fetch all results when watching this variable.That&#39;s it !">
-    <meta itemprop="datePublished" content="August 02, 2011">
+    <meta itemprop="headline" content="Building your own rails form builder">
+    <meta itemprop="description" content="If you’re building forms with rails, whether you’re using a gem for it or working with pure rails forms, you should know this.">
+    <meta itemprop="datePublished" content="August 07, 2019">
     
 
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 class="page__title" itemprop="headline">Dont return and linq on the same line
+          <h1 class="page__title" itemprop="headline">Building your own rails form builder
 </h1>
           
             <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
@@ -280,7 +280,7 @@
 
 
 
-  less than 1 minute read
+  3 minute read
 </p>
           
 
@@ -288,7 +288,75 @@
       
 
       <section class="page__content" itemprop="text">
-        <div><div><p>Just a little tip for writing a friendlier code.<br>If you're method returns an expression, first assign it to a variable and then return him.<br>It'll be much easier to debug inside this method and fetch all results when watching this variable.</p></div>That's it !</div>
+        <p>If you’re building forms with rails, whether you’re using a gem for it or working with pure rails forms, you should know this.</p>
+
+<p>Rails uses form builder to allow you to call all the standard label/input/select methods, the exact class name is</p>
+<blockquote>
+  <p>ActionView::Helpers::FormBuilder</p>
+</blockquote>
+
+<p>When calling ‘form_for’ you get a fresh instance of this FormBuilder which allows you to define your form elements.</p>
+
+<p>Lets say you wanna add another reusable form element, for example a form section with title that uses your own custom style/classes.</p>
+
+<p>To achieve that, you should extend the default form builder, just add a new class to your helpers folder lets call it ‘MyFormBuilder’ it looks like this</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="sb">`
+class MyFormBuilder &lt; ActionView::Helpers::FormBuilder
+  
+  def section(title, id = "section-</span><span class="si">#{</span><span class="no">SecureRandom</span><span class="p">.</span><span class="nf">uuid</span><span class="si">}</span><span class="sb">")
+    @template.content_tag(:label, title, { class: 'form-label', id: id }) +
+      @template.content_tag(:div) do
+        yield if block_given?
+      end +
+      @template.content_tag('hr', '', { class: 'row-divider' })
+  end
+  
+end
+`</span></code></pre></figure>
+
+<p>So we defined a form builder with a section method now we just need to tell rails, that when we write in our view</p>
+<blockquote>
+  <p>form_for()…</p>
+</blockquote>
+
+<p>to use our freshly coded MyFormBuilder</p>
+
+<p>It’s actually super simple ( but not so documented ), if you’ll look at https://apidock.com/rails/ActionView/Helpers/FormHelper/form_for there’s a section called ‘Customized form builders’ which explains what I just wrote</p>
+
+<p>To make your new form builder the default builder so you won’t have to specify it each time you write form_for you can do one of two options, add a new form_for method with a different name, or override existing form_for.</p>
+
+<p>I prefer adding a new method, so on helpers/application_helper.rb I added the following code:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="sb">`
+module ApplicationHelper
+  def my_form_for(name, *args, &amp;block)
+    options = args.extract_options!
+
+    content_tag("div",
+                form_for(name, *(args &lt;&lt; options.merge(:builder =&gt; MyFormBuilder)), &amp;block),
+                :class =&gt; "core-form section"
+    )
+  end
+
+  def my_fields_for(name, classes, *args, &amp;block)
+    options = args.extract_options!
+
+    content_tag("div",
+                fields_for(name, nil, *(args &lt;&lt; options.merge(:builder =&gt; MyFormBuilder)), &amp;block),
+                :class =&gt; "core-form section </span><span class="si">#{</span><span class="n">classes</span><span class="si">}</span><span class="sb">"
+    )
+  end
+end
+`</span></code></pre></figure>
+
+<p>Which allows me to use the classic form_for, or my extended my_form_for, and also my_fields_for instead of fields_for when nesting inside existing form.</p>
+
+<p>It’s super useful when you got forms and wanna keep things DRY and managed, I use it to define a standard label with input with error rendering for example.</p>
+
+<p>Hope you like it, please share your thoughts.</p>
+
+
         
       </section>
 
@@ -308,7 +376,19 @@
     
       
       
-      <a href="/tags/linq" class="page__taxonomy-item" rel="tag">linq</a>
+      <a href="/tags/component" class="page__taxonomy-item" rel="tag">component</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/form" class="page__taxonomy-item" rel="tag">form</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/rails" class="page__taxonomy-item" rel="tag">rails</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/ruby" class="page__taxonomy-item" rel="tag">ruby</a>
     
     </span>
   </p>
@@ -317,7 +397,7 @@
 
 
         
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2011-08-02T13:12:00+03:00">August 02, 2011</time></p>
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-08-07T00:00:00+03:00">August 07, 2019</time></p>
         
 
       </footer>
@@ -328,25 +408,24 @@
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=Dont+return+and+linq+on+the+same+line%20https%3A%2F%2Fkinnrot.github.io%2Fdont-return-and-linq-on-same-line%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Building+your+own+rails+form+builder%20https%3A%2F%2Fkinnrot.github.io%2Fbuilding-your-own-rails-form-builder%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fkinnrot.github.io%2Fdont-return-and-linq-on-same-line%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fkinnrot.github.io%2Fbuilding-your-own-rails-form-builder%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://plus.google.com/share?url=https%3A%2F%2Fkinnrot.github.io%2Fdont-return-and-linq-on-same-line%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+  <a href="https://plus.google.com/share?url=https%3A%2F%2Fkinnrot.github.io%2Fbuilding-your-own-rails-form-builder%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fkinnrot.github.io%2Fdont-return-and-linq-on-same-line%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fkinnrot.github.io%2Fbuilding-your-own-rails-form-builder%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/tpling-background-worker-in-10-min/" class="pagination--pager" title="TPLing Background worker in 10 min
+      <a href="/android-lifecycle-aware-modal/" class="pagination--pager" title="Android Lifecycle Aware Modal
 ">Previous</a>
     
     
-      <a href="/if-you-searching-for-good-place-to-grow/" class="pagination--pager" title="If you’re searching for a good place to grow
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
@@ -380,34 +459,6 @@
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/building-your-own-rails-form-builder/" rel="permalink">Building your own rails form builder
-</a>
-      
-    </h2>
-    
-      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
-
-
-
-
-  3 minute read
-</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">If you’re building forms with rails, whether you’re using a gem for it or working with pure rails forms, you should know this.
-
-</p>
-  </article>
-</div>
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
         <a href="/android-lifecycle-aware-modal/" rel="permalink">Android Lifecycle Aware Modal
 </a>
       
@@ -418,7 +469,7 @@
 
 
 
-  3 minute read
+  2 minute read
 </p>
     
     <p class="archive__item-excerpt" itemprop="description">Sometimes we want to show the user an alert when somethings wrong or we just need to give some extra info,
@@ -479,6 +530,32 @@ For example; Ask the user if he is sure he wanna l...</p>
     <p class="archive__item-excerpt" itemprop="description">I needed to choose WordPress hosting service for some of clients and decided to do some research to figure out what’s best value for each client needs.
 
 </p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/from-jquery-to-stimulus/" rel="permalink">From jQuery to Stimulus
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  6 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">I tried to build an SPA without a shiny client side framework, I wanted to build something fast with good user experience and keeping it as simple as possibl...</p>
   </article>
 </div>
         
@@ -559,8 +636,8 @@ For example; Ask the user if he is sure he wanna l...</p>
     
   <script>
     var disqus_config = function () {
-      this.page.url = "https://kinnrot.github.io/dont-return-and-linq-on-same-line/";  // Replace PAGE_URL with your page's canonical URL variable
-      this.page.identifier = "/dont-return-and-linq-on-same-line"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      this.page.url = "https://kinnrot.github.io/building-your-own-rails-form-builder/";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/building-your-own-rails-form-builder"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     (function() { // DON'T EDIT BELOW THIS LINE
       var d = document, s = d.createElement('script');

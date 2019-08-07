@@ -263,4 +263,9 @@ var store = [{
         "excerpt":"Sometimes we want to show the user an alert when somethings wrong or we just need to give some extra info,For example; Ask the user if he is sure he wanna leave the app. This can be achieved with the following code (runs inside activity): AlertDialog.Builder(this) .setMessage(\"Are you sure you...","categories": [],
         "tags": ["android","arch","lifecycle"],
         "url": "https://kinnrot.github.io/android-lifecycle-aware-modal/",
+        "teaser":null},{
+        "title": "Building your own rails form builder",
+        "excerpt":"If you’re building forms with rails, whether you’re using a gem for it or working with pure rails forms, you should know this. Rails uses form builder to allow you to call all the standard label/input/select methods, the exact class name is ActionView::Helpers::FormBuilder When calling ‘form_for’ you get a fresh...","categories": [],
+        "tags": ["ruby","rails","form","component"],
+        "url": "https://kinnrot.github.io/building-your-own-rails-form-builder/",
         "teaser":null}]
