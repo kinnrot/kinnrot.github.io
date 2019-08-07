@@ -3,10 +3,10 @@ layout: single
 title: "About me"
 ---
 
-I'm chen, productive lean thinker, programmer, ninja, :dragon:.
+I'm chen, productive lean thinker, programmer, problem hacker, ninja.
 
-Currently I'm a full stacker@[dropit](https://www.dropit.shop/) 
-doing Akka and android development with java and kotlin.
+Currently I'm a full stacker@[stads](https://www.stadstech.com/) 
+doing RoR with StimulusJS.
 
 While not programming, I carve on my carver, play volleyball and enjoy my family.
 
