@@ -1,9 +1,9 @@
 <!doctype html>
 <!--
-  Minimal Mistakes Jekyll Theme 4.13.0 by Michael Rose
-  Copyright 2013-2018 Michael Rose - mademistakes.com | @mmistakes
+  Minimal Mistakes Jekyll Theme 4.17.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
-  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE.txt
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
 -->
 <html lang="en" class="no-js">
   <head>
@@ -13,6 +13,8 @@
 <meta name="description" content="An amazing website.">
 
 
+  <meta name="author" content="Chen Kinnrot">
+
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en">
@@ -20,6 +22,8 @@
 <meta property="og:title" content="root">
 <meta property="og:url" content="https://kinnrot.github.io/page3/">
 
+
+  <meta property="og:description" content="An amazing website.">
 
 
 
@@ -45,19 +49,16 @@
   <link rel="next" href="https://kinnrot.github.io/page4/">
 
 
-
-
-
-  <script type="application/ld+json">
-    {
-      "@context": "http://schema.org",
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
       "@type": "Person",
       "name": "Chen Kinnrot",
-      "url": "https://kinnrot.github.io",
-      "sameAs": null
-    }
-  </script>
-
+      "url": "https://kinnrot.github.io/"
+    
+  }
+</script>
 
 
 
@@ -69,7 +70,7 @@
 
 <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="cdblg Feed">
 
-<!-- http://t.co/dKP3o1e -->
+<!-- https://t.co/dKP3o1e -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <script>
@@ -79,7 +80,7 @@
 <!-- For all browsers -->
 <link rel="stylesheet" href="/assets/css/main.css">
 
-<!--[if lte IE 9]>
+<!--[if IE]>
   <style>
     /* old IE unsupported flexbox fixes */
     .greedy-nav .site-title {
@@ -117,16 +118,30 @@
   </head>
 
   <body class="layout--home">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
 
     <!--[if lt IE 9]>
 <div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
 <![endif]-->
 
-    <div class="masthead">
+    
+
+<div class="masthead">
   <div class="masthead__inner-wrap">
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
-        <a class="site-title" href="/">cdblg</a>
+        
+        <a class="site-title" href="/">
+          cdblg
+          
+        </a>
         <ul class="visible-links"><li class="masthead__menu-item">
               <a href="/about" >About</a>
             </li></ul>
@@ -156,7 +171,7 @@
     
       <h1 id="page-title" class="page__title">root</h1>
     
-    <h3 class="archive__subtitle">Recent posts</h3>
+    <h3 class="archive__subtitle">Recent Posts</h3>
 
 
 
@@ -165,7 +180,7 @@
 
 
 <div class="list__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title" itemprop="headline">
       
@@ -180,18 +195,20 @@
 
 
   1 minute read
+
 </p>
     
     <p class="archive__item-excerpt" itemprop="description">The  most irritating thing in writing tests is the data generation preparation process, sometimes you want to create an object with 20 fields that 10 of them...</p>
   </article>
 </div>
 
+
   
 
 
 
 <div class="list__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title" itemprop="headline">
       
@@ -206,18 +223,20 @@
 
 
   less than 1 minute read
+
 </p>
     
     <p class="archive__item-excerpt" itemprop="description">If you want to provide default localization support for guest user in your website yo can locate their browser locale by the following code:&lt;pre style="ba...</p>
   </article>
 </div>
 
+
   
 
 
 
 <div class="list__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title" itemprop="headline">
       
@@ -232,18 +251,20 @@
 
 
   1 minute read
+
 </p>
     
     <p class="archive__item-excerpt" itemprop="description">Let’s say you have a vey important procedure that takes a while, and you need to process it in background, but you still want to execute ASAP.I’m using Delay...</p>
   </article>
 </div>
 
+
   
 
 
 
 <div class="list__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title" itemprop="headline">
       
@@ -258,18 +279,20 @@
 
 
   less than 1 minute read
+
 </p>
     
     <p class="archive__item-excerpt" itemprop="description">This is an easy one, just want to make sure it’s clear.Add the following field to your model:&lt;pre style="background-color: #2b2b2b; border-color: #000000;...</p>
   </article>
 </div>
 
+
   
 
 
 
 <div class="list__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title" itemprop="headline">
       
@@ -284,12 +307,14 @@
 
 
   less than 1 minute read
+
 </p>
     
     <p class="archive__item-excerpt" itemprop="description">Popular Science: The War Of Zeros And Ones. http://google.com/newsstand/s/CBIwvZm5zho
 </p>
   </article>
 </div>
+
 
 
 
@@ -369,15 +394,13 @@
 
     
 
-    <div class="page__footer">
+    <div id="footer" class="page__footer">
       <footer>
         <!-- start custom footer snippets -->
 
 <!-- end custom footer snippets -->
         <div class="page__footer-follow">
   <ul class="social-icons">
-    
-      <li><strong>Follow:</strong></li>
     
 
     
@@ -407,7 +430,7 @@
 
     
   <script src="/assets/js/main.min.js"></script>
-  <script src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
 
 
 
@@ -415,7 +438,7 @@
 
 
 
-  <script type="text/javascript">
+  <script>
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-103259749-1']);
   
@@ -427,6 +450,9 @@
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 </script>
+
+
+
 
 
 
