@@ -1,0 +1,2 @@
+I"<p>One more thing,<br /><br />If you do stuff like put instances of classes inside a session and expect to call methods of this classes later, you must put the session start after you include the classes definitions.<br /><br />But I suggest not to do this kind of stuff.</p>
+:ET

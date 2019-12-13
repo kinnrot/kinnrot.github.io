@@ -1,0 +1,85 @@
+I"<p>I decided to develop my own blog like all the other cool developers.
+If you got here, this is what I got so far, it’s not too much, but it’s a start.</p>
+
+<p>When I develop something my rules are very simple</p>
+
+<ul>
+  <li>Avoid writing any code.</li>
+  <li>Keep it simple.</li>
+  <li>Easy to deploy on free hosting environment.</li>
+  <li>Decent code syntax highlight</li>
+</ul>
+
+<p>So I heard(mostly in www) people talking about jekyll as a static web site generator and began to dig dipper,
+I searched a few ruby gems for blogging and found a gem called <a href="https://github.com/octopress/octopress octopress v3">octopress</a>.
+They, the guys who developed it, calls it Jekyll’s Ferrari, sounds good to me, looked pretty straight forward so I gave it a spin.</p>
+
+<p>First thing you need to do it to create a new project for your blog (just a new folder)</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">mkdir </span>my-blog</code></pre></figure>
+
+<p>Next you should create a Gemfile for easy dependency management.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">gem <span class="nb">install </span>bundler
+bundle init</code></pre></figure>
+
+<p>Now lets add octopress as a dependency, inside your Gemfile add</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">gem</span> <span class="s1">'octopress'</span><span class="p">,</span> <span class="s1">'~&gt; 3.0'</span></code></pre></figure>
+
+<p>Now we should tell bundle to install gems from Gemfile, in terminal run</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">bundle</span></code></pre></figure>
+
+<p>Everything is set up, now according to <a href="https://github.com/octopress/octopress octopress">octopress</a> all we need to do
+is to run</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">octopress init &lt;PATH&gt;</code></pre></figure>
+
+<p>and we have a blog ready.</p>
+
+<p>Now you probably have a blog somewhere, mine is at <a href="kinnrot.blogspot.com">blogger</a></p>
+
+<p>And I thought to my self it would be nice to import all my posts to the new blog, well it’s super easy, jekyll has many importers
+read more about it <a href="https://import.jekyllrb.com/docs/home/ migrations">here</a></p>
+
+<p>So after 3 clicks and one script I got all my old posts on my new blog.</p>
+
+<p>Whats next?
+Well I need some theme, cause I can’t design at all, I just know how to design code, when it comes to colors layout and fonts, I suck.</p>
+
+<p>I googled a bit and found <a href="http://jekyllthemes.org/">this</a> and <a href="https://github.com/planetjekyll/awesome-jekyll-themes">that</a> and chose to start simple
+ with minima, which is minimal and simple to install and work with</p>
+
+<p>you just need to add it to your Gemfile</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">gem</span> <span class="s1">'minima'</span></code></pre></figure>
+
+<p>set the theme property in _config.yaml to minima and you are good to go, by running ‘jekyll build’ you’ll be able to see your blog
+site generated in the _site filder.</p>
+
+<p>Now we just need to deploy it the easy way, this is where octopress helps.
+I use github pages, which is very simple to set up, you just need to create a github repo named:</p>
+<blockquote>
+  <p>‘<your user="" name="">.github.io'</your></p>
+</blockquote>
+
+<p>then run</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">ocopress deploy init git &lt;your full repo url&gt;</code></pre></figure>
+
+<p>now make sure you are not on master branch and run</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">JEKYLL_ENV</span><span class="o">=</span>production jekyll build
+<span class="nv">JEKYLL_ENV</span><span class="o">=</span>production octopress deploy</code></pre></figure>
+
+<p>thats it you got your blog on jekyll published on git hub.</p>
+
+<h4 id="refereces">Refereces</h4>
+
+<p><a href="https://github.com/octopress/octopress">Octopress</a> <br />
+<a href="https://jekyllrb.com/">Jekyll</a><br />
+<a href="https://github.com/jekyll/minima">Minima</a><br />
+<a href="http://jmcglone.com/guides/github-pages/">Github pages</a></p>
+
+:ET
