@@ -1,0 +1,73 @@
+I"�!<p>There is a lot of buzz about asyc await from the javascript world, the concept is very simple and make your code much more
+readable.</p>
+
+<p>You want to execute something without blocking the main thread but you want the next line of code to run once the non blocking code finish, meaning continue
+code execution in its written order.</p>
+
+<p>Ruby has a great <a href="https://github.com/ruby-concurrency/concurrent-ruby">concurrency gem</a> which basically encapsulate low level threading and synchronization code
+to common patterns like Future, Promise, Actor and much more.</p>
+
+<p>I’d like to talk about concurrent-ruby async await feature, lets look at the following code.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">'concurrent'</span>
+
+<span class="k">class</span> <span class="nc">Reporter</span>
+  <span class="kp">include</span> <span class="no">Concurrent</span><span class="o">::</span><span class="no">Async</span>
+
+  <span class="k">def</span> <span class="nf">report</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">sleep_dur</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="nb">sleep</span><span class="p">(</span><span class="n">sleep_dur</span><span class="p">)</span>
+    <span class="nb">p</span> <span class="s2">"</span><span class="si">#{</span><span class="no">Thread</span><span class="p">.</span><span class="nf">current</span><span class="p">.</span><span class="nf">object_id</span><span class="si">}</span><span class="s2">"</span>
+    <span class="nb">p</span> <span class="n">message</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>The class Reporter knows to do 1 thing, report, it’ll sleep and print it’s thread id and a message
+So if we’ll open an irb and call</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="sc">?&gt;</span> <span class="n">r</span> <span class="o">=</span> <span class="no">Reporter</span><span class="p">.</span><span class="nf">new</span>
+<span class="o">=&gt;</span> <span class="c1">#&lt;Reporter:0x007f86b19e1940 @__async_initialized__=true, @__async_delegator__=#&lt;Concurrent::Async::AsyncDelegator:0x007f86b19e18a0 @__lock__=#&lt;Thread::Mutex:0x007f86b19e1850&gt;, @__condition__=#&lt;Thread::ConditionVariable:0x007f86b19e1828&gt;, @delegate=#&lt;Reporter:0x007f86b19e1940 ...&gt;, @queue=[], @executor=#&lt;Concurrent::ThreadPoolExecutor:0x007f86b19e0e78 @__lock__=#&lt;Thread::Mutex:0x007f86b19e0d88&gt;, @__condition__=#&lt;Thread::ConditionVariable:0x007f86b19e0d60&gt;, @min_length=8, @max_length=2147483647, @idletime=60, @max_queue=0, @fallback_policy=:abort, @auto_terminate=true, @pool=[], @ready=[], @queue=[], @scheduled_task_count=0, @completed_task_count=0, @largest_length=0, @ruby_pid=59753, @gc_interval=30, @next_gc_time=694963.258667, @StopEvent=#&lt;Concurrent::Event:0x007f86b19e0bd0 @__lock__=#&lt;Thread::Mutex:0x007f86b19e0b80&gt;, @__condition__=#&lt;Thread::ConditionVariable:0x007f86b19e0b58&gt;, @set=false, @iteration=0&gt;, @StoppedEvent=#&lt;Concurrent::Event:0x007f86b19e0ae0 @__lock__=#&lt;Thread::Mutex:0x007f86b19e0a90&gt;, @__condition__=#&lt;Thread::ConditionVariable:0x007f86b19e0a68&gt;, @set=false, @iteration=0&gt;&gt;&gt;, @__await_delegator__=#&lt;Concurrent::Async::AwaitDelegator:0x007f86b19e0a18 @delegate=#&lt;Concurrent::Async::AsyncDelegator:0x007f86b19e18a0 @__lock__=#&lt;Thread::Mutex:0x007f86b19e1850&gt;, @__condition__=#&lt;Thread::ConditionVariable:0x007f86b19e1828&gt;, @delegate=#&lt;Reporter:0x007f86b19e1940 ...&gt;, @queue=[], @executor=#&lt;Concurrent::ThreadPoolExecutor:0x007f86b19e0e78 @__lock__=#&lt;Thread::Mutex:0x007f86b19e0d88&gt;, @__condition__=#&lt;Thread::ConditionVariable:0x007f86b19e0d60&gt;, @min_length=8, @max_length=2147483647, @idletime=60, @max_queue=0, @fallback_policy=:abort, @auto_terminate=true, @pool=[], @ready=[], @queue=[], @scheduled_task_count=0, @completed_task_count=0, @largest_length=0, @ruby_pid=59753, @gc_interval=30, @next_gc_time=694963.258667, @StopEvent=#&lt;Concurrent::Event:0x007f86b19e0bd0 @__lock__=#&lt;Thread::Mutex:0x007f86b19e0b80&gt;, @__condition__=#&lt;Thread::ConditionVariable:0x007f86b19e0b58&gt;, @set=false, @iteration=0&gt;, @StoppedEvent=#&lt;Concurrent::Event:0x007f86b19e0ae0 @__lock__=#&lt;Thread::Mutex:0x007f86b19e0a90&gt;, @__condition__=#&lt;Thread::ConditionVariable:0x007f86b19e0a68&gt;, @set=false, @iteration=0&gt;&gt;&gt;&gt;&gt;</span>
+<span class="o">&gt;&gt;</span> <span class="n">r</span><span class="p">.</span><span class="nf">report</span><span class="p">(</span><span class="s1">'x'</span><span class="p">)</span>
+<span class="s2">"70108240336860"</span>
+<span class="s2">"x"</span></code></pre></figure>
+
+<p>And it’ll take a sec till you see output because of the sleep.</p>
+
+<p>Now lets try the same with async</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&gt;&gt;</span> <span class="n">r</span><span class="p">.</span><span class="nf">async</span><span class="p">.</span><span class="nf">report</span><span class="p">(</span><span class="s1">'x'</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="c1">#&lt;Concurrent::IVar:0x007f86b087dfc8 @__lock__=#&lt;Thread::Mutex:0x007f86b087df00&gt;, @__condition__=#&lt;Thread::ConditionVariable:0x007f86b087deb0&gt;, @event=#&lt;Concurrent::Event:0x007f86b087dde8 @__lock__=#&lt;Thread::Mutex:0x007f86b087dca8&gt;, @__condition__=#&lt;Thread::ConditionVariable:0x007f86b087dc80&gt;, @set=false, @iteration=0&gt;, @reason=nil, @value=nil, @observers=#&lt;Concurrent::Collection::CopyOnWriteObserverSet:0x007f86b087db90 @__lock__=#&lt;Thread::Mutex:0x007f86b087db18&gt;, @__condition__=#&lt;Thread::ConditionVariable:0x007f86b087daf0&gt;, @observers={}&gt;, @dup_on_deref=nil, @freeze_on_deref=nil, @copy_on_deref=nil, @do_nothing_on_deref=true, @state=:pending&gt;</span>
+<span class="s2">"70108232018840"</span>
+<span class="s2">"x"</span></code></pre></figure>
+
+<p>As you can see the method returns immediately without printing any value, it just returns a promise like object that will hold the result of report method once done.
+To prove you that report in non blocking try this</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&gt;&gt;</span> <span class="n">r</span><span class="p">.</span><span class="nf">async</span><span class="p">.</span><span class="nf">report</span><span class="p">(</span><span class="s1">'x'</span><span class="p">);</span> <span class="mi">1</span><span class="o">+</span><span class="mi">1</span>
+<span class="o">=&gt;</span> <span class="mi">2</span>
+<span class="s2">"70108231957940"</span>
+<span class="s2">"x"</span></code></pre></figure>
+
+<p>As you can see the 1+1 returns before the reporters output</p>
+
+<p>Now lets try the await method</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&gt;&gt;</span> <span class="n">r</span><span class="p">.</span><span class="nf">await</span><span class="p">.</span><span class="nf">report</span><span class="p">(</span><span class="s1">'x'</span><span class="p">);</span> <span class="mi">1</span><span class="o">+</span><span class="mi">1</span>
+<span class="s2">"70339825139340"</span>
+<span class="s2">"x"</span>
+<span class="o">=&gt;</span> <span class="mi">2</span>
+
+<span class="o">&gt;&gt;</span> <span class="no">Thread</span><span class="p">.</span><span class="nf">current</span><span class="p">.</span><span class="nf">object_id</span>
+<span class="o">=&gt;</span> <span class="mi">70339824711620</span></code></pre></figure>
+
+<p>This time code look like it run synchronously, but lets check the main thread id, as you can see the code run on
+2 different threads but in sync. this is the actual power of await, sometimes we want to run something in a background thread,
+and do something on another thread when done.</p>
+
+<p>The purpose of the Concurrent::Async is to allow a class methods to be called in a synchronized
+way, meaning the class will always be thread safe  as long as you call it via async or await.
+What actually happens in the backstage is whenever you use async/await the method invocation is inserted into a queue that got one worker thread that keep
+this queue empty. because its just one thread that invoke the methods, it is safe for many threads to use the same object.</p>
+
+<p>Hope its clear enough,</p>
+
+:ET

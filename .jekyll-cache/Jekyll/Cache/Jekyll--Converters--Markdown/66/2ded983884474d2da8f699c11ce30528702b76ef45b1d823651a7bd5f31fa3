@@ -1,0 +1,24 @@
+I"�<p>Recently I discovered <a href="https://github.com/danger/danger">Danger</a>, an amazing tool you should check out no matter what.</p>
+
+<p>I can write a ton of use cases that serves me on my day to day work, but let’s start with one which I like a lot.</p>
+
+<p>Do you know how much of your code is covered by tests?</p>
+
+<p>Do you keep track on how your code coverage changes over time ?</p>
+
+<p>I didn’t till I installed a simple danger plugin called <a href="https://github.com/marcelofabri/danger-simplecov_json">‘danger-simplecov_json’</a>, It’s a ruby gem it’s configuration is super easy (check this link to the gem),
+Once you configure Danger on your CI or locally, you can see after each build (spec run or whatever you use) the percentage of code coverage.</p>
+
+<p>When I started using this plugin my coverage was somewhere in the 40%, currently I’m on 85%. This plugin motivates you to increase your coverage push new code with tests.</p>
+
+<p>I configured it to run on my CI (I use circle) and add a nicely formatted comment on each opened PR.</p>
+
+<p>It looks like this:</p>
+
+<blockquote>
+  <p>Code coverage is now at 83.13% (37790/45395 lines)</p>
+</blockquote>
+
+<p>It’s a small thing with big impact, try it!</p>
+
+:ET

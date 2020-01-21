@@ -1,0 +1,125 @@
+I"�2<p>I tried to build an <a href="https://en.wikipedia.org/wiki/Single-page_application">SPA</a> without a shiny client side framework, I wanted to build something fast with good user experience and keeping it as simple as possible.</p>
+
+<p>I decided to take <a href="https://rubyonrails.org/">rails</a>, use <a href="https://github.com/turbolinks/turbolinks">turbolinks</a> and a avoid javascript till its a must.</p>
+
+<p>It didn’t take more than a few hours and I found myself writing javascript. What I needed to do is simple, I had an input with number, and 2 buttons next to it, one to increase values by 1 and on to decrease it looked like this:</p>
+
+<p><button>-</button><span> 0</span><button>+</button></p>
+
+<p>jQuery to the rescue, I had a list of those buttons, so I needed to identify each one, so I added a data-id attr and used it to identify which input I need to update it looked like this:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">`
+<span class="nt">&lt;button</span> <span class="na">data-id=</span><span class="s">"1"</span> <span class="na">name=</span><span class="s">"minus"</span><span class="nt">&gt;</span>-<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"1"</span> <span class="na">value=</span><span class="s">"0"</span> <span class="na">readonly=</span><span class="s">"readonly"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">data-id=</span><span class="s">"1"</span> <span class="na">name=</span><span class="s">"plus"</span><span class="nt">&gt;</span>+<span class="nt">&lt;/button&gt;</span>
+`</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// number_componenet.js</span>
+
+    <span class="k">export</span> <span class="k">default</span> <span class="kd">class</span> <span class="nx">NumberComponent</span> <span class="p">{</span>
+  
+      <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">button[name="plus"]</span><span class="dl">'</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+          <span class="kd">var</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">data</span><span class="p">(</span><span class="dl">'</span><span class="s1">id</span><span class="dl">'</span><span class="p">);</span>
+          <span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+    
+          <span class="kd">const</span> <span class="nx">lastValue</span> <span class="o">=</span> <span class="o">+</span><span class="nx">input</span><span class="p">.</span><span class="nx">val</span><span class="p">();</span>
+          <span class="kd">var</span> <span class="nx">num</span> <span class="o">=</span> <span class="nx">lastValue</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+          <span class="k">if</span> <span class="p">(</span><span class="nx">num</span> <span class="o">&lt;=</span> <span class="mi">20</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">input</span><span class="p">.</span><span class="nx">val</span><span class="p">(</span><span class="nx">num</span><span class="p">);</span>
+          <span class="p">}</span>      
+        <span class="p">});</span>
+    
+        <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">button[name="minus"]</span><span class="dl">'</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+          <span class="kd">var</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">data</span><span class="p">(</span><span class="dl">'</span><span class="s1">id</span><span class="dl">'</span><span class="p">);</span>
+          <span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+          <span class="kd">const</span> <span class="nx">lastValue</span> <span class="o">=</span> <span class="o">+</span><span class="nx">input</span><span class="p">.</span><span class="nx">val</span><span class="p">();</span>
+          <span class="kd">var</span> <span class="nx">num</span> <span class="o">=</span> <span class="nx">lastValue</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+          <span class="k">if</span> <span class="p">(</span><span class="nx">num</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">input</span><span class="p">.</span><span class="nx">val</span><span class="p">(</span><span class="nx">num</span><span class="p">);</span>
+          <span class="p">}</span>      
+        <span class="p">});</span>
+      <span class="p">}</span>
+    <span class="p">}</span></code></pre></figure>
+
+<p>As You can see I added a bit of client side validation to make sure counter does not go below 0 and above 20.
+Now All left to do is to initialize the <code class="highlighter-rouge">NumberComponent</code> when the page loads, so I added it to my packs (I’m using <a href="https://github.com/rails/webpacker">webpacker</a>) and wrote:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+     <span class="k">new</span> <span class="nx">GameOrderComponent</span><span class="p">()</span>
+   <span class="p">});</span></code></pre></figure>
+
+<p>And it works!.</p>
+
+<p>but it’s already a bit of a mess, I need to search for the relevant buttons, I don’t know how it’ll behave when 
+content of page changes (turbolinks, other dynamic behavior etc.) I though to myslef, “it would be much easier to annotate the relevant html items to describe their behavior”.
+But I did not want to make the client super complex, I just want something that’ll help me to model my code without all the hassle.</p>
+
+<p>I did some research (very intensive googling) and found <a href="https://github.com/stimulusjs/stimulus">Stimulus</a>.
+Its a library that decouples your javascript from the html like css decouple styling from html, which is pretty nice.</p>
+
+<p>The concepts are pretty simple and familiar, you got:</p>
+
+<ul>
+  <li>Controller - to group a bunch of html elements in one context (numberController)</li>
+  <li>Target - to allow access dom element inside the controller (instead of jQuery selector) (input)</li>
+  <li>Action - to respond to dom element event and act (button click)</li>
+</ul>
+
+<p>That’s all, simple huh?</p>
+
+<p>This is how it looks</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">`
+<span class="nt">&lt;div</span> <span class="na">data-controller=</span><span class="s">"number"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">data-action=</span><span class="s">"click-&gt;number#minusOne"</span><span class="nt">&gt;</span>-<span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">data-target=</span><span class="s">"number.input"</span> <span class="na">value=</span><span class="s">"0"</span> <span class="na">readonly=</span><span class="s">"readonly"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">data-action=</span><span class="s">"click-&gt;number#plusOne"</span><span class="nt">&gt;</span>+<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+`</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// number_controller.js</span>
+<span class="k">import</span> <span class="p">{</span><span class="nx">Controller</span><span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">stimulus</span><span class="dl">"</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="kd">class</span> <span class="kd">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
+  
+  <span class="nx">minusOne</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span>
+    <span class="kd">const</span> <span class="nx">lastValue</span> <span class="o">=</span> <span class="o">+</span><span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">lastValue</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="o">+</span><span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="p">}</span>    
+  <span class="p">}</span>
+
+  <span class="nx">plusOne</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span>
+    <span class="kd">const</span> <span class="nx">lastValue</span> <span class="o">=</span> <span class="o">+</span><span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">lastValue</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="o">+</span><span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="kd">get</span> <span class="nx">input</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">targets</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="dl">'</span><span class="s1">input</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">}</span>  
+<span class="p">}</span></code></pre></figure>
+
+<p>I didn’t write less code but,</p>
+
+<ul>
+  <li>The code is more readable</li>
+  <li>No need to initialize the controller, Stimulus take care of that.</li>
+  <li>You get access to the actual html element, which keeps everything straightforward.</li>
+  <li>No need to worry about dom changes, Stimulus take care of that.</li>
+</ul>
+
+<p>I know that everyone thinks react angular and vue is the s*** but I think its good for large organizations where you have a separate front-end team and back-end team. 
+When you build something new by yourself or with some friends, there is no good reason to start with client side rendering (unless you got a few million users on day one which is less likely)</p>
+
+<p>There are also small companies with a team of full stackers, who might also consider this approach.</p>
+
+<p>If you got a bit stimulated, you can read a small guide <a href="https://stimulusjs.org/handbook/introduction">here</a></p>
+
+:ET

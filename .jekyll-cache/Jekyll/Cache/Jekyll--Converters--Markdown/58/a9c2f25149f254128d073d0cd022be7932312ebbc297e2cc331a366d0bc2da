@@ -1,0 +1,4 @@
+I"<p dir="ltr">After a few hours of fighting with google I decided to write it all here:</p>
+<p dir="ltr">*This post is more relevant for windows users but can help others.</p>
+<p dir="ltr">What do you need to have:<br />First you need to have ruby 1.9.2+<br />Devkit<br />then you need rails 3+<br />then u need the bundler gem<br />then go to getting started with mongoid <br />then install mongo locally<br />then check it all good<br />then add acoount in heroku<br />then create app<br />then add your key<br />then push</p>
+:ET
