@@ -268,4 +268,9 @@ var store = [{
         "excerpt":"If you’re building forms with rails, whether you’re using a gem for it or working with pure rails forms, you should know this. Rails uses form builder to allow you to call all the standard label/input/select methods, the exact class name is ActionView::Helpers::FormBuilder When calling ‘form_for’ you get a fresh...","categories": [],
         "tags": ["ruby","rails","form","component"],
         "url": "https://kinnrot.github.io/building-your-own-rails-form-builder/",
+        "teaser":null},{
+        "title": "Keep Track on Coverage",
+        "excerpt":"Recently I discovered Danger, an amazing tool you should check out no matter what. I can write a ton of use cases that serves me on my day to day work, but let’s start with one which I like a lot. Do you know how much of your code is...","categories": [],
+        "tags": [],
+        "url": "https://kinnrot.github.io/keep-track-on-coverage/",
         "teaser":null}]
