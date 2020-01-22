@@ -1,0 +1,2 @@
+I";<p>Warning! just figure out a mistake that can happen to every other programmer, and even brogrammers.<br /><br />I defined a method on my model that has the same name as one of the field of the model, because I used a dynamic language (ruby on rails) it was pretty hard to understand this issue (took me more than 1 hour).<br /><br />So a little tip:<br /><br />When thinking about names of actions and fields of your model, work with conventions and guidelines like:<br /><b>Don’t name your fields after action names!!!</b><br /><b><br /></b><br />that’s it.</p>
+:ET
