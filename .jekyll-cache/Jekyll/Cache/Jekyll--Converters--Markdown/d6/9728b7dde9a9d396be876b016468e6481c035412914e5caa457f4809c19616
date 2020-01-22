@@ -1,2 +1,0 @@
-I""<div><div><p>Just a little tip for writing a friendlier code.<br />If you're method returns an expression, first assign it to a variable and then return him.<br />It'll be much easier to debug inside this method and fetch all results when watching this variable.</p></div>That's it !</div>
-:ET

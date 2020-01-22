@@ -1,2 +1,0 @@
-I"ª<p dir="ltr">Never create multiple instances of a controller that generates the same view, cause you're event's registrations will be duplicated over and over again!</p>
-:ET

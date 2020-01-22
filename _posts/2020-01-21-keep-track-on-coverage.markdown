@@ -2,6 +2,8 @@
 layout: post
 title: "Keep Track on Coverage"
 date: 2020-01-21T17:40:16+02:00
+author: Chen Kinnrot 
+tags: danger simple-cov code-coverage 
 ---
 
 Recently I discovered [Danger](https://github.com/danger/danger), an amazing tool you should check out no matter what.
