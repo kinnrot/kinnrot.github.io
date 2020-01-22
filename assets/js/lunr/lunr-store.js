@@ -271,6 +271,11 @@ var store = [{
         "teaser":null},{
         "title": "Keep Track on Coverage",
         "excerpt":"Recently I discovered Danger, an amazing tool you should check out no matter what. I can write a ton of use cases that serves me on my day to day work, but let’s start with one which I like a lot. Do you know how much of your code is...","categories": [],
-        "tags": [],
+        "tags": ["danger","simple-cov","code-coverage"],
         "url": "https://kinnrot.github.io/keep-track-on-coverage/",
+        "teaser":null},{
+        "title": "Simulate Click on Google Geo Chart",
+        "excerpt":"So I found out it’s not so documented, hopefully google will index this. I have a page on my system that shows a google geo chart (same as this) When clicking on a country on the map lot’s of interesting things happens. And I wanted to implement a ui automation...","categories": [],
+        "tags": ["browser-automation","testing","capybara","maps","google-charts"],
+        "url": "https://kinnrot.github.io/simulate-click-on-google-geo-chart/",
         "teaser":null}]

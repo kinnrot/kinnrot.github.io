@@ -1,0 +1,631 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.17.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Simulate Click on Google Geo Chart - cdblg</title>
+<meta name="description" content="So I found out it’s not so documented, hopefully google will index this.I have a page on my  system that shows a google geo chart (same as this)When clicking on a country on the map lot’s of interesting things happens. And I wanted to implement a ui automation test to cover this use case.">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="cdblg">
+<meta property="og:title" content="Simulate Click on Google Geo Chart">
+<meta property="og:url" content="https://kinnrot.github.io/simulate-click-on-google-geo-chart/">
+
+
+  <meta property="og:description" content="So I found out it’s not so documented, hopefully google will index this.I have a page on my  system that shows a google geo chart (same as this)When clicking on a country on the map lot’s of interesting things happens. And I wanted to implement a ui automation test to cover this use case.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2020-01-22T21:27:38+02:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://kinnrot.github.io/simulate-click-on-google-geo-chart/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Chen Kinnrot",
+      "url": "https://kinnrot.github.io/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="cdblg Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-103259749-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-103259749-1', { 'optimize_id': 'GTM-KXX4C9K'});
+</script>
+<!-- Anti-flicker snippet (recommended)  -->
+<style>.async-hide { opacity: 0 !important} </style>
+<script>(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
+  h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
+  (a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+})(window,document.documentElement,'async-hide','dataLayer',4000,
+  {'OPT_CONTAINER_ID':true});</script>
+<!-- -->
+
+  </head>
+
+  <body class="layout--post">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          cdblg
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about" >About</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="https://kinnrot.github.io/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        <li class="current">Simulate Click on Google Geo Chart</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name"></h3>
+    
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Simulate Click on Google Geo Chart">
+    <meta itemprop="description" content="So I found out it’s not so documented, hopefully google will index this.I have a page on my  system that shows a google geo chart (same as this)When clicking on a country on the map lot’s of interesting things happens. And I wanted to implement a ui automation test to cover this use case.">
+    <meta itemprop="datePublished" content="January 22, 2020">
+    
+
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Simulate Click on Google Geo Chart
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+
+</p>
+          
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>So I found out it’s not so documented, hopefully google will index this.
+I have a page on my  system that shows a google geo chart (same as <a href="https://developers.google.com/chart/interactive/docs/gallery/geochart">this</a>)
+When clicking on a country on the map lot’s of interesting things happens. And I wanted to implement a ui automation test to cover this use case.</p>
+
+<p>It’s not so easy cause even if you find the right svg path object and try clicking on it you get some interception errors.
+So I googled a bit without any luck, but the geo chart documents came to the rescue.</p>
+
+<p>The easiest way is to run some javascript:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">yourChart</span> <span class="o">=</span> <span class="nx">Chartkick</span><span class="p">.</span><span class="nx">charts</span><span class="p">[</span><span class="dl">'</span><span class="s1">counutries-map</span><span class="dl">'</span><span class="p">].</span><span class="nx">chart</span> <span class="c1">// Replace with code that gets your chart</span>
+<span class="nx">google</span><span class="p">.</span><span class="nx">visualization</span><span class="p">.</span><span class="nx">events</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="nx">yourChart</span><span class="p">,</span> <span class="dl">'</span><span class="s1">regionClick</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">region</span><span class="p">:</span><span class="dl">'</span><span class="s1">US</span><span class="dl">'</span> <span class="p">});</span></code></pre></figure>
+
+<p>This code triggers an event on the chart object that the United States region was clicked. super simple and easy
+I’m using <a href="http://teamcapybara.github.io/capybara/">capybara</a> and it looks like this:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">    <span class="n">page</span><span class="p">.</span><span class="nf">evaluate_script</span><span class="p">(</span><span class="o">&lt;&lt;~</span><span class="no">JS</span><span class="p">)</span><span class="sh">
+        function(){
+            var yourChart = Chartkick.charts['counutries-map'].chart // Replace with code that gets your chart
+            google.visualization.events.trigger(yourChart, 'regionClick', { region:'US' });
+        }()
+</span><span class="no">      JS</span></code></pre></figure>
+
+<p>It’s just injecting a self executing function to the page.</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/browser-automation" class="page__taxonomy-item" rel="tag">browser-automation</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/capybara" class="page__taxonomy-item" rel="tag">capybara</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/google-charts" class="page__taxonomy-item" rel="tag">google-charts</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/maps" class="page__taxonomy-item" rel="tag">maps</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/testing" class="page__taxonomy-item" rel="tag">testing</a>
+    
+    </span>
+  </p>
+
+
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-01-22T21:27:38+02:00">January 22, 2020</time></p>
+        
+
+      </footer>
+
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Simulate+Click+on+Google+Geo+Chart%20https%3A%2F%2Fkinnrot.github.io%2Fsimulate-click-on-google-geo-chart%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fkinnrot.github.io%2Fsimulate-click-on-google-geo-chart%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fkinnrot.github.io%2Fsimulate-click-on-google-geo-chart%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/keep-track-on-coverage/" class="pagination--pager" title="Keep Track on Coverage
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Comments</h4>
+      <section id="disqus_thread"></section>
+    
+</div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/keep-track-on-coverage/" rel="permalink">Keep Track on Coverage
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Recently I discovered Danger, an amazing tool you should check out no matter what.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/building-your-own-rails-form-builder/" rel="permalink">Building your own rails form builder
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">If you’re building forms with rails, whether you’re using a gem for it or working with pure rails forms, you should know this.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/android-lifecycle-aware-modal/" rel="permalink">Android Lifecycle Aware Modal
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Sometimes we want to show the user an alert when somethings wrong or we just need to give some extra info,
+For example; Ask the user if he is sure he wanna l...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/live-data-pitfall-you-should-be-aware-of/" rel="permalink">Live Data Pitfall You Should Be Aware Of
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">When working with MutableLiveData you can update the observable value in 2 ways:
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+</div>
+<div id="codefund_ad"></div>
+<script src="https://codefund.io/scripts/15927f6c-5043-4514-b0d2-ce3b9090ae4c/embed.js?template=bottom-bar"></script>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 Chen Kinnrot. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+
+
+
+  <script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-103259749-1']);
+  
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://kinnrot.github.io/simulate-click-on-google-geo-chart/";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/simulate-click-on-google-geo-chart"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://cdblg.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>
