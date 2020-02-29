@@ -1,0 +1,110 @@
+I"�<p>If you ever used any <a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">MVC</a> framework, I’m sure you asked yourself more than once, ‘Where should I put this piece of code?’ (If not that’s also fine).
+Well, there is no one answer for all problems but, I asked it a lot.</p>
+
+<p>In this post, I’m gonna focus about the view part.</p>
+
+<p>View objects, AKA view models, but any other name is fine (presenter view object, view controller mediator, whatever).</p>
+
+<h2 id="why-do-i-need-it">Why do I need it?</h2>
+<p>Well, that’s easy, I got a controller action, need to fetch some data from a few places, Data-base, cache, external API, session, and who knows. 
+Next, I need to put this data on a view, the view can be in different formats: HTML, JSON, XML, PDF, whatever, it’s the same data, presented in different formats. 
+this data need to go through some manipulations to be more human friendly.                                                                                    <br />
+What I just described is 80% of apps (web, mobile, desktop) scenarios.
+Assuming your model is not a <a href="http://www.cqrs.nu/tutorial/cs/03-read-models">read model</a> you can’t just fetch one model/list of models and put it on a view.
+You’ll probably have to do some table joins, filters, sorting and a bunch of other things.
+So first recommendation is to create a query class for each query you need. The controller can call this query directly.
+Next comes the data manipulation this is where the view model comes to the picture. The view model gets data and make it presentable, Why not putting this logic directly in view. cause views should be stupid as possible, they are not classes, they’re hard to debug, so keep them as simple as possible.
+And if you have multiple views for the same data, like API and a web view, You’ll find yourself duplicating logic for each view.</p>
+
+<p>There is an issue with directly passing query results to a view model, you are risking with N+1 query performance issues, 
+cause if you pass an active record model to a view model and view model access a referenced object that wasn’t pre fetched a DB query will run, If you got a list of 50 models,
+each with 4 relations not pre-fetched, you got 200 extra queries for a single view, that’s not good.</p>
+
+<p>It’s also considered a bad practice to have data queries in the view layer, but that’s for another post.</p>
+
+<p>To solve this kind of issue you have a few possible solutions,</p>
+
+<ol>
+  <li>
+    <p>Do not pass active record models to the view models, use <a href="https://en.wikipedia.org/wiki/Data_transfer_object">data transfer objects</a>, plain poro.</p>
+  </li>
+  <li>
+    <p>Do not pass active record models to the view models, use :attributes method, relation won’t work, but not unexpected queries</p>
+  </li>
+  <li>
+    <p>Make sure you prefetch everything the view needs, and pass the model directly to view model, !danger! if other developers work with you, and they don’t know the consequences.</p>
+  </li>
+  <li>
+    <p>Use a zero relations read model for each view, query it, and send it as is to the view model.</p>
+  </li>
+</ol>
+
+<p>If you don’t wanna implement something on you own, here are some gems that’ll give you some structure and syntactic sugar:</p>
+
+<ul>
+  <li><a href="https://github.com/drapergem/draper">draper</a> - uses the decorator pattern to wrap active record models, allowing to add view specific methods on top of existing models.</li>
+  <li><a href="https://github.com/trailblazer/cells">cells</a> - component based approach to encapsulate view parts, and logic to classes.</li>
+  <li><a href="https://rom-rb.org/">rom</a> - full blown object mapper</li>
+  <li><a href="https://dry-rb.org/gems/dry-view/0.7/">dry-view</a> - A component based view framework</li>
+</ul>
+
+<p>Personally, I choose to write my own PORO, to keep things as simple as possible, I try to pass data, not models, this way my view models layer is not bound to any data store structure.
+ The query result goes to a view model factory class, that responsible for extracting the relevant data for the view model, and view gets rendered with the view model.</p>
+
+<p>Here is an example:</p>
+
+<p>View model -</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"> 
+
+    <span class="k">module</span> <span class="nn">ViewModels</span>
+     <span class="k">class</span> <span class="nc">GeoMap</span>
+       <span class="nb">attr_reader</span> <span class="ss">:map_data</span>
+ 
+       <span class="k">def</span> <span class="nf">map_options</span>
+         <span class="p">{</span>
+           <span class="ss">id: </span><span class="s1">'fans-map'</span><span class="p">,</span>
+           <span class="ss">width: </span><span class="s1">'100%'</span><span class="p">,</span>
+           <span class="ss">height: </span><span class="s1">'85%'</span><span class="p">,</span>
+           <span class="ss">label: </span><span class="s1">'Fans'</span><span class="p">,</span>
+           <span class="ss">min_value: </span><span class="mi">0</span><span class="p">,</span>
+           <span class="ss">colors: </span><span class="sx">%w[#e7f7f0 #19B26C]</span>
+         <span class="p">}</span>
+       <span class="k">end</span>
+ 
+       <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">map_data</span><span class="p">,</span> <span class="n">view_context</span><span class="p">)</span>
+         <span class="vi">@map_data</span> <span class="o">=</span> <span class="n">map_data</span>
+         <span class="vi">@view_context</span> <span class="o">=</span> <span class="n">view_context</span>
+       <span class="k">end</span>
+ 
+       <span class="k">def</span> <span class="nf">max_fans</span>
+         <span class="vi">@map_data</span><span class="p">.</span><span class="nf">max_by</span> <span class="p">{</span> <span class="o">|</span><span class="n">_country</span><span class="p">,</span> <span class="n">fans</span><span class="o">|</span> <span class="n">fans</span> <span class="p">}[</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="vi">@map_data</span><span class="p">.</span><span class="nf">present?</span>
+       <span class="k">end</span>
+ 
+       <span class="k">def</span> <span class="nf">max_fans_humanize</span>
+         <span class="vi">@view_context</span><span class="p">.</span><span class="nf">number_to_human</span><span class="p">(</span><span class="n">max_fans</span><span class="p">)</span>
+       <span class="k">end</span>
+ 
+       <span class="k">def</span> <span class="nf">mid_fans_humanize</span>
+         <span class="vi">@view_context</span><span class="p">.</span><span class="nf">number_to_human</span><span class="p">(</span><span class="n">max_fans</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="k">if</span> <span class="n">max_fans</span>
+       <span class="k">end</span>
+     <span class="k">end</span>   
+    <span class="k">end</span></code></pre></figure>
+
+<p>View  (Written in slim, using chartkick for the geo map) -</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"> 
+     
+     <span class="o">=</span> <span class="n">geo_chart</span> <span class="vi">@geo_map</span><span class="p">.</span><span class="nf">map_data</span><span class="p">,</span> <span class="vi">@geo_map</span><span class="p">.</span><span class="nf">map_options</span>
+     </code></pre></figure>
+
+<p>Controller -</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"> 
+    <span class="c1"># Map data came from a service object</span>
+    <span class="vi">@geo_map</span> <span class="o">=</span> <span class="no">GeoMap</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">map_data</span><span class="p">,</span> <span class="n">view_context</span><span class="p">)</span>
+    
+ </code></pre></figure>
+
+<p><strong>Would love to hear from you, What’s your favorite view objects strategy?</strong></p>
+:ET

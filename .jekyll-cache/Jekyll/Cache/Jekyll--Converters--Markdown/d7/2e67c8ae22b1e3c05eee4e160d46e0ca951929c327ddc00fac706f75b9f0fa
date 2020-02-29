@@ -1,0 +1,7 @@
+I"�<p>If you ever used any <a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">MVC</a> framework, I’m sure you asked yourself more than once, ‘Where should I put this piece of code?’ (If not that’s also fine).
+Well, there is no one answer for all problems but, I asked it a lot.</p>
+
+<p>In this post, I’m gonna focus about the view part.</p>
+
+<p>View objects, AKA view models, but any other name is fine (presenter view object, view controller mediator, whatever).</p>
+:ET
