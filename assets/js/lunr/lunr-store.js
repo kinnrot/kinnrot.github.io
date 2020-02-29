@@ -154,7 +154,7 @@ var store = [{
         "tags": ["php async"],
         "url": "https://kinnrot.github.io/php-post-response-script-execution/",
         "teaser":null},{
-        "title": "coffee-script is another piece of shit",
+        "title": "coffee-script is just another version of javascript",
         "excerpt":"Hi, A few months ago I discovered this new stuff called coffee script, and thought to myself, \"this is&nbsp;awesome I'll write less and do more\" Today, I tried to continue a development of a pretty fat client side and tried to find myself in the 1000 lines of code I...","categories": [],
         "tags": [],
         "url": "https://kinnrot.github.io/coffee-script-is-another-piece-of-shit/",
@@ -278,4 +278,9 @@ var store = [{
         "excerpt":"So I found out it’s not so documented, hopefully google will index this. I have a page on my system that shows a google geo chart (same as this) When clicking on a country on the map lot’s of interesting things happens. And I wanted to implement a ui automation...","categories": [],
         "tags": ["browser-automation","testing","capybara","maps","google-charts"],
         "url": "https://kinnrot.github.io/simulate-click-on-google-geo-chart/",
+        "teaser":null},{
+        "title": "Rails Presentation Objects",
+        "excerpt":"If you ever used any MVC framework, I’m sure you asked yourself more than once, ‘Where should I put this piece of code?’ (If not that’s also fine). Well, there is no one answer for all problems but, I asked it a lot. In this post, I’m gonna focus about...","categories": [],
+        "tags": ["rails","view-models","presenter","view","view-context","mvc"],
+        "url": "https://kinnrot.github.io/rails-presentation-objects-guide/",
         "teaser":null}]

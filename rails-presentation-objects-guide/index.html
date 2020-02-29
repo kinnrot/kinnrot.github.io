@@ -1,0 +1,721 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.17.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Rails Presentation Objects - cdblg</title>
+<meta name="description" content="If you ever used any MVC framework, I’m sure you asked yourself more than once, ‘Where should I put this piece of code?’ (If not that’s also fine).Well, there is no one answer for all problems but, I asked it a lot.In this post, I’m gonna focus about the view part.View objects, AKA view models, but any other name is fine (presenter view object, view controller mediator, whatever).">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="cdblg">
+<meta property="og:title" content="Rails Presentation Objects">
+<meta property="og:url" content="https://kinnrot.github.io/rails-presentation-objects-guide/">
+
+
+  <meta property="og:description" content="If you ever used any MVC framework, I’m sure you asked yourself more than once, ‘Where should I put this piece of code?’ (If not that’s also fine).Well, there is no one answer for all problems but, I asked it a lot.In this post, I’m gonna focus about the view part.View objects, AKA view models, but any other name is fine (presenter view object, view controller mediator, whatever).">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2020-02-23T09:19:37+02:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://kinnrot.github.io/rails-presentation-objects-guide/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Chen Kinnrot",
+      "url": "https://kinnrot.github.io/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="cdblg Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-103259749-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-103259749-1', { 'optimize_id': 'GTM-KXX4C9K'});
+</script>
+<!-- Anti-flicker snippet (recommended)  -->
+<style>.async-hide { opacity: 0 !important} </style>
+<script>(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
+  h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
+  (a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+})(window,document.documentElement,'async-hide','dataLayer',4000,
+  {'OPT_CONTAINER_ID':true});</script>
+<!-- -->
+
+  </head>
+
+  <body class="layout--post">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          cdblg
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about" >About</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="https://kinnrot.github.io/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        <li class="current">Rails Presentation Objects</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name"></h3>
+    
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Rails Presentation Objects">
+    <meta itemprop="description" content="If you ever used any MVC framework, I’m sure you asked yourself more than once, ‘Where should I put this piece of code?’ (If not that’s also fine).Well, there is no one answer for all problems but, I asked it a lot.In this post, I’m gonna focus about the view part.View objects, AKA view models, but any other name is fine (presenter view object, view controller mediator, whatever).">
+    <meta itemprop="datePublished" content="February 23, 2020">
+    
+
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Rails Presentation Objects
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  7 minute read
+
+</p>
+          
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>If you ever used any <a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">MVC</a> framework, I’m sure you asked yourself more than once, ‘Where should I put this piece of code?’ (If not that’s also fine).
+Well, there is no one answer for all problems but, I asked it a lot.</p>
+
+<p>In this post, I’m gonna focus about the view part.</p>
+
+<p>View objects, AKA view models, but any other name is fine (presenter view object, view controller mediator, whatever).</p>
+
+<h2 id="why-do-i-need-it">Why do I need it?</h2>
+<p>Well, that’s easy, I got a controller action, need to fetch some data from a few places, Data-base, cache, external API, session, and who knows. 
+Next, I need to put this data on a view, the view can be in different formats: HTML, JSON, XML, PDF, whatever, it’s the same data, presented in different formats. 
+this data need to go through some manipulations to be more human friendly.                                                                                    <br />
+What I just described is 80% of apps (web, mobile, desktop) scenarios.
+Assuming your model is not a <a href="http://www.cqrs.nu/tutorial/cs/03-read-models">read model</a> you can’t just fetch one model/list of models and put it on a view.
+You’ll probably have to do some table joins, filters, sorting and a bunch of other things.
+So first recommendation is to create a query class for each query you need. The controller can call this query directly.
+Next comes the data manipulation this is where the view model comes to the picture. The view model gets data and make it presentable, Why not putting this logic directly in view. cause views should be stupid as possible, they are not classes, they’re hard to debug, so keep them as simple as possible.
+And if you have multiple views for the same data, like API and a web view, You’ll find yourself duplicating logic for each view.</p>
+
+<p>There is an issue with directly passing query results to a view model, you are risking with N+1 query performance issues, 
+cause if you pass an active record model to a view model and view model access a referenced object that wasn’t pre fetched a DB query will run, If you got a list of 50 models,
+each with 4 relations not pre-fetched, you got 200 extra queries for a single view, that’s not good.</p>
+
+<p>It’s also considered a bad practice to have data queries in the view layer, but that’s for another post.</p>
+
+<p>To solve this kind of issue you have a few possible solutions,</p>
+
+<ol>
+  <li>
+    <p>Do not pass active record models to the view models, use <a href="https://en.wikipedia.org/wiki/Data_transfer_object">data transfer objects</a>, plain poro.</p>
+  </li>
+  <li>
+    <p>Do not pass active record models to the view models, use :attributes method, relation won’t work, but not unexpected queries</p>
+  </li>
+  <li>
+    <p>Make sure you prefetch everything the view needs, and pass the model directly to view model, !danger! if other developers work with you, and they don’t know the consequences.</p>
+  </li>
+  <li>
+    <p>Use a zero relations read model for each view, query it, and send it as is to the view model.</p>
+  </li>
+</ol>
+
+<p>If you don’t wanna implement something on you own, here are some gems that’ll give you some structure and syntactic sugar:</p>
+
+<ul>
+  <li><a href="https://github.com/drapergem/draper">draper</a> - uses the decorator pattern to wrap active record models, allowing to add view specific methods on top of existing models.</li>
+  <li><a href="https://github.com/trailblazer/cells">cells</a> - component based approach to encapsulate view parts, and logic to classes.</li>
+  <li><a href="https://rom-rb.org/">rom</a> - full blown object mapper</li>
+  <li><a href="https://dry-rb.org/gems/dry-view/0.7/">dry-view</a> - A component based view framework</li>
+</ul>
+
+<p>Personally, I choose to write my own PORO, to keep things as simple as possible, I try to pass data, not models, this way my view models layer is not bound to any data store structure.
+ The query result goes to a view model factory class, that responsible for extracting the relevant data for the view model, and view gets rendered with the view model.</p>
+
+<p>Here is an example:</p>
+
+<p>View model -</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"> 
+
+    <span class="k">module</span> <span class="nn">ViewModels</span>
+     <span class="k">class</span> <span class="nc">GeoMap</span>
+       <span class="nb">attr_reader</span> <span class="ss">:map_data</span>
+ 
+       <span class="k">def</span> <span class="nf">map_options</span>
+         <span class="p">{</span>
+           <span class="ss">id: </span><span class="s1">'fans-map'</span><span class="p">,</span>
+           <span class="ss">width: </span><span class="s1">'100%'</span><span class="p">,</span>
+           <span class="ss">height: </span><span class="s1">'85%'</span><span class="p">,</span>
+           <span class="ss">label: </span><span class="s1">'Fans'</span><span class="p">,</span>
+           <span class="ss">min_value: </span><span class="mi">0</span><span class="p">,</span>
+           <span class="ss">colors: </span><span class="sx">%w[#e7f7f0 #19B26C]</span>
+         <span class="p">}</span>
+       <span class="k">end</span>
+ 
+       <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">map_data</span><span class="p">,</span> <span class="n">view_context</span><span class="p">)</span>
+         <span class="vi">@map_data</span> <span class="o">=</span> <span class="n">map_data</span>
+         <span class="vi">@view_context</span> <span class="o">=</span> <span class="n">view_context</span>
+       <span class="k">end</span>
+ 
+       <span class="k">def</span> <span class="nf">max_fans</span>
+         <span class="vi">@map_data</span><span class="p">.</span><span class="nf">max_by</span> <span class="p">{</span> <span class="o">|</span><span class="n">_country</span><span class="p">,</span> <span class="n">fans</span><span class="o">|</span> <span class="n">fans</span> <span class="p">}[</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="vi">@map_data</span><span class="p">.</span><span class="nf">present?</span>
+       <span class="k">end</span>
+ 
+       <span class="k">def</span> <span class="nf">max_fans_humanize</span>
+         <span class="vi">@view_context</span><span class="p">.</span><span class="nf">number_to_human</span><span class="p">(</span><span class="n">max_fans</span><span class="p">)</span>
+       <span class="k">end</span>
+ 
+       <span class="k">def</span> <span class="nf">mid_fans_humanize</span>
+         <span class="vi">@view_context</span><span class="p">.</span><span class="nf">number_to_human</span><span class="p">(</span><span class="n">max_fans</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="k">if</span> <span class="n">max_fans</span>
+       <span class="k">end</span>
+     <span class="k">end</span>   
+    <span class="k">end</span></code></pre></figure>
+
+<p>View  (Written in slim, using chartkick for the geo map) -</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"> 
+     
+     <span class="o">=</span> <span class="n">geo_chart</span> <span class="vi">@geo_map</span><span class="p">.</span><span class="nf">map_data</span><span class="p">,</span> <span class="vi">@geo_map</span><span class="p">.</span><span class="nf">map_options</span>
+     </code></pre></figure>
+
+<p>Controller -</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"> 
+    <span class="c1"># Map data came from a service object</span>
+    <span class="vi">@geo_map</span> <span class="o">=</span> <span class="no">GeoMap</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">map_data</span><span class="p">,</span> <span class="n">view_context</span><span class="p">)</span>
+    
+ </code></pre></figure>
+
+<p><strong>Would love to hear from you, What’s your favorite view objects strategy?</strong></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/mvc" class="page__taxonomy-item" rel="tag">mvc</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/presenter" class="page__taxonomy-item" rel="tag">presenter</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/rails" class="page__taxonomy-item" rel="tag">rails</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/view-context" class="page__taxonomy-item" rel="tag">view-context</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/view-models" class="page__taxonomy-item" rel="tag">view-models</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/view" class="page__taxonomy-item" rel="tag">view</a>
+    
+    </span>
+  </p>
+
+
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-02-23T09:19:37+02:00">February 23, 2020</time></p>
+        
+
+      </footer>
+
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Rails+Presentation+Objects%20https%3A%2F%2Fkinnrot.github.io%2Frails-presentation-objects-guide%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fkinnrot.github.io%2Frails-presentation-objects-guide%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fkinnrot.github.io%2Frails-presentation-objects-guide%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/simulate-click-on-google-geo-chart/" class="pagination--pager" title="Simulate Click on Google Geo Chart
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Comments</h4>
+      <section id="disqus_thread"></section>
+    
+</div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/simulate-click-on-google-geo-chart/" rel="permalink">Simulate Click on Google Geo Chart
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">So I found out it’s not so documented, hopefully google will index this.
+I have a page on my  system that shows a google geo chart (same as this)
+When clicki...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/keep-track-on-coverage/" rel="permalink">Keep Track on Coverage
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Recently I discovered Danger, an amazing tool you should check out no matter what.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/building-your-own-rails-form-builder/" rel="permalink">Building your own rails form builder
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">If you’re building forms with rails, whether you’re using a gem for it or working with pure rails forms, you should know this.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/android-lifecycle-aware-modal/" rel="permalink">Android Lifecycle Aware Modal
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Sometimes we want to show the user an alert when somethings wrong or we just need to give some extra info,
+For example; Ask the user if he is sure he wanna l...</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+</div>
+<div id="codefund_ad"></div>
+<script src="https://codefund.io/scripts/15927f6c-5043-4514-b0d2-ce3b9090ae4c/embed.js?template=bottom-bar"></script>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 Chen Kinnrot. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+
+
+
+  <script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-103259749-1']);
+  
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://kinnrot.github.io/rails-presentation-objects-guide/";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/rails-presentation-objects-guide"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://cdblg.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

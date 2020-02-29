@@ -1,4 +1,112 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://kinnrot.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kinnrot.github.io/" rel="alternate" type="text/html" /><updated>2020-01-22T21:50:38+02:00</updated><id>https://kinnrot.github.io/feed.xml</id><title type="html">cdblg</title><subtitle>An amazing website.</subtitle><author><name>Chen Kinnrot</name><email>kinnrot@gmail.com</email></author><entry><title type="html">Simulate Click on Google Geo Chart</title><link href="https://kinnrot.github.io/simulate-click-on-google-geo-chart/" rel="alternate" type="text/html" title="Simulate Click on Google Geo Chart" /><published>2020-01-22T21:27:38+02:00</published><updated>2020-01-22T21:27:38+02:00</updated><id>https://kinnrot.github.io/simulate-click-on-google-geo-chart</id><content type="html" xml:base="https://kinnrot.github.io/simulate-click-on-google-geo-chart/">&lt;p&gt;So I found out it’s not so documented, hopefully google will index this.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://kinnrot.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kinnrot.github.io/" rel="alternate" type="text/html" /><updated>2020-02-29T16:09:15+02:00</updated><id>https://kinnrot.github.io/feed.xml</id><title type="html">cdblg</title><subtitle>An amazing website.</subtitle><author><name>Chen Kinnrot</name><email>kinnrot@gmail.com</email></author><entry><title type="html">Rails Presentation Objects</title><link href="https://kinnrot.github.io/rails-presentation-objects-guide/" rel="alternate" type="text/html" title="Rails Presentation Objects" /><published>2020-02-23T09:19:37+02:00</published><updated>2020-02-23T09:19:37+02:00</updated><id>https://kinnrot.github.io/rails-presentation-objects-guide</id><content type="html" xml:base="https://kinnrot.github.io/rails-presentation-objects-guide/">&lt;p&gt;If you ever used any &lt;a href=&quot;https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller&quot;&gt;MVC&lt;/a&gt; framework, I’m sure you asked yourself more than once, ‘Where should I put this piece of code?’ (If not that’s also fine).
+Well, there is no one answer for all problems but, I asked it a lot.&lt;/p&gt;
+
+&lt;p&gt;In this post, I’m gonna focus about the view part.&lt;/p&gt;
+
+&lt;p&gt;View objects, AKA view models, but any other name is fine (presenter view object, view controller mediator, whatever).&lt;/p&gt;
+
+&lt;h2 id=&quot;why-do-i-need-it&quot;&gt;Why do I need it?&lt;/h2&gt;
+&lt;p&gt;Well, that’s easy, I got a controller action, need to fetch some data from a few places, Data-base, cache, external API, session, and who knows. 
+Next, I need to put this data on a view, the view can be in different formats: HTML, JSON, XML, PDF, whatever, it’s the same data, presented in different formats. 
+this data need to go through some manipulations to be more human friendly.                                                                                    &lt;br /&gt;
+What I just described is 80% of apps (web, mobile, desktop) scenarios.
+Assuming your model is not a &lt;a href=&quot;http://www.cqrs.nu/tutorial/cs/03-read-models&quot;&gt;read model&lt;/a&gt; you can’t just fetch one model/list of models and put it on a view.
+You’ll probably have to do some table joins, filters, sorting and a bunch of other things.
+So first recommendation is to create a query class for each query you need. The controller can call this query directly.
+Next comes the data manipulation this is where the view model comes to the picture. The view model gets data and make it presentable, Why not putting this logic directly in view. cause views should be stupid as possible, they are not classes, they’re hard to debug, so keep them as simple as possible.
+And if you have multiple views for the same data, like API and a web view, You’ll find yourself duplicating logic for each view.&lt;/p&gt;
+
+&lt;p&gt;There is an issue with directly passing query results to a view model, you are risking with N+1 query performance issues, 
+cause if you pass an active record model to a view model and view model access a referenced object that wasn’t pre fetched a DB query will run, If you got a list of 50 models,
+each with 4 relations not pre-fetched, you got 200 extra queries for a single view, that’s not good.&lt;/p&gt;
+
+&lt;p&gt;It’s also considered a bad practice to have data queries in the view layer, but that’s for another post.&lt;/p&gt;
+
+&lt;p&gt;To solve this kind of issue you have a few possible solutions,&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Do not pass active record models to the view models, use &lt;a href=&quot;https://en.wikipedia.org/wiki/Data_transfer_object&quot;&gt;data transfer objects&lt;/a&gt;, plain poro.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Do not pass active record models to the view models, use :attributes method, relation won’t work, but not unexpected queries&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Make sure you prefetch everything the view needs, and pass the model directly to view model, !danger! if other developers work with you, and they don’t know the consequences.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Use a zero relations read model for each view, query it, and send it as is to the view model.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;If you don’t wanna implement something on you own, here are some gems that’ll give you some structure and syntactic sugar:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/drapergem/draper&quot;&gt;draper&lt;/a&gt; - uses the decorator pattern to wrap active record models, allowing to add view specific methods on top of existing models.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/trailblazer/cells&quot;&gt;cells&lt;/a&gt; - component based approach to encapsulate view parts, and logic to classes.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://rom-rb.org/&quot;&gt;rom&lt;/a&gt; - full blown object mapper&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://dry-rb.org/gems/dry-view/0.7/&quot;&gt;dry-view&lt;/a&gt; - A component based view framework&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Personally, I choose to write my own PORO, to keep things as simple as possible, I try to pass data, not models, this way my view models layer is not bound to any data store structure.
+ The query result goes to a view model factory class, that responsible for extracting the relevant data for the view model, and view gets rendered with the view model.&lt;/p&gt;
+
+&lt;p&gt;Here is an example:&lt;/p&gt;
+
+&lt;p&gt;View model -&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt; 
+
+    &lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;ViewModels&lt;/span&gt;
+     &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;GeoMap&lt;/span&gt;
+       &lt;span class=&quot;nb&quot;&gt;attr_reader&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:map_data&lt;/span&gt;
+ 
+       &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;map_options&lt;/span&gt;
+         &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+           &lt;span class=&quot;ss&quot;&gt;id: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'fans-map'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+           &lt;span class=&quot;ss&quot;&gt;width: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'100%'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+           &lt;span class=&quot;ss&quot;&gt;height: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'85%'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+           &lt;span class=&quot;ss&quot;&gt;label: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Fans'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+           &lt;span class=&quot;ss&quot;&gt;min_value: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+           &lt;span class=&quot;ss&quot;&gt;colors: &lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;%w[#e7f7f0 #19B26C]&lt;/span&gt;
+         &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+ 
+       &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;initialize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;map_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;view_context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+         &lt;span class=&quot;vi&quot;&gt;@map_data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;map_data&lt;/span&gt;
+         &lt;span class=&quot;vi&quot;&gt;@view_context&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;view_context&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+ 
+       &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;max_fans&lt;/span&gt;
+         &lt;span class=&quot;vi&quot;&gt;@map_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;max_by&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_country&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fans&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fans&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@map_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;present?&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+ 
+       &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;max_fans_humanize&lt;/span&gt;
+         &lt;span class=&quot;vi&quot;&gt;@view_context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;number_to_human&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max_fans&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+ 
+       &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;mid_fans_humanize&lt;/span&gt;
+         &lt;span class=&quot;vi&quot;&gt;@view_context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;number_to_human&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max_fans&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;max_fans&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+     &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;   
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;View  (Written in slim, using chartkick for the geo map) -&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt; 
+     
+     &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;geo_chart&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@geo_map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;map_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@geo_map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;map_options&lt;/span&gt;
+     &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Controller -&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt; 
+    &lt;span class=&quot;c1&quot;&gt;# Map data came from a service object&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@geo_map&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;GeoMap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;map_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;view_context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    
+ &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;strong&gt;Would love to hear from you, What’s your favorite view objects strategy?&lt;/strong&gt;&lt;/p&gt;</content><author><name>Chen Kinnrot</name></author><category term="rails" /><category term="view-models" /><category term="presenter" /><category term="view" /><category term="view-context" /><category term="mvc" /><summary type="html">If you ever used any MVC framework, I’m sure you asked yourself more than once, ‘Where should I put this piece of code?’ (If not that’s also fine). Well, there is no one answer for all problems but, I asked it a lot. In this post, I’m gonna focus about the view part. View objects, AKA view models, but any other name is fine (presenter view object, view controller mediator, whatever).</summary></entry><entry><title type="html">Simulate Click on Google Geo Chart</title><link href="https://kinnrot.github.io/simulate-click-on-google-geo-chart/" rel="alternate" type="text/html" title="Simulate Click on Google Geo Chart" /><published>2020-01-22T21:27:38+02:00</published><updated>2020-01-22T21:27:38+02:00</updated><id>https://kinnrot.github.io/simulate-click-on-google-geo-chart</id><content type="html" xml:base="https://kinnrot.github.io/simulate-click-on-google-geo-chart/">&lt;p&gt;So I found out it’s not so documented, hopefully google will index this.
 I have a page on my  system that shows a google geo chart (same as &lt;a href=&quot;https://developers.google.com/chart/interactive/docs/gallery/geochart&quot;&gt;this&lt;/a&gt;)
 When clicking on a country on the map lot’s of interesting things happens. And I wanted to implement a ui automation test to cover this use case.&lt;/p&gt;
 
@@ -540,4 +648,4 @@ I use github pages, which is very simple to set up, you just need to create a gi
 &lt;p&gt;&lt;a href=&quot;https://github.com/octopress/octopress&quot;&gt;Octopress&lt;/a&gt; &lt;br /&gt;
 &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&quot;https://github.com/jekyll/minima&quot;&gt;Minima&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;http://jmcglone.com/guides/github-pages/&quot;&gt;Github pages&lt;/a&gt;&lt;/p&gt;</content><author><name>Chen Kinnrot</name></author><category term="jekyll" /><category term="octopress" /><category term="ruby" /><summary type="html">I decided to develop my own blog like all the other cool developers. If you got here, this is what I got so far, it’s not too much, but it’s a start.</summary></entry><entry><title type="html">Watch out for reference duplication instead of instance duplication</title><link href="https://kinnrot.github.io/watch-out-for-reference-duplication/" rel="alternate" type="text/html" title="Watch out for reference duplication instead of instance duplication" /><published>2017-07-18T14:42:00+03:00</published><updated>2017-07-18T14:42:00+03:00</updated><id>https://kinnrot.github.io/watch-out-for-reference-duplication</id><content type="html" xml:base="https://kinnrot.github.io/watch-out-for-reference-duplication/">&lt;br /&gt;&lt;pre style=&quot;background-color: #2b2b2b; color: #c7bab9; font-family: 'mononoki'; font-size: 11.3pt;&quot;&gt;&lt;span style=&quot;color: white;&quot;&gt;# This code will generate 96 instances&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot;background-color: #2b2b2b; color: #c7bab9; font-family: 'mononoki'; font-size: 11.3pt;&quot;&gt;&lt;span style=&quot;color: white;&quot;&gt;ViewStatData &lt;/span&gt;&lt;span style=&quot;color: #cc7833;&quot;&gt;= &lt;/span&gt;&lt;span style=&quot;color: #6d9cbe;&quot;&gt;Struct&lt;/span&gt;.new(&lt;span style=&quot;color: #6d9cbe;&quot;&gt;:&lt;/span&gt;&lt;span style=&quot;background-color: #283b5e; color: #6d9cbe;&quot;&gt;total&lt;/span&gt;, &lt;span style=&quot;color: #6d9cbe;&quot;&gt;:target&lt;/span&gt;, &lt;span style=&quot;color: #6d9cbe;&quot;&gt;:ratio&lt;/span&gt;)&lt;/pre&gt;&lt;pre style=&quot;background-color: #2b2b2b; color: #c7bab9; font-family: 'mononoki'; font-size: 11.3pt;&quot;&gt;&lt;pre style=&quot;font-family: mononoki; font-size: 11.3pt;&quot;&gt;&lt;span style=&quot;color: #a5c261;&quot;&gt;96&lt;/span&gt;.times.map {&lt;span style=&quot;color: #cc7833;&quot;&gt;|&lt;/span&gt;_&lt;span style=&quot;color: #cc7833;&quot;&gt;|&lt;/span&gt;&lt;span style=&quot;color: #6d9cbe;&quot;&gt;ViewStatData&lt;/span&gt;.new(&lt;span style=&quot;color: #a5c261;&quot;&gt;0&lt;/span&gt;, &lt;span style=&quot;color: #a5c261;&quot;&gt;0&lt;/span&gt;, &lt;span style=&quot;color: #a5c261;&quot;&gt;0&lt;/span&gt;)}&lt;/pre&gt;&lt;pre style=&quot;font-family: mononoki; font-size: 11.3pt;&quot;&gt;&lt;/pre&gt;&lt;pre style=&quot;font-family: mononoki; font-size: 11.3pt;&quot;&gt;# And this will not, it'll generate 96 pointers&lt;/pre&gt;&lt;pre style=&quot;font-family: mononoki; font-size: 11.3pt;&quot;&gt;&lt;pre style=&quot;font-family: mononoki; font-size: 11.3pt;&quot;&gt;&lt;span style=&quot;color: #6d9cbe;&quot;&gt;[ViewStatData&lt;/span&gt;.new(&lt;span style=&quot;color: #a5c261;&quot;&gt;0&lt;/span&gt;, &lt;span style=&quot;color: #a5c261;&quot;&gt;0&lt;/span&gt;, &lt;span style=&quot;color: #a5c261;&quot;&gt;0&lt;/span&gt;)] * 96&lt;/pre&gt;&lt;pre style=&quot;font-family: mononoki; font-size: 11.3pt;&quot;&gt;# So Watch out!!!&lt;/pre&gt;&lt;/pre&gt;&lt;/pre&gt;</content><author><name>Chen Kinnrot</name></author><category term="Ruby" /><summary type="html"># This code will generate 96 instancesViewStatData = Struct.new(:total, :target, :ratio)96.times.map {|_|ViewStatData.new(0, 0, 0)}# And this will not, it'll generate 96 pointers[ViewStatData.new(0, 0, 0)] * 96# So Watch out!!!</summary></entry></feed>
+&lt;a href=&quot;http://jmcglone.com/guides/github-pages/&quot;&gt;Github pages&lt;/a&gt;&lt;/p&gt;</content><author><name>Chen Kinnrot</name></author><category term="jekyll" /><category term="octopress" /><category term="ruby" /><summary type="html">I decided to develop my own blog like all the other cool developers. If you got here, this is what I got so far, it’s not too much, but it’s a start.</summary></entry></feed>
