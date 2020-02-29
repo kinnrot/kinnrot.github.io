@@ -1,4 +1,0 @@
-I"�<p>So I found out it’s not so documented, hopefully google will index this.
-I have a page on my  system that shows a google geo chart (same as <a href="https://developers.google.com/chart/interactive/docs/gallery/geochart">this</a>)
-When clicking on a country on the map lot’s of interesting things happens. And I wanted to implement a ui automation test to cover this use case.</p>
-:ET

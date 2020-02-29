@@ -1,2 +1,0 @@
-I"Ñ<pre class="brush: csharp">public class Chen<br />{<br />  public void SayHello()<br />  {<br />    Console.WriteLine("Hello everyone! this is my first blog post, its about time");<br />  }<br />}<br /></pre>
-:ET
