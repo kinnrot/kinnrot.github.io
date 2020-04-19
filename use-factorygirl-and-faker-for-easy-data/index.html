@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  Minimal Mistakes Jekyll Theme 4.17.2 by Michael Rose
+  Minimal Mistakes Jekyll Theme 4.19.1 by Michael Rose
   Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Use FactoryGirl And Faker for easy data generation in unit testing (Part1) - cdblg</title>
-<meta name="description" content="The  most irritating thing in writing tests is the data generation preparation process, sometimes you want to create an object with 20 fields that 10 of them are mandatory but you only care about the value of 1, and you don’t want to mock, cause you interact with other methods and object that fetch this model from db.To me it happens a lot so I found the FactoryGirl + Faker combination that made my life much more easy and now I can write tests in peace.To add them just put in Gemfile: gem “factory_girl_rails”, “~&gt; 4.0”  gem “faker”So lets take a complex sample to explain all there is to know.We have a User, the User belongs to a Company, User has many tasks.Company has many irritating mandatory fieldsLets define the Company Factory:&lt;pre style=&quot;background-color: #2b2b2b; border: 0.01mm solid rgb(0, 0, 0); font-size: 12pt; line-height: 100%;&quot;&gt;FactoryGirl.define do    factory :company do      name {Faker::Name.name}      trp {Faker::Number.between(0,10)}      grp {Faker::Number.between(0,5)}      budget {Faker::Number.number(4)}      cpm {Faker::Number.between(1,70)}      trp_price {Faker::Number.between(100,700)}      viewer {Faker::Number.between(0,100000)}      total_viewer {Faker::Number.between(0,200000)}      unique_viewer {Faker::Number.between(0,50000)}      spots {Faker::Number.between(0,1000)}    end  end&lt;/pre&gt;As you can see I define lots of fields with random values.Now we can create a company by writing&lt;blockquote class=&quot;tr_bq&quot;&gt;create(:company)&lt;/blockquote&gt;Or just build one (without save to db) by calling&lt;blockquote class=&quot;tr_bq&quot;&gt;build(:company) &lt;/blockquote&gt;That’s all for now, I’ll continue in part2.&lt;blockquote class=&quot;tr_bq&quot;&gt; &lt;/blockquote&gt;&lt;blockquote class=&quot;tr_bq&quot;&gt; &lt;/blockquote&gt;">
+<meta name="description" content="The  most irritating thing in writing tests is the data generation preparation process, sometimes you want to create an object with 20 fields that 10 of them are mandatory but you only care about the value of 1, and you don’t want to mock, cause you interact with other methods and object that fetch this model from db.To me it happens a lot so I found the FactoryGirl + Faker combination that made my life much more easy and now I can write tests in peace.To add them just put in Gemfile: gem “factory_girl_rails”, “~&gt; 4.0”  gem “faker”So lets take a complex sample to explain all there is to know.We have a User, the User belongs to a Company, User has many tasks.Company has many irritating mandatory fieldsLets define the Company Factory:&lt;pre style=&quot;background-color: #2b2b2b; border: 0.01mm solid rgb(0, 0, 0); font-size: 12pt; line-height: 100%;&quot;&gt;FactoryGirl.define do    factory :company do      name {Faker::Name.name}      trp {Faker::Number.between(0,10)}      grp {Faker::Number.between(0,5)}      budget {Faker::Number.number(4)}      cpm {Faker::Number.between(1,70)}      trp_price {Faker::Number.between(100,700)}      viewer {Faker::Number.between(0,100000)}      total_viewer {Faker::Number.between(0,200000)}      unique_viewer {Faker::Number.between(0,50000)}      spots {Faker::Number.between(0,1000)}    end  end&lt;/pre&gt;As you can see I define lots of fields with random values.Now we can create a company by writing&lt;blockquote class=&quot;tr_bq&quot;&gt;create(:company)&lt;/blockquote&gt;Or just build one (without save to db) by calling&lt;blockquote class=&quot;tr_bq&quot;&gt;build(:company) &lt;/blockquote&gt;That’s all for now, I’ll continue in part2.&lt;blockquote class=&quot;tr_bq&quot;&gt; &lt;/blockquote&gt;&lt;blockquote class=&quot;tr_bq&quot;&gt; &lt;/blockquote&gt; ">
 
 
 
@@ -21,7 +21,7 @@
 <meta property="og:url" content="https://kinnrot.github.io/use-factorygirl-and-faker-for-easy-data/">
 
 
-  <meta property="og:description" content="The  most irritating thing in writing tests is the data generation preparation process, sometimes you want to create an object with 20 fields that 10 of them are mandatory but you only care about the value of 1, and you don’t want to mock, cause you interact with other methods and object that fetch this model from db.To me it happens a lot so I found the FactoryGirl + Faker combination that made my life much more easy and now I can write tests in peace.To add them just put in Gemfile: gem “factory_girl_rails”, “~&gt; 4.0”  gem “faker”So lets take a complex sample to explain all there is to know.We have a User, the User belongs to a Company, User has many tasks.Company has many irritating mandatory fieldsLets define the Company Factory:&lt;pre style=&quot;background-color: #2b2b2b; border: 0.01mm solid rgb(0, 0, 0); font-size: 12pt; line-height: 100%;&quot;&gt;FactoryGirl.define do    factory :company do      name {Faker::Name.name}      trp {Faker::Number.between(0,10)}      grp {Faker::Number.between(0,5)}      budget {Faker::Number.number(4)}      cpm {Faker::Number.between(1,70)}      trp_price {Faker::Number.between(100,700)}      viewer {Faker::Number.between(0,100000)}      total_viewer {Faker::Number.between(0,200000)}      unique_viewer {Faker::Number.between(0,50000)}      spots {Faker::Number.between(0,1000)}    end  end&lt;/pre&gt;As you can see I define lots of fields with random values.Now we can create a company by writing&lt;blockquote class=&quot;tr_bq&quot;&gt;create(:company)&lt;/blockquote&gt;Or just build one (without save to db) by calling&lt;blockquote class=&quot;tr_bq&quot;&gt;build(:company) &lt;/blockquote&gt;That’s all for now, I’ll continue in part2.&lt;blockquote class=&quot;tr_bq&quot;&gt; &lt;/blockquote&gt;&lt;blockquote class=&quot;tr_bq&quot;&gt; &lt;/blockquote&gt;">
+  <meta property="og:description" content="The  most irritating thing in writing tests is the data generation preparation process, sometimes you want to create an object with 20 fields that 10 of them are mandatory but you only care about the value of 1, and you don’t want to mock, cause you interact with other methods and object that fetch this model from db.To me it happens a lot so I found the FactoryGirl + Faker combination that made my life much more easy and now I can write tests in peace.To add them just put in Gemfile: gem “factory_girl_rails”, “~&gt; 4.0”  gem “faker”So lets take a complex sample to explain all there is to know.We have a User, the User belongs to a Company, User has many tasks.Company has many irritating mandatory fieldsLets define the Company Factory:&lt;pre style=&quot;background-color: #2b2b2b; border: 0.01mm solid rgb(0, 0, 0); font-size: 12pt; line-height: 100%;&quot;&gt;FactoryGirl.define do    factory :company do      name {Faker::Name.name}      trp {Faker::Number.between(0,10)}      grp {Faker::Number.between(0,5)}      budget {Faker::Number.number(4)}      cpm {Faker::Number.between(1,70)}      trp_price {Faker::Number.between(100,700)}      viewer {Faker::Number.between(0,100000)}      total_viewer {Faker::Number.between(0,200000)}      unique_viewer {Faker::Number.between(0,50000)}      spots {Faker::Number.between(0,1000)}    end  end&lt;/pre&gt;As you can see I define lots of fields with random values.Now we can create a company by writing&lt;blockquote class=&quot;tr_bq&quot;&gt;create(:company)&lt;/blockquote&gt;Or just build one (without save to db) by calling&lt;blockquote class=&quot;tr_bq&quot;&gt;build(:company) &lt;/blockquote&gt;That’s all for now, I’ll continue in part2.&lt;blockquote class=&quot;tr_bq&quot;&gt; &lt;/blockquote&gt;&lt;blockquote class=&quot;tr_bq&quot;&gt; &lt;/blockquote&gt; ">
 
 
 
@@ -139,7 +139,7 @@
           
         </a>
         <ul class="visible-links"><li class="masthead__menu-item">
-              <a href="/about" >About</a>
+              <a href="/about">About</a>
             </li></ul>
         
         <button class="greedy-nav__toggle hidden" type="button">
@@ -269,6 +269,7 @@
 
   
   </div>
+
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
@@ -551,10 +552,10 @@ When clicki...</p>
     
   <script>
     var disqus_config = function () {
-      this.page.url = "https://kinnrot.github.io/use-factorygirl-and-faker-for-easy-data/";  // Replace PAGE_URL with your page's canonical URL variable
-      this.page.identifier = "/use-factorygirl-and-faker-for-easy-data"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      this.page.url = "https://kinnrot.github.io/use-factorygirl-and-faker-for-easy-data/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/use-factorygirl-and-faker-for-easy-data"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
     };
-    (function() { // DON'T EDIT BELOW THIS LINE
+    (function() { /* DON'T EDIT BELOW THIS LINE */
       var d = document, s = d.createElement('script');
       s.src = 'https://cdblg.disqus.com/embed.js';
       s.setAttribute('data-timestamp', +new Date());

@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  Minimal Mistakes Jekyll Theme 4.17.2 by Michael Rose
+  Minimal Mistakes Jekyll Theme 4.19.1 by Michael Rose
   Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Event Base WPF Navigation - cdblg</title>
-<meta name="description" content="Hello,My Recent problem was: How can I implement minimal decoupling navigation between views?I thought about using the EventAggregator already built in my system and create some kind of event that represents a navigation request, so I created a NavigationRequestEvent that contains the view model I want to activate and view.Next question I asked myself was:  Who needs to request for navigation?This is easy navigation is caused 99% of the times by user interaction, views is a good answer, through their view models or some commands (if not DelegateCommands or SmarterStuff).The problem is that my view models are being created from my IOC Container (not a problem) and I don’t want all of my view models to have access to my container cause this is an anti pattern.Who’ll construct the view model and fire the event?Create a view models factory that will be responsible for creating the view models, he is not the actual factory, just a mediator between the request and the container.So far we got:&lt;ul&gt;&lt;li&gt;NavigationRequestEvent that holds the view model to show&lt;/li&gt;&lt;li&gt;ViewModelsFactory - can create view models&lt;/li&gt;&lt;/ul&gt;Now I just need someone to listen, this is the advantage of this pattern, anyone can listen and no one is also an option, but nothing will happen of course.In my case the shell is the default listener and each event would be translated to a view shown at the main region of the ui , there is also an option of a split view, when split view activated the main region unregister from event and secondary view is listening to the event.We can also expend this behavior and allow user to choose where next views will be opened.IsNice = True;">
+<meta name="description" content="Hello,My Recent problem was: How can I implement minimal decoupling navigation between views?I thought about using the EventAggregator already built in my system and create some kind of event that represents a navigation request, so I created a NavigationRequestEvent that contains the view model I want to activate and view.Next question I asked myself was:  Who needs to request for navigation?This is easy navigation is caused 99% of the times by user interaction, views is a good answer, through their view models or some commands (if not DelegateCommands or SmarterStuff).The problem is that my view models are being created from my IOC Container (not a problem) and I don’t want all of my view models to have access to my container cause this is an anti pattern.Who’ll construct the view model and fire the event?Create a view models factory that will be responsible for creating the view models, he is not the actual factory, just a mediator between the request and the container.So far we got:&lt;ul&gt;&lt;li&gt;NavigationRequestEvent that holds the view model to show&lt;/li&gt;&lt;li&gt;ViewModelsFactory - can create view models&lt;/li&gt;&lt;/ul&gt;Now I just need someone to listen, this is the advantage of this pattern, anyone can listen and no one is also an option, but nothing will happen of course.In my case the shell is the default listener and each event would be translated to a view shown at the main region of the ui , there is also an option of a split view, when split view activated the main region unregister from event and secondary view is listening to the event.We can also expend this behavior and allow user to choose where next views will be opened.IsNice = True; ">
 
 
 
@@ -21,7 +21,7 @@
 <meta property="og:url" content="https://kinnrot.github.io/event-base-wpf-navigation/">
 
 
-  <meta property="og:description" content="Hello,My Recent problem was: How can I implement minimal decoupling navigation between views?I thought about using the EventAggregator already built in my system and create some kind of event that represents a navigation request, so I created a NavigationRequestEvent that contains the view model I want to activate and view.Next question I asked myself was:  Who needs to request for navigation?This is easy navigation is caused 99% of the times by user interaction, views is a good answer, through their view models or some commands (if not DelegateCommands or SmarterStuff).The problem is that my view models are being created from my IOC Container (not a problem) and I don’t want all of my view models to have access to my container cause this is an anti pattern.Who’ll construct the view model and fire the event?Create a view models factory that will be responsible for creating the view models, he is not the actual factory, just a mediator between the request and the container.So far we got:&lt;ul&gt;&lt;li&gt;NavigationRequestEvent that holds the view model to show&lt;/li&gt;&lt;li&gt;ViewModelsFactory - can create view models&lt;/li&gt;&lt;/ul&gt;Now I just need someone to listen, this is the advantage of this pattern, anyone can listen and no one is also an option, but nothing will happen of course.In my case the shell is the default listener and each event would be translated to a view shown at the main region of the ui , there is also an option of a split view, when split view activated the main region unregister from event and secondary view is listening to the event.We can also expend this behavior and allow user to choose where next views will be opened.IsNice = True;">
+  <meta property="og:description" content="Hello,My Recent problem was: How can I implement minimal decoupling navigation between views?I thought about using the EventAggregator already built in my system and create some kind of event that represents a navigation request, so I created a NavigationRequestEvent that contains the view model I want to activate and view.Next question I asked myself was:  Who needs to request for navigation?This is easy navigation is caused 99% of the times by user interaction, views is a good answer, through their view models or some commands (if not DelegateCommands or SmarterStuff).The problem is that my view models are being created from my IOC Container (not a problem) and I don’t want all of my view models to have access to my container cause this is an anti pattern.Who’ll construct the view model and fire the event?Create a view models factory that will be responsible for creating the view models, he is not the actual factory, just a mediator between the request and the container.So far we got:&lt;ul&gt;&lt;li&gt;NavigationRequestEvent that holds the view model to show&lt;/li&gt;&lt;li&gt;ViewModelsFactory - can create view models&lt;/li&gt;&lt;/ul&gt;Now I just need someone to listen, this is the advantage of this pattern, anyone can listen and no one is also an option, but nothing will happen of course.In my case the shell is the default listener and each event would be translated to a view shown at the main region of the ui , there is also an option of a split view, when split view activated the main region unregister from event and secondary view is listening to the event.We can also expend this behavior and allow user to choose where next views will be opened.IsNice = True; ">
 
 
 
@@ -139,7 +139,7 @@
           
         </a>
         <ul class="visible-links"><li class="masthead__menu-item">
-              <a href="/about" >About</a>
+              <a href="/about">About</a>
             </li></ul>
         
         <button class="greedy-nav__toggle hidden" type="button">
@@ -269,6 +269,7 @@
 
   
   </div>
+
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
@@ -551,10 +552,10 @@ When clicki...</p>
     
   <script>
     var disqus_config = function () {
-      this.page.url = "https://kinnrot.github.io/event-base-wpf-navigation/";  // Replace PAGE_URL with your page's canonical URL variable
-      this.page.identifier = "/event-base-wpf-navigation"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      this.page.url = "https://kinnrot.github.io/event-base-wpf-navigation/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/event-base-wpf-navigation"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
     };
-    (function() { // DON'T EDIT BELOW THIS LINE
+    (function() { /* DON'T EDIT BELOW THIS LINE */
       var d = document, s = d.createElement('script');
       s.src = 'https://cdblg.disqus.com/embed.js';
       s.setAttribute('data-timestamp', +new Date());

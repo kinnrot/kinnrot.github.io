@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  Minimal Mistakes Jekyll Theme 4.17.2 by Michael Rose
+  Minimal Mistakes Jekyll Theme 4.19.1 by Michael Rose
   Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Ruby Lazy chunked hash like behavior - cdblg</title>
-<meta name="description" content="When we want to iterate a long list, we can simply write a query and get a cursor, ActiveRecord will do all the heavy lifting for us.What happens when we need to do some complicated computations on a set of data, which sometimes can be too big to be stored in memory for the entire computing process?This is when we need to start being more creational.I’d like to introduce what I came up with.The problem:- Complex calculation on time based data series for a period of 3 months.- Each calculation may depends on previous one and on future and past data.- Must be in order.- When fetching all data server crash on memory.The solution:I wanted to do the most minor code change possible, and currently the data was accessed via a hash. I decided to encapsulate the hash with something I called lazy chunked hash (tried google it see it as standard behavior in clojure).It looks like this:&lt;pre style=&quot;background-color: #2b2b2b; color: #e6e1dc; font-family: &#39;mononoki&#39;; font-size: 11.3pt;&quot;&gt;class ValuesProvider  def initialize()    @loaded_date = nil&lt;/pre&gt;&lt;pre style=&quot;background-color: #2b2b2b; color: #e6e1dc; font-family: &#39;mononoki&#39;; font-size: 11.3pt;&quot;&gt;&lt;pre style=&quot;font-family: mononoki; font-size: 11.3pt;&quot;&gt;    @hash = Hash.new(0)&lt;/pre&gt;  end  def [](time_slot)     get(time_slot)   end  private  def get(time_slot)     relevant_date = time_slot.to_date     unless relevant_date == @loaded_date      load(relevant_date)     end    @hash[time_slot.to_i]   end&lt;/pre&gt;&lt;pre style=&quot;background-color: #2b2b2b; color: #e6e1dc; font-family: &#39;mononoki&#39;; font-size: 11.3pt;&quot;&gt;end&lt;/pre&gt;Pretty simple and does the work, instead of loading the data all at once, the data is being loaded for each day separately, this way we keep it chunky but not too chunky.And best part, my code that consume the data, didn’t change because of the [] method, which makes my ValueProvider behave like an array.  This solution is good when the consumer data request(call for[]) implies on what data should be loaded, which most of the times will, but in some cases it won’t)">
+<meta name="description" content="When we want to iterate a long list, we can simply write a query and get a cursor, ActiveRecord will do all the heavy lifting for us.What happens when we need to do some complicated computations on a set of data, which sometimes can be too big to be stored in memory for the entire computing process?This is when we need to start being more creational.I’d like to introduce what I came up with.The problem:- Complex calculation on time based data series for a period of 3 months.- Each calculation may depends on previous one and on future and past data.- Must be in order.- When fetching all data server crash on memory.The solution:I wanted to do the most minor code change possible, and currently the data was accessed via a hash. I decided to encapsulate the hash with something I called lazy chunked hash (tried google it see it as standard behavior in clojure).It looks like this:&lt;pre style=&quot;background-color: #2b2b2b; color: #e6e1dc; font-family: &#39;mononoki&#39;; font-size: 11.3pt;&quot;&gt;class ValuesProvider  def initialize()    @loaded_date = nil&lt;/pre&gt;&lt;pre style=&quot;background-color: #2b2b2b; color: #e6e1dc; font-family: &#39;mononoki&#39;; font-size: 11.3pt;&quot;&gt;&lt;pre style=&quot;font-family: mononoki; font-size: 11.3pt;&quot;&gt;    @hash = Hash.new(0)&lt;/pre&gt;  end  def [](time_slot)     get(time_slot)   end  private  def get(time_slot)     relevant_date = time_slot.to_date     unless relevant_date == @loaded_date      load(relevant_date)     end    @hash[time_slot.to_i]   end&lt;/pre&gt;&lt;pre style=&quot;background-color: #2b2b2b; color: #e6e1dc; font-family: &#39;mononoki&#39;; font-size: 11.3pt;&quot;&gt;end&lt;/pre&gt;Pretty simple and does the work, instead of loading the data all at once, the data is being loaded for each day separately, this way we keep it chunky but not too chunky.And best part, my code that consume the data, didn’t change because of the [] method, which makes my ValueProvider behave like an array.  This solution is good when the consumer data request(call for[]) implies on what data should be loaded, which most of the times will, but in some cases it won’t) ">
 
 
 
@@ -21,7 +21,7 @@
 <meta property="og:url" content="https://kinnrot.github.io/ruby-lazy-chunked-hash-like-behavior/">
 
 
-  <meta property="og:description" content="When we want to iterate a long list, we can simply write a query and get a cursor, ActiveRecord will do all the heavy lifting for us.What happens when we need to do some complicated computations on a set of data, which sometimes can be too big to be stored in memory for the entire computing process?This is when we need to start being more creational.I’d like to introduce what I came up with.The problem:- Complex calculation on time based data series for a period of 3 months.- Each calculation may depends on previous one and on future and past data.- Must be in order.- When fetching all data server crash on memory.The solution:I wanted to do the most minor code change possible, and currently the data was accessed via a hash. I decided to encapsulate the hash with something I called lazy chunked hash (tried google it see it as standard behavior in clojure).It looks like this:&lt;pre style=&quot;background-color: #2b2b2b; color: #e6e1dc; font-family: &#39;mononoki&#39;; font-size: 11.3pt;&quot;&gt;class ValuesProvider  def initialize()    @loaded_date = nil&lt;/pre&gt;&lt;pre style=&quot;background-color: #2b2b2b; color: #e6e1dc; font-family: &#39;mononoki&#39;; font-size: 11.3pt;&quot;&gt;&lt;pre style=&quot;font-family: mononoki; font-size: 11.3pt;&quot;&gt;    @hash = Hash.new(0)&lt;/pre&gt;  end  def [](time_slot)     get(time_slot)   end  private  def get(time_slot)     relevant_date = time_slot.to_date     unless relevant_date == @loaded_date      load(relevant_date)     end    @hash[time_slot.to_i]   end&lt;/pre&gt;&lt;pre style=&quot;background-color: #2b2b2b; color: #e6e1dc; font-family: &#39;mononoki&#39;; font-size: 11.3pt;&quot;&gt;end&lt;/pre&gt;Pretty simple and does the work, instead of loading the data all at once, the data is being loaded for each day separately, this way we keep it chunky but not too chunky.And best part, my code that consume the data, didn’t change because of the [] method, which makes my ValueProvider behave like an array.  This solution is good when the consumer data request(call for[]) implies on what data should be loaded, which most of the times will, but in some cases it won’t)">
+  <meta property="og:description" content="When we want to iterate a long list, we can simply write a query and get a cursor, ActiveRecord will do all the heavy lifting for us.What happens when we need to do some complicated computations on a set of data, which sometimes can be too big to be stored in memory for the entire computing process?This is when we need to start being more creational.I’d like to introduce what I came up with.The problem:- Complex calculation on time based data series for a period of 3 months.- Each calculation may depends on previous one and on future and past data.- Must be in order.- When fetching all data server crash on memory.The solution:I wanted to do the most minor code change possible, and currently the data was accessed via a hash. I decided to encapsulate the hash with something I called lazy chunked hash (tried google it see it as standard behavior in clojure).It looks like this:&lt;pre style=&quot;background-color: #2b2b2b; color: #e6e1dc; font-family: &#39;mononoki&#39;; font-size: 11.3pt;&quot;&gt;class ValuesProvider  def initialize()    @loaded_date = nil&lt;/pre&gt;&lt;pre style=&quot;background-color: #2b2b2b; color: #e6e1dc; font-family: &#39;mononoki&#39;; font-size: 11.3pt;&quot;&gt;&lt;pre style=&quot;font-family: mononoki; font-size: 11.3pt;&quot;&gt;    @hash = Hash.new(0)&lt;/pre&gt;  end  def [](time_slot)     get(time_slot)   end  private  def get(time_slot)     relevant_date = time_slot.to_date     unless relevant_date == @loaded_date      load(relevant_date)     end    @hash[time_slot.to_i]   end&lt;/pre&gt;&lt;pre style=&quot;background-color: #2b2b2b; color: #e6e1dc; font-family: &#39;mononoki&#39;; font-size: 11.3pt;&quot;&gt;end&lt;/pre&gt;Pretty simple and does the work, instead of loading the data all at once, the data is being loaded for each day separately, this way we keep it chunky but not too chunky.And best part, my code that consume the data, didn’t change because of the [] method, which makes my ValueProvider behave like an array.  This solution is good when the consumer data request(call for[]) implies on what data should be loaded, which most of the times will, but in some cases it won’t) ">
 
 
 
@@ -139,7 +139,7 @@
           
         </a>
         <ul class="visible-links"><li class="masthead__menu-item">
-              <a href="/about" >About</a>
+              <a href="/about">About</a>
             </li></ul>
         
         <button class="greedy-nav__toggle hidden" type="button">
@@ -269,6 +269,7 @@
 
   
   </div>
+
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
@@ -582,10 +583,10 @@ When clicki...</p>
     
   <script>
     var disqus_config = function () {
-      this.page.url = "https://kinnrot.github.io/ruby-lazy-chunked-hash-like-behavior/";  // Replace PAGE_URL with your page's canonical URL variable
-      this.page.identifier = "/ruby-lazy-chunked-hash-like-behavior"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      this.page.url = "https://kinnrot.github.io/ruby-lazy-chunked-hash-like-behavior/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/ruby-lazy-chunked-hash-like-behavior"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
     };
-    (function() { // DON'T EDIT BELOW THIS LINE
+    (function() { /* DON'T EDIT BELOW THIS LINE */
       var d = document, s = d.createElement('script');
       s.src = 'https://cdblg.disqus.com/embed.js';
       s.setAttribute('data-timestamp', +new Date());

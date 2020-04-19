@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  Minimal Mistakes Jekyll Theme 4.17.2 by Michael Rose
+  Minimal Mistakes Jekyll Theme 4.19.1 by Michael Rose
   Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Prevent setting a property value after already been set - cdblg</title>
-<meta name="description" content="Let’s say we write an infrastructure of entities and their interaction with Nhibernate and the rest of the server side logic.We want Nhibernate to do whatever it needs. But we also want to limit the application programmer from doing crazy things, for example: Setting the Unique Identifier of an existing entity to another value. I know it sounds crazy but in a medium-sized team, anything can happen and this stuff is critical for the future.So I thought about a very KIS way to implement this kind of protection.* What I write here is the most readable version of my code, you can extract method, use interceptor, AOP, whatever works for you.&lt;pre class=&quot;brush: csharp;&quot;&gt;private long _id;public long ID{  get { return _id; }  set  {    if (!_id.Equals(default(long)) &amp;&amp; !_id.Equals(value))    {      throw new InvalidOperationException(        “You can’t set this property, it has already been set”);    }    _id = value;  }}&lt;/pre&gt;Very simple, easy to test, and it works with NHibernate proxy.">
+<meta name="description" content="Let’s say we write an infrastructure of entities and their interaction with Nhibernate and the rest of the server side logic.We want Nhibernate to do whatever it needs. But we also want to limit the application programmer from doing crazy things, for example: Setting the Unique Identifier of an existing entity to another value. I know it sounds crazy but in a medium-sized team, anything can happen and this stuff is critical for the future.So I thought about a very KIS way to implement this kind of protection.* What I write here is the most readable version of my code, you can extract method, use interceptor, AOP, whatever works for you.&lt;pre class=&quot;brush: csharp;&quot;&gt;private long _id;public long ID{  get { return _id; }  set  {    if (!_id.Equals(default(long)) &amp;&amp; !_id.Equals(value))    {      throw new InvalidOperationException(        “You can’t set this property, it has already been set”);    }    _id = value;  }}&lt;/pre&gt;Very simple, easy to test, and it works with NHibernate proxy. ">
 
 
 
@@ -21,7 +21,7 @@
 <meta property="og:url" content="https://kinnrot.github.io/preventing-from-setting-property-value/">
 
 
-  <meta property="og:description" content="Let’s say we write an infrastructure of entities and their interaction with Nhibernate and the rest of the server side logic.We want Nhibernate to do whatever it needs. But we also want to limit the application programmer from doing crazy things, for example: Setting the Unique Identifier of an existing entity to another value. I know it sounds crazy but in a medium-sized team, anything can happen and this stuff is critical for the future.So I thought about a very KIS way to implement this kind of protection.* What I write here is the most readable version of my code, you can extract method, use interceptor, AOP, whatever works for you.&lt;pre class=&quot;brush: csharp;&quot;&gt;private long _id;public long ID{  get { return _id; }  set  {    if (!_id.Equals(default(long)) &amp;&amp; !_id.Equals(value))    {      throw new InvalidOperationException(        “You can’t set this property, it has already been set”);    }    _id = value;  }}&lt;/pre&gt;Very simple, easy to test, and it works with NHibernate proxy.">
+  <meta property="og:description" content="Let’s say we write an infrastructure of entities and their interaction with Nhibernate and the rest of the server side logic.We want Nhibernate to do whatever it needs. But we also want to limit the application programmer from doing crazy things, for example: Setting the Unique Identifier of an existing entity to another value. I know it sounds crazy but in a medium-sized team, anything can happen and this stuff is critical for the future.So I thought about a very KIS way to implement this kind of protection.* What I write here is the most readable version of my code, you can extract method, use interceptor, AOP, whatever works for you.&lt;pre class=&quot;brush: csharp;&quot;&gt;private long _id;public long ID{  get { return _id; }  set  {    if (!_id.Equals(default(long)) &amp;&amp; !_id.Equals(value))    {      throw new InvalidOperationException(        “You can’t set this property, it has already been set”);    }    _id = value;  }}&lt;/pre&gt;Very simple, easy to test, and it works with NHibernate proxy. ">
 
 
 
@@ -139,7 +139,7 @@
           
         </a>
         <ul class="visible-links"><li class="masthead__menu-item">
-              <a href="/about" >About</a>
+              <a href="/about">About</a>
             </li></ul>
         
         <button class="greedy-nav__toggle hidden" type="button">
@@ -269,6 +269,7 @@
 
   
   </div>
+
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
@@ -578,10 +579,10 @@ When clicki...</p>
     
   <script>
     var disqus_config = function () {
-      this.page.url = "https://kinnrot.github.io/preventing-from-setting-property-value/";  // Replace PAGE_URL with your page's canonical URL variable
-      this.page.identifier = "/preventing-from-setting-property-value"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      this.page.url = "https://kinnrot.github.io/preventing-from-setting-property-value/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/preventing-from-setting-property-value"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
     };
-    (function() { // DON'T EDIT BELOW THIS LINE
+    (function() { /* DON'T EDIT BELOW THIS LINE */
       var d = document, s = d.createElement('script');
       s.src = 'https://cdblg.disqus.com/embed.js';
       s.setAttribute('data-timestamp', +new Date());

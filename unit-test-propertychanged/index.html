@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  Minimal Mistakes Jekyll Theme 4.17.2 by Michael Rose
+  Minimal Mistakes Jekyll Theme 4.19.1 by Michael Rose
   Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Unit Test PropertyChanged - cdblg</title>
-<meta name="description" content="One of the basic stuff you wanna test as a client side developer, is that all of your UI bounded classes aka Controller, Model, ViewModel, Presenter, PresentationModel, or the code behind of your view if your just having fun.&lt;div&gt;Let’s assume we have a person class with a name property:&lt;/div&gt;&lt;pre class=&quot;brush: csharp; ruler: true;&quot;&gt;public class Person : INotifyPropertyChanged{    public event PropertyChangedEventHandler PropertyChanged;    private string _name;    public virtual string Name    {        get { return _name; }        set { _name = value;        FirePropertyChanged(“Name”);        }    }    protected virtual void FirePropertyChanged(string propertyName)    {        var handlers = PropertyChanged;        if (handlers != null)        {            handlers(this, new PropertyChangedEventArgs(propertyName));        }    }}&lt;/pre&gt;&lt;pre class=&quot;brush: csharp; ruler: true;&quot;&gt;&lt;/pre&gt;&lt;div&gt;The simplest way to perform this test is to write this code:&lt;pre class=&quot;brush: csharp; ruler: true;&quot;&gt;[TestFixture]public class PersonTest{    [Test]    public void SetName_SomeNewString_FirePropertyChanged()    {        Person person = new Person();        string changedPropertyName = string.Empty;        person.PropertyChanged += (sender, args) =&gt; changedPropertyName = args.PropertyName;        person.Name = “Test”;        Assert.AreEqual(“Name”, changedPropertyName);    }}&lt;/pre&gt;&lt;/div&gt;">
+<meta name="description" content="One of the basic stuff you wanna test as a client side developer, is that all of your UI bounded classes aka Controller, Model, ViewModel, Presenter, PresentationModel, or the code behind of your view if your just having fun.&lt;div&gt;Let’s assume we have a person class with a name property:&lt;/div&gt;&lt;pre class=&quot;brush: csharp; ruler: true;&quot;&gt;public class Person : INotifyPropertyChanged{    public event PropertyChangedEventHandler PropertyChanged;    private string _name;    public virtual string Name    {        get { return _name; }        set { _name = value;        FirePropertyChanged(“Name”);        }    }    protected virtual void FirePropertyChanged(string propertyName)    {        var handlers = PropertyChanged;        if (handlers != null)        {            handlers(this, new PropertyChangedEventArgs(propertyName));        }    }}&lt;/pre&gt;&lt;pre class=&quot;brush: csharp; ruler: true;&quot;&gt;&lt;/pre&gt;&lt;div&gt;The simplest way to perform this test is to write this code:&lt;pre class=&quot;brush: csharp; ruler: true;&quot;&gt;[TestFixture]public class PersonTest{    [Test]    public void SetName_SomeNewString_FirePropertyChanged()    {        Person person = new Person();        string changedPropertyName = string.Empty;        person.PropertyChanged += (sender, args) =&gt; changedPropertyName = args.PropertyName;        person.Name = “Test”;        Assert.AreEqual(“Name”, changedPropertyName);    }}&lt;/pre&gt;&lt;/div&gt; ">
 
 
 
@@ -21,7 +21,7 @@
 <meta property="og:url" content="https://kinnrot.github.io/unit-test-propertychanged/">
 
 
-  <meta property="og:description" content="One of the basic stuff you wanna test as a client side developer, is that all of your UI bounded classes aka Controller, Model, ViewModel, Presenter, PresentationModel, or the code behind of your view if your just having fun.&lt;div&gt;Let’s assume we have a person class with a name property:&lt;/div&gt;&lt;pre class=&quot;brush: csharp; ruler: true;&quot;&gt;public class Person : INotifyPropertyChanged{    public event PropertyChangedEventHandler PropertyChanged;    private string _name;    public virtual string Name    {        get { return _name; }        set { _name = value;        FirePropertyChanged(“Name”);        }    }    protected virtual void FirePropertyChanged(string propertyName)    {        var handlers = PropertyChanged;        if (handlers != null)        {            handlers(this, new PropertyChangedEventArgs(propertyName));        }    }}&lt;/pre&gt;&lt;pre class=&quot;brush: csharp; ruler: true;&quot;&gt;&lt;/pre&gt;&lt;div&gt;The simplest way to perform this test is to write this code:&lt;pre class=&quot;brush: csharp; ruler: true;&quot;&gt;[TestFixture]public class PersonTest{    [Test]    public void SetName_SomeNewString_FirePropertyChanged()    {        Person person = new Person();        string changedPropertyName = string.Empty;        person.PropertyChanged += (sender, args) =&gt; changedPropertyName = args.PropertyName;        person.Name = “Test”;        Assert.AreEqual(“Name”, changedPropertyName);    }}&lt;/pre&gt;&lt;/div&gt;">
+  <meta property="og:description" content="One of the basic stuff you wanna test as a client side developer, is that all of your UI bounded classes aka Controller, Model, ViewModel, Presenter, PresentationModel, or the code behind of your view if your just having fun.&lt;div&gt;Let’s assume we have a person class with a name property:&lt;/div&gt;&lt;pre class=&quot;brush: csharp; ruler: true;&quot;&gt;public class Person : INotifyPropertyChanged{    public event PropertyChangedEventHandler PropertyChanged;    private string _name;    public virtual string Name    {        get { return _name; }        set { _name = value;        FirePropertyChanged(“Name”);        }    }    protected virtual void FirePropertyChanged(string propertyName)    {        var handlers = PropertyChanged;        if (handlers != null)        {            handlers(this, new PropertyChangedEventArgs(propertyName));        }    }}&lt;/pre&gt;&lt;pre class=&quot;brush: csharp; ruler: true;&quot;&gt;&lt;/pre&gt;&lt;div&gt;The simplest way to perform this test is to write this code:&lt;pre class=&quot;brush: csharp; ruler: true;&quot;&gt;[TestFixture]public class PersonTest{    [Test]    public void SetName_SomeNewString_FirePropertyChanged()    {        Person person = new Person();        string changedPropertyName = string.Empty;        person.PropertyChanged += (sender, args) =&gt; changedPropertyName = args.PropertyName;        person.Name = “Test”;        Assert.AreEqual(“Name”, changedPropertyName);    }}&lt;/pre&gt;&lt;/div&gt; ">
 
 
 
@@ -139,7 +139,7 @@
           
         </a>
         <ul class="visible-links"><li class="masthead__menu-item">
-              <a href="/about" >About</a>
+              <a href="/about">About</a>
             </li></ul>
         
         <button class="greedy-nav__toggle hidden" type="button">
@@ -269,6 +269,7 @@
 
   
   </div>
+
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
@@ -578,10 +579,10 @@ When clicki...</p>
     
   <script>
     var disqus_config = function () {
-      this.page.url = "https://kinnrot.github.io/unit-test-propertychanged/";  // Replace PAGE_URL with your page's canonical URL variable
-      this.page.identifier = "/unit-test-propertychanged"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      this.page.url = "https://kinnrot.github.io/unit-test-propertychanged/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/unit-test-propertychanged"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
     };
-    (function() { // DON'T EDIT BELOW THIS LINE
+    (function() { /* DON'T EDIT BELOW THIS LINE */
       var d = document, s = d.createElement('script');
       s.src = 'https://cdblg.disqus.com/embed.js';
       s.setAttribute('data-timestamp', +new Date());

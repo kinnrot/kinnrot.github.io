@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  Minimal Mistakes Jekyll Theme 4.17.2 by Michael Rose
+  Minimal Mistakes Jekyll Theme 4.19.1 by Michael Rose
   Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Karma Rails Angular Jasmine testing - set up in 5 minutes - cdblg</title>
-<meta name="description" content="It took me about an hours and a half because google is not up to date, so here it is:First - as a rails developer, if you don’t have node.js, this is the time to install it.If you don’t use RubyMine as you IDE, I recommend it as well, but whatever you prefer is fine by me.Here you’ll fins instructions about karma installation, follow them carefully.You’ll see that you need to tell karma where is your sources and test sources.I’m working with jasmine, and using angular as a gem, check my configuration:frameworks: [‘jasmine’],        // list of files / patterns to load in the browser        files: [            //libs            ‘http://0.0.0.0:3000/assets/application.js’,            ‘/Users/chen/.rvm/gems/ruby-1.9.3-p448/gems/angularjs-rails-1.2.9/vendor/assets/javascripts/angular-mocks.js’,            ‘spec/javascripts/controllers/sample.js’,            ‘spec/javascripts/controllers//_spec.js.coffee’,            ‘spec/javascripts/controllers//_spec.js.coffee’,            ‘spec/javascripts/controllers/**/_spec.coffee’,            ‘spec/javascripts/controllers//*_spec.js’]To things you should notice:1. I use rails assets pipeline to give all my app code js, (just run your server before you test)2. I add the angular mocks libAll other stuff are basic, I got code in coffee and js so needed a little more lines to find all my tests.this is the way to make this work pretty fast.">
+<meta name="description" content="It took me about an hours and a half because google is not up to date, so here it is:First - as a rails developer, if you don’t have node.js, this is the time to install it.If you don’t use RubyMine as you IDE, I recommend it as well, but whatever you prefer is fine by me.Here you’ll fins instructions about karma installation, follow them carefully.You’ll see that you need to tell karma where is your sources and test sources.I’m working with jasmine, and using angular as a gem, check my configuration:frameworks: [‘jasmine’],        // list of files / patterns to load in the browser        files: [            //libs            ‘http://0.0.0.0:3000/assets/application.js’,            ‘/Users/chen/.rvm/gems/ruby-1.9.3-p448/gems/angularjs-rails-1.2.9/vendor/assets/javascripts/angular-mocks.js’,            ‘spec/javascripts/controllers/sample.js’,            ‘spec/javascripts/controllers//_spec.js.coffee’,            ‘spec/javascripts/controllers//_spec.js.coffee’,            ‘spec/javascripts/controllers/**/_spec.coffee’,            ‘spec/javascripts/controllers//*_spec.js’]To things you should notice:1. I use rails assets pipeline to give all my app code js, (just run your server before you test)2. I add the angular mocks libAll other stuff are basic, I got code in coffee and js so needed a little more lines to find all my tests.this is the way to make this work pretty fast. ">
 
 
 
@@ -21,7 +21,7 @@
 <meta property="og:url" content="https://kinnrot.github.io/karma-rails-angular-jasmine-testing-set/">
 
 
-  <meta property="og:description" content="It took me about an hours and a half because google is not up to date, so here it is:First - as a rails developer, if you don’t have node.js, this is the time to install it.If you don’t use RubyMine as you IDE, I recommend it as well, but whatever you prefer is fine by me.Here you’ll fins instructions about karma installation, follow them carefully.You’ll see that you need to tell karma where is your sources and test sources.I’m working with jasmine, and using angular as a gem, check my configuration:frameworks: [‘jasmine’],        // list of files / patterns to load in the browser        files: [            //libs            ‘http://0.0.0.0:3000/assets/application.js’,            ‘/Users/chen/.rvm/gems/ruby-1.9.3-p448/gems/angularjs-rails-1.2.9/vendor/assets/javascripts/angular-mocks.js’,            ‘spec/javascripts/controllers/sample.js’,            ‘spec/javascripts/controllers//_spec.js.coffee’,            ‘spec/javascripts/controllers//_spec.js.coffee’,            ‘spec/javascripts/controllers/**/_spec.coffee’,            ‘spec/javascripts/controllers//*_spec.js’]To things you should notice:1. I use rails assets pipeline to give all my app code js, (just run your server before you test)2. I add the angular mocks libAll other stuff are basic, I got code in coffee and js so needed a little more lines to find all my tests.this is the way to make this work pretty fast.">
+  <meta property="og:description" content="It took me about an hours and a half because google is not up to date, so here it is:First - as a rails developer, if you don’t have node.js, this is the time to install it.If you don’t use RubyMine as you IDE, I recommend it as well, but whatever you prefer is fine by me.Here you’ll fins instructions about karma installation, follow them carefully.You’ll see that you need to tell karma where is your sources and test sources.I’m working with jasmine, and using angular as a gem, check my configuration:frameworks: [‘jasmine’],        // list of files / patterns to load in the browser        files: [            //libs            ‘http://0.0.0.0:3000/assets/application.js’,            ‘/Users/chen/.rvm/gems/ruby-1.9.3-p448/gems/angularjs-rails-1.2.9/vendor/assets/javascripts/angular-mocks.js’,            ‘spec/javascripts/controllers/sample.js’,            ‘spec/javascripts/controllers//_spec.js.coffee’,            ‘spec/javascripts/controllers//_spec.js.coffee’,            ‘spec/javascripts/controllers/**/_spec.coffee’,            ‘spec/javascripts/controllers//*_spec.js’]To things you should notice:1. I use rails assets pipeline to give all my app code js, (just run your server before you test)2. I add the angular mocks libAll other stuff are basic, I got code in coffee and js so needed a little more lines to find all my tests.this is the way to make this work pretty fast. ">
 
 
 
@@ -139,7 +139,7 @@
           
         </a>
         <ul class="visible-links"><li class="masthead__menu-item">
-              <a href="/about" >About</a>
+              <a href="/about">About</a>
             </li></ul>
         
         <button class="greedy-nav__toggle hidden" type="button">
@@ -269,6 +269,7 @@
 
   
   </div>
+
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
@@ -551,10 +552,10 @@ When clicki...</p>
     
   <script>
     var disqus_config = function () {
-      this.page.url = "https://kinnrot.github.io/karma-rails-angular-jasmine-testing-set/";  // Replace PAGE_URL with your page's canonical URL variable
-      this.page.identifier = "/karma-rails-angular-jasmine-testing-set"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      this.page.url = "https://kinnrot.github.io/karma-rails-angular-jasmine-testing-set/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/karma-rails-angular-jasmine-testing-set"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
     };
-    (function() { // DON'T EDIT BELOW THIS LINE
+    (function() { /* DON'T EDIT BELOW THIS LINE */
       var d = document, s = d.createElement('script');
       s.src = 'https://cdblg.disqus.com/embed.js';
       s.setAttribute('data-timestamp', +new Date());

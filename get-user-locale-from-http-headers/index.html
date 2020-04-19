@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  Minimal Mistakes Jekyll Theme 4.17.2 by Michael Rose
+  Minimal Mistakes Jekyll Theme 4.19.1 by Michael Rose
   Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Get the user locale from http headers - cdblg</title>
-<meta name="description" content="If you want to provide default localization support for guest user in your website yo can locate their browser locale by the following code:&lt;pre style=&quot;background-color: #2b2b2b; border-color: #000000; border-style: solid; border-width: 0.01mm; font-family: monospace; font-size: 14pt; line-height: 100%; padding: 4px;&quot;&gt;&lt;pre style=&quot;border: 0.01mm solid rgb(0, 0, 0); font-size: 12pt; line-height: 100%;&quot;&gt;def extract_locale_from_header    unless request.env[‘HTTP_ACCEPT_LANGUAGE’].nil?      return request.env[‘HTTP_ACCEPT_LANGUAGE’].scan(/^[a-z]{2}/).first    end    ‘en’  end&lt;/pre&gt;&lt;/pre&gt;This way you can determine on server side the locale of the user currently entered your site.">
+<meta name="description" content="If you want to provide default localization support for guest user in your website yo can locate their browser locale by the following code:&lt;pre style=&quot;background-color: #2b2b2b; border-color: #000000; border-style: solid; border-width: 0.01mm; font-family: monospace; font-size: 14pt; line-height: 100%; padding: 4px;&quot;&gt;&lt;pre style=&quot;border: 0.01mm solid rgb(0, 0, 0); font-size: 12pt; line-height: 100%;&quot;&gt;def extract_locale_from_header    unless request.env[‘HTTP_ACCEPT_LANGUAGE’].nil?      return request.env[‘HTTP_ACCEPT_LANGUAGE’].scan(/^[a-z]{2}/).first    end    ‘en’  end&lt;/pre&gt;&lt;/pre&gt;This way you can determine on server side the locale of the user currently entered your site. ">
 
 
 
@@ -21,7 +21,7 @@
 <meta property="og:url" content="https://kinnrot.github.io/get-user-locale-from-http-headers/">
 
 
-  <meta property="og:description" content="If you want to provide default localization support for guest user in your website yo can locate their browser locale by the following code:&lt;pre style=&quot;background-color: #2b2b2b; border-color: #000000; border-style: solid; border-width: 0.01mm; font-family: monospace; font-size: 14pt; line-height: 100%; padding: 4px;&quot;&gt;&lt;pre style=&quot;border: 0.01mm solid rgb(0, 0, 0); font-size: 12pt; line-height: 100%;&quot;&gt;def extract_locale_from_header    unless request.env[‘HTTP_ACCEPT_LANGUAGE’].nil?      return request.env[‘HTTP_ACCEPT_LANGUAGE’].scan(/^[a-z]{2}/).first    end    ‘en’  end&lt;/pre&gt;&lt;/pre&gt;This way you can determine on server side the locale of the user currently entered your site.">
+  <meta property="og:description" content="If you want to provide default localization support for guest user in your website yo can locate their browser locale by the following code:&lt;pre style=&quot;background-color: #2b2b2b; border-color: #000000; border-style: solid; border-width: 0.01mm; font-family: monospace; font-size: 14pt; line-height: 100%; padding: 4px;&quot;&gt;&lt;pre style=&quot;border: 0.01mm solid rgb(0, 0, 0); font-size: 12pt; line-height: 100%;&quot;&gt;def extract_locale_from_header    unless request.env[‘HTTP_ACCEPT_LANGUAGE’].nil?      return request.env[‘HTTP_ACCEPT_LANGUAGE’].scan(/^[a-z]{2}/).first    end    ‘en’  end&lt;/pre&gt;&lt;/pre&gt;This way you can determine on server side the locale of the user currently entered your site. ">
 
 
 
@@ -139,7 +139,7 @@
           
         </a>
         <ul class="visible-links"><li class="masthead__menu-item">
-              <a href="/about" >About</a>
+              <a href="/about">About</a>
             </li></ul>
         
         <button class="greedy-nav__toggle hidden" type="button">
@@ -269,6 +269,7 @@
 
   
   </div>
+
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
@@ -586,10 +587,10 @@ When clicki...</p>
     
   <script>
     var disqus_config = function () {
-      this.page.url = "https://kinnrot.github.io/get-user-locale-from-http-headers/";  // Replace PAGE_URL with your page's canonical URL variable
-      this.page.identifier = "/get-user-locale-from-http-headers"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      this.page.url = "https://kinnrot.github.io/get-user-locale-from-http-headers/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/get-user-locale-from-http-headers"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
     };
-    (function() { // DON'T EDIT BELOW THIS LINE
+    (function() { /* DON'T EDIT BELOW THIS LINE */
       var d = document, s = d.createElement('script');
       s.src = 'https://cdblg.disqus.com/embed.js';
       s.setAttribute('data-timestamp', +new Date());

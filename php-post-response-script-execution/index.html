@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  Minimal Mistakes Jekyll Theme 4.17.2 by Michael Rose
+  Minimal Mistakes Jekyll Theme 4.19.1 by Michael Rose
   Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>php post response script execution - cdblg</title>
-<meta name="description" content="I guess it’s nice to have so here you go&lt;pre class=&quot;lang-php prettyprint&quot; style=&quot;background-color: #eeeeee; border: 0px; font-family: Consolas, Menlo, Monaco, &#39;Lucida Console&#39;, &#39;Liberation Mono&#39;, &#39;DejaVu Sans Mono&#39;, &#39;Bitstream Vera Sans Mono&#39;, &#39;Courier New&#39;, monospace, serif; font-size: 14px; line-height: 18px; margin-bottom: 10px; max-height: 600px; overflow: auto; padding: 5px; text-align: left; vertical-align: baseline; width: auto;&quot;&gt;/*&nbsp;* basically allow a php script to return a response and continue with&nbsp;* code execution, good for statistics.&nbsp;* before echo anything to user call begin and after call end, than you can continue doing stuff&nbsp;*/class ScriptContinuationManager{&nbsp; &nbsp; /**&nbsp; &nbsp; &nbsp;* this is the point where we need to give a sign to this class&nbsp; &nbsp; &nbsp;* that we wanna write our response.&nbsp; &nbsp; &nbsp;* @return void&nbsp; &nbsp; &nbsp;*/&nbsp; &nbsp; public function beginRespone()&nbsp; &nbsp; {&nbsp; &nbsp; &nbsp; &nbsp; ob_end_clean();&nbsp; &nbsp; &nbsp; &nbsp; header(&quot;Connection: close&quot;);&nbsp; &nbsp; &nbsp; &nbsp; ignore_user_abort(); // optional&nbsp; &nbsp; &nbsp; &nbsp; ob_start();&nbsp; &nbsp; }&nbsp; &nbsp; /*&nbsp; &nbsp; &nbsp;* after this function execution the response will be sent to the&nbsp; &nbsp; &nbsp;* client, and code continue without client need to wait.&nbsp; &nbsp; &nbsp;*/&nbsp; &nbsp; public function endResponse()&nbsp; &nbsp; {&nbsp; &nbsp; &nbsp; &nbsp; $size = ob_get_length();&nbsp; &nbsp; &nbsp; &nbsp; header(&quot;Content-Length: $size&quot;);&nbsp; &nbsp; &nbsp; &nbsp; ob_end_flush(); // Strange behaviour, will not work&nbsp; &nbsp; &nbsp; &nbsp; flush(); // Unless both are called !&nbsp; &nbsp; }}&lt;/pre&gt;">
+<meta name="description" content="I guess it’s nice to have so here you go&lt;pre class=&quot;lang-php prettyprint&quot; style=&quot;background-color: #eeeeee; border: 0px; font-family: Consolas, Menlo, Monaco, &#39;Lucida Console&#39;, &#39;Liberation Mono&#39;, &#39;DejaVu Sans Mono&#39;, &#39;Bitstream Vera Sans Mono&#39;, &#39;Courier New&#39;, monospace, serif; font-size: 14px; line-height: 18px; margin-bottom: 10px; max-height: 600px; overflow: auto; padding: 5px; text-align: left; vertical-align: baseline; width: auto;&quot;&gt;/*&nbsp;* basically allow a php script to return a response and continue with&nbsp;* code execution, good for statistics.&nbsp;* before echo anything to user call begin and after call end, than you can continue doing stuff&nbsp;*/class ScriptContinuationManager{&nbsp; &nbsp; /**&nbsp; &nbsp; &nbsp;* this is the point where we need to give a sign to this class&nbsp; &nbsp; &nbsp;* that we wanna write our response.&nbsp; &nbsp; &nbsp;* @return void&nbsp; &nbsp; &nbsp;*/&nbsp; &nbsp; public function beginRespone()&nbsp; &nbsp; {&nbsp; &nbsp; &nbsp; &nbsp; ob_end_clean();&nbsp; &nbsp; &nbsp; &nbsp; header(&quot;Connection: close&quot;);&nbsp; &nbsp; &nbsp; &nbsp; ignore_user_abort(); // optional&nbsp; &nbsp; &nbsp; &nbsp; ob_start();&nbsp; &nbsp; }&nbsp; &nbsp; /*&nbsp; &nbsp; &nbsp;* after this function execution the response will be sent to the&nbsp; &nbsp; &nbsp;* client, and code continue without client need to wait.&nbsp; &nbsp; &nbsp;*/&nbsp; &nbsp; public function endResponse()&nbsp; &nbsp; {&nbsp; &nbsp; &nbsp; &nbsp; $size = ob_get_length();&nbsp; &nbsp; &nbsp; &nbsp; header(&quot;Content-Length: $size&quot;);&nbsp; &nbsp; &nbsp; &nbsp; ob_end_flush(); // Strange behaviour, will not work&nbsp; &nbsp; &nbsp; &nbsp; flush(); // Unless both are called !&nbsp; &nbsp; }}&lt;/pre&gt; ">
 
 
 
@@ -21,7 +21,7 @@
 <meta property="og:url" content="https://kinnrot.github.io/php-post-response-script-execution/">
 
 
-  <meta property="og:description" content="I guess it’s nice to have so here you go&lt;pre class=&quot;lang-php prettyprint&quot; style=&quot;background-color: #eeeeee; border: 0px; font-family: Consolas, Menlo, Monaco, &#39;Lucida Console&#39;, &#39;Liberation Mono&#39;, &#39;DejaVu Sans Mono&#39;, &#39;Bitstream Vera Sans Mono&#39;, &#39;Courier New&#39;, monospace, serif; font-size: 14px; line-height: 18px; margin-bottom: 10px; max-height: 600px; overflow: auto; padding: 5px; text-align: left; vertical-align: baseline; width: auto;&quot;&gt;/*&nbsp;* basically allow a php script to return a response and continue with&nbsp;* code execution, good for statistics.&nbsp;* before echo anything to user call begin and after call end, than you can continue doing stuff&nbsp;*/class ScriptContinuationManager{&nbsp; &nbsp; /**&nbsp; &nbsp; &nbsp;* this is the point where we need to give a sign to this class&nbsp; &nbsp; &nbsp;* that we wanna write our response.&nbsp; &nbsp; &nbsp;* @return void&nbsp; &nbsp; &nbsp;*/&nbsp; &nbsp; public function beginRespone()&nbsp; &nbsp; {&nbsp; &nbsp; &nbsp; &nbsp; ob_end_clean();&nbsp; &nbsp; &nbsp; &nbsp; header(&quot;Connection: close&quot;);&nbsp; &nbsp; &nbsp; &nbsp; ignore_user_abort(); // optional&nbsp; &nbsp; &nbsp; &nbsp; ob_start();&nbsp; &nbsp; }&nbsp; &nbsp; /*&nbsp; &nbsp; &nbsp;* after this function execution the response will be sent to the&nbsp; &nbsp; &nbsp;* client, and code continue without client need to wait.&nbsp; &nbsp; &nbsp;*/&nbsp; &nbsp; public function endResponse()&nbsp; &nbsp; {&nbsp; &nbsp; &nbsp; &nbsp; $size = ob_get_length();&nbsp; &nbsp; &nbsp; &nbsp; header(&quot;Content-Length: $size&quot;);&nbsp; &nbsp; &nbsp; &nbsp; ob_end_flush(); // Strange behaviour, will not work&nbsp; &nbsp; &nbsp; &nbsp; flush(); // Unless both are called !&nbsp; &nbsp; }}&lt;/pre&gt;">
+  <meta property="og:description" content="I guess it’s nice to have so here you go&lt;pre class=&quot;lang-php prettyprint&quot; style=&quot;background-color: #eeeeee; border: 0px; font-family: Consolas, Menlo, Monaco, &#39;Lucida Console&#39;, &#39;Liberation Mono&#39;, &#39;DejaVu Sans Mono&#39;, &#39;Bitstream Vera Sans Mono&#39;, &#39;Courier New&#39;, monospace, serif; font-size: 14px; line-height: 18px; margin-bottom: 10px; max-height: 600px; overflow: auto; padding: 5px; text-align: left; vertical-align: baseline; width: auto;&quot;&gt;/*&nbsp;* basically allow a php script to return a response and continue with&nbsp;* code execution, good for statistics.&nbsp;* before echo anything to user call begin and after call end, than you can continue doing stuff&nbsp;*/class ScriptContinuationManager{&nbsp; &nbsp; /**&nbsp; &nbsp; &nbsp;* this is the point where we need to give a sign to this class&nbsp; &nbsp; &nbsp;* that we wanna write our response.&nbsp; &nbsp; &nbsp;* @return void&nbsp; &nbsp; &nbsp;*/&nbsp; &nbsp; public function beginRespone()&nbsp; &nbsp; {&nbsp; &nbsp; &nbsp; &nbsp; ob_end_clean();&nbsp; &nbsp; &nbsp; &nbsp; header(&quot;Connection: close&quot;);&nbsp; &nbsp; &nbsp; &nbsp; ignore_user_abort(); // optional&nbsp; &nbsp; &nbsp; &nbsp; ob_start();&nbsp; &nbsp; }&nbsp; &nbsp; /*&nbsp; &nbsp; &nbsp;* after this function execution the response will be sent to the&nbsp; &nbsp; &nbsp;* client, and code continue without client need to wait.&nbsp; &nbsp; &nbsp;*/&nbsp; &nbsp; public function endResponse()&nbsp; &nbsp; {&nbsp; &nbsp; &nbsp; &nbsp; $size = ob_get_length();&nbsp; &nbsp; &nbsp; &nbsp; header(&quot;Content-Length: $size&quot;);&nbsp; &nbsp; &nbsp; &nbsp; ob_end_flush(); // Strange behaviour, will not work&nbsp; &nbsp; &nbsp; &nbsp; flush(); // Unless both are called !&nbsp; &nbsp; }}&lt;/pre&gt; ">
 
 
 
@@ -139,7 +139,7 @@
           
         </a>
         <ul class="visible-links"><li class="masthead__menu-item">
-              <a href="/about" >About</a>
+              <a href="/about">About</a>
             </li></ul>
         
         <button class="greedy-nav__toggle hidden" type="button">
@@ -269,6 +269,7 @@
 
   
   </div>
+
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
@@ -570,10 +571,10 @@ When clicki...</p>
     
   <script>
     var disqus_config = function () {
-      this.page.url = "https://kinnrot.github.io/php-post-response-script-execution/";  // Replace PAGE_URL with your page's canonical URL variable
-      this.page.identifier = "/php-post-response-script-execution"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      this.page.url = "https://kinnrot.github.io/php-post-response-script-execution/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/php-post-response-script-execution"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
     };
-    (function() { // DON'T EDIT BELOW THIS LINE
+    (function() { /* DON'T EDIT BELOW THIS LINE */
       var d = document, s = d.createElement('script');
       s.src = 'https://cdblg.disqus.com/embed.js';
       s.setAttribute('data-timestamp', +new Date());

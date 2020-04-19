@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  Minimal Mistakes Jekyll Theme 4.17.2 by Michael Rose
+  Minimal Mistakes Jekyll Theme 4.19.1 by Michael Rose
   Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>PHP sessions - stuff to check when things goes wrong. - cdblg</title>
-<meta name="description" content="There is too much information about problems with sessions in PHP, every dude got it’s own problem and it’s own solution.The probability that the problem you experiencing is the same is very low. So here is what my little (and very annoying) google journey came up to:&lt;ul&gt;&lt;li&gt;You must call session_start(); on each page&lt;/li&gt;&lt;li&gt;If you use the header(‘Location: blabla’); you should use relative url to keep preserve session &lt;/li&gt;&lt;li&gt;some people say before using the header action you need to call  session_write_close(); - I’m not using it.&lt;/li&gt;&lt;li&gt;session_write_close(); could be the reason to your problems, cause after calling it you can’t modify the session (in the current http context), that was my problem.&lt;/li&gt;&lt;li&gt;on php docs, they say that “Session ID is not passed with Location header even if session.use_trans_sid is enabled. It must by passed manually using SID constant.”&lt;/li&gt;&lt;/ul&gt;&lt;div&gt;So first make sure you use session start, if you passed this search for voodoos like  session_write_close() in the middle of your infrastructure and remove them.&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;If I didn’t help, continue the journey.&lt;/div&gt;">
+<meta name="description" content="There is too much information about problems with sessions in PHP, every dude got it’s own problem and it’s own solution.The probability that the problem you experiencing is the same is very low. So here is what my little (and very annoying) google journey came up to:&lt;ul&gt;&lt;li&gt;You must call session_start(); on each page&lt;/li&gt;&lt;li&gt;If you use the header(‘Location: blabla’); you should use relative url to keep preserve session &lt;/li&gt;&lt;li&gt;some people say before using the header action you need to call  session_write_close(); - I’m not using it.&lt;/li&gt;&lt;li&gt;session_write_close(); could be the reason to your problems, cause after calling it you can’t modify the session (in the current http context), that was my problem.&lt;/li&gt;&lt;li&gt;on php docs, they say that “Session ID is not passed with Location header even if session.use_trans_sid is enabled. It must by passed manually using SID constant.”&lt;/li&gt;&lt;/ul&gt;&lt;div&gt;So first make sure you use session start, if you passed this search for voodoos like  session_write_close() in the middle of your infrastructure and remove them.&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;If I didn’t help, continue the journey.&lt;/div&gt; ">
 
 
 
@@ -21,7 +21,7 @@
 <meta property="og:url" content="https://kinnrot.github.io/php-sessions-stuff-to-check-when-things/">
 
 
-  <meta property="og:description" content="There is too much information about problems with sessions in PHP, every dude got it’s own problem and it’s own solution.The probability that the problem you experiencing is the same is very low. So here is what my little (and very annoying) google journey came up to:&lt;ul&gt;&lt;li&gt;You must call session_start(); on each page&lt;/li&gt;&lt;li&gt;If you use the header(‘Location: blabla’); you should use relative url to keep preserve session &lt;/li&gt;&lt;li&gt;some people say before using the header action you need to call  session_write_close(); - I’m not using it.&lt;/li&gt;&lt;li&gt;session_write_close(); could be the reason to your problems, cause after calling it you can’t modify the session (in the current http context), that was my problem.&lt;/li&gt;&lt;li&gt;on php docs, they say that “Session ID is not passed with Location header even if session.use_trans_sid is enabled. It must by passed manually using SID constant.”&lt;/li&gt;&lt;/ul&gt;&lt;div&gt;So first make sure you use session start, if you passed this search for voodoos like  session_write_close() in the middle of your infrastructure and remove them.&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;If I didn’t help, continue the journey.&lt;/div&gt;">
+  <meta property="og:description" content="There is too much information about problems with sessions in PHP, every dude got it’s own problem and it’s own solution.The probability that the problem you experiencing is the same is very low. So here is what my little (and very annoying) google journey came up to:&lt;ul&gt;&lt;li&gt;You must call session_start(); on each page&lt;/li&gt;&lt;li&gt;If you use the header(‘Location: blabla’); you should use relative url to keep preserve session &lt;/li&gt;&lt;li&gt;some people say before using the header action you need to call  session_write_close(); - I’m not using it.&lt;/li&gt;&lt;li&gt;session_write_close(); could be the reason to your problems, cause after calling it you can’t modify the session (in the current http context), that was my problem.&lt;/li&gt;&lt;li&gt;on php docs, they say that “Session ID is not passed with Location header even if session.use_trans_sid is enabled. It must by passed manually using SID constant.”&lt;/li&gt;&lt;/ul&gt;&lt;div&gt;So first make sure you use session start, if you passed this search for voodoos like  session_write_close() in the middle of your infrastructure and remove them.&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;If I didn’t help, continue the journey.&lt;/div&gt; ">
 
 
 
@@ -139,7 +139,7 @@
           
         </a>
         <ul class="visible-links"><li class="masthead__menu-item">
-              <a href="/about" >About</a>
+              <a href="/about">About</a>
             </li></ul>
         
         <button class="greedy-nav__toggle hidden" type="button">
@@ -269,6 +269,7 @@
 
   
   </div>
+
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
@@ -574,10 +575,10 @@ When clicki...</p>
     
   <script>
     var disqus_config = function () {
-      this.page.url = "https://kinnrot.github.io/php-sessions-stuff-to-check-when-things/";  // Replace PAGE_URL with your page's canonical URL variable
-      this.page.identifier = "/php-sessions-stuff-to-check-when-things"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      this.page.url = "https://kinnrot.github.io/php-sessions-stuff-to-check-when-things/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/php-sessions-stuff-to-check-when-things"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
     };
-    (function() { // DON'T EDIT BELOW THIS LINE
+    (function() { /* DON'T EDIT BELOW THIS LINE */
       var d = document, s = d.createElement('script');
       s.src = 'https://cdblg.disqus.com/embed.js';
       s.setAttribute('data-timestamp', +new Date());

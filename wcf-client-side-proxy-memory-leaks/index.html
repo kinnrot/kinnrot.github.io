@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  Minimal Mistakes Jekyll Theme 4.17.2 by Michael Rose
+  Minimal Mistakes Jekyll Theme 4.19.1 by Michael Rose
   Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>WCF client side proxy memory leaks - cdblg</title>
-<meta name="description" content="Today I ran into a guy who worked with me on my previous project.On that project I was responsible to rewrite the WCF channels (proxies) generation management and lifetime management of them.I decided to do some research and found some good stuff here.So this guy (aka Kurki) tells me they found a memory leak in my manager, what was the problem?So i messed up like I always do (well, only 90% of the time, like a good programmer).I wrote a code that registers to the Faulted event of the channel, kills the channel when Faulted and creates a new one to work with, everything looked fine, only one screw up (I’m sure some of you can guess).I forgot to unregister from the Faulted Event.On the web they tell you to do some unique logic to kill your channel in a safe way, what they don’t talk about is that it’ll stay in memory and fire events if you won’t unregister from stuff although you think it is dead.So please do not forget to unregister from stuff even if the object is disposable.Or consider the use of weak event listeners and problem solved.">
+<meta name="description" content="Today I ran into a guy who worked with me on my previous project.On that project I was responsible to rewrite the WCF channels (proxies) generation management and lifetime management of them.I decided to do some research and found some good stuff here.So this guy (aka Kurki) tells me they found a memory leak in my manager, what was the problem?So i messed up like I always do (well, only 90% of the time, like a good programmer).I wrote a code that registers to the Faulted event of the channel, kills the channel when Faulted and creates a new one to work with, everything looked fine, only one screw up (I’m sure some of you can guess).I forgot to unregister from the Faulted Event.On the web they tell you to do some unique logic to kill your channel in a safe way, what they don’t talk about is that it’ll stay in memory and fire events if you won’t unregister from stuff although you think it is dead.So please do not forget to unregister from stuff even if the object is disposable.Or consider the use of weak event listeners and problem solved. ">
 
 
 
@@ -21,7 +21,7 @@
 <meta property="og:url" content="https://kinnrot.github.io/wcf-client-side-proxy-memory-leaks/">
 
 
-  <meta property="og:description" content="Today I ran into a guy who worked with me on my previous project.On that project I was responsible to rewrite the WCF channels (proxies) generation management and lifetime management of them.I decided to do some research and found some good stuff here.So this guy (aka Kurki) tells me they found a memory leak in my manager, what was the problem?So i messed up like I always do (well, only 90% of the time, like a good programmer).I wrote a code that registers to the Faulted event of the channel, kills the channel when Faulted and creates a new one to work with, everything looked fine, only one screw up (I’m sure some of you can guess).I forgot to unregister from the Faulted Event.On the web they tell you to do some unique logic to kill your channel in a safe way, what they don’t talk about is that it’ll stay in memory and fire events if you won’t unregister from stuff although you think it is dead.So please do not forget to unregister from stuff even if the object is disposable.Or consider the use of weak event listeners and problem solved.">
+  <meta property="og:description" content="Today I ran into a guy who worked with me on my previous project.On that project I was responsible to rewrite the WCF channels (proxies) generation management and lifetime management of them.I decided to do some research and found some good stuff here.So this guy (aka Kurki) tells me they found a memory leak in my manager, what was the problem?So i messed up like I always do (well, only 90% of the time, like a good programmer).I wrote a code that registers to the Faulted event of the channel, kills the channel when Faulted and creates a new one to work with, everything looked fine, only one screw up (I’m sure some of you can guess).I forgot to unregister from the Faulted Event.On the web they tell you to do some unique logic to kill your channel in a safe way, what they don’t talk about is that it’ll stay in memory and fire events if you won’t unregister from stuff although you think it is dead.So please do not forget to unregister from stuff even if the object is disposable.Or consider the use of weak event listeners and problem solved. ">
 
 
 
@@ -139,7 +139,7 @@
           
         </a>
         <ul class="visible-links"><li class="masthead__menu-item">
-              <a href="/about" >About</a>
+              <a href="/about">About</a>
             </li></ul>
         
         <button class="greedy-nav__toggle hidden" type="button">
@@ -269,6 +269,7 @@
 
   
   </div>
+
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
@@ -574,10 +575,10 @@ When clicki...</p>
     
   <script>
     var disqus_config = function () {
-      this.page.url = "https://kinnrot.github.io/wcf-client-side-proxy-memory-leaks/";  // Replace PAGE_URL with your page's canonical URL variable
-      this.page.identifier = "/wcf-client-side-proxy-memory-leaks"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      this.page.url = "https://kinnrot.github.io/wcf-client-side-proxy-memory-leaks/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/wcf-client-side-proxy-memory-leaks"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
     };
-    (function() { // DON'T EDIT BELOW THIS LINE
+    (function() { /* DON'T EDIT BELOW THIS LINE */
       var d = document, s = d.createElement('script');
       s.src = 'https://cdblg.disqus.com/embed.js';
       s.setAttribute('data-timestamp', +new Date());

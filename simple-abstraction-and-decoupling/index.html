@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  Minimal Mistakes Jekyll Theme 4.17.2 by Michael Rose
+  Minimal Mistakes Jekyll Theme 4.19.1 by Michael Rose
   Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Simple abstraction and decoupling example - cdblg</title>
-<meta name="description" content="Just code.We have a logger and a log viewer, could be better but I wanted it to be simple.This is the window that is also the log viewer&lt;pre class=&quot;brush: csharp;&quot;&gt;/// &lt;summary&gt;  /// Interaction logic for MainWindow.xaml  /// &lt;/summary&gt;  public partial class MainWindow : Window, ILogViewer  {    public MainWindow()    {      InitializeComponent();      Logger.RegisterViewer(this);    }    public void Log(string message)    {      // do the write logic    }  }&lt;/pre&gt;This is the interface of viewers&lt;pre class=&quot;brush: csharp;&quot;&gt;public interface ILogViewer{  void Log(string message);}&lt;/pre&gt;This is logger&lt;pre class=&quot;brush: csharp;&quot;&gt;public static class Logger{  static List&lt;ILogViewer&gt; viewers = new List&lt;ILogViewer&gt;();  public static void RegisterViewer(ILogViewer viewer)  {    viewers.Add(viewer);  }  public static void Log(string message)  {    foreach (ILogViewer viewer in viewers)    {      viewer.Log(message);    }  }}&lt;/pre&gt;">
+<meta name="description" content="Just code.We have a logger and a log viewer, could be better but I wanted it to be simple.This is the window that is also the log viewer&lt;pre class=&quot;brush: csharp;&quot;&gt;/// &lt;summary&gt;  /// Interaction logic for MainWindow.xaml  /// &lt;/summary&gt;  public partial class MainWindow : Window, ILogViewer  {    public MainWindow()    {      InitializeComponent();      Logger.RegisterViewer(this);    }    public void Log(string message)    {      // do the write logic    }  }&lt;/pre&gt;This is the interface of viewers&lt;pre class=&quot;brush: csharp;&quot;&gt;public interface ILogViewer{  void Log(string message);}&lt;/pre&gt;This is logger&lt;pre class=&quot;brush: csharp;&quot;&gt;public static class Logger{  static List&lt;ILogViewer&gt; viewers = new List&lt;ILogViewer&gt;();  public static void RegisterViewer(ILogViewer viewer)  {    viewers.Add(viewer);  }  public static void Log(string message)  {    foreach (ILogViewer viewer in viewers)    {      viewer.Log(message);    }  }}&lt;/pre&gt; ">
 
 
 
@@ -21,7 +21,7 @@
 <meta property="og:url" content="https://kinnrot.github.io/simple-abstraction-and-decoupling/">
 
 
-  <meta property="og:description" content="Just code.We have a logger and a log viewer, could be better but I wanted it to be simple.This is the window that is also the log viewer&lt;pre class=&quot;brush: csharp;&quot;&gt;/// &lt;summary&gt;  /// Interaction logic for MainWindow.xaml  /// &lt;/summary&gt;  public partial class MainWindow : Window, ILogViewer  {    public MainWindow()    {      InitializeComponent();      Logger.RegisterViewer(this);    }    public void Log(string message)    {      // do the write logic    }  }&lt;/pre&gt;This is the interface of viewers&lt;pre class=&quot;brush: csharp;&quot;&gt;public interface ILogViewer{  void Log(string message);}&lt;/pre&gt;This is logger&lt;pre class=&quot;brush: csharp;&quot;&gt;public static class Logger{  static List&lt;ILogViewer&gt; viewers = new List&lt;ILogViewer&gt;();  public static void RegisterViewer(ILogViewer viewer)  {    viewers.Add(viewer);  }  public static void Log(string message)  {    foreach (ILogViewer viewer in viewers)    {      viewer.Log(message);    }  }}&lt;/pre&gt;">
+  <meta property="og:description" content="Just code.We have a logger and a log viewer, could be better but I wanted it to be simple.This is the window that is also the log viewer&lt;pre class=&quot;brush: csharp;&quot;&gt;/// &lt;summary&gt;  /// Interaction logic for MainWindow.xaml  /// &lt;/summary&gt;  public partial class MainWindow : Window, ILogViewer  {    public MainWindow()    {      InitializeComponent();      Logger.RegisterViewer(this);    }    public void Log(string message)    {      // do the write logic    }  }&lt;/pre&gt;This is the interface of viewers&lt;pre class=&quot;brush: csharp;&quot;&gt;public interface ILogViewer{  void Log(string message);}&lt;/pre&gt;This is logger&lt;pre class=&quot;brush: csharp;&quot;&gt;public static class Logger{  static List&lt;ILogViewer&gt; viewers = new List&lt;ILogViewer&gt;();  public static void RegisterViewer(ILogViewer viewer)  {    viewers.Add(viewer);  }  public static void Log(string message)  {    foreach (ILogViewer viewer in viewers)    {      viewer.Log(message);    }  }}&lt;/pre&gt; ">
 
 
 
@@ -139,7 +139,7 @@
           
         </a>
         <ul class="visible-links"><li class="masthead__menu-item">
-              <a href="/about" >About</a>
+              <a href="/about">About</a>
             </li></ul>
         
         <button class="greedy-nav__toggle hidden" type="button">
@@ -269,6 +269,7 @@
 
   
   </div>
+
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
@@ -551,10 +552,10 @@ When clicki...</p>
     
   <script>
     var disqus_config = function () {
-      this.page.url = "https://kinnrot.github.io/simple-abstraction-and-decoupling/";  // Replace PAGE_URL with your page's canonical URL variable
-      this.page.identifier = "/simple-abstraction-and-decoupling"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      this.page.url = "https://kinnrot.github.io/simple-abstraction-and-decoupling/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/simple-abstraction-and-decoupling"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
     };
-    (function() { // DON'T EDIT BELOW THIS LINE
+    (function() { /* DON'T EDIT BELOW THIS LINE */
       var d = document, s = d.createElement('script');
       s.src = 'https://cdblg.disqus.com/embed.js';
       s.setAttribute('data-timestamp', +new Date());
