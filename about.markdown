@@ -5,7 +5,7 @@ title: "About me"
 
 I'm chen, productive lean thinker, programmer, problem hacker, ninja.
 
-Currently I'm a full stacker@[stads](https://www.stadstech.com/) 
+Currently I'm a full stacker@[stads](https://www.stads.io/) 
 doing RoR with StimulusJS.
 
 While not programming, I carve on my carver, play volleyball and enjoy my family.

@@ -189,6 +189,7 @@ plugins:
   - jekyll-gist
   - jekyll-feed
   - jemoji
+#  - jekyll-crosspost-to-medium
 
 # mimic GitHub Pages with --safe
 whitelist:
@@ -249,3 +250,11 @@ defaults:
       comments: true
       share: true
       related: true
+
+#jekyll-crosspost_to_medium:
+#  enabled: false
+#  cache: .jekyll-crosspost_to_medium
+#  status: public
+#  license: all-rights-reserved
+#  text: '<p><i>This article was originally posted <a href="{{ url }}" rel="canonical">on my own site</a>.</i></p>',
+#  backdate: true

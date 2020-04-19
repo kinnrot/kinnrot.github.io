@@ -13,5 +13,5 @@ git_branch: master                        # Git branch where static site files a
 
 # remote_path:                            # Destination directory
 
-# JEKYLL_ENV=production bundle exec jekyll build
+# MEDIUM_INTEGRATION_TOKEN=<> MEDIUM_USER_ID=<>  JEKYLL_ENV=production bundle exec jekyll build
 # JEKYLL_ENV=production bundle exec octopress deploy
