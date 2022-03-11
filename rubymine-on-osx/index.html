@@ -1,7 +1,7 @@
 <!doctype html>
 <!--
-  Minimal Mistakes Jekyll Theme 4.19.1 by Michael Rose
-  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
 -->
@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Rubymine on OSX memory issues - cdblg</title>
-<meta name="description" content="I found this only today, you should run Rubymine as 32 bit process.It works much faster and consume half the memory.To set this got to the Applicaitons folder right click on rubymine-&gt;get info and check the “open in 32 bit mode”Thats all! ">
+<meta name="description" content="I found this only today, you should run Rubymine as 32 bit process.It works much faster and consume half the memory.To set this got to the Applicaitons folder right click on rubymine-&gt;get info and check the “open in 32 bit mode”Thats all!">
 
 
 
@@ -21,7 +21,7 @@
 <meta property="og:url" content="https://kinnrot.github.io/rubymine-on-osx/">
 
 
-  <meta property="og:description" content="I found this only today, you should run Rubymine as 32 bit process.It works much faster and consume half the memory.To set this got to the Applicaitons folder right click on rubymine-&gt;get info and check the “open in 32 bit mode”Thats all! ">
+  <meta property="og:description" content="I found this only today, you should run Rubymine as 32 bit process.It works much faster and consume half the memory.To set this got to the Applicaitons folder right click on rubymine-&gt;get info and check the “open in 32 bit mode”Thats all!">
 
 
 
@@ -61,10 +61,13 @@
 
 
 
+
 <!-- end _includes/seo.html -->
 
 
-<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="cdblg Feed">
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="cdblg Feed">
+
 
 <!-- https://t.co/dKP3o1e -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -75,21 +78,8 @@
 
 <!-- For all browsers -->
 <link rel="stylesheet" href="/assets/css/main.css">
-
-<!--[if IE]>
-  <style>
-    /* old IE unsupported flexbox fixes */
-    .greedy-nav .site-title {
-      padding-right: 3em;
-    }
-    .greedy-nav button {
-      position: absolute;
-      top: 0;
-      right: 0;
-      height: 100%;
-    }
-  </style>
-<![endif]-->
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
 
 
 
@@ -115,7 +105,6 @@
 
   <body class="layout--post">
     <nav class="skip-links">
-  <h2 class="screen-reader-text">Skip links</h2>
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
     <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
@@ -157,8 +146,8 @@
       
 
 
-  
-    
+
+
 
 
 
@@ -181,7 +170,7 @@
   </ol>
 </nav>
 
-  
+
 
 
 <div id="main" role="main">
@@ -273,29 +262,46 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    
     <meta itemprop="headline" content="Rubymine on OSX memory issues">
+    
     <meta itemprop="description" content="I found this only today, you should run Rubymine as 32 bit process.It works much faster and consume half the memory.To set this got to the Applicaitons folder right click on rubymine-&gt;get info and check the “open in 32 bit mode”Thats all!">
-    <meta itemprop="datePublished" content="January 06, 2015">
+    
+    
+    <meta itemprop="datePublished" content=" January 06, 2015">
     
 
 
     <div class="page__inner-wrap">
       
-        <header>
-          <h1 class="page__title" itemprop="headline">Rubymine on OSX memory issues
+      <header>
+        <h1 class="page__title" itemprop="headline">Rubymine on OSX memory issues
 </h1>
-          
-            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+        
+        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
 
+  <p class="page__meta">
+    
 
+    
 
+    
+      
+      
 
-  less than 1 minute read
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
 
 </p>
-          
+        
 
-        </header>
+      </header>
       
 
       <section class="page__content" itemprop="text">
@@ -310,28 +316,18 @@
 
 
   
-  
-  
 
   <p class="page__taxonomy">
     <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
     <span itemprop="keywords">
     
-      
-      
       <a href="/tags/memory-leak" class="page__taxonomy-item" rel="tag">memory leak</a><span class="sep">, </span>
     
-      
-      
       <a href="/tags/osx" class="page__taxonomy-item" rel="tag">OSX</a><span class="sep">, </span>
     
-      
-      
-      <a href="/tags/rubymine" class="page__taxonomy-item" rel="tag">Rubymine</a><span class="sep">, </span>
+      <a href="/tags/ruby" class="page__taxonomy-item" rel="tag">Ruby</a><span class="sep">, </span>
     
-      
-      
-      <a href="/tags/ruby" class="page__taxonomy-item" rel="tag">Ruby</a>
+      <a href="/tags/rubymine" class="page__taxonomy-item" rel="tag">Rubymine</a>
     
     </span>
   </p>
@@ -340,7 +336,8 @@
 
 
         
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2015-01-06T23:32:00+02:00">January 06, 2015</time></p>
+        <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time
+            datetime="2015-01-06T23:32:00+02:00">January 06, 2015</time></p>
         
 
       </footer>
@@ -373,7 +370,7 @@
     </div>
 
     
-      <div class="page__comments">
+    <div class="page__comments">
   
   
       <h4 class="page__comments-title">Comments</h4>
@@ -386,134 +383,178 @@
 
   
   
-    <div class="page__related">
-      <h4 class="page__related-title">You May Also Enjoy</h4>
-      <div class="grid__wrapper">
-        
-          
+  <div class="page__related">
+    <h4 class="page__related-title">You May Also Enjoy
+    </h4>
+    <div class="grid__wrapper">
+      
+      
 
 
 
 <div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
-    <h2 class="archive__item-title" itemprop="headline">
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/the-value-of-fast-feedback-loop/" rel="permalink">The value of fast feedback loop for developers
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          8 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">We all wanna get from 0 to 1 (with many trailing zeros), the sooner the better.
+</p>
+  </article>
+</div>
+
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
       
         <a href="/rails-presentation-objects-guide/" rel="permalink">Rails Presentation Objects
 </a>
       
     </h2>
     
-      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
 
-
-
-
-  7 minute read
-
-</p>
+  <p class="page__meta">
     
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          7 minute read
+        
+      </span>
+    
+  </p>
+
+
     <p class="archive__item-excerpt" itemprop="description">If you ever used any MVC framework, I’m sure you asked yourself more than once, ‘Where should I put this piece of code?’ (If not that’s also fine).
 Well, the...</p>
   </article>
 </div>
 
-        
-          
+      
+      
 
 
 
 <div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
-    <h2 class="archive__item-title" itemprop="headline">
+    <h2 class="archive__item-title no_toc" itemprop="headline">
       
         <a href="/simulate-click-on-google-geo-chart/" rel="permalink">Simulate Click on Google Geo Chart
 </a>
       
     </h2>
     
-      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
 
-
-
-
-  1 minute read
-
-</p>
+  <p class="page__meta">
     
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
     <p class="archive__item-excerpt" itemprop="description">So I found out it’s not so documented, hopefully google will index this.
 I have a page on my  system that shows a google geo chart (same as this)
 When clicki...</p>
   </article>
 </div>
 
-        
-          
+      
+      
 
 
 
 <div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
-    <h2 class="archive__item-title" itemprop="headline">
+    <h2 class="archive__item-title no_toc" itemprop="headline">
       
         <a href="/keep-track-on-coverage/" rel="permalink">Keep Track on Coverage
 </a>
       
     </h2>
     
-      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
 
-
-
-
-  1 minute read
-
-</p>
+  <p class="page__meta">
     
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
     <p class="archive__item-excerpt" itemprop="description">Recently I discovered Danger, an amazing tool you should check out no matter what.
 </p>
   </article>
 </div>
 
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/building-your-own-rails-form-builder/" rel="permalink">Building your own rails form builder
-</a>
-      
-    </h2>
-    
-      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
-
-
-
-
-  3 minute read
-
-</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">If you’re building forms with rails, whether you’re using a gem for it or working with pure rails forms, you should know this.
-</p>
-  </article>
-</div>
-
-        
-      </div>
     </div>
+  </div>
   
 </div>
 <div id="codefund_ad"></div>
 <script src="https://codefund.io/scripts/15927f6c-5043-4514-b0d2-ce3b9090ae4c/embed.js?template=bottom-bar"></script>
-
     </div>
 
     
@@ -528,33 +569,20 @@ When clicki...</p>
     
 
     
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
 
-    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
   </ul>
 </div>
 
-<div class="page__footer-copyright">&copy; 2020 Chen Kinnrot. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+<div class="page__footer-copyright">&copy; 2022 Chen Kinnrot. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
 
       </footer>
     </div>
 
     
   <script src="/assets/js/main.min.js"></script>
-  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
 
 
 

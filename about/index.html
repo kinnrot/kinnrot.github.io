@@ -1,7 +1,7 @@
 <!doctype html>
 <!--
-  Minimal Mistakes Jekyll Theme 4.19.1 by Michael Rose
-  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
 -->
@@ -10,10 +10,11 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>About me - cdblg</title>
-<meta name="description" content="An amazing website. ">
+<meta name="description" content="Code blog.">
 
 
   <meta name="author" content="Chen Kinnrot">
+  
 
 
 <meta property="og:type" content="website">
@@ -23,7 +24,7 @@
 <meta property="og:url" content="https://kinnrot.github.io/about/">
 
 
-  <meta property="og:description" content="An amazing website. ">
+  <meta property="og:description" content="Code blog.">
 
 
 
@@ -61,10 +62,13 @@
 
 
 
+
 <!-- end _includes/seo.html -->
 
 
-<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="cdblg Feed">
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="cdblg Feed">
+
 
 <!-- https://t.co/dKP3o1e -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -75,21 +79,8 @@
 
 <!-- For all browsers -->
 <link rel="stylesheet" href="/assets/css/main.css">
-
-<!--[if IE]>
-  <style>
-    /* old IE unsupported flexbox fixes */
-    .greedy-nav .site-title {
-      padding-right: 3em;
-    }
-    .greedy-nav button {
-      position: absolute;
-      top: 0;
-      right: 0;
-      height: 100%;
-    }
-  </style>
-<![endif]-->
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
 
 
 
@@ -115,7 +106,6 @@
 
   <body class="layout--single">
     <nav class="skip-links">
-  <h2 class="screen-reader-text">Skip links</h2>
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
     <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
@@ -186,6 +176,129 @@
 
 <div id="main" role="main">
   
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="https://secure.gravatar.com/avatar/094c0ec476b95ed7619d6a4cb918da78" alt="Chen Kinnrot" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Chen Kinnrot</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>This is my code blog</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Israel</span>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://twitter.com/kinnrot" itemprop="sameAs" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://www.linkedin.com/in/chen-kinnrot-b9125448" itemprop="sameAs" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://github.com/kinnrot" itemprop="sameAs" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://stackoverflow.com/users/67505/chen-kinnrot" itemprop="sameAs" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-stack-overflow" aria-hidden="true"></i><span class="label">Stack Overflow</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
@@ -200,19 +313,20 @@
           <h1 id="page-title" class="page__title" itemprop="headline">About me
 </h1>
           
+
+
         </header>
       
 
       <section class="page__content" itemprop="text">
         
-        <p>I’m chen, productive lean thinker, programmer, problem hacker, ninja.</p>
+        <p>I’m chen, lean thinker, impact driven, programmer, problem hacker, ninja, maker.</p>
 
-<p>Currently I’m a staff engineer@<a href="https://www.lemonade.com/">lemonade</a> doing Nest RoR &amp; React.</p>
+<p>Currently I’m an Engineering Manager@<a href="https://www.lemonade.com/?utm_source=kinnrot.github.io" style="color: #FF0083; text-decoration: underline font-family:Lato; ::selection {background: rgb(255, 0, 131); color: rgb(255, 255, 255); text-shadow: none;}">Lemonade</a> helping pet parents get insured with a smile.</p>
 
-<p>We’re <a href="https://makers.lemonade.com/">hiring</a> great people.</p>
+<p>While not programming, I carve on my carver, play volleyball and enjoy my amazing family.</p>
 
-<p>While not programming, I carve on my carver, play volleyball and enjoy my family.</p>
-
+<p>BTW, I’m <a href="https://grnh.se/c3676dae2us">hiring</a> amazing people to join our amazing company.</p>
 
         
       </section>
@@ -223,6 +337,8 @@
 
 
         
+
+
       </footer>
 
       
@@ -251,33 +367,20 @@
     
 
     
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
 
-    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
   </ul>
 </div>
 
-<div class="page__footer-copyright">&copy; 2020 Chen Kinnrot. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+<div class="page__footer-copyright">&copy; 2022 Chen Kinnrot. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
 
       </footer>
     </div>
 
     
   <script src="/assets/js/main.min.js"></script>
-  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
 
 
 

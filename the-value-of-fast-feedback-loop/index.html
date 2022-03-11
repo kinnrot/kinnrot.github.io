@@ -1,0 +1,687 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>The value of fast feedback loop for developers - cdblg</title>
+<meta name="description" content="We all wanna get from 0 to 1 (with many trailing zeros), the sooner the better.">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="cdblg">
+<meta property="og:title" content="The value of fast feedback loop for developers">
+<meta property="og:url" content="https://kinnrot.github.io/the-value-of-fast-feedback-loop/">
+
+
+  <meta property="og:description" content="We all wanna get from 0 to 1 (with many trailing zeros), the sooner the better.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-03-03T23:19:59+02:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://kinnrot.github.io/the-value-of-fast-feedback-loop/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Chen Kinnrot",
+      "url": "https://kinnrot.github.io/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="cdblg Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-103259749-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-103259749-1', { 'optimize_id': 'GTM-KXX4C9K'});
+</script>
+<!-- Anti-flicker snippet (recommended)  -->
+<style>.async-hide { opacity: 0 !important} </style>
+<script>(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
+  h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
+  (a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+})(window,document.documentElement,'async-hide','dataLayer',4000,
+  {'OPT_CONTAINER_ID':true});</script>
+<!-- -->
+
+  </head>
+
+  <body class="layout--post">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          cdblg
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about">About</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="https://kinnrot.github.io/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        <li class="current">The value of fast feedback loop for developers</li>
+      
+    
+  </ol>
+</nav>
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name"></h3>
+    
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <meta itemprop="headline" content="The value of fast feedback loop for developers">
+    
+    <meta itemprop="description" content="We all wanna get from 0 to 1 (with many trailing zeros), the sooner the better.">
+    
+    
+    <meta itemprop="datePublished" content=" March 03, 2022">
+    
+
+
+    <div class="page__inner-wrap">
+      
+      <header>
+        <h1 class="page__title" itemprop="headline">The value of fast feedback loop for developers
+</h1>
+        
+        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          8 minute read
+        
+      </span>
+    
+  </p>
+
+</p>
+        
+
+      </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>We all wanna get from 0 to 1 (with many trailing zeros), the sooner the better.</p>
+
+<h3 id="so-whats-the-problem">So, what’s the problem?</h3>
+
+<p>You build something and you’re brave enough to put it out there, now what?
+Now you start the endless feedback loop cycle, you look at the data, analytics, user recordings, product inputs, and decide whats the next thing that’ll make your product better then ever, it’s an iterative process that never ends. The faster you iterate, the faster you’ll get to your target.</p>
+
+<h3 id="how-fast-an-this-be-done">How fast an this be done?</h3>
+
+<p>It depends on so many things, lets try to focus on the dev part, suppose the product is a ninja with an endless queue of things he wants the R&amp;D department to execute, what does it take? what kind of feedback loop do we need as developers?</p>
+
+<p>The simplest way to explain what need to be done:
+“Write the correct code, according to product spec, put it on production.”</p>
+
+<p>Writing the correct code - takes time and that’s fine, what kind of feedback loop do we have when writing code?</p>
+
+<p>It starts with a developer coding on his IDE, gets immediate feedback from it, auto lint/compile issue/warnings etc.
+This is the most basic and immediate feedback out there, and it should be seamlessly fast (as fast as typing)</p>
+
+<p>Second layer of feedback are unit tests, fastest way to run your new code, in a neutral environment allowing to identify and fix issues quickly.
+This is less basic and immediate, but, an optimal developer experience, allow changing code, running tests almost instantly get results and iterate.
+In a world of SOA/Micro-services and remote dev environment, this might not be so fast, but it should. Let’s take an example, company with 200 great developers, each one constantly coding amazing things, writing tests to make sure their code works, after each test written, developer need to wait 30sec to see the test results, lets say each developer write 20 tests a day. 20X30X200=120K seconds =  33.3 hours, meaning every day, almost 2% of productivity go’s on waiting for tests to run. let’s continue to the next loop.</p>
+
+<p>Third layer - running the real product on dev env, mandatory for engineers who make user experience, how much time does it take to make an html/css/js change and see it reflects on the app? it should be instant, if it’s 30 sec, we lost another 2% for the waiting, how much time does it take to spin the env? is it fast? stable?</p>
+
+<blockquote>
+  <p>Note - each time a developer need to wait more then 1 second, she might lose her focus to something else, which is a multiplier for the waiting time, not to mention the frustration when things doesn’t work locally.</p>
+</blockquote>
+
+<p>Forth layer - Pull request, this is an async process, which by definition get’s everything stuck, and a time to work on something else. If we need to move super fast, this process should be synchronized, and conducted f2f right after the pr was created, this is also an iterative process, get comment, fix them, re review.</p>
+
+<p>Fifth layer - QA, Again async process, we wanna get here as ready as possible, to avoid another loop, cause cycles are slow here.</p>
+
+<p>We just went over 5 layers of feedback loop, from the fastest to slowest. now think about it this way, the more iterations we do on the fast layers (1,2,3) the less chances we’ll have many iterations on the slow layers (4-5). To encourage developers to do more iterations, we need a strong infra to allow developers to write and run tests fast, play with their local env, make changes and check them fast. If it’s not fast they’ll do less iterations, and we’ll get to later layers less ready.</p>
+
+<p>So in a hypergrowth company, how to maintain fast feedback loop?</p>
+
+<p>It should start with observability over the metrics.</p>
+
+<ol>
+  <li>How much time does it take to run a single test?</li>
+  <li>How much time does it take to spin a new dev env with latest code?</li>
+  <li>How much time does it take to make a code change on dev/staging/production env and see it live?</li>
+  <li>How much time does a pr wait in review on average?</li>
+</ol>
+
+<p>Most of the time, when you start, everything is super fast(If you are at the beginning and something is slow, I urge you to stop and optimize), and gradually gets slower and slower, you got chunky modules, more dependencies, files, tooling, scripts and the whole shabang. Keeping things optimal when running fast is almost impossible.
+At some point you need to stop and think, What feedback cycle is too slow? What can I do about it?</p>
+
+<p>Possible solution is to have a lab mode where you work in isolation from the entire project, have a thin and lean project that has a shell wrapper that simulates the entire app with stubs.</p>
+
+<p>Another one is lot’s of separation and decoupling that allows you to work on relatively small parts of the system that can run fast (for example run a test that loads/compiles 15 files of 1 module, instead of all the 3000 files the project need in order to fully run).</p>
+
+<p>What’s your feedback loop time? what are you doing to improve it? please share on comment!</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/cd" class="page__taxonomy-item" rel="tag">cd</a><span class="sep">, </span>
+    
+      <a href="/tags/ci" class="page__taxonomy-item" rel="tag">ci</a><span class="sep">, </span>
+    
+      <a href="/tags/engineering" class="page__taxonomy-item" rel="tag">engineering</a><span class="sep">, </span>
+    
+      <a href="/tags/startups" class="page__taxonomy-item" rel="tag">startups</a>
+    
+    </span>
+  </p>
+
+
+
+
+        
+        <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time
+            datetime="2022-03-03T23:19:59+02:00">March 03, 2022</time></p>
+        
+
+      </footer>
+
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=The+value+of+fast+feedback+loop+for+developers%20https%3A%2F%2Fkinnrot.github.io%2Fthe-value-of-fast-feedback-loop%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fkinnrot.github.io%2Fthe-value-of-fast-feedback-loop%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fkinnrot.github.io%2Fthe-value-of-fast-feedback-loop%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/rails-presentation-objects-guide/" class="pagination--pager" title="Rails Presentation Objects
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+
+    </div>
+
+    
+    <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Comments</h4>
+      <section id="disqus_thread"></section>
+    
+</div>
+
+    
+  </article>
+
+  
+  
+  <div class="page__related">
+    <h4 class="page__related-title">You May Also Enjoy
+    </h4>
+    <div class="grid__wrapper">
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/rails-presentation-objects-guide/" rel="permalink">Rails Presentation Objects
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          7 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">If you ever used any MVC framework, I’m sure you asked yourself more than once, ‘Where should I put this piece of code?’ (If not that’s also fine).
+Well, the...</p>
+  </article>
+</div>
+
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/simulate-click-on-google-geo-chart/" rel="permalink">Simulate Click on Google Geo Chart
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">So I found out it’s not so documented, hopefully google will index this.
+I have a page on my  system that shows a google geo chart (same as this)
+When clicki...</p>
+  </article>
+</div>
+
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/keep-track-on-coverage/" rel="permalink">Keep Track on Coverage
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Recently I discovered Danger, an amazing tool you should check out no matter what.
+</p>
+  </article>
+</div>
+
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/building-your-own-rails-form-builder/" rel="permalink">Building your own rails form builder
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">If you’re building forms with rails, whether you’re using a gem for it or working with pure rails forms, you should know this.
+</p>
+  </article>
+</div>
+
+      
+    </div>
+  </div>
+  
+</div>
+<div id="codefund_ad"></div>
+<script src="https://codefund.io/scripts/15927f6c-5043-4514-b0d2-ce3b9090ae4c/embed.js?template=bottom-bar"></script>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Chen Kinnrot. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+  <script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-103259749-1']);
+  
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://kinnrot.github.io/the-value-of-fast-feedback-loop/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/the-value-of-fast-feedback-loop"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://cdblg.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>
