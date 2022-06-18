@@ -9,38 +9,38 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Dedicating a DJ(Delayed job) worker to a specific queue in heroku. - cdblg</title>
-<meta name="description" content="Let’s say you have a vey important procedure that takes a while, and you need to process it in background, but you still want to execute ASAP.I’m using Delayed Job on Heroku, and could not find a lot of tutorials to do this simple task.So here is the simplest way to achieve this ability, you can raise a process/deamon  that will have only one queue to work on. (Dealyed job worker by default is queue agnostic, just process all jobs)In procfile:&lt;blockquote class=&quot;tr_bq&quot;&gt;urgentworker:  QUEUE=urgent bundle exec rake jobs:work&lt;/blockquote&gt;You can call the worker in any name you want and even define multiple workers for multiple queues.And in the “urgent” job just define the queue name to be “urgent” the worker will process only jobs in this queue.example:&lt;blockquote class=&quot;tr_bq&quot;&gt;handle_asynchronously :some_job, :queue =&gt; “urgent’&lt;/blockquote&gt;This will also work for Resque.Notice that for rescue you can write QUEUE=* but for delayed job you can’t.">
+<!-- begin _includes/seo.html --><title>Why focus on why - cdblg</title>
+<meta name="description" content="Around 2 years ago, I started a new management gig, it wasn’t the first, but, it was the first with a relatively large team. One of the most basic things I needed to do as a manager, is to bind the team to it’s mission, and in more simple words, get them super motivated to do their day to day tasks.">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en">
 <meta property="og:site_name" content="cdblg">
-<meta property="og:title" content="Dedicating a DJ(Delayed job) worker to a specific queue in heroku.">
-<meta property="og:url" content="https://kinnrot.github.io/dedicating-djdelayed-job-worker-to/">
+<meta property="og:title" content="Why focus on why">
+<meta property="og:url" content="https://kinnrot.github.io/freedom-and-trust/">
 
 
-  <meta property="og:description" content="Let’s say you have a vey important procedure that takes a while, and you need to process it in background, but you still want to execute ASAP.I’m using Delayed Job on Heroku, and could not find a lot of tutorials to do this simple task.So here is the simplest way to achieve this ability, you can raise a process/deamon  that will have only one queue to work on. (Dealyed job worker by default is queue agnostic, just process all jobs)In procfile:&lt;blockquote class=&quot;tr_bq&quot;&gt;urgentworker:  QUEUE=urgent bundle exec rake jobs:work&lt;/blockquote&gt;You can call the worker in any name you want and even define multiple workers for multiple queues.And in the “urgent” job just define the queue name to be “urgent” the worker will process only jobs in this queue.example:&lt;blockquote class=&quot;tr_bq&quot;&gt;handle_asynchronously :some_job, :queue =&gt; “urgent’&lt;/blockquote&gt;This will also work for Resque.Notice that for rescue you can write QUEUE=* but for delayed job you can’t.">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2014-11-15T17:34:00+02:00">
+  <meta property="og:description" content="Around 2 years ago, I started a new management gig, it wasn’t the first, but, it was the first with a relatively large team. One of the most basic things I needed to do as a manager, is to bind the team to it’s mission, and in more simple words, get them super motivated to do their day to day tasks.">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2022-06-18T20:13:46+03:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="https://kinnrot.github.io/dedicating-djdelayed-job-worker-to/">
+
+<link rel="canonical" href="https://kinnrot.github.io/freedom-and-trust/">
 
 
 
@@ -164,7 +164,7 @@
         <span class="sep">/</span>
       
       
-        <li class="current">Dedicating a DJ(Delayed job) worker to a specific queue in heroku.</li>
+        <li class="current">Why focus on why</li>
       
     
   </ol>
@@ -263,19 +263,19 @@
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
     
-    <meta itemprop="headline" content="Dedicating a DJ(Delayed job) worker to a specific queue in heroku.">
+    <meta itemprop="headline" content="Why focus on why">
     
-    <meta itemprop="description" content="Let’s say you have a vey important procedure that takes a while, and you need to process it in background, but you still want to execute ASAP.I’m using Delayed Job on Heroku, and could not find a lot of tutorials to do this simple task.So here is the simplest way to achieve this ability, you can raise a process/deamon  that will have only one queue to work on. (Dealyed job worker by default is queue agnostic, just process all jobs)In procfile:&lt;blockquote class=&quot;tr_bq&quot;&gt;urgentworker:  QUEUE=urgent bundle exec rake jobs:work&lt;/blockquote&gt;You can call the worker in any name you want and even define multiple workers for multiple queues.And in the “urgent” job just define the queue name to be “urgent” the worker will process only jobs in this queue.example:&lt;blockquote class=&quot;tr_bq&quot;&gt;handle_asynchronously :some_job, :queue =&gt; “urgent’&lt;/blockquote&gt;This will also work for Resque.Notice that for rescue you can write QUEUE=* but for delayed job you can’t.">
+    <meta itemprop="description" content="Around 2 years ago, I started a new management gig, it wasn’t the first, but, it was the first with a relatively large team.One of the most basic things I needed to do as a manager, is to bind the team to it’s mission, and in more simple words, get them super motivated to do their day to day tasks.">
     
     
-    <meta itemprop="datePublished" content=" November 15, 2014">
+    <meta itemprop="datePublished" content=" June 18, 2022">
     
 
 
     <div class="page__inner-wrap">
       
       <header>
-        <h1 class="page__title" itemprop="headline">Dedicating a DJ(Delayed job) worker to a specific queue in heroku.
+        <h1 class="page__title" itemprop="headline">Why focus on why
 </h1>
         
         <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
@@ -292,7 +292,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          1 minute read
+          6 minute read
         
       </span>
     
@@ -305,7 +305,50 @@
       
 
       <section class="page__content" itemprop="text">
-        Let's say you have a vey important procedure that takes a while, and you need to process it in background, but you still want to execute ASAP.<br /><br />I'm using Delayed Job on Heroku, and could not find a lot of tutorials to do this simple task.<br /><br />So here is the simplest way to achieve this ability, you can raise a process/deamon &nbsp;that will have only one queue to work on. (Dealyed job worker by default is queue agnostic, just process all jobs)<br /><br />In procfile:<br /><br /><blockquote class="tr_bq">urgentworker: &nbsp;QUEUE=urgent bundle exec rake jobs:work</blockquote><br />You can call the worker in any name you want and even define multiple workers for multiple queues.<br />And in the "urgent" job just define the queue name to be "urgent" the worker will process only jobs in this queue.<br /><br />example:<br /><br /><blockquote class="tr_bq">handle_asynchronously :some_job, :queue =&gt; "urgent'</blockquote><br />This will also work for Resque.<br /><br />Notice that for rescue you can write QUEUE=* <b>but for delayed job you can't.</b>
+        <p>Around 2 years ago, I started a new management gig, it wasn’t the first, but, it was the first with a relatively large team.
+One of the most basic things I needed to do as a manager, is to bind the team to it’s mission, and in more simple words, get them super motivated to do their day to day tasks.</p>
+
+<p>I’m a strong preacher for freedom, it gives people a sense of ownership.</p>
+
+<p>Let’s tackle the two edges of freedom:</p>
+
+<ol>
+  <li>No freedom at all, Someone tells you what do to, how to do it, when to do it.</li>
+</ol>
+
+<p>” You need to remove some logs related to checkout process, so please delete lines x and y from file z, make a pr and send it to me “</p>
+
+<p>Well, this one is straight forward, anyone can probably do it, you might think it’s a good task for a newcomer. but another perspective is, what message am I sending to this person? this is how it might look on an employee perspective:</p>
+
+<p>“I don’t trust your judgment and capabilities, so I’m telling exactly what need to be done, I don’t even bother to give you the bigger context, you probably won’t learn anything from this task, but that’s the job, and this is how the future at this team looks like. I trust you so little I must personally make sure you did it right, so I must review your code.”</p>
+
+<p>So, as you can see I took it to the extreme, but, even if 5% will go through an employee had, it’s bad.</p>
+
+<p>2.Only freedom</p>
+
+<p>” We’re paying too much to our logging storage service “</p>
+
+<p>This one is wide open, no what, when, how. only why. and this can go 2 ways:</p>
+
+<blockquote>
+  <p>when it’s a junior
+“Ohh sh*t I’m clueless, I have no idea what need to be done, I’m too shy to ask anyone anything, why no one tell me what needs to be done, this is scary”
+when it’s a senior
+“Alright, we got a problem, let’s solve it, I feel trusted and empowered by my manager to solve problems on my own”</p>
+</blockquote>
+
+<p>*there’s a higher level of freedom where you don’t focus the employee on specific problem, and let him choose the problem by himself, not an industry standard so I’m ignoring it.</p>
+
+<p>So, to the point, freedom is awesome, not for everyone and need to be dosed right.
+You’re optimizing for independent team members who can do everything, in order to get there, you need to trust them, and have high expectations from each team member.</p>
+
+<p>With experienced developers for example, it should be relatively easy, just focus on the “why” they’ll figure the rest out, or ask nudging questions to get more of the ‘what’, if it’s a feature, the product will provide the what. When you focus on the why, you create a strong ownership to the problem, it’s good because you never wanna attache to the solution, the solution might change tomorrow, it’s a fast moving world, the problem probably won’t.
+When you focus on the why, you give a wider perspective, allowing people to be more creative when it comes to solution, they need to think, and this is why they came to work, so it’s motivating.</p>
+
+<p>With less experienced developers, it might be a bit trickier, you wanna do the same without getting their frustration level above the tipping point where they feel incapable. You’ll need to do some sensing for each task to understand the proper level of freedom need to be given.</p>
+
+<p>My recommendation is to start with the why, and make an open discussion about next steps, if things don’t evolve you can push some what and how id needed.</p>
+
         
       </section>
 
@@ -321,17 +364,13 @@
     <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
     <span itemprop="keywords">
     
-      <a href="/tags/asynctask" class="page__taxonomy-item" rel="tag">asynctask</a><span class="sep">, </span>
+      <a href="/tags/engineering" class="page__taxonomy-item" rel="tag">engineering</a><span class="sep">, </span>
     
-      <a href="/tags/delayed-job" class="page__taxonomy-item" rel="tag">delayed job</a><span class="sep">, </span>
+      <a href="/tags/leadership" class="page__taxonomy-item" rel="tag">leadership</a><span class="sep">, </span>
     
-      <a href="/tags/heroku" class="page__taxonomy-item" rel="tag">heroku</a><span class="sep">, </span>
+      <a href="/tags/management" class="page__taxonomy-item" rel="tag">management</a><span class="sep">, </span>
     
-      <a href="/tags/queueing" class="page__taxonomy-item" rel="tag">queueing</a><span class="sep">, </span>
-    
-      <a href="/tags/rails" class="page__taxonomy-item" rel="tag">rails</a><span class="sep">, </span>
-    
-      <a href="/tags/ruby" class="page__taxonomy-item" rel="tag">Ruby</a>
+      <a href="/tags/motivation" class="page__taxonomy-item" rel="tag">motivation</a>
     
     </span>
   </p>
@@ -341,7 +380,7 @@
 
         
         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time
-            datetime="2014-11-15T17:34:00+02:00">November 15, 2014</time></p>
+            datetime="2022-06-18T20:13:46+03:00">June 18, 2022</time></p>
         
 
       </footer>
@@ -350,23 +389,22 @@
       <section class="page__share">
   
 
-  <a href="https://twitter.com/intent/tweet?text=Dedicating+a+DJ%28Delayed+job%29+worker+to+a+specific+queue+in+heroku.%20https%3A%2F%2Fkinnrot.github.io%2Fdedicating-djdelayed-job-worker-to%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Why+focus+on+why%20https%3A%2F%2Fkinnrot.github.io%2Ffreedom-and-trust%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fkinnrot.github.io%2Fdedicating-djdelayed-job-worker-to%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fkinnrot.github.io%2Ffreedom-and-trust%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fkinnrot.github.io%2Fdedicating-djdelayed-job-worker-to%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fkinnrot.github.io%2Ffreedom-and-trust%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/overriding-default-id-in-mongoid/" class="pagination--pager" title="Overriding default id in mongoid
+      <a href="/the-value-of-fast-feedback-loop/" class="pagination--pager" title="The value of fast feedback loop for developers
 ">Previous</a>
     
     
-      <a href="/get-user-locale-from-http-headers/" class="pagination--pager" title="Get the user locale from http headers
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
@@ -391,46 +429,6 @@
     <h4 class="page__related-title">You May Also Enjoy
     </h4>
     <div class="grid__wrapper">
-      
-      
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/freedom-and-trust/" rel="permalink">Why focus on why
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          6 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">Around 2 years ago, I started a new management gig, it wasn’t the first, but, it was the first with a relatively large team.
-One of the most basic things I n...</p>
-  </article>
-</div>
-
       
       
 
@@ -553,6 +551,46 @@ When clicki...</p>
 </div>
 
       
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/keep-track-on-coverage/" rel="permalink">Keep Track on Coverage
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Recently I discovered Danger, an amazing tool you should check out no matter what.
+</p>
+  </article>
+</div>
+
+      
     </div>
   </div>
   
@@ -615,8 +653,8 @@ When clicki...</p>
     
   <script>
     var disqus_config = function () {
-      this.page.url = "https://kinnrot.github.io/dedicating-djdelayed-job-worker-to/";  /* Replace PAGE_URL with your page's canonical URL variable */
-      this.page.identifier = "/dedicating-djdelayed-job-worker-to"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+      this.page.url = "https://kinnrot.github.io/freedom-and-trust/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/freedom-and-trust"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
     };
     (function() { /* DON'T EDIT BELOW THIS LINE */
       var d = document, s = d.createElement('script');

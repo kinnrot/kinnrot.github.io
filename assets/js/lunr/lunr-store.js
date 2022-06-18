@@ -346,4 +346,10 @@ var store = [{
         "tags": ["engineering","startups","ci","cd"],
         "url": "/the-value-of-fast-feedback-loop/",
         "teaser": null
+      },{
+        "title": "Why focus on why",
+        "excerpt":"Around 2 years ago, I started a new management gig, it wasn’t the first, but, it was the first with a relatively large team. One of the most basic things I needed to do as a manager, is to bind the team to it’s mission, and in more simple words,...","categories": [],
+        "tags": ["engineering","management","leadership","motivation"],
+        "url": "/freedom-and-trust/",
+        "teaser": null
       }]

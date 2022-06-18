@@ -1,4 +1,46 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://kinnrot.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kinnrot.github.io/" rel="alternate" type="text/html" /><updated>2022-03-16T10:50:06+02:00</updated><id>https://kinnrot.github.io/feed.xml</id><title type="html">cdblg</title><subtitle>Code blog.</subtitle><author><name>Chen Kinnrot</name></author><entry><title type="html">The value of fast feedback loop for developers</title><link href="https://kinnrot.github.io/the-value-of-fast-feedback-loop/" rel="alternate" type="text/html" title="The value of fast feedback loop for developers" /><published>2022-03-03T23:19:59+02:00</published><updated>2022-03-03T23:19:59+02:00</updated><id>https://kinnrot.github.io/the-value-of-fast-feedback-loop</id><content type="html" xml:base="https://kinnrot.github.io/the-value-of-fast-feedback-loop/"><![CDATA[<p>We all wanna get from 0 to 1 (with many trailing zeros), the sooner the better.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://kinnrot.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kinnrot.github.io/" rel="alternate" type="text/html" /><updated>2022-06-18T20:14:18+03:00</updated><id>https://kinnrot.github.io/feed.xml</id><title type="html">cdblg</title><subtitle>Code blog.</subtitle><author><name>Chen Kinnrot</name></author><entry><title type="html">Why focus on why</title><link href="https://kinnrot.github.io/freedom-and-trust/" rel="alternate" type="text/html" title="Why focus on why" /><published>2022-06-18T20:13:46+03:00</published><updated>2022-06-18T20:13:46+03:00</updated><id>https://kinnrot.github.io/freedom-and-trust</id><content type="html" xml:base="https://kinnrot.github.io/freedom-and-trust/"><![CDATA[<p>Around 2 years ago, I started a new management gig, it wasn’t the first, but, it was the first with a relatively large team.
+One of the most basic things I needed to do as a manager, is to bind the team to it’s mission, and in more simple words, get them super motivated to do their day to day tasks.</p>
+
+<p>I’m a strong preacher for freedom, it gives people a sense of ownership.</p>
+
+<p>Let’s tackle the two edges of freedom:</p>
+
+<ol>
+  <li>No freedom at all, Someone tells you what do to, how to do it, when to do it.</li>
+</ol>
+
+<p>” You need to remove some logs related to checkout process, so please delete lines x and y from file z, make a pr and send it to me “</p>
+
+<p>Well, this one is straight forward, anyone can probably do it, you might think it’s a good task for a newcomer. but another perspective is, what message am I sending to this person? this is how it might look on an employee perspective:</p>
+
+<p>“I don’t trust your judgment and capabilities, so I’m telling exactly what need to be done, I don’t even bother to give you the bigger context, you probably won’t learn anything from this task, but that’s the job, and this is how the future at this team looks like. I trust you so little I must personally make sure you did it right, so I must review your code.”</p>
+
+<p>So, as you can see I took it to the extreme, but, even if 5% will go through an employee had, it’s bad.</p>
+
+<p>2.Only freedom</p>
+
+<p>” We’re paying too much to our logging storage service “</p>
+
+<p>This one is wide open, no what, when, how. only why. and this can go 2 ways:</p>
+
+<blockquote>
+  <p>when it’s a junior
+“Ohh sh*t I’m clueless, I have no idea what need to be done, I’m too shy to ask anyone anything, why no one tell me what needs to be done, this is scary”
+when it’s a senior
+“Alright, we got a problem, let’s solve it, I feel trusted and empowered by my manager to solve problems on my own”</p>
+</blockquote>
+
+<p>*there’s a higher level of freedom where you don’t focus the employee on specific problem, and let him choose the problem by himself, not an industry standard so I’m ignoring it.</p>
+
+<p>So, to the point, freedom is awesome, not for everyone and need to be dosed right.
+You’re optimizing for independent team members who can do everything, in order to get there, you need to trust them, and have high expectations from each team member.</p>
+
+<p>With experienced developers for example, it should be relatively easy, just focus on the “why” they’ll figure the rest out, or ask nudging questions to get more of the ‘what’, if it’s a feature, the product will provide the what. When you focus on the why, you create a strong ownership to the problem, it’s good because you never wanna attache to the solution, the solution might change tomorrow, it’s a fast moving world, the problem probably won’t.
+When you focus on the why, you give a wider perspective, allowing people to be more creative when it comes to solution, they need to think, and this is why they came to work, so it’s motivating.</p>
+
+<p>With less experienced developers, it might be a bit trickier, you wanna do the same without getting their frustration level above the tipping point where they feel incapable. You’ll need to do some sensing for each task to understand the proper level of freedom need to be given.</p>
+
+<p>My recommendation is to start with the why, and make an open discussion about next steps, if things don’t evolve you can push some what and how id needed.</p>]]></content><author><name>Chen Kinnrot</name></author><category term="engineering" /><category term="management" /><category term="leadership" /><category term="motivation" /><summary type="html"><![CDATA[Around 2 years ago, I started a new management gig, it wasn’t the first, but, it was the first with a relatively large team. One of the most basic things I needed to do as a manager, is to bind the team to it’s mission, and in more simple words, get them super motivated to do their day to day tasks.]]></summary></entry><entry><title type="html">The value of fast feedback loop for developers</title><link href="https://kinnrot.github.io/the-value-of-fast-feedback-loop/" rel="alternate" type="text/html" title="The value of fast feedback loop for developers" /><published>2022-03-03T23:19:59+02:00</published><updated>2022-03-03T23:19:59+02:00</updated><id>https://kinnrot.github.io/the-value-of-fast-feedback-loop</id><content type="html" xml:base="https://kinnrot.github.io/the-value-of-fast-feedback-loop/"><![CDATA[<p>We all wanna get from 0 to 1 (with many trailing zeros), the sooner the better.</p>
 
 <h3 id="so-whats-the-problem">So, what’s the problem?</h3>
 
@@ -549,105 +591,4 @@ When you build something new by yourself or with some friends, there is no good 
 
 <p>There are also small companies with a team of full stackers, who might also consider this approach.</p>
 
-<p>If you got a bit stimulated, you can read a small guide <a href="https://stimulusjs.org/handbook/introduction">here</a></p>]]></content><author><name>Chen Kinnrot</name></author><category term="ruby" /><category term="stimulus" /><category term="rails" /><category term="jquery" /><summary type="html"><![CDATA[I tried to build an SPA without a shiny client side framework, I wanted to build something fast with good user experience and keeping it as simple as possible.]]></summary></entry><entry><title type="html">Ruby async await</title><link href="https://kinnrot.github.io/ruby-async-await/" rel="alternate" type="text/html" title="Ruby async await" /><published>2017-08-08T18:12:46+03:00</published><updated>2017-08-08T18:12:46+03:00</updated><id>https://kinnrot.github.io/ruby-async-await</id><content type="html" xml:base="https://kinnrot.github.io/ruby-async-await/"><![CDATA[<p>There is a lot of buzz about asyc await from the javascript world, the concept is very simple and make your code much more
-readable.</p>
-
-<p>You want to execute something without blocking the main thread but you want the next line of code to run once the non blocking code finish, meaning continue
-code execution in its written order.</p>
-
-<p>Ruby has a great <a href="https://github.com/ruby-concurrency/concurrent-ruby">concurrency gem</a> which basically encapsulate low level threading and synchronization code
-to common patterns like Future, Promise, Actor and much more.</p>
-
-<p>I’d like to talk about concurrent-ruby async await feature, lets look at the following code.</p>
-
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">'concurrent'</span>
-
-<span class="k">class</span> <span class="nc">Reporter</span>
-  <span class="kp">include</span> <span class="no">Concurrent</span><span class="o">::</span><span class="no">Async</span>
-
-  <span class="k">def</span> <span class="nf">report</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">sleep_dur</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="nb">sleep</span><span class="p">(</span><span class="n">sleep_dur</span><span class="p">)</span>
-    <span class="nb">p</span> <span class="s2">"</span><span class="si">#{</span><span class="no">Thread</span><span class="p">.</span><span class="nf">current</span><span class="p">.</span><span class="nf">object_id</span><span class="si">}</span><span class="s2">"</span>
-    <span class="nb">p</span> <span class="n">message</span>
-  <span class="k">end</span>
-<span class="k">end</span></code></pre></figure>
-
-<p>The class Reporter knows to do 1 thing, report, it’ll sleep and print it’s thread id and a message
-So if we’ll open an irb and call</p>
-
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="sc">?&gt;</span> <span class="n">r</span> <span class="o">=</span> <span class="no">Reporter</span><span class="p">.</span><span class="nf">new</span>
-<span class="o">=&gt;</span> <span class="c1">#&lt;Reporter:0x007f86b19e1940 @__async_initialized__=true, @__async_delegator__=#&lt;Concurrent::Async::AsyncDelegator:0x007f86b19e18a0 @__lock__=#&lt;Thread::Mutex:0x007f86b19e1850&gt;, @__condition__=#&lt;Thread::ConditionVariable:0x007f86b19e1828&gt;, @delegate=#&lt;Reporter:0x007f86b19e1940 ...&gt;, @queue=[], @executor=#&lt;Concurrent::ThreadPoolExecutor:0x007f86b19e0e78 @__lock__=#&lt;Thread::Mutex:0x007f86b19e0d88&gt;, @__condition__=#&lt;Thread::ConditionVariable:0x007f86b19e0d60&gt;, @min_length=8, @max_length=2147483647, @idletime=60, @max_queue=0, @fallback_policy=:abort, @auto_terminate=true, @pool=[], @ready=[], @queue=[], @scheduled_task_count=0, @completed_task_count=0, @largest_length=0, @ruby_pid=59753, @gc_interval=30, @next_gc_time=694963.258667, @StopEvent=#&lt;Concurrent::Event:0x007f86b19e0bd0 @__lock__=#&lt;Thread::Mutex:0x007f86b19e0b80&gt;, @__condition__=#&lt;Thread::ConditionVariable:0x007f86b19e0b58&gt;, @set=false, @iteration=0&gt;, @StoppedEvent=#&lt;Concurrent::Event:0x007f86b19e0ae0 @__lock__=#&lt;Thread::Mutex:0x007f86b19e0a90&gt;, @__condition__=#&lt;Thread::ConditionVariable:0x007f86b19e0a68&gt;, @set=false, @iteration=0&gt;&gt;&gt;, @__await_delegator__=#&lt;Concurrent::Async::AwaitDelegator:0x007f86b19e0a18 @delegate=#&lt;Concurrent::Async::AsyncDelegator:0x007f86b19e18a0 @__lock__=#&lt;Thread::Mutex:0x007f86b19e1850&gt;, @__condition__=#&lt;Thread::ConditionVariable:0x007f86b19e1828&gt;, @delegate=#&lt;Reporter:0x007f86b19e1940 ...&gt;, @queue=[], @executor=#&lt;Concurrent::ThreadPoolExecutor:0x007f86b19e0e78 @__lock__=#&lt;Thread::Mutex:0x007f86b19e0d88&gt;, @__condition__=#&lt;Thread::ConditionVariable:0x007f86b19e0d60&gt;, @min_length=8, @max_length=2147483647, @idletime=60, @max_queue=0, @fallback_policy=:abort, @auto_terminate=true, @pool=[], @ready=[], @queue=[], @scheduled_task_count=0, @completed_task_count=0, @largest_length=0, @ruby_pid=59753, @gc_interval=30, @next_gc_time=694963.258667, @StopEvent=#&lt;Concurrent::Event:0x007f86b19e0bd0 @__lock__=#&lt;Thread::Mutex:0x007f86b19e0b80&gt;, @__condition__=#&lt;Thread::ConditionVariable:0x007f86b19e0b58&gt;, @set=false, @iteration=0&gt;, @StoppedEvent=#&lt;Concurrent::Event:0x007f86b19e0ae0 @__lock__=#&lt;Thread::Mutex:0x007f86b19e0a90&gt;, @__condition__=#&lt;Thread::ConditionVariable:0x007f86b19e0a68&gt;, @set=false, @iteration=0&gt;&gt;&gt;&gt;&gt;</span>
-<span class="o">&gt;&gt;</span> <span class="n">r</span><span class="p">.</span><span class="nf">report</span><span class="p">(</span><span class="s1">'x'</span><span class="p">)</span>
-<span class="s2">"70108240336860"</span>
-<span class="s2">"x"</span></code></pre></figure>
-
-<p>And it’ll take a sec till you see output because of the sleep.</p>
-
-<p>Now lets try the same with async</p>
-
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&gt;&gt;</span> <span class="n">r</span><span class="p">.</span><span class="nf">async</span><span class="p">.</span><span class="nf">report</span><span class="p">(</span><span class="s1">'x'</span><span class="p">)</span>
-<span class="o">=&gt;</span> <span class="c1">#&lt;Concurrent::IVar:0x007f86b087dfc8 @__lock__=#&lt;Thread::Mutex:0x007f86b087df00&gt;, @__condition__=#&lt;Thread::ConditionVariable:0x007f86b087deb0&gt;, @event=#&lt;Concurrent::Event:0x007f86b087dde8 @__lock__=#&lt;Thread::Mutex:0x007f86b087dca8&gt;, @__condition__=#&lt;Thread::ConditionVariable:0x007f86b087dc80&gt;, @set=false, @iteration=0&gt;, @reason=nil, @value=nil, @observers=#&lt;Concurrent::Collection::CopyOnWriteObserverSet:0x007f86b087db90 @__lock__=#&lt;Thread::Mutex:0x007f86b087db18&gt;, @__condition__=#&lt;Thread::ConditionVariable:0x007f86b087daf0&gt;, @observers={}&gt;, @dup_on_deref=nil, @freeze_on_deref=nil, @copy_on_deref=nil, @do_nothing_on_deref=true, @state=:pending&gt;</span>
-<span class="s2">"70108232018840"</span>
-<span class="s2">"x"</span></code></pre></figure>
-
-<p>As you can see the method returns immediately without printing any value, it just returns a promise like object that will hold the result of report method once done.
-To prove you that report in non blocking try this</p>
-
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&gt;&gt;</span> <span class="n">r</span><span class="p">.</span><span class="nf">async</span><span class="p">.</span><span class="nf">report</span><span class="p">(</span><span class="s1">'x'</span><span class="p">);</span> <span class="mi">1</span><span class="o">+</span><span class="mi">1</span>
-<span class="o">=&gt;</span> <span class="mi">2</span>
-<span class="s2">"70108231957940"</span>
-<span class="s2">"x"</span></code></pre></figure>
-
-<p>As you can see the 1+1 returns before the reporters output</p>
-
-<p>Now lets try the await method</p>
-
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&gt;&gt;</span> <span class="n">r</span><span class="p">.</span><span class="nf">await</span><span class="p">.</span><span class="nf">report</span><span class="p">(</span><span class="s1">'x'</span><span class="p">);</span> <span class="mi">1</span><span class="o">+</span><span class="mi">1</span>
-<span class="s2">"70339825139340"</span>
-<span class="s2">"x"</span>
-<span class="o">=&gt;</span> <span class="mi">2</span>
-
-<span class="o">&gt;&gt;</span> <span class="no">Thread</span><span class="p">.</span><span class="nf">current</span><span class="p">.</span><span class="nf">object_id</span>
-<span class="o">=&gt;</span> <span class="mi">70339824711620</span></code></pre></figure>
-
-<p>This time code look like it run synchronously, but lets check the main thread id, as you can see the code run on
-2 different threads but in sync. this is the actual power of await, sometimes we want to run something in a background thread,
-and do something on another thread when done.</p>
-
-<p>The purpose of the Concurrent::Async is to allow a class methods to be called in a synchronized
-way, meaning the class will always be thread safe  as long as you call it via async or await.
-What actually happens in the backstage is whenever you use async/await the method invocation is inserted into a queue that got one worker thread that keep
-this queue empty. because its just one thread that invoke the methods, it is safe for many threads to use the same object.</p>
-
-<p>Hope its clear enough,</p>
-
-<!-- Begin Mailchimp Signup Form -->
-<link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css" />
-
-<style type="text/css">
- 	#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
- 	/* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
- 	   We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
- </style>
-
-<div id="mc_embed_signup">
- <form action="https://github.us4.list-manage.com/subscribe/post?u=6125c5935ade9559f2a02ec5c&amp;id=8477f6bbd9" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate="">
-     <div id="mc_embed_signup_scroll">
- 	<h2>Wanna learn more about async await in ruby? enter you email to get exclusive content! </h2>
- <div class="mc-field-group">
- 	<label for="mce-EMAIL">Email Address </label>
- 	<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" />
- </div>
- 	<div id="mce-responses" class="clear">
- 		<div class="response" id="mce-error-response" style="display:none"></div>
- 		<div class="response" id="mce-success-response" style="display:none"></div>
- 	</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-     <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_6125c5935ade9559f2a02ec5c_8477f6bbd9" tabindex="-1" value="" /></div>
-     <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button" /></div>
-     </div>
- </form>
- </div>
-<script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
-<script type="text/javascript">(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
-
-<p><!--End mc_embed_signup--></p>]]></content><author><name>Chen Kinnrot</name></author><category term="ruby" /><category term="async" /><category term="await" /><summary type="html"><![CDATA[There is a lot of buzz about asyc await from the javascript world, the concept is very simple and make your code much more readable.]]></summary></entry></feed>
+<p>If you got a bit stimulated, you can read a small guide <a href="https://stimulusjs.org/handbook/introduction">here</a></p>]]></content><author><name>Chen Kinnrot</name></author><category term="ruby" /><category term="stimulus" /><category term="rails" /><category term="jquery" /><summary type="html"><![CDATA[I tried to build an SPA without a shiny client side framework, I wanted to build something fast with good user experience and keeping it as simple as possible.]]></summary></entry></feed>
