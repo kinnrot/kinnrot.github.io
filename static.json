@@ -1,6 +1,0 @@
-{
-  "root": ".deploy/",
-  "routes": {
-    "/**": "index.html"
-  }
-}

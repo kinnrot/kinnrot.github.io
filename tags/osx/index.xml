@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>OSX on cdblg</title>
+    <link>https://kinnrot.github.io/tags/osx/</link>
+    <description>Recent content in OSX on cdblg</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 06 Jan 2015 13:32:00 -0800</lastBuildDate>
+    <atom:link href="https://kinnrot.github.io/tags/osx/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rubymine on OSX memory issues</title>
+      <link>https://kinnrot.github.io/rubymine-on-osx/</link>
+      <pubDate>Tue, 06 Jan 2015 13:32:00 -0800</pubDate>
+      <guid>https://kinnrot.github.io/rubymine-on-osx/</guid>
+      <description>&lt;p&gt;I found this only today, you should run Rubymine as 32 bit process.&lt;br /&gt;It works much faster and consume half the memory.&lt;br /&gt;&lt;br /&gt;To set this got to the Applicaitons folder right click on rubymine-&amp;gt;get info and check the &amp;ldquo;open in 32 bit mode&amp;rdquo;&lt;br /&gt;&lt;br /&gt;Thats all!&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

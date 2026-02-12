@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Mock on cdblg</title>
+    <link>https://kinnrot.github.io/tags/mock/</link>
+    <description>Recent content in Mock on cdblg</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 17 Nov 2010 11:03:00 -0800</lastBuildDate>
+    <atom:link href="https://kinnrot.github.io/tags/mock/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Unit testing with mock framework and IEquatable&lt;&gt;</title>
+      <link>https://kinnrot.github.io/unit-testing-with-mock-framework-and/</link>
+      <pubDate>Wed, 17 Nov 2010 11:03:00 -0800</pubDate>
+      <guid>https://kinnrot.github.io/unit-testing-with-mock-framework-and/</guid>
+      <description>&lt;p&gt;This post is relevant for the one&amp;rsquo;s who write tests, all you other programmers, you should learn unit testing and read it.&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;One of the most useful tools in unit testing is a good mocking framework. (I&amp;rsquo;m currently using &lt;a href=&#34;http://code.google.com/p/moq/&#34;&gt;Moq&lt;/a&gt;, and before that I used &lt;a href=&#34;http://www.ayende.com/projects/rhino-mocks.aspx&#34;&gt;rhino&lt;/a&gt;)&lt;/div&gt;&lt;div&gt;  &lt;/div&gt;&lt;div&gt;We all know that for mocking we need interfaces.&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;My tip is very simple, if you have a class Foo and you wanna mock it, first you should have Interface IFoo (this should be obvious to most of you).&lt;/div&gt;&lt;div&gt;Implement on Foo IEquatable&amp;lt;IFoo&amp;gt;, so if you test a list of IFoo and you want to assert Contains()  you won&amp;rsquo;t have any problems with the proxy of IFoo that mocking framework generates on the interface and no one will blame you for your awful class that throws cast exception in its equals method :).&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;Hope it&amp;rsquo;ll save you time in future.&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;That it, KIS.&lt;/div&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

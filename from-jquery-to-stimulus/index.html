@@ -1,730 +1,390 @@
-<!doctype html>
-<!--
-  Minimal Mistakes Jekyll Theme 4.19.1 by Michael Rose
-  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
-  Free for personal and commercial use under the MIT license
-  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
--->
-<html lang="en" class="no-js">
-  <head>
-    <meta charset="utf-8">
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
 
-<!-- begin _includes/seo.html --><title>From jQuery to Stimulus - cdblg</title>
-<meta name="description" content="I tried to build an SPA without a shiny client side framework, I wanted to build something fast with good user experience and keeping it as simple as possible. ">
-
-
-
-<meta property="og:type" content="article">
-<meta property="og:locale" content="en">
-<meta property="og:site_name" content="cdblg">
-<meta property="og:title" content="From jQuery to Stimulus">
-<meta property="og:url" content="https://kinnrot.github.io/from-jquery-to-stimulus/">
-
-
-  <meta property="og:description" content="I tried to build an SPA without a shiny client side framework, I wanted to build something fast with good user experience and keeping it as simple as possible. ">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2018-05-22T12:10:10+03:00">
-
-
-
-
-
-  
-
-  
-
-
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>From jQuery to Stimulus | cdblg</title>
+<meta name="keywords" content="ruby, stimulus, rails, jquery">
+<meta name="description" content="I tried to build an SPA without a shiny client side framework, I wanted to build something fast with good user experience and keeping it as simple as possible.
+I decided to take rails, use turbolinks and a avoid javascript till its a must.
+It didn&rsquo;t take more than a few hours and I found myself writing javascript. What I needed to do is simple, I had an input with number, and 2 buttons next to it, one to increase values by 1 and on to decrease it looked like this:">
+<meta name="author" content="Chen Kinnrot">
 <link rel="canonical" href="https://kinnrot.github.io/from-jquery-to-stimulus/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kinnrot.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kinnrot.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kinnrot.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kinnrot.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kinnrot.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kinnrot.github.io/from-jquery-to-stimulus/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
 
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
 
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kinnrot.github.io/from-jquery-to-stimulus/">
+  <meta property="og:site_name" content="cdblg">
+  <meta property="og:title" content="From jQuery to Stimulus">
+  <meta property="og:description" content="I tried to build an SPA without a shiny client side framework, I wanted to build something fast with good user experience and keeping it as simple as possible.
+I decided to take rails, use turbolinks and a avoid javascript till its a must.
+It didn’t take more than a few hours and I found myself writing javascript. What I needed to do is simple, I had an input with number, and 2 buttons next to it, one to increase values by 1 and on to decrease it looked like this:">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2018-05-22T12:10:10+03:00">
+    <meta property="article:modified_time" content="2018-05-22T12:10:10+03:00">
+    <meta property="article:tag" content="Ruby">
+    <meta property="article:tag" content="Stimulus">
+    <meta property="article:tag" content="Rails">
+    <meta property="article:tag" content="Jquery">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="From jQuery to Stimulus">
+<meta name="twitter:description" content="I tried to build an SPA without a shiny client side framework, I wanted to build something fast with good user experience and keeping it as simple as possible.
+I decided to take rails, use turbolinks and a avoid javascript till its a must.
+It didn&rsquo;t take more than a few hours and I found myself writing javascript. What I needed to do is simple, I had an input with number, and 2 buttons next to it, one to increase values by 1 and on to decrease it looked like this:">
 
 
 <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    
-      "@type": "Person",
-      "name": "Chen Kinnrot",
-      "url": "https://kinnrot.github.io/"
-    
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kinnrot.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "From jQuery to Stimulus",
+      "item": "https://kinnrot.github.io/from-jquery-to-stimulus/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "From jQuery to Stimulus",
+  "name": "From jQuery to Stimulus",
+  "description": "I tried to build an SPA without a shiny client side framework, I wanted to build something fast with good user experience and keeping it as simple as possible.\nI decided to take rails, use turbolinks and a avoid javascript till its a must.\nIt didn\u0026rsquo;t take more than a few hours and I found myself writing javascript. What I needed to do is simple, I had an input with number, and 2 buttons next to it, one to increase values by 1 and on to decrease it looked like this:\n",
+  "keywords": [
+    "ruby", "stimulus", "rails", "jquery"
+  ],
+  "articleBody": "I tried to build an SPA without a shiny client side framework, I wanted to build something fast with good user experience and keeping it as simple as possible.\nI decided to take rails, use turbolinks and a avoid javascript till its a must.\nIt didn’t take more than a few hours and I found myself writing javascript. What I needed to do is simple, I had an input with number, and 2 buttons next to it, one to increase values by 1 and on to decrease it looked like this:\n- 0+\njQuery to the rescue, I had a list of those buttons, so I needed to identify each one, so I added a data-id attr and used it to identify which input I need to update it looked like this:\n` \u003cbutton data-id=\"1\" name=\"minus\"\u003e-\u003c/button\u003e \u003cinput id=\"1\" value=\"0\" readonly=\"readonly\"\u003e \u003cbutton data-id=\"1\" name=\"plus\"\u003e+\u003c/button\u003e ` // number_componenet.js export default class NumberComponent { constructor() { $('button[name=\"plus\"]').click(function (e) { e.preventDefault(); var id = $(this).data('id'); var input = $(id); const lastValue = +input.val(); var num = lastValue + 1; if (num \u003c= 20) { input.val(num); } }); $('button[name=\"minus\"]').click(function (e) { e.preventDefault(); var id = $(this).data('id'); var input = $(id); const lastValue = +input.val(); var num = lastValue - 1; if (num \u003e= 0) { input.val(num); } }); } } As You can see I added a bit of client side validation to make sure counter does not go below 0 and above 20. Now All left to do is to initialize the NumberComponent when the page loads, so I added it to my packs (I’m using webpacker) and wrote:\n$(() =\u003e { new GameOrderComponent() }); And it works!.\nbut it’s already a bit of a mess, I need to search for the relevant buttons, I don’t know how it’ll behave when content of page changes (turbolinks, other dynamic behavior etc.) I though to myslef, “it would be much easier to annotate the relevant html items to describe their behavior”. But I did not want to make the client super complex, I just want something that’ll help me to model my code without all the hassle.\nI did some research (very intensive googling) and found Stimulus. Its a library that decouples your javascript from the html like css decouple styling from html, which is pretty nice.\nThe concepts are pretty simple and familiar, you got:\nController - to group a bunch of html elements in one context (numberController) Target - to allow access dom element inside the controller (instead of jQuery selector) (input) Action - to respond to dom element event and act (button click) That’s all, simple huh?\nThis is how it looks\n` \u003cdiv data-controller=\"number\"\u003e \u003cbutton data-action=\"click-\u003enumber#minusOne\"\u003e-\u003c/button\u003e \u003cinput data-target=\"number.input\" value=\"0\" readonly=\"readonly\"\u003e \u003cbutton data-action=\"click-\u003enumber#plusOne\"\u003e+\u003c/button\u003e \u003c/div\u003e ` // number_controller.js import {Controller} from \"stimulus\" export default class extends Controller { minusOne(event) { event.preventDefault() const lastValue = +this.input.value if (lastValue \u003e 0) { this.input.value = +this.input.value - 1 } } plusOne(event) { event.preventDefault() const lastValue = +this.input.value if (lastValue \u003c 20) { this.input.value = +this.input.value + 1 } } get input() { return this.targets.find('input') } } I didn’t write less code but,\nThe code is more readable No need to initialize the controller, Stimulus take care of that. You get access to the actual html element, which keeps everything straightforward. No need to worry about dom changes, Stimulus take care of that. I know that everyone thinks react angular and vue is the s*** but I think its good for large organizations where you have a separate front-end team and back-end team. When you build something new by yourself or with some friends, there is no good reason to start with client side rendering (unless you got a few million users on day one which is less likely)\nThere are also small companies with a team of full stackers, who might also consider this approach.\nIf you got a bit stimulated, you can read a small guide here\n",
+  "wordCount" : "651",
+  "inLanguage": "en",
+  "datePublished": "2018-05-22T12:10:10+03:00",
+  "dateModified": "2018-05-22T12:10:10+03:00",
+  "author":{
+    "@type": "Person",
+    "name": "Chen Kinnrot"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kinnrot.github.io/from-jquery-to-stimulus/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "cdblg",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kinnrot.github.io/favicon.ico"
+    }
   }
+}
 </script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kinnrot.github.io/" accesskey="h" title="cdblg (Alt + H)">cdblg</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
 
-
-
-
-
-
-<!-- end _includes/seo.html -->
-
-
-<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="cdblg Feed">
-
-<!-- https://t.co/dKP3o1e -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<script>
-  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
-</script>
-
-<!-- For all browsers -->
-<link rel="stylesheet" href="/assets/css/main.css">
-
-<!--[if IE]>
-  <style>
-    /* old IE unsupported flexbox fixes */
-    .greedy-nav .site-title {
-      padding-right: 3em;
-    }
-    .greedy-nav button {
-      position: absolute;
-      top: 0;
-      right: 0;
-      height: 100%;
-    }
-  </style>
-<![endif]-->
-
-
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-103259749-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-103259749-1', { 'optimize_id': 'GTM-KXX4C9K'});
-</script>
-<!-- Anti-flicker snippet (recommended)  -->
-<style>.async-hide { opacity: 0 !important} </style>
-<script>(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
-  h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
-  (a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
-})(window,document.documentElement,'async-hide','dataLayer',4000,
-  {'OPT_CONTAINER_ID':true});</script>
-<!-- -->
-
-  </head>
-
-  <body class="layout--post">
-    <nav class="skip-links">
-  <h2 class="screen-reader-text">Skip links</h2>
-  <ul>
-    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
-    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
-    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
-  </ul>
-</nav>
-
-    <!--[if lt IE 9]>
-<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
-<![endif]-->
-
+<article class="post-single">
+  <header class="post-header">
     
+    <h1 class="post-title entry-hint-parent">
+      From jQuery to Stimulus
+    </h1>
+    <div class="post-meta"><span title='2018-05-22 12:10:10 +0300 IDT'>May 22, 2018</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span>
 
-<div class="masthead">
-  <div class="masthead__inner-wrap">
-    <div class="masthead__menu">
-      <nav id="site-nav" class="greedy-nav">
-        
-        <a class="site-title" href="/">
-          cdblg
-          
-        </a>
-        <ul class="visible-links"><li class="masthead__menu-item">
-              <a href="/about">About</a>
-            </li></ul>
-        
-        <button class="greedy-nav__toggle hidden" type="button">
-          <span class="visually-hidden">Toggle menu</span>
-          <div class="navicon"></div>
-        </button>
-        <ul class="hidden-links hidden"></ul>
-      </nav>
-    </div>
-  </div>
 </div>
-
-
-    <div class="initial-content">
-      
-
-
-  
-    
-
-
-
-<nav class="breadcrumbs">
-  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
-    
-    
-    
-      
-        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="https://kinnrot.github.io/" itemprop="item"><span itemprop="name">Home</span></a>
-          <meta itemprop="position" content="1" />
-        </li>
-        <span class="sep">/</span>
-      
-      
-        <li class="current">From jQuery to Stimulus</li>
-      
-    
-  </ol>
-</nav>
-
-  
-
-
-<div id="main" role="main">
-  
-  <div class="sidebar sticky">
-  
-
-
-<div itemscope itemtype="https://schema.org/Person">
-
-  
-
-  <div class="author__content">
-    
-      <h3 class="author__name" itemprop="name"></h3>
-    
-    
-  </div>
-
-  <div class="author__urls-wrapper">
-    <button class="btn btn--inverse">Follow</button>
-    <ul class="author__urls social-icons">
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      <!--
-  <li>
-    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
-      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
-    </a>
-  </li>
--->
-    </ul>
-  </div>
-</div>
-
-  
-  </div>
-
-
-
-  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="From jQuery to Stimulus">
-    <meta itemprop="description" content="I tried to build an SPA without a shiny client side framework, I wanted to build something fast with good user experience and keeping it as simple as possible.">
-    <meta itemprop="datePublished" content="May 22, 2018">
-    
-
-
-    <div class="page__inner-wrap">
-      
-        <header>
-          <h1 class="page__title" itemprop="headline">From jQuery to Stimulus
-</h1>
-          
-            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
-
-
-
-
-  6 minute read
-
-</p>
-          
-
-        </header>
-      
-
-      <section class="page__content" itemprop="text">
-        <p>I tried to build an <a href="https://en.wikipedia.org/wiki/Single-page_application">SPA</a> without a shiny client side framework, I wanted to build something fast with good user experience and keeping it as simple as possible.</p>
-
+  </header> 
+  <div class="post-content"><p>I tried to build an <a href="https://en.wikipedia.org/wiki/Single-page_application">SPA</a> without a shiny client side framework, I wanted to build something fast with good user experience and keeping it as simple as possible.</p>
 <p>I decided to take <a href="https://rubyonrails.org/">rails</a>, use <a href="https://github.com/turbolinks/turbolinks">turbolinks</a> and a avoid javascript till its a must.</p>
-
-<p>It didn’t take more than a few hours and I found myself writing javascript. What I needed to do is simple, I had an input with number, and 2 buttons next to it, one to increase values by 1 and on to decrease it looked like this:</p>
-
+<p>It didn&rsquo;t take more than a few hours and I found myself writing javascript. What I needed to do is simple, I had an input with number, and 2 buttons next to it, one to increase values by 1 and on to decrease it looked like this:</p>
 <p><button>-</button><span> 0</span><button>+</button></p>
-
 <p>jQuery to the rescue, I had a list of those buttons, so I needed to identify each one, so I added a data-id attr and used it to identify which input I need to update it looked like this:</p>
-
-<figure class="highlight"><pre><code class="language-html" data-lang="html">`
-<span class="nt">&lt;button</span> <span class="na">data-id=</span><span class="s">"1"</span> <span class="na">name=</span><span class="s">"minus"</span><span class="nt">&gt;</span>-<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"1"</span> <span class="na">value=</span><span class="s">"0"</span> <span class="na">readonly=</span><span class="s">"readonly"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">data-id=</span><span class="s">"1"</span> <span class="na">name=</span><span class="s">"plus"</span><span class="nt">&gt;</span>+<span class="nt">&lt;/button&gt;</span>
-`</code></pre></figure>
-
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// number_componenet.js</span>
-
-    <span class="k">export</span> <span class="k">default</span> <span class="kd">class</span> <span class="nx">NumberComponent</span> <span class="p">{</span>
-  
-      <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">button[name="plus"]</span><span class="dl">'</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-          <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
-          <span class="kd">var</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">data</span><span class="p">(</span><span class="dl">'</span><span class="s1">id</span><span class="dl">'</span><span class="p">);</span>
-          <span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
-    
-          <span class="kd">const</span> <span class="nx">lastValue</span> <span class="o">=</span> <span class="o">+</span><span class="nx">input</span><span class="p">.</span><span class="nx">val</span><span class="p">();</span>
-          <span class="kd">var</span> <span class="nx">num</span> <span class="o">=</span> <span class="nx">lastValue</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
-          <span class="k">if</span> <span class="p">(</span><span class="nx">num</span> <span class="o">&lt;=</span> <span class="mi">20</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">input</span><span class="p">.</span><span class="nx">val</span><span class="p">(</span><span class="nx">num</span><span class="p">);</span>
-          <span class="p">}</span>      
-        <span class="p">});</span>
-    
-        <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">button[name="minus"]</span><span class="dl">'</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-          <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
-          <span class="kd">var</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">data</span><span class="p">(</span><span class="dl">'</span><span class="s1">id</span><span class="dl">'</span><span class="p">);</span>
-          <span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
-          <span class="kd">const</span> <span class="nx">lastValue</span> <span class="o">=</span> <span class="o">+</span><span class="nx">input</span><span class="p">.</span><span class="nx">val</span><span class="p">();</span>
-          <span class="kd">var</span> <span class="nx">num</span> <span class="o">=</span> <span class="nx">lastValue</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
-          <span class="k">if</span> <span class="p">(</span><span class="nx">num</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">input</span><span class="p">.</span><span class="nx">val</span><span class="p">(</span><span class="nx">num</span><span class="p">);</span>
-          <span class="p">}</span>      
-        <span class="p">});</span>
-      <span class="p">}</span>
-    <span class="p">}</span></code></pre></figure>
-
-<p>As You can see I added a bit of client side validation to make sure counter does not go below 0 and above 20.
-Now All left to do is to initialize the <code class="highlighter-rouge">NumberComponent</code> when the page loads, so I added it to my packs (I’m using <a href="https://github.com/rails/webpacker">webpacker</a>) and wrote:</p>
-
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-     <span class="k">new</span> <span class="nx">GameOrderComponent</span><span class="p">()</span>
-   <span class="p">});</span></code></pre></figure>
-
-<p>And it works!.</p>
-
-<p>but it’s already a bit of a mess, I need to search for the relevant buttons, I don’t know how it’ll behave when 
-content of page changes (turbolinks, other dynamic behavior etc.) I though to myslef, “it would be much easier to annotate the relevant html items to describe their behavior”.
-But I did not want to make the client super complex, I just want something that’ll help me to model my code without all the hassle.</p>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>`
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">data-id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1&#34;</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;minus&#34;</span>&gt;-&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0&#34;</span> <span style="color:#a6e22e">readonly</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;readonly&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">data-id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1&#34;</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;plus&#34;</span>&gt;+&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>`
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// number_componenet.js
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NumberComponent</span> {
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">constructor</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#39;button[name=&#34;plus&#34;]&#39;</span>).<span style="color:#a6e22e">click</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">e</span>) {
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">preventDefault</span>();
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">$</span>(<span style="color:#66d9ef">this</span>).<span style="color:#a6e22e">data</span>(<span style="color:#e6db74">&#39;id&#39;</span>);
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">input</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">$</span>(<span style="color:#a6e22e">id</span>);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">lastValue</span> <span style="color:#f92672">=</span> <span style="color:#f92672">+</span><span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">val</span>();
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">num</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">lastValue</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">num</span> <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">20</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">val</span>(<span style="color:#a6e22e">num</span>);
+</span></span><span style="display:flex;"><span>          }      
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#39;button[name=&#34;minus&#34;]&#39;</span>).<span style="color:#a6e22e">click</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">e</span>) {
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">preventDefault</span>();
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">$</span>(<span style="color:#66d9ef">this</span>).<span style="color:#a6e22e">data</span>(<span style="color:#e6db74">&#39;id&#39;</span>);
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">input</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">$</span>(<span style="color:#a6e22e">id</span>);
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">lastValue</span> <span style="color:#f92672">=</span> <span style="color:#f92672">+</span><span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">val</span>();
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">num</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">lastValue</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">num</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">val</span>(<span style="color:#a6e22e">num</span>);
+</span></span><span style="display:flex;"><span>          }      
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>As You can see I added a bit of client side validation to make sure counter does not go below 0 and above 20.
+Now All left to do is to initialize the <code>NumberComponent</code> when the page loads, so I added it to my packs (I&rsquo;m using <a href="https://github.com/rails/webpacker">webpacker</a>) and wrote:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">$</span>(() =&gt; {
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">GameOrderComponent</span>()
+</span></span><span style="display:flex;"><span>   });
+</span></span></code></pre></div><p>And it works!.</p>
+<p>but it&rsquo;s already a bit of a mess, I need to search for the relevant buttons, I don&rsquo;t know how it&rsquo;ll behave when
+content of page changes (turbolinks, other dynamic behavior etc.) I though to myslef, &ldquo;it would be much easier to annotate the relevant html items to describe their behavior&rdquo;.
+But I did not want to make the client super complex, I just want something that&rsquo;ll help me to model my code without all the hassle.</p>
 <p>I did some research (very intensive googling) and found <a href="https://github.com/stimulusjs/stimulus">Stimulus</a>.
 Its a library that decouples your javascript from the html like css decouple styling from html, which is pretty nice.</p>
-
 <p>The concepts are pretty simple and familiar, you got:</p>
-
 <ul>
-  <li>Controller - to group a bunch of html elements in one context (numberController)</li>
-  <li>Target - to allow access dom element inside the controller (instead of jQuery selector) (input)</li>
-  <li>Action - to respond to dom element event and act (button click)</li>
+<li>Controller - to group a bunch of html elements in one context (numberController)</li>
+<li>Target - to allow access dom element inside the controller (instead of jQuery selector) (input)</li>
+<li>Action - to respond to dom element event and act (button click)</li>
 </ul>
-
-<p>That’s all, simple huh?</p>
-
+<p>That&rsquo;s all, simple huh?</p>
 <p>This is how it looks</p>
-
-<figure class="highlight"><pre><code class="language-html" data-lang="html">`
-<span class="nt">&lt;div</span> <span class="na">data-controller=</span><span class="s">"number"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;button</span> <span class="na">data-action=</span><span class="s">"click-&gt;number#minusOne"</span><span class="nt">&gt;</span>-<span class="nt">&lt;/button&gt;</span>
-  <span class="nt">&lt;input</span> <span class="na">data-target=</span><span class="s">"number.input"</span> <span class="na">value=</span><span class="s">"0"</span> <span class="na">readonly=</span><span class="s">"readonly"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;button</span> <span class="na">data-action=</span><span class="s">"click-&gt;number#plusOne"</span><span class="nt">&gt;</span>+<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-`</code></pre></figure>
-
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// number_controller.js</span>
-<span class="k">import</span> <span class="p">{</span><span class="nx">Controller</span><span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">stimulus</span><span class="dl">"</span>
-
-<span class="k">export</span> <span class="k">default</span> <span class="kd">class</span> <span class="kd">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
-  
-  <span class="nx">minusOne</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span>
-    <span class="kd">const</span> <span class="nx">lastValue</span> <span class="o">=</span> <span class="o">+</span><span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">lastValue</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="o">+</span><span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span> <span class="o">-</span> <span class="mi">1</span>
-    <span class="p">}</span>    
-  <span class="p">}</span>
-
-  <span class="nx">plusOne</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span>
-    <span class="kd">const</span> <span class="nx">lastValue</span> <span class="o">=</span> <span class="o">+</span><span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">lastValue</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="o">+</span><span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span> <span class="o">+</span> <span class="mi">1</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-
-  <span class="kd">get</span> <span class="nx">input</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">targets</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="dl">'</span><span class="s1">input</span><span class="dl">'</span><span class="p">)</span>
-  <span class="p">}</span>  
-<span class="p">}</span></code></pre></figure>
-
-<p>I didn’t write less code but,</p>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>`
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">data-controller</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;number&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">data-action</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;click-&gt;number#minusOne&#34;</span>&gt;-&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">data-target</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;number.input&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0&#34;</span> <span style="color:#a6e22e">readonly</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;readonly&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">data-action</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;click-&gt;number#plusOne&#34;</span>&gt;+&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>`
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// number_controller.js
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> {<span style="color:#a6e22e">Controller</span>} <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;stimulus&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#66d9ef">class</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Controller</span> {
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">minusOne</span>(<span style="color:#a6e22e">event</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">preventDefault</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">lastValue</span> <span style="color:#f92672">=</span> <span style="color:#f92672">+</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">value</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">lastValue</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#f92672">+</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">value</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    }    
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">plusOne</span>(<span style="color:#a6e22e">event</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">preventDefault</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">lastValue</span> <span style="color:#f92672">=</span> <span style="color:#f92672">+</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">value</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">lastValue</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">20</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#f92672">+</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">value</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">input</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">targets</span>.<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#39;input&#39;</span>)
+</span></span><span style="display:flex;"><span>  }  
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>I didn&rsquo;t write less code but,</p>
 <ul>
-  <li>The code is more readable</li>
-  <li>No need to initialize the controller, Stimulus take care of that.</li>
-  <li>You get access to the actual html element, which keeps everything straightforward.</li>
-  <li>No need to worry about dom changes, Stimulus take care of that.</li>
+<li>The code is more readable</li>
+<li>No need to initialize the controller, Stimulus take care of that.</li>
+<li>You get access to the actual html element, which keeps everything straightforward.</li>
+<li>No need to worry about dom changes, Stimulus take care of that.</li>
 </ul>
-
-<p>I know that everyone thinks react angular and vue is the s*** but I think its good for large organizations where you have a separate front-end team and back-end team. 
+<p>I know that everyone thinks react angular and vue is the s*** but I think its good for large organizations where you have a separate front-end team and back-end team.
 When you build something new by yourself or with some friends, there is no good reason to start with client side rendering (unless you got a few million users on day one which is less likely)</p>
-
 <p>There are also small companies with a team of full stackers, who might also consider this approach.</p>
-
 <p>If you got a bit stimulated, you can read a small guide <a href="https://stimulusjs.org/handbook/introduction">here</a></p>
 
 
-        
-      </section>
+  </div>
 
-      <footer class="page__meta">
-        
-        
-  
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kinnrot.github.io/tags/ruby/">Ruby</a></li>
+      <li><a href="https://kinnrot.github.io/tags/stimulus/">Stimulus</a></li>
+      <li><a href="https://kinnrot.github.io/tags/rails/">Rails</a></li>
+      <li><a href="https://kinnrot.github.io/tags/jquery/">Jquery</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kinnrot.github.io/">cdblg</a></span> · 
 
-
-  
-  
-  
-
-  <p class="page__taxonomy">
-    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
-    <span itemprop="keywords">
-    
-      
-      
-      <a href="/tags/jquery" class="page__taxonomy-item" rel="tag">jquery</a><span class="sep">, </span>
-    
-      
-      
-      <a href="/tags/rails" class="page__taxonomy-item" rel="tag">rails</a><span class="sep">, </span>
-    
-      
-      
-      <a href="/tags/ruby" class="page__taxonomy-item" rel="tag">ruby</a><span class="sep">, </span>
-    
-      
-      
-      <a href="/tags/stimulus" class="page__taxonomy-item" rel="tag">stimulus</a>
-    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
-  </p>
-
-
-
-
-        
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-05-22T12:10:10+03:00">May 22, 2018</time></p>
-        
-
-      </footer>
-
-
-      <section class="page__share">
-  
-
-  <a href="https://twitter.com/intent/tweet?text=From+jQuery+to+Stimulus%20https%3A%2F%2Fkinnrot.github.io%2Ffrom-jquery-to-stimulus%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
-
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fkinnrot.github.io%2Ffrom-jquery-to-stimulus%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
-
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fkinnrot.github.io%2Ffrom-jquery-to-stimulus%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
-</section>
-
-
-      
-  <nav class="pagination">
-    
-      <a href="/ruby-async-await/" class="pagination--pager" title="Ruby async await
-">Previous</a>
-    
-    
-      <a href="/choosing-the-right-wordpress-hosting-service/" class="pagination--pager" title="Choosing the Right WordPress Hosting Service
-">Next</a>
-    
-  </nav>
-
-
-    </div>
-
-    
-      <div class="page__comments">
-  
-  
-      <h4 class="page__comments-title">Comments</h4>
-      <section id="disqus_thread"></section>
-    
-</div>
-
-    
-  </article>
-
-  
-  
-    <div class="page__related">
-      <h4 class="page__related-title">You May Also Enjoy</h4>
-      <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/rails-presentation-objects-guide/" rel="permalink">Rails Presentation Objects
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
 </a>
-      
-    </h2>
-    
-      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
 
-
-
-
-  7 minute read
-
-</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">If you ever used any MVC framework, I’m sure you asked yourself more than once, ‘Where should I put this piece of code?’ (If not that’s also fine).
-Well, the...</p>
-  </article>
-</div>
-
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
         
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/simulate-click-on-google-geo-chart/" rel="permalink">Simulate Click on Google Geo Chart
-</a>
-      
-    </h2>
-    
-      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
-
-
-
-
-  1 minute read
-
-</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">So I found out it’s not so documented, hopefully google will index this.
-I have a page on my  system that shows a google geo chart (same as this)
-When clicki...</p>
-  </article>
-</div>
-
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
         
-          
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
 
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
 
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/keep-track-on-coverage/" rel="permalink">Keep Track on Coverage
-</a>
-      
-    </h2>
-    
-      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
-
-
-
-
-  1 minute read
-
-</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">Recently I discovered Danger, an amazing tool you should check out no matter what.
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/building-your-own-rails-form-builder/" rel="permalink">Building your own rails form builder
-</a>
-      
-    </h2>
-    
-      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
-
-
-
-
-  3 minute read
-
-</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">If you’re building forms with rails, whether you’re using a gem for it or working with pure rails forms, you should know this.
-</p>
-  </article>
-</div>
-
-        
-      </div>
-    </div>
-  
-</div>
-<div id="codefund_ad"></div>
-<script src="https://codefund.io/scripts/15927f6c-5043-4514-b0d2-ce3b9090ae4c/embed.js?template=bottom-bar"></script>
-
-    </div>
-
-    
-
-    <div id="footer" class="page__footer">
-      <footer>
-        <!-- start custom footer snippets -->
-
-<!-- end custom footer snippets -->
-        <div class="page__footer-follow">
-  <ul class="social-icons">
-    
-
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-
-    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
-  </ul>
-</div>
-
-<div class="page__footer-copyright">&copy; 2020 Chen Kinnrot. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
-
-      </footer>
-    </div>
-
-    
-  <script src="/assets/js/main.min.js"></script>
-  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
-
-
-
-
-
-
-
-  <script>
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-103259749-1']);
-  
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
 </script>
-
-
-
-
-
-
-    
-  <script>
-    var disqus_config = function () {
-      this.page.url = "https://kinnrot.github.io/from-jquery-to-stimulus/";  /* Replace PAGE_URL with your page's canonical URL variable */
-      this.page.identifier = "/from-jquery-to-stimulus"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
     };
-    (function() { /* DON'T EDIT BELOW THIS LINE */
-      var d = document, s = d.createElement('script');
-      s.src = 'https://cdblg.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-    })();
-  </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
 
-  
+</script>
+</body>
 
-
-
-
-
-  </body>
 </html>

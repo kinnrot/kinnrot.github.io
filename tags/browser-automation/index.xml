@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Browser-Automation on cdblg</title>
+    <link>https://kinnrot.github.io/tags/browser-automation/</link>
+    <description>Recent content in Browser-Automation on cdblg</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 22 Jan 2020 21:27:38 +0200</lastBuildDate>
+    <atom:link href="https://kinnrot.github.io/tags/browser-automation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Simulate Click on Google Geo Chart</title>
+      <link>https://kinnrot.github.io/simulate-click-on-google-geo-chart/</link>
+      <pubDate>Wed, 22 Jan 2020 21:27:38 +0200</pubDate>
+      <guid>https://kinnrot.github.io/simulate-click-on-google-geo-chart/</guid>
+      <description>&lt;p&gt;So I found out it&amp;rsquo;s not so documented, hopefully google will index this.
+I have a page on my  system that shows a google geo chart (same as &lt;a href=&#34;https://developers.google.com/chart/interactive/docs/gallery/geochart&#34;&gt;this&lt;/a&gt;)
+When clicking on a country on the map lot&amp;rsquo;s of interesting things happens. And I wanted to implement a ui automation test to cover this use case.&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s not so easy cause even if you find the right svg path object and try clicking on it you get some interception errors.
+So I googled a bit without any luck, but the geo chart documents came to the rescue.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

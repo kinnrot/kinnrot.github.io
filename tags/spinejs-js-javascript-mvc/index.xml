@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>SpineJS Js Javascript Mvc on cdblg</title>
+    <link>https://kinnrot.github.io/tags/spinejs-js-javascript-mvc/</link>
+    <description>Recent content in SpineJS Js Javascript Mvc on cdblg</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 05 Dec 2012 06:02:00 -0800</lastBuildDate>
+    <atom:link href="https://kinnrot.github.io/tags/spinejs-js-javascript-mvc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SpineJS Tip</title>
+      <link>https://kinnrot.github.io/spinejs-tip/</link>
+      <pubDate>Wed, 05 Dec 2012 06:02:00 -0800</pubDate>
+      <guid>https://kinnrot.github.io/spinejs-tip/</guid>
+      <description>&lt;p dir=ltr&gt;Never create multiple instances of a controller that generates the same view, cause you&#39;re event&#39;s registrations will be duplicated over and over again!&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

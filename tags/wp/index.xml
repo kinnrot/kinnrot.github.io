@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Wp on cdblg</title>
+    <link>https://kinnrot.github.io/tags/wp/</link>
+    <description>Recent content in Wp on cdblg</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 10 Sep 2018 21:35:12 +0300</lastBuildDate>
+    <atom:link href="https://kinnrot.github.io/tags/wp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Choosing the Right WordPress Hosting Service</title>
+      <link>https://kinnrot.github.io/choosing-the-right-wordpress-hosting-service/</link>
+      <pubDate>Mon, 10 Sep 2018 21:35:12 +0300</pubDate>
+      <guid>https://kinnrot.github.io/choosing-the-right-wordpress-hosting-service/</guid>
+      <description>&lt;p&gt;I needed to choose WordPress hosting service for some of clients and decided to do some research to figure out what&amp;rsquo;s best value for each client needs.&lt;/p&gt;
+&lt;p&gt;There are many service providers in this area, After lots of googling I decided to focus on the following:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://wordpress.com/create/?aff=9716&amp;amp;cid=958799&#34;&gt;WordPress&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.bluehost.com/track/kinnrot/&#34;&gt;BlueHost&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://kinsta.com/?utm_source=kinnrot.github.io&#34;&gt;Kinsta&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;wordpress&#34;&gt;WordPress&lt;/h2&gt;
+&lt;p&gt;If you&amp;rsquo;re building a new site/blog without any technical knowledge, &lt;a href=&#34;https://wordpress.com/create/?aff=9716&amp;amp;cid=958799&#34;&gt;WordPress&lt;/a&gt; is the right place for you,
+owned by the official word press organization offering limited capabilities cheap plans, and more expensive plans with
+more options like upload a custom theme, and charging money via paypal.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

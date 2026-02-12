@@ -1,594 +1,278 @@
-<!doctype html>
-<!--
-  Minimal Mistakes Jekyll Theme 4.19.1 by Michael Rose
-  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
-  Free for personal and commercial use under the MIT license
-  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
--->
-<html lang="en" class="no-js">
-  <head>
-    <meta charset="utf-8">
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
 
-<!-- begin _includes/seo.html --><title>CoffeeScript - language review - cdblg</title>
-<meta name="description" content="This weekend I learned a new programming language, called coffee script, It’s not a real language it’s actually compiled to JavaScript, so it’s a way to write JavaScript differently.&lt;div&gt;&lt;/div&gt;&lt;div&gt;After a little hands-on and one book read I can say that this is a good language for experienced and non experienced JavaScript programmers. &lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;What’s awesome about this language is that is fills like someone took all the good stuff from ruby python and java, and put it in one language that eliminates all the crap you need to take form JavaScript programming.&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;I can start writing all the good stuff about coffee but there is no need just dive into &lt;/div&gt;&lt;div&gt;http://coffeescript.org/ and you’ll understand all the benefits.&lt;/div&gt; ">
-
-
-
-<meta property="og:type" content="article">
-<meta property="og:locale" content="en">
-<meta property="og:site_name" content="cdblg">
-<meta property="og:title" content="CoffeeScript - language review">
-<meta property="og:url" content="https://kinnrot.github.io/coffeescript-language-review/">
-
-
-  <meta property="og:description" content="This weekend I learned a new programming language, called coffee script, It’s not a real language it’s actually compiled to JavaScript, so it’s a way to write JavaScript differently.&lt;div&gt;&lt;/div&gt;&lt;div&gt;After a little hands-on and one book read I can say that this is a good language for experienced and non experienced JavaScript programmers. &lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;What’s awesome about this language is that is fills like someone took all the good stuff from ruby python and java, and put it in one language that eliminates all the crap you need to take form JavaScript programming.&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;I can start writing all the good stuff about coffee but there is no need just dive into &lt;/div&gt;&lt;div&gt;http://coffeescript.org/ and you’ll understand all the benefits.&lt;/div&gt; ">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2012-02-18T16:30:00+02:00">
-
-
-
-
-
-  
-
-  
-
-
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>CoffeeScript - language review | cdblg</title>
+<meta name="keywords" content="javascript">
+<meta name="description" content="This weekend I learned a new programming language, called coffee script, It&rsquo;s not a real language it&rsquo;s actually compiled to JavaScript, so it&rsquo;s a way to write JavaScript differently.After a little hands-on and one book read I can say that this is a good language for experienced and non experienced JavaScript programmers. What&rsquo;s awesome about this language is that is fills like someone took all the good stuff from ruby python and java, and put it in one language that eliminates all the crap you need to take form JavaScript programming.I can start writing all the good stuff about coffee but there is no need just dive into http://coffeescript.org/ and you&rsquo;ll understand all the benefits.">
+<meta name="author" content="Chen Kinnrot">
 <link rel="canonical" href="https://kinnrot.github.io/coffeescript-language-review/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kinnrot.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kinnrot.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kinnrot.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kinnrot.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kinnrot.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kinnrot.github.io/coffeescript-language-review/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
 
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
 
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kinnrot.github.io/coffeescript-language-review/">
+  <meta property="og:site_name" content="cdblg">
+  <meta property="og:title" content="CoffeeScript - language review">
+  <meta property="og:description" content="This weekend I learned a new programming language, called coffee script, It’s not a real language it’s actually compiled to JavaScript, so it’s a way to write JavaScript differently.
+After a little hands-on and one book read I can say that this is a good language for experienced and non experienced JavaScript programmers. What’s awesome about this language is that is fills like someone took all the good stuff from ruby python and java, and put it in one language that eliminates all the crap you need to take form JavaScript programming.
+I can start writing all the good stuff about coffee but there is no need just dive into http://coffeescript.org/ and you’ll understand all the benefits.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2012-02-18T06:30:00-08:00">
+    <meta property="article:modified_time" content="2012-02-18T06:30:00-08:00">
+    <meta property="article:tag" content="Javascript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CoffeeScript - language review">
+<meta name="twitter:description" content="This weekend I learned a new programming language, called coffee script, It&rsquo;s not a real language it&rsquo;s actually compiled to JavaScript, so it&rsquo;s a way to write JavaScript differently.After a little hands-on and one book read I can say that this is a good language for experienced and non experienced JavaScript programmers. What&rsquo;s awesome about this language is that is fills like someone took all the good stuff from ruby python and java, and put it in one language that eliminates all the crap you need to take form JavaScript programming.I can start writing all the good stuff about coffee but there is no need just dive into http://coffeescript.org/ and you&rsquo;ll understand all the benefits.">
 
 
 <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    
-      "@type": "Person",
-      "name": "Chen Kinnrot",
-      "url": "https://kinnrot.github.io/"
-    
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kinnrot.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "CoffeeScript - language review",
+      "item": "https://kinnrot.github.io/coffeescript-language-review/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "CoffeeScript - language review",
+  "name": "CoffeeScript - language review",
+  "description": "This weekend I learned a new programming language, called coffee script, It\u0026rsquo;s not a real language it\u0026rsquo;s actually compiled to JavaScript, so it\u0026rsquo;s a way to write JavaScript differently.\nAfter a little hands-on and one book read I can say that this is a good language for experienced and non experienced JavaScript programmers. What\u0026rsquo;s awesome about this language is that is fills like someone took all the good stuff from ruby python and java, and put it in one language that eliminates all the crap you need to take form JavaScript programming.\nI can start writing all the good stuff about coffee but there is no need just dive into http://coffeescript.org/ and you\u0026rsquo;ll understand all the benefits.\n",
+  "keywords": [
+    "javascript"
+  ],
+  "articleBody": "This weekend I learned a new programming language, called coffee script, It’s not a real language it’s actually compiled to JavaScript, so it’s a way to write JavaScript differently.\nAfter a little hands-on and one book read I can say that this is a good language for experienced and non experienced JavaScript programmers. What’s awesome about this language is that is fills like someone took all the good stuff from ruby python and java, and put it in one language that eliminates all the crap you need to take form JavaScript programming.\nI can start writing all the good stuff about coffee but there is no need just dive into http://coffeescript.org/ and you’ll understand all the benefits.\n",
+  "wordCount" : "117",
+  "inLanguage": "en",
+  "datePublished": "2012-02-18T06:30:00-08:00",
+  "dateModified": "2012-02-18T06:30:00-08:00",
+  "author":{
+    "@type": "Person",
+    "name": "Chen Kinnrot"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kinnrot.github.io/coffeescript-language-review/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "cdblg",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kinnrot.github.io/favicon.ico"
+    }
   }
+}
 </script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kinnrot.github.io/" accesskey="h" title="cdblg (Alt + H)">cdblg</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
 
-
-
-
-
-
-<!-- end _includes/seo.html -->
-
-
-<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="cdblg Feed">
-
-<!-- https://t.co/dKP3o1e -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<script>
-  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
-</script>
-
-<!-- For all browsers -->
-<link rel="stylesheet" href="/assets/css/main.css">
-
-<!--[if IE]>
-  <style>
-    /* old IE unsupported flexbox fixes */
-    .greedy-nav .site-title {
-      padding-right: 3em;
-    }
-    .greedy-nav button {
-      position: absolute;
-      top: 0;
-      right: 0;
-      height: 100%;
-    }
-  </style>
-<![endif]-->
-
-
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-103259749-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-103259749-1', { 'optimize_id': 'GTM-KXX4C9K'});
-</script>
-<!-- Anti-flicker snippet (recommended)  -->
-<style>.async-hide { opacity: 0 !important} </style>
-<script>(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
-  h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
-  (a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
-})(window,document.documentElement,'async-hide','dataLayer',4000,
-  {'OPT_CONTAINER_ID':true});</script>
-<!-- -->
-
-  </head>
-
-  <body class="layout--post">
-    <nav class="skip-links">
-  <h2 class="screen-reader-text">Skip links</h2>
-  <ul>
-    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
-    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
-    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
-  </ul>
-</nav>
-
-    <!--[if lt IE 9]>
-<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
-<![endif]-->
-
+<article class="post-single">
+  <header class="post-header">
     
+    <h1 class="post-title entry-hint-parent">
+      CoffeeScript - language review
+    </h1>
+    <div class="post-meta"><span title='2012-02-18 06:30:00 -0800 -0800'>February 18, 2012</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span>
 
-<div class="masthead">
-  <div class="masthead__inner-wrap">
-    <div class="masthead__menu">
-      <nav id="site-nav" class="greedy-nav">
-        
-        <a class="site-title" href="/">
-          cdblg
-          
-        </a>
-        <ul class="visible-links"><li class="masthead__menu-item">
-              <a href="/about">About</a>
-            </li></ul>
-        
-        <button class="greedy-nav__toggle hidden" type="button">
-          <span class="visually-hidden">Toggle menu</span>
-          <div class="navicon"></div>
-        </button>
-        <ul class="hidden-links hidden"></ul>
-      </nav>
-    </div>
-  </div>
 </div>
+  </header> 
+  <div class="post-content"><p>This weekend I learned a new programming language, called coffee script, It&rsquo;s not a real language it&rsquo;s actually compiled to JavaScript, so it&rsquo;s a way to write JavaScript differently.<div><br /></div><div>After a little hands-on and one <a href="http://arcturo.github.com/library/coffeescript/index.html">book</a> read I can say that this is a good language for experienced and non experienced JavaScript programmers. </div><div><br /></div><div>What&rsquo;s awesome about this language is that is fills like someone took all the good stuff from ruby python and java, and put it in one language that eliminates all the crap you need to take form JavaScript programming.</div><div><br /></div><div>I can start writing all the good stuff about coffee but there is no need just dive into </div><div><a href="http://coffeescript.org/"><a href="http://coffeescript.org/">http://coffeescript.org/</a></a> and you&rsquo;ll understand all the benefits.</div></p>
 
 
-    <div class="initial-content">
-      
-
-
-  
-    
-
-
-
-<nav class="breadcrumbs">
-  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
-    
-    
-    
-      
-        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="https://kinnrot.github.io/" itemprop="item"><span itemprop="name">Home</span></a>
-          <meta itemprop="position" content="1" />
-        </li>
-        <span class="sep">/</span>
-      
-      
-        <li class="current">CoffeeScript - language review</li>
-      
-    
-  </ol>
-</nav>
-
-  
-
-
-<div id="main" role="main">
-  
-  <div class="sidebar sticky">
-  
-
-
-<div itemscope itemtype="https://schema.org/Person">
-
-  
-
-  <div class="author__content">
-    
-      <h3 class="author__name" itemprop="name"></h3>
-    
-    
   </div>
 
-  <div class="author__urls-wrapper">
-    <button class="btn btn--inverse">Follow</button>
-    <ul class="author__urls social-icons">
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      <!--
-  <li>
-    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
-      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
-    </a>
-  </li>
--->
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kinnrot.github.io/tags/javascript/">Javascript</a></li>
     </ul>
-  </div>
-</div>
-
-  
-  </div>
-
-
-
-  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="CoffeeScript - language review">
-    <meta itemprop="description" content="This weekend I learned a new programming language, called coffee script, It’s not a real language it’s actually compiled to JavaScript, so it’s a way to write JavaScript differently.&lt;div&gt;&lt;/div&gt;&lt;div&gt;After a little hands-on and one book read I can say that this is a good language for experienced and non experienced JavaScript programmers. &lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;What’s awesome about this language is that is fills like someone took all the good stuff from ruby python and java, and put it in one language that eliminates all the crap you need to take form JavaScript programming.&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;I can start writing all the good stuff about coffee but there is no need just dive into &lt;/div&gt;&lt;div&gt;http://coffeescript.org/ and you’ll understand all the benefits.&lt;/div&gt;">
-    <meta itemprop="datePublished" content="February 18, 2012">
+  </footer>
+</article>
+    </main>
     
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kinnrot.github.io/">cdblg</a></span> · 
 
-
-    <div class="page__inner-wrap">
-      
-        <header>
-          <h1 class="page__title" itemprop="headline">CoffeeScript - language review
-</h1>
-          
-            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
-
-
-
-
-  less than 1 minute read
-
-</p>
-          
-
-        </header>
-      
-
-      <section class="page__content" itemprop="text">
-        This weekend I learned a new programming language, called coffee script, It's not a real language it's actually compiled to&nbsp;JavaScript, so it's a way to write&nbsp;JavaScript&nbsp;differently.<div><br /></div><div>After a little hands-on and one <a href="http://arcturo.github.com/library/coffeescript/index.html">book</a> read I can say that this is a good language for&nbsp;experienced&nbsp;and non&nbsp;experienced&nbsp;JavaScript programmers.&nbsp;</div><div><br /></div><div>What's&nbsp;awesome about this&nbsp;language is that is fills like&nbsp;someone&nbsp;took all the good stuff from ruby&nbsp;python&nbsp;and java, and put it in one language that eliminates all the crap you need to take form&nbsp;JavaScript&nbsp;programming.</div><div><br /></div><div>I can start writing all the good stuff about coffee but there is no need just dive into&nbsp;</div><div><a href="http://coffeescript.org/">http://coffeescript.org/</a>&nbsp;and you'll understand all the benefits.</div>
-        
-      </section>
-
-      <footer class="page__meta">
-        
-        
-  
-
-
-  
-  
-  
-
-  <p class="page__taxonomy">
-    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
-    <span itemprop="keywords">
-    
-      
-      
-      <a href="/tags/javascript" class="page__taxonomy-item" rel="tag">javascript</a>
-    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
-  </p>
-
-
-
-
-        
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2012-02-18T16:30:00+02:00">February 18, 2012</time></p>
-        
-
-      </footer>
-
-
-      <section class="page__share">
-  
-
-  <a href="https://twitter.com/intent/tweet?text=CoffeeScript+-+language+review%20https%3A%2F%2Fkinnrot.github.io%2Fcoffeescript-language-review%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
-
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fkinnrot.github.io%2Fcoffeescript-language-review%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
-
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fkinnrot.github.io%2Fcoffeescript-language-review%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
-</section>
-
-
-      
-  <nav class="pagination">
-    
-      <a href="/php-sessions/" class="pagination--pager" title="PHP Sessions
-">Previous</a>
-    
-    
-      <a href="/rails-mongo-heroku-how/" class="pagination--pager" title="Rails + Mongo + Heroku how?
-">Next</a>
-    
-  </nav>
-
-
-    </div>
-
-    
-      <div class="page__comments">
-  
-  
-      <h4 class="page__comments-title">Comments</h4>
-      <section id="disqus_thread"></section>
-    
-</div>
-
-    
-  </article>
-
-  
-  
-    <div class="page__related">
-      <h4 class="page__related-title">You May Also Enjoy</h4>
-      <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/rails-presentation-objects-guide/" rel="permalink">Rails Presentation Objects
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
 </a>
-      
-    </h2>
-    
-      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
 
-
-
-
-  7 minute read
-
-</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">If you ever used any MVC framework, I’m sure you asked yourself more than once, ‘Where should I put this piece of code?’ (If not that’s also fine).
-Well, the...</p>
-  </article>
-</div>
-
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
         
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/simulate-click-on-google-geo-chart/" rel="permalink">Simulate Click on Google Geo Chart
-</a>
-      
-    </h2>
-    
-      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
-
-
-
-
-  1 minute read
-
-</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">So I found out it’s not so documented, hopefully google will index this.
-I have a page on my  system that shows a google geo chart (same as this)
-When clicki...</p>
-  </article>
-</div>
-
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
         
-          
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
 
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
 
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/keep-track-on-coverage/" rel="permalink">Keep Track on Coverage
-</a>
-      
-    </h2>
-    
-      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
-
-
-
-
-  1 minute read
-
-</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">Recently I discovered Danger, an amazing tool you should check out no matter what.
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/building-your-own-rails-form-builder/" rel="permalink">Building your own rails form builder
-</a>
-      
-    </h2>
-    
-      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
-
-
-
-
-  3 minute read
-
-</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">If you’re building forms with rails, whether you’re using a gem for it or working with pure rails forms, you should know this.
-</p>
-  </article>
-</div>
-
-        
-      </div>
-    </div>
-  
-</div>
-<div id="codefund_ad"></div>
-<script src="https://codefund.io/scripts/15927f6c-5043-4514-b0d2-ce3b9090ae4c/embed.js?template=bottom-bar"></script>
-
-    </div>
-
-    
-
-    <div id="footer" class="page__footer">
-      <footer>
-        <!-- start custom footer snippets -->
-
-<!-- end custom footer snippets -->
-        <div class="page__footer-follow">
-  <ul class="social-icons">
-    
-
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-
-    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
-  </ul>
-</div>
-
-<div class="page__footer-copyright">&copy; 2020 Chen Kinnrot. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
-
-      </footer>
-    </div>
-
-    
-  <script src="/assets/js/main.min.js"></script>
-  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
-
-
-
-
-
-
-
-  <script>
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-103259749-1']);
-  
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
 </script>
-
-
-
-
-
-
-    
-  <script>
-    var disqus_config = function () {
-      this.page.url = "https://kinnrot.github.io/coffeescript-language-review/";  /* Replace PAGE_URL with your page's canonical URL variable */
-      this.page.identifier = "/coffeescript-language-review"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
     };
-    (function() { /* DON'T EDIT BELOW THIS LINE */
-      var d = document, s = d.createElement('script');
-      s.src = 'https://cdblg.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-    })();
-  </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
 
-  
+</script>
+</body>
 
-
-
-
-
-  </body>
 </html>

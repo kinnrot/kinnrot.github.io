@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Stimulus on cdblg</title>
+    <link>https://kinnrot.github.io/tags/stimulus/</link>
+    <description>Recent content in Stimulus on cdblg</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 22 May 2018 12:10:10 +0300</lastBuildDate>
+    <atom:link href="https://kinnrot.github.io/tags/stimulus/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>From jQuery to Stimulus</title>
+      <link>https://kinnrot.github.io/from-jquery-to-stimulus/</link>
+      <pubDate>Tue, 22 May 2018 12:10:10 +0300</pubDate>
+      <guid>https://kinnrot.github.io/from-jquery-to-stimulus/</guid>
+      <description>&lt;p&gt;I tried to build an &lt;a href=&#34;https://en.wikipedia.org/wiki/Single-page_application&#34;&gt;SPA&lt;/a&gt; without a shiny client side framework, I wanted to build something fast with good user experience and keeping it as simple as possible.&lt;/p&gt;
+&lt;p&gt;I decided to take &lt;a href=&#34;https://rubyonrails.org/&#34;&gt;rails&lt;/a&gt;, use &lt;a href=&#34;https://github.com/turbolinks/turbolinks&#34;&gt;turbolinks&lt;/a&gt; and a avoid javascript till its a must.&lt;/p&gt;
+&lt;p&gt;It didn&amp;rsquo;t take more than a few hours and I found myself writing javascript. What I needed to do is simple, I had an input with number, and 2 buttons next to it, one to increase values by 1 and on to decrease it looked like this:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

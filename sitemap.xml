@@ -1,504 +1,445 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url>
-<loc>https://kinnrot.github.io/hello-world/</loc>
-<lastmod>2010-09-01T18:23:00+03:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/unit-test-propertychanged/</loc>
-<lastmod>2010-09-02T01:01:00+03:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/wcf-client-side-proxy-memory-leaks/</loc>
-<lastmod>2010-09-02T22:34:00+03:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/for-amt-rx-for-net/</loc>
-<lastmod>2010-09-06T19:26:00+03:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/simple-rx-sample-ui-performance-tuning/</loc>
-<lastmod>2010-09-14T23:43:00+02:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/simple-abstraction-and-decoupling/</loc>
-<lastmod>2010-09-22T23:49:00+02:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/event-base-wpf-navigation/</loc>
-<lastmod>2010-10-12T21:44:00+02:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/unit-testing-with-mock-framework-and/</loc>
-<lastmod>2010-11-17T21:03:00+02:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/nice-php-ide/</loc>
-<lastmod>2010-12-24T10:54:00+02:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/simple-way-to-avoid-hard-coded-strings/</loc>
-<lastmod>2011-01-03T21:20:00+02:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/what-do-you-think/</loc>
-<lastmod>2011-01-05T23:12:00+02:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/wpf-binding-and-why-you-should-write/</loc>
-<lastmod>2011-01-06T00:47:00+02:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/building-business-tier-with-nhibernate/</loc>
-<lastmod>2011-01-24T18:06:00+02:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/per-db-conventions-with/</loc>
-<lastmod>2011-02-18T21:30:00+02:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/preventing-from-setting-property-value/</loc>
-<lastmod>2011-04-04T18:52:00+03:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/ioc-container-warning/</loc>
-<lastmod>2011-04-23T21:44:00+03:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/passing-complex-type-through-wcf/</loc>
-<lastmod>2011-05-02T20:05:00+03:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tpling-background-worker-in-10-min/</loc>
-<lastmod>2011-06-16T11:40:00+03:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/dont-return-and-linq-on-same-line/</loc>
-<lastmod>2011-08-02T13:12:00+03:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/if-you-searching-for-good-place-to-grow/</loc>
-<lastmod>2011-08-05T09:47:00+03:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/boolean-parameters/</loc>
-<lastmod>2011-08-31T17:30:00+03:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/mvc-frameworks-and-dynamic-languages/</loc>
-<lastmod>2011-09-27T16:40:00+03:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/rubymine-recommended-font-for-windows/</loc>
-<lastmod>2011-09-27T16:43:00+03:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/startups-reshare-very-nice-research/</loc>
-<lastmod>2011-10-28T11:00:00+02:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/end-of-job-check-list/</loc>
-<lastmod>2011-11-16T10:30:00+02:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/php-sessions-stuff-to-check-when-things/</loc>
-<lastmod>2012-01-06T11:49:00+02:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/php-sessions/</loc>
-<lastmod>2012-01-08T00:42:00+02:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/coffeescript-language-review/</loc>
-<lastmod>2012-02-18T16:30:00+02:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/rails-mongo-heroku-how/</loc>
-<lastmod>2012-03-29T02:12:00+02:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/for-all-you-android-developers-if-you/</loc>
-<lastmod>2012-06-12T14:57:00+03:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/php-post-response-script-execution/</loc>
-<lastmod>2012-07-07T19:27:00+03:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/coffee-script-is-another-piece-of-shit/</loc>
-<lastmod>2012-07-09T01:18:00+03:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/nice-idea-for-what-new-in-my-app/</loc>
-<lastmod>2012-08-31T11:05:00+03:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/avoid-usage-of-asynctask-class-on/</loc>
-<lastmod>2012-09-26T18:40:00+02:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/spinejs-tip/</loc>
-<lastmod>2012-12-05T16:02:00+02:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/home-base-sdk/</loc>
-<lastmod>2013-01-28T16:10:00+02:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/export-hebrew-or-any-non-english/</loc>
-<lastmod>2014-01-13T00:09:00+02:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/karma-rails-angular-jasmine-testing-set/</loc>
-<lastmod>2014-02-03T09:32:00+02:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/clustetv-is-hiring/</loc>
-<lastmod>2014-08-08T17:40:00+03:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/nice-post-about-cyber-war/</loc>
-<lastmod>2014-10-05T10:42:00+03:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/overriding-default-id-in-mongoid/</loc>
-<lastmod>2014-11-15T17:20:00+02:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/dedicating-djdelayed-job-worker-to/</loc>
-<lastmod>2014-11-15T17:34:00+02:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/get-user-locale-from-http-headers/</loc>
-<lastmod>2014-11-15T17:42:00+02:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/use-factorygirl-and-faker-for-easy-data/</loc>
-<lastmod>2014-11-15T17:52:00+02:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/rubymine-on-osx/</loc>
-<lastmod>2015-01-06T23:32:00+02:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/ruby-lazy-chunked-hash-like-behavior/</loc>
-<lastmod>2017-06-05T15:11:00+03:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/watch-out-for-reference-duplication/</loc>
-<lastmod>2017-07-18T14:42:00+03:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/octopress101/</loc>
-<lastmod>2017-07-25T22:45:07+03:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/ruby-async-await/</loc>
-<lastmod>2017-08-08T18:12:46+03:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/from-jquery-to-stimulus/</loc>
-<lastmod>2018-05-22T12:10:10+03:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/choosing-the-right-wordpress-hosting-service/</loc>
-<lastmod>2018-09-10T21:35:12+03:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/live-data-pitfall-you-should-be-aware-of/</loc>
-<lastmod>2018-10-22T08:12:18+03:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/android-lifecycle-aware-modal/</loc>
-<lastmod>2018-10-25T18:43:04+03:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/building-your-own-rails-form-builder/</loc>
-<lastmod>2019-08-07T00:00:00+03:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/keep-track-on-coverage/</loc>
-<lastmod>2020-01-21T17:40:16+02:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/simulate-click-on-google-geo-chart/</loc>
-<lastmod>2020-01-22T21:27:38+02:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/rails-presentation-objects-guide/</loc>
-<lastmod>2020-02-23T09:19:37+02:00</lastmod>
-</url>
-<url>
-<loc>https://kinnrot.github.io/about/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/propertychanged/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/tdd/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/unittest/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/memory-leak/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/wcf/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/net/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/rx/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/mock/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/ide/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/php/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/styles/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/resources/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/wpf/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/mvvm/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/binding/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/iequatable/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/nhibernate/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/fluent-nhibernate/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/utilities/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/design/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/c/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/tpl/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/linq/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/job/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/documentation/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/ruby/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/dynamic-languages/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/rubymine/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/startup/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/pragmatic/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/session/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/javascript/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/heroku/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/mongodb/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/rails/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/mongoid/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/php-async/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/asynctask/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/android/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/thread/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/spinejs-js-javascript-mvc/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/cyber/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/queueing/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/delayed-job/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/locale/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/localization/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/language/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/osx/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/jekyll/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/octopress/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/ruby/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/async/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/await/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/stimulus/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/jquery/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/hosting/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/wp/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/wordpress/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/kinsta/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/bluehost/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/letsencrypt/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/arch/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/lifecycle/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/form/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/component/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/danger/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/simple-cov/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/code-coverage/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/browser-automation/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/testing/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/capybara/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/maps/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/google-charts/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/view-models/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/presenter/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/view/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/view-context/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/tags/mvc/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/page2/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/page3/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/page4/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/page5/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/page6/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/page7/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/page8/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/page9/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/page10/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/page11/</loc>
-</url>
-<url>
-<loc>https://kinnrot.github.io/page12/</loc>
-</url>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://kinnrot.github.io/</loc>
+    <lastmod>2022-06-18T20:13:46+03:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/engineering/</loc>
+    <lastmod>2022-06-18T20:13:46+03:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/leadership/</loc>
+    <lastmod>2022-06-18T20:13:46+03:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/management/</loc>
+    <lastmod>2022-06-18T20:13:46+03:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/motivation/</loc>
+    <lastmod>2022-06-18T20:13:46+03:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/posts/</loc>
+    <lastmod>2022-06-18T20:13:46+03:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/</loc>
+    <lastmod>2022-06-18T20:13:46+03:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/freedom-and-trust/</loc>
+    <lastmod>2022-06-18T20:13:46+03:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/cd/</loc>
+    <lastmod>2022-03-03T23:19:59+02:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/ci/</loc>
+    <lastmod>2022-03-03T23:19:59+02:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/startups/</loc>
+    <lastmod>2022-03-03T23:19:59+02:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/the-value-of-fast-feedback-loop/</loc>
+    <lastmod>2022-03-03T23:19:59+02:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/mvc/</loc>
+    <lastmod>2020-02-23T09:19:37+02:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/presenter/</loc>
+    <lastmod>2020-02-23T09:19:37+02:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/rails/</loc>
+    <lastmod>2020-02-23T09:19:37+02:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/rails-presentation-objects-guide/</loc>
+    <lastmod>2020-02-23T09:19:37+02:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/view/</loc>
+    <lastmod>2020-02-23T09:19:37+02:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/view-context/</loc>
+    <lastmod>2020-02-23T09:19:37+02:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/view-models/</loc>
+    <lastmod>2020-02-23T09:19:37+02:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/browser-automation/</loc>
+    <lastmod>2020-01-22T21:27:38+02:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/capybara/</loc>
+    <lastmod>2020-01-22T21:27:38+02:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/google-charts/</loc>
+    <lastmod>2020-01-22T21:27:38+02:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/maps/</loc>
+    <lastmod>2020-01-22T21:27:38+02:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/simulate-click-on-google-geo-chart/</loc>
+    <lastmod>2020-01-22T21:27:38+02:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/testing/</loc>
+    <lastmod>2020-01-22T21:27:38+02:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/code-coverage/</loc>
+    <lastmod>2020-01-21T17:40:16+02:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/danger/</loc>
+    <lastmod>2020-01-21T17:40:16+02:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/keep-track-on-coverage/</loc>
+    <lastmod>2020-01-21T17:40:16+02:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/simple-cov/</loc>
+    <lastmod>2020-01-21T17:40:16+02:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/building-your-own-rails-form-builder/</loc>
+    <lastmod>2019-08-07T00:00:00+03:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/component/</loc>
+    <lastmod>2019-08-07T00:00:00+03:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/form/</loc>
+    <lastmod>2019-08-07T00:00:00+03:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/ruby/</loc>
+    <lastmod>2019-08-07T00:00:00+03:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/android/</loc>
+    <lastmod>2018-10-25T18:43:04+03:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/android-lifecycle-aware-modal/</loc>
+    <lastmod>2018-10-25T18:43:04+03:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/arch/</loc>
+    <lastmod>2018-10-25T18:43:04+03:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/lifecycle/</loc>
+    <lastmod>2018-10-25T18:43:04+03:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/live-data-pitfall-you-should-be-aware-of/</loc>
+    <lastmod>2018-10-22T08:12:18+03:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/bluehost/</loc>
+    <lastmod>2018-09-10T21:35:12+03:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/choosing-the-right-wordpress-hosting-service/</loc>
+    <lastmod>2018-09-10T21:35:12+03:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/hosting/</loc>
+    <lastmod>2018-09-10T21:35:12+03:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/kinsta/</loc>
+    <lastmod>2018-09-10T21:35:12+03:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/letsencrypt/</loc>
+    <lastmod>2018-09-10T21:35:12+03:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/wordpress/</loc>
+    <lastmod>2018-09-10T21:35:12+03:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/wp/</loc>
+    <lastmod>2018-09-10T21:35:12+03:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/from-jquery-to-stimulus/</loc>
+    <lastmod>2018-05-22T12:10:10+03:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/jquery/</loc>
+    <lastmod>2018-05-22T12:10:10+03:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/stimulus/</loc>
+    <lastmod>2018-05-22T12:10:10+03:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/async/</loc>
+    <lastmod>2017-08-08T18:12:46+03:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/await/</loc>
+    <lastmod>2017-08-08T18:12:46+03:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/ruby-async-await/</loc>
+    <lastmod>2017-08-08T18:12:46+03:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/jekyll/</loc>
+    <lastmod>2017-07-25T22:45:07+03:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/octopress/</loc>
+    <lastmod>2017-07-25T22:45:07+03:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/octopress101/</loc>
+    <lastmod>2017-07-25T22:45:07+03:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/watch-out-for-reference-duplication/</loc>
+    <lastmod>2017-07-18T04:42:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/design/</loc>
+    <lastmod>2017-06-05T05:11:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/dynamic-languages/</loc>
+    <lastmod>2017-06-05T05:11:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/memory-leak/</loc>
+    <lastmod>2017-06-05T05:11:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/ruby-lazy-chunked-hash-like-behavior/</loc>
+    <lastmod>2017-06-05T05:11:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/osx/</loc>
+    <lastmod>2015-01-06T13:32:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/rubymine/</loc>
+    <lastmod>2015-01-06T13:32:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/rubymine-on-osx/</loc>
+    <lastmod>2015-01-06T13:32:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/use-factorygirl-and-faker-for-easy-data/</loc>
+    <lastmod>2014-11-15T07:52:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/get-user-locale-from-http-headers/</loc>
+    <lastmod>2014-11-15T07:42:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/language/</loc>
+    <lastmod>2014-11-15T07:42:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/locale/</loc>
+    <lastmod>2014-11-15T07:42:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/localization/</loc>
+    <lastmod>2014-11-15T07:42:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/asynctask/</loc>
+    <lastmod>2014-11-15T07:34:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/dedicating-djdelayed-job-worker-to/</loc>
+    <lastmod>2014-11-15T07:34:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/delayed-job/</loc>
+    <lastmod>2014-11-15T07:34:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/heroku/</loc>
+    <lastmod>2014-11-15T07:34:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/queueing/</loc>
+    <lastmod>2014-11-15T07:34:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/mongodb/</loc>
+    <lastmod>2014-11-15T07:20:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/mongoid/</loc>
+    <lastmod>2014-11-15T07:20:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/overriding-default-id-in-mongoid/</loc>
+    <lastmod>2014-11-15T07:20:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/cyber/</loc>
+    <lastmod>2014-10-05T00:42:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/nice-post-about-cyber-war/</loc>
+    <lastmod>2014-10-05T00:42:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/clustetv-is-hiring/</loc>
+    <lastmod>2014-08-08T07:40:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/karma-rails-angular-jasmine-testing-set/</loc>
+    <lastmod>2014-02-02T23:32:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/export-hebrew-or-any-non-english/</loc>
+    <lastmod>2014-01-12T14:09:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/home-base-sdk/</loc>
+    <lastmod>2013-01-28T06:10:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/spinejs-js-javascript-mvc/</loc>
+    <lastmod>2012-12-05T06:02:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/spinejs-tip/</loc>
+    <lastmod>2012-12-05T06:02:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/avoid-usage-of-asynctask-class-on/</loc>
+    <lastmod>2012-09-26T09:40:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/thread/</loc>
+    <lastmod>2012-09-26T09:40:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/nice-idea-for-what-new-in-my-app/</loc>
+    <lastmod>2012-08-31T01:05:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/coffee-script-is-another-piece-of-shit/</loc>
+    <lastmod>2012-07-08T15:18:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/php-async/</loc>
+    <lastmod>2012-07-07T09:27:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/php-post-response-script-execution/</loc>
+    <lastmod>2012-07-07T09:27:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/for-all-you-android-developers-if-you/</loc>
+    <lastmod>2012-06-12T04:57:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/rails-mongo-heroku-how/</loc>
+    <lastmod>2012-03-28T17:12:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/coffeescript-language-review/</loc>
+    <lastmod>2012-02-18T06:30:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/javascript/</loc>
+    <lastmod>2012-02-18T06:30:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/php/</loc>
+    <lastmod>2012-01-07T14:42:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/php-sessions/</loc>
+    <lastmod>2012-01-07T14:42:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/session/</loc>
+    <lastmod>2012-01-07T14:42:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/php-sessions-stuff-to-check-when-things/</loc>
+    <lastmod>2012-01-06T01:49:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/end-of-job-check-list/</loc>
+    <lastmod>2011-11-16T00:30:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/pragmatic/</loc>
+    <lastmod>2011-11-16T00:30:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/startup/</loc>
+    <lastmod>2011-10-28T02:00:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/startups-reshare-very-nice-research/</loc>
+    <lastmod>2011-10-28T02:00:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/rubymine-recommended-font-for-windows/</loc>
+    <lastmod>2011-09-27T06:43:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/mvc-frameworks-and-dynamic-languages/</loc>
+    <lastmod>2011-09-27T06:40:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/boolean-parameters/</loc>
+    <lastmod>2011-08-31T07:30:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/documentation/</loc>
+    <lastmod>2011-08-31T07:30:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/if-you-searching-for-good-place-to-grow/</loc>
+    <lastmod>2011-08-04T23:47:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/job/</loc>
+    <lastmod>2011-08-04T23:47:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/dont-return-and-linq-on-same-line/</loc>
+    <lastmod>2011-08-02T03:12:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/linq/</loc>
+    <lastmod>2011-08-02T03:12:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/c%23/</loc>
+    <lastmod>2011-06-16T01:40:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/tpl/</loc>
+    <lastmod>2011-06-16T01:40:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tpling-background-worker-in-10-min/</loc>
+    <lastmod>2011-06-16T01:40:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/passing-complex-type-through-wcf/</loc>
+    <lastmod>2011-05-02T10:05:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/ioc-container-warning/</loc>
+    <lastmod>2011-04-23T11:44:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/nhibernate/</loc>
+    <lastmod>2011-04-04T08:52:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/preventing-from-setting-property-value/</loc>
+    <lastmod>2011-04-04T08:52:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/per-db-conventions-with/</loc>
+    <lastmod>2011-02-18T11:30:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/building-business-tier-with-nhibernate/</loc>
+    <lastmod>2011-01-24T08:06:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/fluent-nhibernate/</loc>
+    <lastmod>2011-01-24T08:06:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/utilities/</loc>
+    <lastmod>2011-01-24T08:06:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/binding/</loc>
+    <lastmod>2011-01-05T14:47:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/iequatable/</loc>
+    <lastmod>2011-01-05T14:47:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/wpf/</loc>
+    <lastmod>2011-01-05T14:47:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/wpf-binding-and-why-you-should-write/</loc>
+    <lastmod>2011-01-05T14:47:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/mvvm/</loc>
+    <lastmod>2011-01-05T13:12:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/what-do-you-think/</loc>
+    <lastmod>2011-01-05T13:12:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/resources/</loc>
+    <lastmod>2011-01-03T11:20:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/simple-way-to-avoid-hard-coded-strings/</loc>
+    <lastmod>2011-01-03T11:20:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/styles/</loc>
+    <lastmod>2011-01-03T11:20:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/ide/</loc>
+    <lastmod>2010-12-24T00:54:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/nice-php-ide/</loc>
+    <lastmod>2010-12-24T00:54:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/mock/</loc>
+    <lastmod>2010-11-17T11:03:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/unit-testing-with-mock-framework-and/</loc>
+    <lastmod>2010-11-17T11:03:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/unittest/</loc>
+    <lastmod>2010-11-17T11:03:00-08:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/event-base-wpf-navigation/</loc>
+    <lastmod>2010-10-12T12:44:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/simple-abstraction-and-decoupling/</loc>
+    <lastmod>2010-09-22T14:49:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/simple-rx-sample-ui-performance-tuning/</loc>
+    <lastmod>2010-09-14T14:43:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/.net/</loc>
+    <lastmod>2010-09-06T09:26:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/for-amt-rx-for-net/</loc>
+    <lastmod>2010-09-06T09:26:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/rx/</loc>
+    <lastmod>2010-09-06T09:26:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/wcf/</loc>
+    <lastmod>2010-09-02T12:34:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/wcf-client-side-proxy-memory-leaks/</loc>
+    <lastmod>2010-09-02T12:34:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/propertychanged/</loc>
+    <lastmod>2010-09-01T15:01:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/tdd/</loc>
+    <lastmod>2010-09-01T15:01:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/unit-test-propertychanged/</loc>
+    <lastmod>2010-09-01T15:01:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/hello-world/</loc>
+    <lastmod>2010-09-01T08:23:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/categories/</loc>
+  </url>
 </urlset>

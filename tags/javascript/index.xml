@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Javascript on cdblg</title>
+    <link>https://kinnrot.github.io/tags/javascript/</link>
+    <description>Recent content in Javascript on cdblg</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 18 Feb 2012 06:30:00 -0800</lastBuildDate>
+    <atom:link href="https://kinnrot.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CoffeeScript - language review</title>
+      <link>https://kinnrot.github.io/coffeescript-language-review/</link>
+      <pubDate>Sat, 18 Feb 2012 06:30:00 -0800</pubDate>
+      <guid>https://kinnrot.github.io/coffeescript-language-review/</guid>
+      <description>&lt;p&gt;This weekend I learned a new programming language, called coffee script, It&amp;rsquo;s not a real language it&amp;rsquo;s actually compiled to JavaScript, so it&amp;rsquo;s a way to write JavaScript differently.&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;After a little hands-on and one &lt;a href=&#34;http://arcturo.github.com/library/coffeescript/index.html&#34;&gt;book&lt;/a&gt; read I can say that this is a good language for experienced and non experienced JavaScript programmers. &lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;What&amp;rsquo;s awesome about this language is that is fills like someone took all the good stuff from ruby python and java, and put it in one language that eliminates all the crap you need to take form JavaScript programming.&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;I can start writing all the good stuff about coffee but there is no need just dive into &lt;/div&gt;&lt;div&gt;&lt;a href=&#34;http://coffeescript.org/&#34;&gt;&lt;a href=&#34;http://coffeescript.org/&#34;&gt;http://coffeescript.org/&lt;/a&gt;&lt;/a&gt; and you&amp;rsquo;ll understand all the benefits.&lt;/div&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

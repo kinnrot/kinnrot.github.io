@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Lifecycle on cdblg</title>
+    <link>https://kinnrot.github.io/tags/lifecycle/</link>
+    <description>Recent content in Lifecycle on cdblg</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 25 Oct 2018 18:43:04 +0300</lastBuildDate>
+    <atom:link href="https://kinnrot.github.io/tags/lifecycle/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Android Lifecycle Aware Modal</title>
+      <link>https://kinnrot.github.io/android-lifecycle-aware-modal/</link>
+      <pubDate>Thu, 25 Oct 2018 18:43:04 +0300</pubDate>
+      <guid>https://kinnrot.github.io/android-lifecycle-aware-modal/</guid>
+      <description>&lt;p&gt;Sometimes we want to show the user an alert when somethings wrong or we just need to give some extra info,
+For example; Ask the user if he is sure he wanna leave the app.&lt;/p&gt;
+&lt;p&gt;This can be achieved with the following code (runs inside activity):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-kotlin&#34; data-lang=&#34;kotlin&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;AlertDialog&lt;/span&gt;.Builder(&lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  .setMessage(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Are you sure you want to exit?&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  .setCancelable(&lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  .setPositiveButton(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Yes&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;object&lt;/span&gt;:&lt;span style=&#34;color:#a6e22e&#34;&gt;DialogInterface&lt;/span&gt;.OnClickListener() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;fun&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;onClick&lt;/span&gt;(dialog:DialogInterface, id:Int) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;@YourActivity&lt;/span&gt;.finish()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  })
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  .setNegativeButton(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;No&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  .show()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This works fine, buy there is one annoying issue, If user clicks home button while dialog displayed, and go back to the app, the dialog will still be there.
+Now your user experience is seeing a question about getting out of the app while he just went in.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Live Data Pitfall You Should Be Aware Of</title>
+      <link>https://kinnrot.github.io/live-data-pitfall-you-should-be-aware-of/</link>
+      <pubDate>Mon, 22 Oct 2018 08:12:18 +0300</pubDate>
+      <guid>https://kinnrot.github.io/live-data-pitfall-you-should-be-aware-of/</guid>
+      <description>&lt;p&gt;When working with &lt;code&gt;MutableLiveData&lt;/code&gt; you can update the observable value in 2 ways:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;setValue&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;postValue&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Both will update the live data value as expected as long as your code is running from the main thread.&lt;/p&gt;
+&lt;p&gt;If you need to update a value from other thread you can use the &lt;code&gt;postValue&lt;/code&gt; which is thread safe, and will make sure to notify observers on main thread.&lt;/p&gt;
+&lt;p&gt;This is all nice, but be aware!&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

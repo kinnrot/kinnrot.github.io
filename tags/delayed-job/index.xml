@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Delayed Job on cdblg</title>
+    <link>https://kinnrot.github.io/tags/delayed-job/</link>
+    <description>Recent content in Delayed Job on cdblg</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 15 Nov 2014 07:34:00 -0800</lastBuildDate>
+    <atom:link href="https://kinnrot.github.io/tags/delayed-job/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Dedicating a DJ(Delayed job) worker to a specific queue in heroku.</title>
+      <link>https://kinnrot.github.io/dedicating-djdelayed-job-worker-to/</link>
+      <pubDate>Sat, 15 Nov 2014 07:34:00 -0800</pubDate>
+      <guid>https://kinnrot.github.io/dedicating-djdelayed-job-worker-to/</guid>
+      <description>&lt;p&gt;Let&amp;rsquo;s say you have a vey important procedure that takes a while, and you need to process it in background, but you still want to execute ASAP.&lt;br /&gt;&lt;br /&gt;I&amp;rsquo;m using Delayed Job on Heroku, and could not find a lot of tutorials to do this simple task.&lt;br /&gt;&lt;br /&gt;So here is the simplest way to achieve this ability, you can raise a process/deamon  that will have only one queue to work on. (Dealyed job worker by default is queue agnostic, just process all jobs)&lt;br /&gt;&lt;br /&gt;In procfile:&lt;br /&gt;&lt;br /&gt;&lt;blockquote class=&#34;tr_bq&#34;&gt;urgentworker:  QUEUE=urgent bundle exec rake jobs:work&lt;/blockquote&gt;&lt;br /&gt;You can call the worker in any name you want and even define multiple workers for multiple queues.&lt;br /&gt;And in the &amp;ldquo;urgent&amp;rdquo; job just define the queue name to be &amp;ldquo;urgent&amp;rdquo; the worker will process only jobs in this queue.&lt;br /&gt;&lt;br /&gt;example:&lt;br /&gt;&lt;br /&gt;&lt;blockquote class=&#34;tr_bq&#34;&gt;handle_asynchronously :some_job, :queue =&amp;gt; &amp;ldquo;urgent&amp;rsquo;&lt;/blockquote&gt;&lt;br /&gt;This will also work for Resque.&lt;br /&gt;&lt;br /&gt;Notice that for rescue you can write QUEUE=* &lt;b&gt;but for delayed job you can&amp;rsquo;t.&lt;/b&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Pragmatic on cdblg</title>
+    <link>https://kinnrot.github.io/tags/pragmatic/</link>
+    <description>Recent content in Pragmatic on cdblg</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 16 Nov 2011 00:30:00 -0800</lastBuildDate>
+    <atom:link href="https://kinnrot.github.io/tags/pragmatic/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>End of job check list</title>
+      <link>https://kinnrot.github.io/end-of-job-check-list/</link>
+      <pubDate>Wed, 16 Nov 2011 00:30:00 -0800</pubDate>
+      <guid>https://kinnrot.github.io/end-of-job-check-list/</guid>
+      <description>&lt;div&gt;&lt;div&gt;I&#39;m about to end my first gig(already end! yay I&#39;m free!) as a programmer, and want to leave a clean desk. So here is a list of things I&#39;m doing and suggest you all do before you move to your next gig:&lt;br /&gt;&lt;br /&gt;1. Write about your major infrastructure developments on your wiki or any other system you got, in an easy to understand language.&lt;br /&gt;2. Start lecturing your co-workers about complex parts you developed.&lt;br /&gt;3. Make sure you got full code coverage with unit tests.&lt;br /&gt;4. Search for to-do comments and make sure you do those todo&#39;s.&lt;br /&gt;5. If you got unfinished work and think it&#39;s worth something make sure someone complete.&lt;br /&gt;&lt;br /&gt;And the most important: change your phone number :-) (Bazinga).&lt;br /&gt;&lt;br /&gt;&lt;/div&gt;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Jekyll on cdblg</title>
+    <link>https://kinnrot.github.io/tags/jekyll/</link>
+    <description>Recent content in Jekyll on cdblg</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 25 Jul 2017 22:45:07 +0300</lastBuildDate>
+    <atom:link href="https://kinnrot.github.io/tags/jekyll/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Octopress 101</title>
+      <link>https://kinnrot.github.io/octopress101/</link>
+      <pubDate>Tue, 25 Jul 2017 22:45:07 +0300</pubDate>
+      <guid>https://kinnrot.github.io/octopress101/</guid>
+      <description>&lt;p&gt;I decided to develop my own blog like all the other cool developers.
+If you got here, this is what I got so far, it&amp;rsquo;s not too much, but it&amp;rsquo;s a start.&lt;/p&gt;
+&lt;p&gt;When I develop something my rules are very simple&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Avoid writing any code.&lt;/li&gt;
+&lt;li&gt;Keep it simple.&lt;/li&gt;
+&lt;li&gt;Easy to deploy on free hosting environment.&lt;/li&gt;
+&lt;li&gt;Decent code syntax highlight&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;So I heard(mostly in www) people talking about jekyll as a static web site generator and began to dig dipper,
+I searched a few ruby gems for blogging and found a gem called [octopress](&lt;a href=&#34;https://github.com/octopress/octopress&#34;&gt;https://github.com/octopress/octopress&lt;/a&gt; octopress v3).
+They, the guys who developed it, calls it Jekyll&amp;rsquo;s Ferrari, sounds good to me, looked pretty straight forward so I gave it a spin.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

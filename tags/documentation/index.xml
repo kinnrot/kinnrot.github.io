@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Documentation on cdblg</title>
+    <link>https://kinnrot.github.io/tags/documentation/</link>
+    <description>Recent content in Documentation on cdblg</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 31 Aug 2011 07:30:00 -0700</lastBuildDate>
+    <atom:link href="https://kinnrot.github.io/tags/documentation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Boolean parameters</title>
+      <link>https://kinnrot.github.io/boolean-parameters/</link>
+      <pubDate>Wed, 31 Aug 2011 07:30:00 -0700</pubDate>
+      <guid>https://kinnrot.github.io/boolean-parameters/</guid>
+      <description>&lt;p&gt;It&amp;rsquo;s not fun to look at a method call that sends more than 0 boolean parameters.&lt;br /&gt;&lt;br /&gt;&lt;div style=&#34;border: #000080 1px solid; color: black; font-family: &#39;Courier New&#39;, Courier, Monospace; font-size: 10pt;&#34;&gt;&lt;div style=&#34;background: #000080; color: white; font-family: Verdana, Tahoma, Arial, sans-serif; font-weight: bold; padding: 2px 5px;&#34;&gt;Code Snippet&lt;/div&gt;&lt;div style=&#34;background: #ddd; max-height: 300px; overflow: auto;&#34;&gt;&lt;ol style=&#34;background: #ffffff; margin: 0 0 0 2em; padding: 0 0 0 5px;&#34;&gt;&lt;li&gt;SetBinding(&lt;span style=&#34;color: blue;&#34;&gt;false&lt;/span&gt;, &lt;span style=&#34;color: blue;&#34;&gt;false&lt;/span&gt;, &lt;span style=&#34;color: red;&#34;&gt;comboBox&lt;/span&gt;);&lt;/li&gt;&lt;/p&gt;
+ &lt;/ol&gt;&lt;/div&gt;&lt;/div&gt;&lt;br /&gt;There is 100%&amp;nbsp;guarantee&amp;nbsp;that you will look for the documentation about this parameters and it&#39;ll slow your code reading speed.&lt;br /&gt;&lt;br /&gt;Here is a nice way to avoid the unreadable code and keep on using this meaningless&amp;nbsp;Boolean.&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;div style=&#34;border: #000080 1px solid; color: black; font-family: &#39;Courier New&#39;, Courier, Monospace; font-size: 10pt;&#34;&gt; &lt;div style=&#34;background: #000080; color: white; font-family: Verdana, Tahoma, Arial, sans-serif; font-weight: bold; padding: 2px 5px;&#34;&gt;Code Snippet&lt;/div&gt;&lt;div style=&#34;background: #ddd; max-height: 300px; overflow: auto;&#34;&gt; &lt;ol style=&#34;background: #ffffff; margin: 0 0 0 2em; padding: 0 0 0 5px;&#34;&gt;&lt;li&gt;SetBinding(&lt;span style=&#34;color: green;&#34;&gt;/* auto resolve= */&lt;/span&gt; &lt;span style=&#34;color: blue;&#34;&gt;false&lt;/span&gt;, &lt;span style=&#34;color: green;&#34;&gt;/* two way binding? = */&lt;/span&gt; &lt;span style=&#34;color: blue;&#34;&gt;false&lt;/span&gt;, comboBox);&lt;/li&gt;
+ &lt;/ol&gt;&lt;/div&gt;&lt;/div&gt;&lt;br /&gt;&lt;br /&gt;This is not my idea though, it&#39;s from&amp;nbsp;Microsoft&amp;nbsp;pdb&#39;s, and I think its&amp;nbsp;awesome.</description>
+    </item>
+  </channel>
+</rss>

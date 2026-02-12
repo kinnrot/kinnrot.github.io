@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Wcf on cdblg</title>
+    <link>https://kinnrot.github.io/tags/wcf/</link>
+    <description>Recent content in Wcf on cdblg</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 02 Sep 2010 12:34:00 -0700</lastBuildDate>
+    <atom:link href="https://kinnrot.github.io/tags/wcf/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>WCF client side proxy memory leaks</title>
+      <link>https://kinnrot.github.io/wcf-client-side-proxy-memory-leaks/</link>
+      <pubDate>Thu, 02 Sep 2010 12:34:00 -0700</pubDate>
+      <guid>https://kinnrot.github.io/wcf-client-side-proxy-memory-leaks/</guid>
+      <description>&lt;p&gt;Today I ran into a guy who worked with me on my previous project.&lt;br /&gt;On that project I was responsible to rewrite the WCF channels (proxies) generation management and lifetime management of them.&lt;br /&gt;I decided to do some research and found some good stuff &lt;a href=&#34;http://wcfguidanceforwpf.codeplex.com/&#34;&gt;here&lt;/a&gt;.&lt;br /&gt;So this guy (aka Kurki) tells me they found a memory leak in my manager, what was the problem?&lt;br /&gt;&lt;br /&gt;So i messed up like I always do (well, only 90% of the time, like a good programmer).&lt;br /&gt;&lt;br /&gt;I wrote a code that registers to the Faulted event of the channel, kills the channel when Faulted and creates a new one to work with, everything looked fine, only one screw up (I&amp;rsquo;m sure some of you can guess).&lt;br /&gt;I forgot to unregister from the Faulted Event.&lt;br /&gt;&lt;br /&gt;On the web they tell you to do some unique logic to kill your channel in a safe way, what they don&amp;rsquo;t talk about is that it&amp;rsquo;ll stay in memory and fire events if you won&amp;rsquo;t unregister from stuff although you think it is dead.&lt;br /&gt;&lt;br /&gt;So please &lt;u&gt;do not forget to unregister from stuff even if the object is disposable&lt;/u&gt;.&lt;br /&gt;&lt;br /&gt;Or consider the use of weak event listeners and problem solved.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

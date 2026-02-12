@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Presenter on cdblg</title>
+    <link>https://kinnrot.github.io/tags/presenter/</link>
+    <description>Recent content in Presenter on cdblg</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 23 Feb 2020 09:19:37 +0200</lastBuildDate>
+    <atom:link href="https://kinnrot.github.io/tags/presenter/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rails Presentation Objects</title>
+      <link>https://kinnrot.github.io/rails-presentation-objects-guide/</link>
+      <pubDate>Sun, 23 Feb 2020 09:19:37 +0200</pubDate>
+      <guid>https://kinnrot.github.io/rails-presentation-objects-guide/</guid>
+      <description>&lt;p&gt;If you ever used any &lt;a href=&#34;https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller&#34;&gt;MVC&lt;/a&gt; framework, I&amp;rsquo;m sure you asked yourself more than once, &amp;lsquo;Where should I put this piece of code?&amp;rsquo; (If not that&amp;rsquo;s also fine).
+Well, there is no one answer for all problems but, I asked it a lot.&lt;/p&gt;
+&lt;p&gt;In this post, I&amp;rsquo;m gonna focus about the view part.&lt;/p&gt;
+&lt;p&gt;View objects, AKA view models, but any other name is fine (presenter view object, view controller mediator, whatever).&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

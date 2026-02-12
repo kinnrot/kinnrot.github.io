@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Simple-Cov on cdblg</title>
+    <link>https://kinnrot.github.io/tags/simple-cov/</link>
+    <description>Recent content in Simple-Cov on cdblg</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 21 Jan 2020 17:40:16 +0200</lastBuildDate>
+    <atom:link href="https://kinnrot.github.io/tags/simple-cov/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Keep Track on Coverage</title>
+      <link>https://kinnrot.github.io/keep-track-on-coverage/</link>
+      <pubDate>Tue, 21 Jan 2020 17:40:16 +0200</pubDate>
+      <guid>https://kinnrot.github.io/keep-track-on-coverage/</guid>
+      <description>&lt;p&gt;Recently I discovered &lt;a href=&#34;https://github.com/danger/danger&#34;&gt;Danger&lt;/a&gt;, an amazing tool you should check out no matter what.&lt;/p&gt;
+&lt;p&gt;I can write a ton of use cases that serves me on my day to day work, but let&amp;rsquo;s start with one which I like a lot.&lt;/p&gt;
+&lt;p&gt;Do you know how much of your code is covered by tests?&lt;/p&gt;
+&lt;p&gt;Do you keep track on how your code coverage changes over time ?&lt;/p&gt;
+&lt;p&gt;I didn&amp;rsquo;t till I installed a simple danger plugin called &lt;a href=&#34;https://github.com/marcelofabri/danger-simplecov_json&#34;&gt;&amp;lsquo;danger-simplecov_json&amp;rsquo;&lt;/a&gt;, It&amp;rsquo;s a ruby gem it&amp;rsquo;s configuration is super easy (check this link to the gem),
+Once you configure Danger on your CI or locally, you can see after each build (spec run or whatever you use) the percentage of code coverage.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

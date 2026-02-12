@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Php on cdblg</title>
+    <link>https://kinnrot.github.io/tags/php/</link>
+    <description>Recent content in Php on cdblg</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 07 Jan 2012 14:42:00 -0800</lastBuildDate>
+    <atom:link href="https://kinnrot.github.io/tags/php/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PHP Sessions</title>
+      <link>https://kinnrot.github.io/php-sessions/</link>
+      <pubDate>Sat, 07 Jan 2012 14:42:00 -0800</pubDate>
+      <guid>https://kinnrot.github.io/php-sessions/</guid>
+      <description>&lt;p&gt;One more thing,&lt;br /&gt;&lt;br /&gt;If you do stuff like put instances of classes inside a session and expect to call methods of this classes later, you must put the session start after you include the classes definitions.&lt;br /&gt;&lt;br /&gt;But I suggest not to do this kind of stuff.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>PHP sessions - stuff to check when things goes wrong.</title>
+      <link>https://kinnrot.github.io/php-sessions-stuff-to-check-when-things/</link>
+      <pubDate>Fri, 06 Jan 2012 01:49:00 -0800</pubDate>
+      <guid>https://kinnrot.github.io/php-sessions-stuff-to-check-when-things/</guid>
+      <description>&lt;p&gt;&lt;span style=&#34;font-family: &#39;Courier New&#39;, Courier, monospace;&#34;&gt;There is too much information about problems with sessions in PHP, every dude got it&amp;rsquo;s own problem and it&amp;rsquo;s own solution.&lt;/span&gt;&lt;br /&gt;&lt;span style=&#34;font-family: &#39;Courier New&#39;, Courier, monospace;&#34;&gt;The probability that the problem you experiencing is the same is very low. &lt;/span&gt;&lt;br /&gt;&lt;span style=&#34;font-family: &#39;Courier New&#39;, Courier, monospace;&#34;&gt;So here is what my little (and very annoying) google journey came up to:&lt;/span&gt;&lt;br /&gt;&lt;span style=&#34;font-family: &#39;Courier New&#39;, Courier, monospace;&#34;&gt;&lt;br /&gt;&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&#34;font-family: &#39;Courier New&#39;, Courier, monospace;&#34;&gt;You must call session_start(); on each page&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&#34;font-family: &#39;Courier New&#39;, Courier, monospace;&#34;&gt;If you use the header(&amp;lsquo;Location: blabla&amp;rsquo;); you should use relative url to keep preserve session &lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&#34;font-family: &#39;Courier New&#39;, Courier, monospace;&#34;&gt;some people say before using the header action you need to call  &lt;span class=&#34;methodname&#34; style=&#34;background-color: white;&#34;&gt;session_write_close(); - I&amp;rsquo;m not using it.&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span class=&#34;methodname&#34; style=&#34;background-color: white;&#34;&gt;&lt;span style=&#34;font-family: &#39;Courier New&#39;, Courier, monospace;&#34;&gt;session_write_close(); could be the reason to your problems, cause after calling it you can&amp;rsquo;t modify the session (in the current http context), that was my problem.&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&#34;font-family: &#39;Courier New&#39;, Courier, monospace;&#34;&gt;on php docs, they say that &amp;ldquo;&lt;span style=&#34;background-color: white;&#34;&gt;Session ID is not passed with Location header even if &lt;/span&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.php.net/manual/en/session.configuration.php#ini.session.use-trans-sid&#34; style=&#34;background-color: white; border-bottom-color: rgb(0, 0, 153); border-bottom-style: solid; border-bottom-width: 1px; color: #000099; text-decoration: none;&#34;&gt;session.use_trans_sid&lt;/a&gt;&lt;span style=&#34;background-color: white;&#34;&gt; is enabled. It must by passed manually using &lt;/span&gt;&lt;span style=&#34;background-color: white;&#34;&gt;&lt;tt&gt;SID&lt;/tt&gt;&lt;/span&gt;&lt;span style=&#34;background-color: white;&#34;&gt; constant.&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;div&gt;&lt;span style=&#34;font-family: &#39;Courier New&#39;, Courier, monospace;&#34;&gt;So first make sure you use session start, if you passed this search for voodoos like  &lt;span class=&#34;methodname&#34; style=&#34;background-color: white;&#34;&gt;session_write_close() in the middle of your infrastructure and remove them.&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&#34;font-family: &#39;Courier New&#39;, Courier, monospace;&#34;&gt;&lt;br /&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&#34;font-family: &#39;Courier New&#39;, Courier, monospace;&#34;&gt;If I didn&amp;rsquo;t help, continue the journey.&lt;/span&gt;&lt;/div&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Nice PHP IDE</title>
+      <link>https://kinnrot.github.io/nice-php-ide/</link>
+      <pubDate>Fri, 24 Dec 2010 00:54:00 -0800</pubDate>
+      <guid>https://kinnrot.github.io/nice-php-ide/</guid>
+      <description>&lt;p&gt;Recently a friend recommend me to check the PHP Storm IDE.&lt;br /&gt;&lt;br /&gt;I must say that its a grate IDE, almost same capabilities as IntelliJ, I&amp;rsquo;v never seen a PHP IDE with this refactoring and navigation features.&lt;br /&gt;&lt;br /&gt;So check it out.&lt;br /&gt;&lt;br /&gt;Thank you Gal Batat for the recommendation.&lt;br /&gt;&lt;br /&gt;Features and download is &lt;a href=&#34;http://www.jetbrains.com/phpstorm/&#34;&gt;here&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

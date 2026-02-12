@@ -1,397 +1,390 @@
-<!doctype html>
-<!--
-  Minimal Mistakes Jekyll Theme 4.19.1 by Michael Rose
-  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
-  Free for personal and commercial use under the MIT license
-  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
--->
-<html lang="en" class="no-js">
-  <head>
-    <meta charset="utf-8">
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
 
-<!-- begin _includes/seo.html --><title>ruby - cdblg</title>
-<meta name="description" content="An amazing website. ">
-
-
-  <meta name="author" content="Chen Kinnrot">
-
-
-<meta property="og:type" content="website">
-<meta property="og:locale" content="en">
-<meta property="og:site_name" content="cdblg">
-<meta property="og:title" content="ruby">
-<meta property="og:url" content="https://kinnrot.github.io/tags/ruby/">
-
-
-  <meta property="og:description" content="An amazing website. ">
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Ruby | cdblg</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
 <link rel="canonical" href="https://kinnrot.github.io/tags/ruby/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kinnrot.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kinnrot.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kinnrot.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kinnrot.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kinnrot.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://kinnrot.github.io/tags/ruby/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="https://kinnrot.github.io/tags/ruby/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
 
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
 
+            .list {
+                background: var(--theme);
+            }
 
+            .toc {
+                background: var(--entry);
+            }
+        }
 
-<script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kinnrot.github.io/tags/ruby/">
+  <meta property="og:site_name" content="cdblg">
+  <meta property="og:title" content="Ruby">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ruby">
+<meta name="twitter:description" content="">
+
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kinnrot.github.io/" accesskey="h" title="cdblg (Alt + H)">cdblg</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header">
+  <h1>
+    Ruby
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Building your own rails form builder
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>If you’re building forms with rails, whether you’re using a gem for it or working with pure rails forms, you should know this.
+Rails uses form builder to allow you to call all the standard label/input/select methods, the exact class name is
+ActionView::Helpers::FormBuilder
+When calling ‘form_for’ you get a fresh instance of this FormBuilder which allows you to define your form elements.
+Lets say you wanna add another reusable form element, for example a form section with title that uses your own custom style/classes.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2019-08-07 00:00:00 +0300 IDT'>August 7, 2019</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Building your own rails form builder" href="https://kinnrot.github.io/building-your-own-rails-form-builder/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">From jQuery to Stimulus
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>I tried to build an SPA without a shiny client side framework, I wanted to build something fast with good user experience and keeping it as simple as possible.
+I decided to take rails, use turbolinks and a avoid javascript till its a must.
+It didn’t take more than a few hours and I found myself writing javascript. What I needed to do is simple, I had an input with number, and 2 buttons next to it, one to increase values by 1 and on to decrease it looked like this:
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2018-05-22 12:10:10 +0300 IDT'>May 22, 2018</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to From jQuery to Stimulus" href="https://kinnrot.github.io/from-jquery-to-stimulus/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Ruby async await
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>There is a lot of buzz about asyc await from the javascript world, the concept is very simple and make your code much more readable.
+You want to execute something without blocking the main thread but you want the next line of code to run once the non blocking code finish, meaning continue code execution in its written order.
+Ruby has a great concurrency gem which basically encapsulate low level threading and synchronization code to common patterns like Future, Promise, Actor and much more.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2017-08-08 18:12:46 +0300 IDT'>August 8, 2017</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Ruby async await" href="https://kinnrot.github.io/ruby-async-await/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Octopress 101
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>I decided to develop my own blog like all the other cool developers. If you got here, this is what I got so far, it’s not too much, but it’s a start.
+When I develop something my rules are very simple
+Avoid writing any code. Keep it simple. Easy to deploy on free hosting environment. Decent code syntax highlight So I heard(mostly in www) people talking about jekyll as a static web site generator and began to dig dipper, I searched a few ruby gems for blogging and found a gem called [octopress](https://github.com/octopress/octopress octopress v3). They, the guys who developed it, calls it Jekyll’s Ferrari, sounds good to me, looked pretty straight forward so I gave it a spin.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2017-07-25 22:45:07 +0300 IDT'>July 25, 2017</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Octopress 101" href="https://kinnrot.github.io/octopress101/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Watch out for reference duplication instead of instance duplication
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>
+# This code will generate 96 instancesViewStatData = Struct.new(:total, :target, :ratio)96.times.map {|_|ViewStatData.new(0, 0, 0)}# And this will not, it’ll generate 96 pointers[ViewStatData.new(0, 0, 0)] * 96# So Watch out!!!
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2017-07-18 04:42:00.003 -0700 -0700'>July 18, 2017</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Watch out for reference duplication instead of instance duplication" href="https://kinnrot.github.io/watch-out-for-reference-duplication/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Ruby Lazy chunked hash like behavior
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>When we want to iterate a long list, we can simply write a query and get a cursor, ActiveRecord will do all the heavy lifting for us.
+What happens when we need to do some complicated computations on a set of data, which sometimes can be too big to be stored in memory for the entire computing process?
+This is when we need to start being more creational.
+I’d like to introduce what I came up with.
+The problem:
+- Complex calculation on time based data series for a period of 3 months.
+- Each calculation may depends on previous one and on future and past data.
+- Must be in order.
+- When fetching all data server crash on memory.
+The solution:
+I wanted to do the most minor code change possible, and currently the data was accessed via a hash. I decided to encapsulate the hash with something I called lazy chunked hash (tried google it see it as standard behavior in clojure).
+It looks like this:
+class ValuesProvider def initialize()
+@loaded_date = nil @hash = Hash.new(0) end def [](time_slot) get(time_slot) end private def get(time_slot) relevant_date = time_slot.to_date unless relevant_date == @loaded_date load(relevant_date) end @hash[time_slot.to_i] endend
+Pretty simple and does the work, instead of loading the data all at once, the data is being loaded for each day separately, this way we keep it chunky but not too chunky.
+And best part, my code that consume the data, didn’t change because of the [] method, which makes my ValueProvider behave like an array. This solution is good when the consumer data request(call for[]) implies on what data should be loaded, which most of the times will, but in some cases it won’t)
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2017-06-05 05:11:00.001 -0700 -0700'>June 5, 2017</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Ruby Lazy chunked hash like behavior" href="https://kinnrot.github.io/ruby-lazy-chunked-hash-like-behavior/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Rubymine on OSX memory issues
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>I found this only today, you should run Rubymine as 32 bit process.
+It works much faster and consume half the memory.
+To set this got to the Applicaitons folder right click on rubymine-&gt;get info and check the “open in 32 bit mode”
+Thats all!
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2015-01-06 13:32:00.001 -0800 -0800'>January 6, 2015</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Rubymine on OSX memory issues" href="https://kinnrot.github.io/rubymine-on-osx/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Get the user locale from http headers
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>If you want to provide default localization support for guest user in your website yo can locate their browser locale by the following code:
+def extract_locale_from_header
+unless request.env[‘HTTP_ACCEPT_LANGUAGE’].nil?
+return request.env[‘HTTP_ACCEPT_LANGUAGE’].scan(/^[a-z]{2}/).first
+end
+‘en’
+end
+This way you can determine on server side the locale of the user currently entered your site.
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2014-11-15 07:42:00.001 -0800 -0800'>November 15, 2014</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Get the user locale from http headers" href="https://kinnrot.github.io/get-user-locale-from-http-headers/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Dedicating a DJ(Delayed job) worker to a specific queue in heroku.
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Let’s say you have a vey important procedure that takes a while, and you need to process it in background, but you still want to execute ASAP.
+I’m using Delayed Job on Heroku, and could not find a lot of tutorials to do this simple task.
+So here is the simplest way to achieve this ability, you can raise a process/deamon that will have only one queue to work on. (Dealyed job worker by default is queue agnostic, just process all jobs)
+In procfile:
+urgentworker: QUEUE=urgent bundle exec rake jobs:work
+You can call the worker in any name you want and even define multiple workers for multiple queues.
+And in the “urgent” job just define the queue name to be “urgent” the worker will process only jobs in this queue.
+example:
+handle_asynchronously :some_job, :queue =&gt; “urgent’
+This will also work for Resque.
+Notice that for rescue you can write QUEUE=* but for delayed job you can’t.
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2014-11-15 07:34:00.002 -0800 -0800'>November 15, 2014</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Dedicating a DJ(Delayed job) worker to a specific queue in heroku." href="https://kinnrot.github.io/dedicating-djdelayed-job-worker-to/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Overriding default id in mongoid
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>This is an easy one, just want to make sure it’s clear.
+Add the following field to your model:
+field :_id, type: Moped::BSON::ObjectId
+And to allow setting it:
+1 def id=(id)
+2 self[:_id] = id
+3 end
+Now you can just do obj.id=[Some ObjectId] and save the object.
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2014-11-15 07:20:00 -0800 -0800'>November 15, 2014</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Overriding default id in mongoid" href="https://kinnrot.github.io/overriding-default-id-in-mongoid/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="next" href="https://kinnrot.github.io/tags/ruby/page/2/">Next&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
+    </main>
     
-      "@type": "Person",
-      "name": "Chen Kinnrot",
-      "url": "https://kinnrot.github.io/"
-    
-  }
-</script>
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kinnrot.github.io/">cdblg</a></span> · 
 
-
-
-
-
-
-<!-- end _includes/seo.html -->
-
-
-<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="cdblg Feed">
-
-<!-- https://t.co/dKP3o1e -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
 
 <script>
-  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
 </script>
-
-<!-- For all browsers -->
-<link rel="stylesheet" href="/assets/css/main.css">
-
-<!--[if IE]>
-  <style>
-    /* old IE unsupported flexbox fixes */
-    .greedy-nav .site-title {
-      padding-right: 3em;
-    }
-    .greedy-nav button {
-      position: absolute;
-      top: 0;
-      right: 0;
-      height: 100%;
-    }
-  </style>
-<![endif]-->
-
-
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-103259749-1"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
 
-  gtag('config', 'UA-103259749-1', { 'optimize_id': 'GTM-KXX4C9K'});
 </script>
-<!-- Anti-flicker snippet (recommended)  -->
-<style>.async-hide { opacity: 0 !important} </style>
-<script>(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
-  h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
-  (a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
-})(window,document.documentElement,'async-hide','dataLayer',4000,
-  {'OPT_CONTAINER_ID':true});</script>
-<!-- -->
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
 
-  </head>
-
-  <body class="layout--archive-taxonomy">
-    <nav class="skip-links">
-  <h2 class="screen-reader-text">Skip links</h2>
-  <ul>
-    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
-    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
-    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
-  </ul>
-</nav>
-
-    <!--[if lt IE 9]>
-<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
-<![endif]-->
-
-    
-
-<div class="masthead">
-  <div class="masthead__inner-wrap">
-    <div class="masthead__menu">
-      <nav id="site-nav" class="greedy-nav">
-        
-        <a class="site-title" href="/">
-          cdblg
-          
-        </a>
-        <ul class="visible-links"><li class="masthead__menu-item">
-              <a href="/about">About</a>
-            </li></ul>
-        
-        <button class="greedy-nav__toggle hidden" type="button">
-          <span class="visually-hidden">Toggle menu</span>
-          <div class="navicon"></div>
-        </button>
-        <ul class="hidden-links hidden"></ul>
-      </nav>
-    </div>
-  </div>
-</div>
-
-
-    <div class="initial-content">
-      
-
-
-  
-    
-
-
-
-<nav class="breadcrumbs">
-  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
-    
-    
-    
-      
-        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="https://kinnrot.github.io/" itemprop="item"><span itemprop="name">Home</span></a>
-          <meta itemprop="position" content="1" />
-        </li>
-        <span class="sep">/</span>
-      
-      
-        
-        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="/tags" itemprop="item"><span itemprop="name">Tags</span></a>
-          <meta itemprop="position" content="2" />
-        </li>
-        <span class="sep">/</span>
-      
-    
-      
-      
-        <li class="current">ruby</li>
-      
-    
-  </ol>
-</nav>
-
-  
-
-
-<div id="main" role="main">
-  
-
-
-  <div class="archive">
-    
-      <h1 id="page-title" class="page__title">ruby</h1>
-    
-    
-      
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/building-your-own-rails-form-builder/" rel="permalink">Building your own rails form builder
-</a>
-      
-    </h2>
-    
-      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
-
-
-
-
-  3 minute read
-
-</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">If you’re building forms with rails, whether you’re using a gem for it or working with pure rails forms, you should know this.
-</p>
-  </article>
-</div>
-
-    
-      
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/from-jquery-to-stimulus/" rel="permalink">From jQuery to Stimulus
-</a>
-      
-    </h2>
-    
-      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
-
-
-
-
-  6 minute read
-
-</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">I tried to build an SPA without a shiny client side framework, I wanted to build something fast with good user experience and keeping it as simple as possible.
-</p>
-  </article>
-</div>
-
-    
-      
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/ruby-async-await/" rel="permalink">Ruby async await
-</a>
-      
-    </h2>
-    
-      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
-
-
-
-
-  5 minute read
-
-</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">There is a lot of buzz about asyc await from the javascript world, the concept is very simple and make your code much more
-readable.
-</p>
-  </article>
-</div>
-
-    
-      
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/octopress101/" rel="permalink">Octopress 101
-</a>
-      
-    </h2>
-    
-      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
-
-
-
-
-  4 minute read
-
-</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">I decided to develop my own blog like all the other cool developers.
-If you got here, this is what I got so far, it’s not too much, but it’s a start.
-</p>
-  </article>
-</div>
-
-    
-  </div>
-</div>
-
-    </div>
-
-    
-
-    <div id="footer" class="page__footer">
-      <footer>
-        <!-- start custom footer snippets -->
-
-<!-- end custom footer snippets -->
-        <div class="page__footer-follow">
-  <ul class="social-icons">
-    
-
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-
-    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
-  </ul>
-</div>
-
-<div class="page__footer-copyright">&copy; 2020 Chen Kinnrot. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
-
-      </footer>
-    </div>
-
-    
-  <script src="/assets/js/main.min.js"></script>
-  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
-
-
-
-
-
-
-
-  <script>
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-103259749-1']);
-  
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
 </script>
+</body>
 
-
-
-
-
-
-
-
-
-  </body>
 </html>

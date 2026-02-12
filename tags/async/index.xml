@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Async on cdblg</title>
+    <link>https://kinnrot.github.io/tags/async/</link>
+    <description>Recent content in Async on cdblg</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 08 Aug 2017 18:12:46 +0300</lastBuildDate>
+    <atom:link href="https://kinnrot.github.io/tags/async/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ruby async await</title>
+      <link>https://kinnrot.github.io/ruby-async-await/</link>
+      <pubDate>Tue, 08 Aug 2017 18:12:46 +0300</pubDate>
+      <guid>https://kinnrot.github.io/ruby-async-await/</guid>
+      <description>&lt;p&gt;There is a lot of buzz about asyc await from the javascript world, the concept is very simple and make your code much more
+readable.&lt;/p&gt;
+&lt;p&gt;You want to execute something without blocking the main thread but you want the next line of code to run once the non blocking code finish, meaning continue
+code execution in its written order.&lt;/p&gt;
+&lt;p&gt;Ruby has a great &lt;a href=&#34;https://github.com/ruby-concurrency/concurrent-ruby&#34;&gt;concurrency gem&lt;/a&gt; which basically encapsulate low level threading and synchronization code
+to common patterns like Future, Promise, Actor and much more.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

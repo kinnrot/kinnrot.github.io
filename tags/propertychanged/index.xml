@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>PropertyChanged on cdblg</title>
+    <link>https://kinnrot.github.io/tags/propertychanged/</link>
+    <description>Recent content in PropertyChanged on cdblg</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 01 Sep 2010 15:01:00 -0700</lastBuildDate>
+    <atom:link href="https://kinnrot.github.io/tags/propertychanged/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Unit Test PropertyChanged</title>
+      <link>https://kinnrot.github.io/unit-test-propertychanged/</link>
+      <pubDate>Wed, 01 Sep 2010 15:01:00 -0700</pubDate>
+      <guid>https://kinnrot.github.io/unit-test-propertychanged/</guid>
+      <description>&lt;p&gt;One of the basic stuff you wanna test as a client side developer, is that all of your UI bounded classes aka Controller, Model, ViewModel, Presenter, PresentationModel, or the code behind of your view if your just having fun.&lt;br /&gt;&lt;div&gt;&lt;br /&gt;Let&amp;rsquo;s assume we have a person class with a name property:&lt;br /&gt;&lt;br /&gt;&lt;/div&gt;&lt;pre class=&#34;brush: csharp; ruler: true;&#34;&gt;public class Person : INotifyPropertyChanged&lt;br /&gt;{&lt;br /&gt;    public event PropertyChangedEventHandler PropertyChanged;&lt;br /&gt;&lt;br /&gt;    private string _name;&lt;br /&gt;&lt;br /&gt;    public virtual string Name&lt;br /&gt;    {&lt;br /&gt;        get { return _name; }&lt;br /&gt;        set { _name = value;&lt;br /&gt;        FirePropertyChanged(&amp;ldquo;Name&amp;rdquo;);&lt;br /&gt;        }&lt;br /&gt;    }&lt;br /&gt;&lt;br /&gt;    protected virtual void FirePropertyChanged(string propertyName)&lt;br /&gt;    {&lt;br /&gt;        var handlers = PropertyChanged;&lt;br /&gt;        if (handlers != null)&lt;br /&gt;        {&lt;br /&gt;            handlers(this, new PropertyChangedEventArgs(propertyName));&lt;br /&gt;        }&lt;br /&gt;    }&lt;br /&gt;}&lt;br /&gt;&lt;/pre&gt;&lt;pre class=&#34;brush: csharp; ruler: true;&#34;&gt;&lt;/pre&gt;&lt;div&gt;The simplest way to perform this test is to write this code:&lt;br /&gt;&lt;br /&gt;&lt;pre class=&#34;brush: csharp; ruler: true;&#34;&gt;[TestFixture]&lt;br /&gt;public class PersonTest&lt;br /&gt;{&lt;br /&gt;    [Test]&lt;br /&gt;    public void SetName_SomeNewString_FirePropertyChanged()&lt;br /&gt;    {&lt;br /&gt;        Person person = new Person();&lt;br /&gt;        string changedPropertyName = string.Empty;&lt;br /&gt;        person.PropertyChanged += (sender, args) =&amp;gt; changedPropertyName = args.PropertyName;&lt;br /&gt;        person.Name = &amp;ldquo;Test&amp;rdquo;;&lt;br /&gt;        Assert.AreEqual(&amp;ldquo;Name&amp;rdquo;, changedPropertyName);&lt;br /&gt;    }&lt;br /&gt;}&lt;br /&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

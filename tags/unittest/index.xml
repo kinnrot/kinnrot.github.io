@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>UnitTest on cdblg</title>
+    <link>https://kinnrot.github.io/tags/unittest/</link>
+    <description>Recent content in UnitTest on cdblg</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 17 Nov 2010 11:03:00 -0800</lastBuildDate>
+    <atom:link href="https://kinnrot.github.io/tags/unittest/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Unit testing with mock framework and IEquatable&lt;&gt;</title>
+      <link>https://kinnrot.github.io/unit-testing-with-mock-framework-and/</link>
+      <pubDate>Wed, 17 Nov 2010 11:03:00 -0800</pubDate>
+      <guid>https://kinnrot.github.io/unit-testing-with-mock-framework-and/</guid>
+      <description>&lt;p&gt;This post is relevant for the one&amp;rsquo;s who write tests, all you other programmers, you should learn unit testing and read it.&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;One of the most useful tools in unit testing is a good mocking framework. (I&amp;rsquo;m currently using &lt;a href=&#34;http://code.google.com/p/moq/&#34;&gt;Moq&lt;/a&gt;, and before that I used &lt;a href=&#34;http://www.ayende.com/projects/rhino-mocks.aspx&#34;&gt;rhino&lt;/a&gt;)&lt;/div&gt;&lt;div&gt;  &lt;/div&gt;&lt;div&gt;We all know that for mocking we need interfaces.&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;My tip is very simple, if you have a class Foo and you wanna mock it, first you should have Interface IFoo (this should be obvious to most of you).&lt;/div&gt;&lt;div&gt;Implement on Foo IEquatable&amp;lt;IFoo&amp;gt;, so if you test a list of IFoo and you want to assert Contains()  you won&amp;rsquo;t have any problems with the proxy of IFoo that mocking framework generates on the interface and no one will blame you for your awful class that throws cast exception in its equals method :).&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;Hope it&amp;rsquo;ll save you time in future.&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;That it, KIS.&lt;/div&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Unit Test PropertyChanged</title>
+      <link>https://kinnrot.github.io/unit-test-propertychanged/</link>
+      <pubDate>Wed, 01 Sep 2010 15:01:00 -0700</pubDate>
+      <guid>https://kinnrot.github.io/unit-test-propertychanged/</guid>
+      <description>&lt;p&gt;One of the basic stuff you wanna test as a client side developer, is that all of your UI bounded classes aka Controller, Model, ViewModel, Presenter, PresentationModel, or the code behind of your view if your just having fun.&lt;br /&gt;&lt;div&gt;&lt;br /&gt;Let&amp;rsquo;s assume we have a person class with a name property:&lt;br /&gt;&lt;br /&gt;&lt;/div&gt;&lt;pre class=&#34;brush: csharp; ruler: true;&#34;&gt;public class Person : INotifyPropertyChanged&lt;br /&gt;{&lt;br /&gt;    public event PropertyChangedEventHandler PropertyChanged;&lt;br /&gt;&lt;br /&gt;    private string _name;&lt;br /&gt;&lt;br /&gt;    public virtual string Name&lt;br /&gt;    {&lt;br /&gt;        get { return _name; }&lt;br /&gt;        set { _name = value;&lt;br /&gt;        FirePropertyChanged(&amp;ldquo;Name&amp;rdquo;);&lt;br /&gt;        }&lt;br /&gt;    }&lt;br /&gt;&lt;br /&gt;    protected virtual void FirePropertyChanged(string propertyName)&lt;br /&gt;    {&lt;br /&gt;        var handlers = PropertyChanged;&lt;br /&gt;        if (handlers != null)&lt;br /&gt;        {&lt;br /&gt;            handlers(this, new PropertyChangedEventArgs(propertyName));&lt;br /&gt;        }&lt;br /&gt;    }&lt;br /&gt;}&lt;br /&gt;&lt;/pre&gt;&lt;pre class=&#34;brush: csharp; ruler: true;&#34;&gt;&lt;/pre&gt;&lt;div&gt;The simplest way to perform this test is to write this code:&lt;br /&gt;&lt;br /&gt;&lt;pre class=&#34;brush: csharp; ruler: true;&#34;&gt;[TestFixture]&lt;br /&gt;public class PersonTest&lt;br /&gt;{&lt;br /&gt;    [Test]&lt;br /&gt;    public void SetName_SomeNewString_FirePropertyChanged()&lt;br /&gt;    {&lt;br /&gt;        Person person = new Person();&lt;br /&gt;        string changedPropertyName = string.Empty;&lt;br /&gt;        person.PropertyChanged += (sender, args) =&amp;gt; changedPropertyName = args.PropertyName;&lt;br /&gt;        person.Name = &amp;ldquo;Test&amp;rdquo;;&lt;br /&gt;        Assert.AreEqual(&amp;ldquo;Name&amp;rdquo;, changedPropertyName);&lt;br /&gt;    }&lt;br /&gt;}&lt;br /&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

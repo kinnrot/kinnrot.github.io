@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Rails on cdblg</title>
+    <link>https://kinnrot.github.io/tags/rails/</link>
+    <description>Recent content in Rails on cdblg</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 23 Feb 2020 09:19:37 +0200</lastBuildDate>
+    <atom:link href="https://kinnrot.github.io/tags/rails/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rails Presentation Objects</title>
+      <link>https://kinnrot.github.io/rails-presentation-objects-guide/</link>
+      <pubDate>Sun, 23 Feb 2020 09:19:37 +0200</pubDate>
+      <guid>https://kinnrot.github.io/rails-presentation-objects-guide/</guid>
+      <description>&lt;p&gt;If you ever used any &lt;a href=&#34;https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller&#34;&gt;MVC&lt;/a&gt; framework, I&amp;rsquo;m sure you asked yourself more than once, &amp;lsquo;Where should I put this piece of code?&amp;rsquo; (If not that&amp;rsquo;s also fine).
+Well, there is no one answer for all problems but, I asked it a lot.&lt;/p&gt;
+&lt;p&gt;In this post, I&amp;rsquo;m gonna focus about the view part.&lt;/p&gt;
+&lt;p&gt;View objects, AKA view models, but any other name is fine (presenter view object, view controller mediator, whatever).&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Building your own rails form builder</title>
+      <link>https://kinnrot.github.io/building-your-own-rails-form-builder/</link>
+      <pubDate>Wed, 07 Aug 2019 00:00:00 +0300</pubDate>
+      <guid>https://kinnrot.github.io/building-your-own-rails-form-builder/</guid>
+      <description>&lt;p&gt;If you&amp;rsquo;re building forms with rails, whether you&amp;rsquo;re using a gem for it or working with pure rails forms, you should know this.&lt;/p&gt;
+&lt;p&gt;Rails uses form builder to allow you to call all the standard label/input/select methods, the exact class name is&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ActionView::Helpers::FormBuilder&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;When calling &amp;lsquo;form_for&amp;rsquo; you get a fresh instance of this FormBuilder which allows you to define your form elements.&lt;/p&gt;
+&lt;p&gt;Lets say you wanna add another reusable form element, for example a form section with title that uses your own custom style/classes.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>From jQuery to Stimulus</title>
+      <link>https://kinnrot.github.io/from-jquery-to-stimulus/</link>
+      <pubDate>Tue, 22 May 2018 12:10:10 +0300</pubDate>
+      <guid>https://kinnrot.github.io/from-jquery-to-stimulus/</guid>
+      <description>&lt;p&gt;I tried to build an &lt;a href=&#34;https://en.wikipedia.org/wiki/Single-page_application&#34;&gt;SPA&lt;/a&gt; without a shiny client side framework, I wanted to build something fast with good user experience and keeping it as simple as possible.&lt;/p&gt;
+&lt;p&gt;I decided to take &lt;a href=&#34;https://rubyonrails.org/&#34;&gt;rails&lt;/a&gt;, use &lt;a href=&#34;https://github.com/turbolinks/turbolinks&#34;&gt;turbolinks&lt;/a&gt; and a avoid javascript till its a must.&lt;/p&gt;
+&lt;p&gt;It didn&amp;rsquo;t take more than a few hours and I found myself writing javascript. What I needed to do is simple, I had an input with number, and 2 buttons next to it, one to increase values by 1 and on to decrease it looked like this:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Get the user locale from http headers</title>
+      <link>https://kinnrot.github.io/get-user-locale-from-http-headers/</link>
+      <pubDate>Sat, 15 Nov 2014 07:42:00 -0800</pubDate>
+      <guid>https://kinnrot.github.io/get-user-locale-from-http-headers/</guid>
+      <description>&lt;p&gt;If you want to provide default localization support for guest user in your website yo can locate their browser locale by the following code:&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;pre style=&#34;background-color: #2b2b2b; border-color: #000000; border-style: solid; border-width: 0.01mm; font-family: monospace; font-size: 14pt; line-height: 100%; padding: 4px;&#34;&gt;&lt;pre style=&#34;border: 0.01mm solid rgb(0, 0, 0); font-size: 12pt; line-height: 100%;&#34;&gt;&lt;span style=&#34;color: #cc7833;&#34;&gt;def&lt;/span&gt;&lt;span style=&#34;color: #e6e1dc;&#34;&gt; extract_locale_from_header&lt;br /&gt;    &lt;/span&gt;&lt;span style=&#34;color: #cc7833;&#34;&gt;unless&lt;/span&gt;&lt;span style=&#34;color: #e6e1dc;&#34;&gt; request.env[&lt;/span&gt;&lt;span style=&#34;color: #a5c261;&#34;&gt;&amp;lsquo;HTTP_ACCEPT_LANGUAGE&amp;rsquo;&lt;/span&gt;&lt;span style=&#34;color: #e6e1dc;&#34;&gt;].nil?&lt;br /&gt;      &lt;/span&gt;&lt;span style=&#34;color: #cc7833;&#34;&gt;return&lt;/span&gt;&lt;span style=&#34;color: #e6e1dc;&#34;&gt; request.env[&lt;/span&gt;&lt;span style=&#34;color: #a5c261;&#34;&gt;&amp;lsquo;HTTP_ACCEPT_LANGUAGE&amp;rsquo;&lt;/span&gt;&lt;span style=&#34;color: #e6e1dc;&#34;&gt;].scan(&lt;/span&gt;&lt;span style=&#34;color: #a5c261;&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color: #e6e1dc;&#34;&gt;^[a-z]{2}&lt;/span&gt;&lt;span style=&#34;color: #a5c261;&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color: #e6e1dc;&#34;&gt;).first&lt;br /&gt;    &lt;/span&gt;&lt;span style=&#34;color: #cc7833;&#34;&gt;end&lt;br /&gt;&lt;/span&gt;&lt;span style=&#34;color: #e6e1dc;&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color: #a5c261;&#34;&gt;&amp;lsquo;en&amp;rsquo;&lt;br /&gt;&lt;/span&gt;&lt;span style=&#34;color: #e6e1dc;&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color: #cc7833;&#34;&gt;end&lt;/span&gt;&lt;/pre&gt;&lt;/pre&gt;&lt;br /&gt;This way you can determine on server side the locale of the user currently entered your site.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Dedicating a DJ(Delayed job) worker to a specific queue in heroku.</title>
+      <link>https://kinnrot.github.io/dedicating-djdelayed-job-worker-to/</link>
+      <pubDate>Sat, 15 Nov 2014 07:34:00 -0800</pubDate>
+      <guid>https://kinnrot.github.io/dedicating-djdelayed-job-worker-to/</guid>
+      <description>&lt;p&gt;Let&amp;rsquo;s say you have a vey important procedure that takes a while, and you need to process it in background, but you still want to execute ASAP.&lt;br /&gt;&lt;br /&gt;I&amp;rsquo;m using Delayed Job on Heroku, and could not find a lot of tutorials to do this simple task.&lt;br /&gt;&lt;br /&gt;So here is the simplest way to achieve this ability, you can raise a process/deamon  that will have only one queue to work on. (Dealyed job worker by default is queue agnostic, just process all jobs)&lt;br /&gt;&lt;br /&gt;In procfile:&lt;br /&gt;&lt;br /&gt;&lt;blockquote class=&#34;tr_bq&#34;&gt;urgentworker:  QUEUE=urgent bundle exec rake jobs:work&lt;/blockquote&gt;&lt;br /&gt;You can call the worker in any name you want and even define multiple workers for multiple queues.&lt;br /&gt;And in the &amp;ldquo;urgent&amp;rdquo; job just define the queue name to be &amp;ldquo;urgent&amp;rdquo; the worker will process only jobs in this queue.&lt;br /&gt;&lt;br /&gt;example:&lt;br /&gt;&lt;br /&gt;&lt;blockquote class=&#34;tr_bq&#34;&gt;handle_asynchronously :some_job, :queue =&amp;gt; &amp;ldquo;urgent&amp;rsquo;&lt;/blockquote&gt;&lt;br /&gt;This will also work for Resque.&lt;br /&gt;&lt;br /&gt;Notice that for rescue you can write QUEUE=* &lt;b&gt;but for delayed job you can&amp;rsquo;t.&lt;/b&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Rails &#43; Mongo &#43; Heroku how?</title>
+      <link>https://kinnrot.github.io/rails-mongo-heroku-how/</link>
+      <pubDate>Wed, 28 Mar 2012 17:12:00 -0700</pubDate>
+      <guid>https://kinnrot.github.io/rails-mongo-heroku-how/</guid>
+      <description>&lt;p dir=ltr&gt;After a few hours of fighting with google I decided to write it all here:&lt;/p&gt;&lt;p dir=ltr&gt;*This post is more relevant for windows users but can help others.&lt;/p&gt;&lt;p dir=ltr&gt;What do you need to have:&lt;br&gt;First you need to have ruby 1.9.2+&lt;br&gt;Devkit&lt;br&gt;then you need rails 3+&lt;br&gt;then u need the bundler gem&lt;br&gt;then go to getting started with mongoid &lt;br&gt;then install mongo locally&lt;br&gt;then check it all good&lt;br&gt;then add acoount in heroku&lt;br&gt;then create app&lt;br&gt;then add your key&lt;br&gt;then push&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

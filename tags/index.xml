@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tags on cdblg</title>
+    <link>https://kinnrot.github.io/tags/</link>
+    <description>Recent content in Tags on cdblg</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 18 Jun 2022 20:13:46 +0300</lastBuildDate>
+    <atom:link href="https://kinnrot.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Engineering</title>
+      <link>https://kinnrot.github.io/tags/engineering/</link>
+      <pubDate>Sat, 18 Jun 2022 20:13:46 +0300</pubDate>
+      <guid>https://kinnrot.github.io/tags/engineering/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Leadership</title>
+      <link>https://kinnrot.github.io/tags/leadership/</link>
+      <pubDate>Sat, 18 Jun 2022 20:13:46 +0300</pubDate>
+      <guid>https://kinnrot.github.io/tags/leadership/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Management</title>
+      <link>https://kinnrot.github.io/tags/management/</link>
+      <pubDate>Sat, 18 Jun 2022 20:13:46 +0300</pubDate>
+      <guid>https://kinnrot.github.io/tags/management/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Motivation</title>
+      <link>https://kinnrot.github.io/tags/motivation/</link>
+      <pubDate>Sat, 18 Jun 2022 20:13:46 +0300</pubDate>
+      <guid>https://kinnrot.github.io/tags/motivation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cd</title>
+      <link>https://kinnrot.github.io/tags/cd/</link>
+      <pubDate>Thu, 03 Mar 2022 23:19:59 +0200</pubDate>
+      <guid>https://kinnrot.github.io/tags/cd/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ci</title>
+      <link>https://kinnrot.github.io/tags/ci/</link>
+      <pubDate>Thu, 03 Mar 2022 23:19:59 +0200</pubDate>
+      <guid>https://kinnrot.github.io/tags/ci/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Startups</title>
+      <link>https://kinnrot.github.io/tags/startups/</link>
+      <pubDate>Thu, 03 Mar 2022 23:19:59 +0200</pubDate>
+      <guid>https://kinnrot.github.io/tags/startups/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Mvc</title>
+      <link>https://kinnrot.github.io/tags/mvc/</link>
+      <pubDate>Sun, 23 Feb 2020 09:19:37 +0200</pubDate>
+      <guid>https://kinnrot.github.io/tags/mvc/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Presenter</title>
+      <link>https://kinnrot.github.io/tags/presenter/</link>
+      <pubDate>Sun, 23 Feb 2020 09:19:37 +0200</pubDate>
+      <guid>https://kinnrot.github.io/tags/presenter/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Rails</title>
+      <link>https://kinnrot.github.io/tags/rails/</link>
+      <pubDate>Sun, 23 Feb 2020 09:19:37 +0200</pubDate>
+      <guid>https://kinnrot.github.io/tags/rails/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>View</title>
+      <link>https://kinnrot.github.io/tags/view/</link>
+      <pubDate>Sun, 23 Feb 2020 09:19:37 +0200</pubDate>
+      <guid>https://kinnrot.github.io/tags/view/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>View-Context</title>
+      <link>https://kinnrot.github.io/tags/view-context/</link>
+      <pubDate>Sun, 23 Feb 2020 09:19:37 +0200</pubDate>
+      <guid>https://kinnrot.github.io/tags/view-context/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>View-Models</title>
+      <link>https://kinnrot.github.io/tags/view-models/</link>
+      <pubDate>Sun, 23 Feb 2020 09:19:37 +0200</pubDate>
+      <guid>https://kinnrot.github.io/tags/view-models/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Browser-Automation</title>
+      <link>https://kinnrot.github.io/tags/browser-automation/</link>
+      <pubDate>Wed, 22 Jan 2020 21:27:38 +0200</pubDate>
+      <guid>https://kinnrot.github.io/tags/browser-automation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Capybara</title>
+      <link>https://kinnrot.github.io/tags/capybara/</link>
+      <pubDate>Wed, 22 Jan 2020 21:27:38 +0200</pubDate>
+      <guid>https://kinnrot.github.io/tags/capybara/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Google-Charts</title>
+      <link>https://kinnrot.github.io/tags/google-charts/</link>
+      <pubDate>Wed, 22 Jan 2020 21:27:38 +0200</pubDate>
+      <guid>https://kinnrot.github.io/tags/google-charts/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Maps</title>
+      <link>https://kinnrot.github.io/tags/maps/</link>
+      <pubDate>Wed, 22 Jan 2020 21:27:38 +0200</pubDate>
+      <guid>https://kinnrot.github.io/tags/maps/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Testing</title>
+      <link>https://kinnrot.github.io/tags/testing/</link>
+      <pubDate>Wed, 22 Jan 2020 21:27:38 +0200</pubDate>
+      <guid>https://kinnrot.github.io/tags/testing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Code-Coverage</title>
+      <link>https://kinnrot.github.io/tags/code-coverage/</link>
+      <pubDate>Tue, 21 Jan 2020 17:40:16 +0200</pubDate>
+      <guid>https://kinnrot.github.io/tags/code-coverage/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Danger</title>
+      <link>https://kinnrot.github.io/tags/danger/</link>
+      <pubDate>Tue, 21 Jan 2020 17:40:16 +0200</pubDate>
+      <guid>https://kinnrot.github.io/tags/danger/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Simple-Cov</title>
+      <link>https://kinnrot.github.io/tags/simple-cov/</link>
+      <pubDate>Tue, 21 Jan 2020 17:40:16 +0200</pubDate>
+      <guid>https://kinnrot.github.io/tags/simple-cov/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Component</title>
+      <link>https://kinnrot.github.io/tags/component/</link>
+      <pubDate>Wed, 07 Aug 2019 00:00:00 +0300</pubDate>
+      <guid>https://kinnrot.github.io/tags/component/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Form</title>
+      <link>https://kinnrot.github.io/tags/form/</link>
+      <pubDate>Wed, 07 Aug 2019 00:00:00 +0300</pubDate>
+      <guid>https://kinnrot.github.io/tags/form/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ruby</title>
+      <link>https://kinnrot.github.io/tags/ruby/</link>
+      <pubDate>Wed, 07 Aug 2019 00:00:00 +0300</pubDate>
+      <guid>https://kinnrot.github.io/tags/ruby/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Android</title>
+      <link>https://kinnrot.github.io/tags/android/</link>
+      <pubDate>Thu, 25 Oct 2018 18:43:04 +0300</pubDate>
+      <guid>https://kinnrot.github.io/tags/android/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Arch</title>
+      <link>https://kinnrot.github.io/tags/arch/</link>
+      <pubDate>Thu, 25 Oct 2018 18:43:04 +0300</pubDate>
+      <guid>https://kinnrot.github.io/tags/arch/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Lifecycle</title>
+      <link>https://kinnrot.github.io/tags/lifecycle/</link>
+      <pubDate>Thu, 25 Oct 2018 18:43:04 +0300</pubDate>
+      <guid>https://kinnrot.github.io/tags/lifecycle/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Bluehost</title>
+      <link>https://kinnrot.github.io/tags/bluehost/</link>
+      <pubDate>Mon, 10 Sep 2018 21:35:12 +0300</pubDate>
+      <guid>https://kinnrot.github.io/tags/bluehost/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hosting</title>
+      <link>https://kinnrot.github.io/tags/hosting/</link>
+      <pubDate>Mon, 10 Sep 2018 21:35:12 +0300</pubDate>
+      <guid>https://kinnrot.github.io/tags/hosting/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Kinsta</title>
+      <link>https://kinnrot.github.io/tags/kinsta/</link>
+      <pubDate>Mon, 10 Sep 2018 21:35:12 +0300</pubDate>
+      <guid>https://kinnrot.github.io/tags/kinsta/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Letsencrypt</title>
+      <link>https://kinnrot.github.io/tags/letsencrypt/</link>
+      <pubDate>Mon, 10 Sep 2018 21:35:12 +0300</pubDate>
+      <guid>https://kinnrot.github.io/tags/letsencrypt/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Wordpress</title>
+      <link>https://kinnrot.github.io/tags/wordpress/</link>
+      <pubDate>Mon, 10 Sep 2018 21:35:12 +0300</pubDate>
+      <guid>https://kinnrot.github.io/tags/wordpress/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Wp</title>
+      <link>https://kinnrot.github.io/tags/wp/</link>
+      <pubDate>Mon, 10 Sep 2018 21:35:12 +0300</pubDate>
+      <guid>https://kinnrot.github.io/tags/wp/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Jquery</title>
+      <link>https://kinnrot.github.io/tags/jquery/</link>
+      <pubDate>Tue, 22 May 2018 12:10:10 +0300</pubDate>
+      <guid>https://kinnrot.github.io/tags/jquery/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Stimulus</title>
+      <link>https://kinnrot.github.io/tags/stimulus/</link>
+      <pubDate>Tue, 22 May 2018 12:10:10 +0300</pubDate>
+      <guid>https://kinnrot.github.io/tags/stimulus/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Async</title>
+      <link>https://kinnrot.github.io/tags/async/</link>
+      <pubDate>Tue, 08 Aug 2017 18:12:46 +0300</pubDate>
+      <guid>https://kinnrot.github.io/tags/async/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Await</title>
+      <link>https://kinnrot.github.io/tags/await/</link>
+      <pubDate>Tue, 08 Aug 2017 18:12:46 +0300</pubDate>
+      <guid>https://kinnrot.github.io/tags/await/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Jekyll</title>
+      <link>https://kinnrot.github.io/tags/jekyll/</link>
+      <pubDate>Tue, 25 Jul 2017 22:45:07 +0300</pubDate>
+      <guid>https://kinnrot.github.io/tags/jekyll/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Octopress</title>
+      <link>https://kinnrot.github.io/tags/octopress/</link>
+      <pubDate>Tue, 25 Jul 2017 22:45:07 +0300</pubDate>
+      <guid>https://kinnrot.github.io/tags/octopress/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Design</title>
+      <link>https://kinnrot.github.io/tags/design/</link>
+      <pubDate>Mon, 05 Jun 2017 05:11:00 -0700</pubDate>
+      <guid>https://kinnrot.github.io/tags/design/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Dynamic-Languages</title>
+      <link>https://kinnrot.github.io/tags/dynamic-languages/</link>
+      <pubDate>Mon, 05 Jun 2017 05:11:00 -0700</pubDate>
+      <guid>https://kinnrot.github.io/tags/dynamic-languages/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Memory Leak</title>
+      <link>https://kinnrot.github.io/tags/memory-leak/</link>
+      <pubDate>Mon, 05 Jun 2017 05:11:00 -0700</pubDate>
+      <guid>https://kinnrot.github.io/tags/memory-leak/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>OSX</title>
+      <link>https://kinnrot.github.io/tags/osx/</link>
+      <pubDate>Tue, 06 Jan 2015 13:32:00 -0800</pubDate>
+      <guid>https://kinnrot.github.io/tags/osx/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Rubymine</title>
+      <link>https://kinnrot.github.io/tags/rubymine/</link>
+      <pubDate>Tue, 06 Jan 2015 13:32:00 -0800</pubDate>
+      <guid>https://kinnrot.github.io/tags/rubymine/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Language</title>
+      <link>https://kinnrot.github.io/tags/language/</link>
+      <pubDate>Sat, 15 Nov 2014 07:42:00 -0800</pubDate>
+      <guid>https://kinnrot.github.io/tags/language/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Locale</title>
+      <link>https://kinnrot.github.io/tags/locale/</link>
+      <pubDate>Sat, 15 Nov 2014 07:42:00 -0800</pubDate>
+      <guid>https://kinnrot.github.io/tags/locale/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Localization</title>
+      <link>https://kinnrot.github.io/tags/localization/</link>
+      <pubDate>Sat, 15 Nov 2014 07:42:00 -0800</pubDate>
+      <guid>https://kinnrot.github.io/tags/localization/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Asynctask</title>
+      <link>https://kinnrot.github.io/tags/asynctask/</link>
+      <pubDate>Sat, 15 Nov 2014 07:34:00 -0800</pubDate>
+      <guid>https://kinnrot.github.io/tags/asynctask/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Delayed Job</title>
+      <link>https://kinnrot.github.io/tags/delayed-job/</link>
+      <pubDate>Sat, 15 Nov 2014 07:34:00 -0800</pubDate>
+      <guid>https://kinnrot.github.io/tags/delayed-job/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Heroku</title>
+      <link>https://kinnrot.github.io/tags/heroku/</link>
+      <pubDate>Sat, 15 Nov 2014 07:34:00 -0800</pubDate>
+      <guid>https://kinnrot.github.io/tags/heroku/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Queueing</title>
+      <link>https://kinnrot.github.io/tags/queueing/</link>
+      <pubDate>Sat, 15 Nov 2014 07:34:00 -0800</pubDate>
+      <guid>https://kinnrot.github.io/tags/queueing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Mongodb</title>
+      <link>https://kinnrot.github.io/tags/mongodb/</link>
+      <pubDate>Sat, 15 Nov 2014 07:20:00 -0800</pubDate>
+      <guid>https://kinnrot.github.io/tags/mongodb/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Mongoid</title>
+      <link>https://kinnrot.github.io/tags/mongoid/</link>
+      <pubDate>Sat, 15 Nov 2014 07:20:00 -0800</pubDate>
+      <guid>https://kinnrot.github.io/tags/mongoid/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cyber</title>
+      <link>https://kinnrot.github.io/tags/cyber/</link>
+      <pubDate>Sun, 05 Oct 2014 00:42:00 -0700</pubDate>
+      <guid>https://kinnrot.github.io/tags/cyber/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>SpineJS Js Javascript Mvc</title>
+      <link>https://kinnrot.github.io/tags/spinejs-js-javascript-mvc/</link>
+      <pubDate>Wed, 05 Dec 2012 06:02:00 -0800</pubDate>
+      <guid>https://kinnrot.github.io/tags/spinejs-js-javascript-mvc/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Thread</title>
+      <link>https://kinnrot.github.io/tags/thread/</link>
+      <pubDate>Wed, 26 Sep 2012 09:40:00 -0700</pubDate>
+      <guid>https://kinnrot.github.io/tags/thread/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Php Async</title>
+      <link>https://kinnrot.github.io/tags/php-async/</link>
+      <pubDate>Sat, 07 Jul 2012 09:27:00 -0700</pubDate>
+      <guid>https://kinnrot.github.io/tags/php-async/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Javascript</title>
+      <link>https://kinnrot.github.io/tags/javascript/</link>
+      <pubDate>Sat, 18 Feb 2012 06:30:00 -0800</pubDate>
+      <guid>https://kinnrot.github.io/tags/javascript/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Php</title>
+      <link>https://kinnrot.github.io/tags/php/</link>
+      <pubDate>Sat, 07 Jan 2012 14:42:00 -0800</pubDate>
+      <guid>https://kinnrot.github.io/tags/php/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Session</title>
+      <link>https://kinnrot.github.io/tags/session/</link>
+      <pubDate>Sat, 07 Jan 2012 14:42:00 -0800</pubDate>
+      <guid>https://kinnrot.github.io/tags/session/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Pragmatic</title>
+      <link>https://kinnrot.github.io/tags/pragmatic/</link>
+      <pubDate>Wed, 16 Nov 2011 00:30:00 -0800</pubDate>
+      <guid>https://kinnrot.github.io/tags/pragmatic/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Startup</title>
+      <link>https://kinnrot.github.io/tags/startup/</link>
+      <pubDate>Fri, 28 Oct 2011 02:00:00 -0700</pubDate>
+      <guid>https://kinnrot.github.io/tags/startup/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Documentation</title>
+      <link>https://kinnrot.github.io/tags/documentation/</link>
+      <pubDate>Wed, 31 Aug 2011 07:30:00 -0700</pubDate>
+      <guid>https://kinnrot.github.io/tags/documentation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Job</title>
+      <link>https://kinnrot.github.io/tags/job/</link>
+      <pubDate>Thu, 04 Aug 2011 23:47:00 -0700</pubDate>
+      <guid>https://kinnrot.github.io/tags/job/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linq</title>
+      <link>https://kinnrot.github.io/tags/linq/</link>
+      <pubDate>Tue, 02 Aug 2011 03:12:00 -0700</pubDate>
+      <guid>https://kinnrot.github.io/tags/linq/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>C#</title>
+      <link>https://kinnrot.github.io/tags/c%23/</link>
+      <pubDate>Thu, 16 Jun 2011 01:40:00 -0700</pubDate>
+      <guid>https://kinnrot.github.io/tags/c%23/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>TPL</title>
+      <link>https://kinnrot.github.io/tags/tpl/</link>
+      <pubDate>Thu, 16 Jun 2011 01:40:00 -0700</pubDate>
+      <guid>https://kinnrot.github.io/tags/tpl/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Nhibernate</title>
+      <link>https://kinnrot.github.io/tags/nhibernate/</link>
+      <pubDate>Mon, 04 Apr 2011 08:52:00 -0700</pubDate>
+      <guid>https://kinnrot.github.io/tags/nhibernate/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Fluent Nhibernate</title>
+      <link>https://kinnrot.github.io/tags/fluent-nhibernate/</link>
+      <pubDate>Mon, 24 Jan 2011 08:06:00 -0800</pubDate>
+      <guid>https://kinnrot.github.io/tags/fluent-nhibernate/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Utilities</title>
+      <link>https://kinnrot.github.io/tags/utilities/</link>
+      <pubDate>Mon, 24 Jan 2011 08:06:00 -0800</pubDate>
+      <guid>https://kinnrot.github.io/tags/utilities/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Binding</title>
+      <link>https://kinnrot.github.io/tags/binding/</link>
+      <pubDate>Wed, 05 Jan 2011 14:47:00 -0800</pubDate>
+      <guid>https://kinnrot.github.io/tags/binding/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>IEquatable</title>
+      <link>https://kinnrot.github.io/tags/iequatable/</link>
+      <pubDate>Wed, 05 Jan 2011 14:47:00 -0800</pubDate>
+      <guid>https://kinnrot.github.io/tags/iequatable/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>WPF</title>
+      <link>https://kinnrot.github.io/tags/wpf/</link>
+      <pubDate>Wed, 05 Jan 2011 14:47:00 -0800</pubDate>
+      <guid>https://kinnrot.github.io/tags/wpf/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Mvvm</title>
+      <link>https://kinnrot.github.io/tags/mvvm/</link>
+      <pubDate>Wed, 05 Jan 2011 13:12:00 -0800</pubDate>
+      <guid>https://kinnrot.github.io/tags/mvvm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Resources</title>
+      <link>https://kinnrot.github.io/tags/resources/</link>
+      <pubDate>Mon, 03 Jan 2011 11:20:00 -0800</pubDate>
+      <guid>https://kinnrot.github.io/tags/resources/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Styles</title>
+      <link>https://kinnrot.github.io/tags/styles/</link>
+      <pubDate>Mon, 03 Jan 2011 11:20:00 -0800</pubDate>
+      <guid>https://kinnrot.github.io/tags/styles/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ide</title>
+      <link>https://kinnrot.github.io/tags/ide/</link>
+      <pubDate>Fri, 24 Dec 2010 00:54:00 -0800</pubDate>
+      <guid>https://kinnrot.github.io/tags/ide/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Mock</title>
+      <link>https://kinnrot.github.io/tags/mock/</link>
+      <pubDate>Wed, 17 Nov 2010 11:03:00 -0800</pubDate>
+      <guid>https://kinnrot.github.io/tags/mock/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>UnitTest</title>
+      <link>https://kinnrot.github.io/tags/unittest/</link>
+      <pubDate>Wed, 17 Nov 2010 11:03:00 -0800</pubDate>
+      <guid>https://kinnrot.github.io/tags/unittest/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>.Net</title>
+      <link>https://kinnrot.github.io/tags/.net/</link>
+      <pubDate>Mon, 06 Sep 2010 09:26:00 -0700</pubDate>
+      <guid>https://kinnrot.github.io/tags/.net/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Rx</title>
+      <link>https://kinnrot.github.io/tags/rx/</link>
+      <pubDate>Mon, 06 Sep 2010 09:26:00 -0700</pubDate>
+      <guid>https://kinnrot.github.io/tags/rx/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Wcf</title>
+      <link>https://kinnrot.github.io/tags/wcf/</link>
+      <pubDate>Thu, 02 Sep 2010 12:34:00 -0700</pubDate>
+      <guid>https://kinnrot.github.io/tags/wcf/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>PropertyChanged</title>
+      <link>https://kinnrot.github.io/tags/propertychanged/</link>
+      <pubDate>Wed, 01 Sep 2010 15:01:00 -0700</pubDate>
+      <guid>https://kinnrot.github.io/tags/propertychanged/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>TDD</title>
+      <link>https://kinnrot.github.io/tags/tdd/</link>
+      <pubDate>Wed, 01 Sep 2010 15:01:00 -0700</pubDate>
+      <guid>https://kinnrot.github.io/tags/tdd/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

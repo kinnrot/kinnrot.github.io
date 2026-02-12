@@ -1,575 +1,361 @@
-<!doctype html>
-<!--
-  Minimal Mistakes Jekyll Theme 4.19.1 by Michael Rose
-  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
-  Free for personal and commercial use under the MIT license
-  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
--->
-<html lang="en" class="no-js">
-  <head>
-    <meta charset="utf-8">
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
 
-<!-- begin _includes/seo.html --><title>Passing complex type through WCF header,The simple always work version. - cdblg</title>
-<meta name="description" content="Recently I tried to find a nice code sample for how to pass complex type through WCF, inside the header,  meaning I want to send the client execution context to the server side.All of the samples passes strings or uses custom header that needs to write and read the object manually, I didn’t like it.So I wrote one and it’s working!&lt;div id=&quot;stackstack-5443871&quot;&gt;&lt;/div&gt;All you need is 2 classes, and one is just a factory for the other, very simple:&lt;pre class=&quot;brush: csharp;&quot;&gt;using System;using System.Collections.Generic;using System.Linq;using System.Runtime.Serialization;using System.ServiceModel;using System.ServiceModel.Channels;using System.ServiceModel.Dispatcher;using System.Text;namespace debugniv.ComplexTypeOverWcf{  class HeaderHandler : IDispatchMessageInspector, IClientMessageInspector  {    #region Implementation of IDispatchMessageInspector    public object AfterReceiveRequest(ref Message request, IClientChannel channel, InstanceContext instanceContext)    {      // Read the complex type from header      var headerIndex = request.Headers.FindHeader(typeof(MyHeader).Name, typeof(MyHeader).Namespace);      if (headerIndex &gt;= 0) // found!      {        var serializer = GenerateDataContractSerializer&lt;MyHeader&gt;();        var myHeader = request.Headers.GetHeader&lt;MyHeader&gt;(headerIndex, serializer);        // here you can do something with your header like push it to a global per request context.      }      return null;    }    public void BeforeSendReply(ref Message reply, object correlationState)    {      // nothing here    }    #endregion    #region Implementation of IClientMessageInspector    public object BeforeSendRequest(ref Message request, IClientChannel channel)    {      var myHeader = GetMyHeader();      request.Headers.Add(myHeader);    }    public void AfterReceiveReply(ref Message reply, object correlationState)    {      // nothing to do here    }    #endregion    private DataContractSerializer GenerateDataContractSerializer&lt;T&gt;()    {      return new DataContractSerializer(typeof(T), typeof(T).Name, typeof(T).Namespace, GetKnownTypes());    }    private IEnumerable&lt;Type&gt; GetKnownTypes()    {      // here return all your types inside the header      yield return typeof(MyHeader);      yield return typeof(SubType);    }    private MessageHeader GetMyHeader()    {      var data = new MyHeader();      var serializer = GenerateDataContractSerializer&lt;MyHeader&gt;();      return MessageHeader.CreateHeader(data.GetType().Name, data.GetType().Namespace, data, serializer);    }  }  // this is the header   internal class MyHeader  {    public SubType InternalData { get; set; }  }  internal class SubType  {  }}&lt;/pre&gt;The second thing you’ll need is to attach this stuff to your service and proxy, here is one way to do this&lt;pre class=&quot;brush: csharp;&quot;&gt;using System;using System.ServiceModel.Configuration;namespace debugniv.ComplexTypeOverWcf{  public class HeaderExtensionElement : BehaviorExtensionElement  {    public override Type BehaviorType    {      get { return typeof (HeaderHandler); }    }    protected override object CreateBehavior()    {      return new HeaderHandler();    }  }}&lt;/pre&gt;In you config file add the following         ">
-
-
-
-<meta property="og:type" content="article">
-<meta property="og:locale" content="en">
-<meta property="og:site_name" content="cdblg">
-<meta property="og:title" content="Passing complex type through WCF header,The simple always work version.">
-<meta property="og:url" content="https://kinnrot.github.io/passing-complex-type-through-wcf/">
-
-
-  <meta property="og:description" content="Recently I tried to find a nice code sample for how to pass complex type through WCF, inside the header,  meaning I want to send the client execution context to the server side.All of the samples passes strings or uses custom header that needs to write and read the object manually, I didn’t like it.So I wrote one and it’s working!&lt;div id=&quot;stackstack-5443871&quot;&gt;&lt;/div&gt;All you need is 2 classes, and one is just a factory for the other, very simple:&lt;pre class=&quot;brush: csharp;&quot;&gt;using System;using System.Collections.Generic;using System.Linq;using System.Runtime.Serialization;using System.ServiceModel;using System.ServiceModel.Channels;using System.ServiceModel.Dispatcher;using System.Text;namespace debugniv.ComplexTypeOverWcf{  class HeaderHandler : IDispatchMessageInspector, IClientMessageInspector  {    #region Implementation of IDispatchMessageInspector    public object AfterReceiveRequest(ref Message request, IClientChannel channel, InstanceContext instanceContext)    {      // Read the complex type from header      var headerIndex = request.Headers.FindHeader(typeof(MyHeader).Name, typeof(MyHeader).Namespace);      if (headerIndex &gt;= 0) // found!      {        var serializer = GenerateDataContractSerializer&lt;MyHeader&gt;();        var myHeader = request.Headers.GetHeader&lt;MyHeader&gt;(headerIndex, serializer);        // here you can do something with your header like push it to a global per request context.      }      return null;    }    public void BeforeSendReply(ref Message reply, object correlationState)    {      // nothing here    }    #endregion    #region Implementation of IClientMessageInspector    public object BeforeSendRequest(ref Message request, IClientChannel channel)    {      var myHeader = GetMyHeader();      request.Headers.Add(myHeader);    }    public void AfterReceiveReply(ref Message reply, object correlationState)    {      // nothing to do here    }    #endregion    private DataContractSerializer GenerateDataContractSerializer&lt;T&gt;()    {      return new DataContractSerializer(typeof(T), typeof(T).Name, typeof(T).Namespace, GetKnownTypes());    }    private IEnumerable&lt;Type&gt; GetKnownTypes()    {      // here return all your types inside the header      yield return typeof(MyHeader);      yield return typeof(SubType);    }    private MessageHeader GetMyHeader()    {      var data = new MyHeader();      var serializer = GenerateDataContractSerializer&lt;MyHeader&gt;();      return MessageHeader.CreateHeader(data.GetType().Name, data.GetType().Namespace, data, serializer);    }  }  // this is the header   internal class MyHeader  {    public SubType InternalData { get; set; }  }  internal class SubType  {  }}&lt;/pre&gt;The second thing you’ll need is to attach this stuff to your service and proxy, here is one way to do this&lt;pre class=&quot;brush: csharp;&quot;&gt;using System;using System.ServiceModel.Configuration;namespace debugniv.ComplexTypeOverWcf{  public class HeaderExtensionElement : BehaviorExtensionElement  {    public override Type BehaviorType    {      get { return typeof (HeaderHandler); }    }    protected override object CreateBehavior()    {      return new HeaderHandler();    }  }}&lt;/pre&gt;In you config file add the following         ">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2011-05-02T20:05:00+03:00">
-
-
-
-
-
-  
-
-  
-
-
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Passing complex type through WCF header,The simple always work version. | cdblg</title>
+<meta name="keywords" content="">
+<meta name="description" content="Recently I tried to find a nice code sample for how to pass complex type through WCF, inside the header,  meaning I want to send the client execution context to the server side.All of the samples passes strings or uses custom header that needs to write and read the object manually, I didn&rsquo;t like it.So I wrote one and it&rsquo;s working!All you need is 2 classes, and one is just a factory for the other, very simple:using System;using System.Collections.Generic;using System.Linq;using System.Runtime.Serialization;using System.ServiceModel;using System.ServiceModel.Channels;using System.ServiceModel.Dispatcher;using System.Text;namespace debugniv.ComplexTypeOverWcf{  class HeaderHandler : IDispatchMessageInspector, IClientMessageInspector  {    #region Implementation of IDispatchMessageInspector    public object AfterReceiveRequest(ref Message request, IClientChannel channel, InstanceContext instanceContext)    {      // Read the complex type from header      var headerIndex = request.Headers.FindHeader(typeof(MyHeader).Name, typeof(MyHeader).Namespace);      if (headerIndex &gt;= 0) // found!      {        var serializer = GenerateDataContractSerializer&lt;MyHeader&gt;();        var myHeader = request.Headers.GetHeader&lt;MyHeader&gt;(headerIndex, serializer);        // here you can do something with your header like push it to a global per request context.      }      return null;    }    public void BeforeSendReply(ref Message reply, object correlationState)    {      // nothing here    }    #endregion    #region Implementation of IClientMessageInspector    public object BeforeSendRequest(ref Message request, IClientChannel channel)    {      var myHeader = GetMyHeader();      request.Headers.Add(myHeader);    }    public void AfterReceiveReply(ref Message reply, object correlationState)    {      // nothing to do here    }    #endregion    private DataContractSerializer GenerateDataContractSerializer&lt;T&gt;()    {      return new DataContractSerializer(typeof(T), typeof(T).Name, typeof(T).Namespace, GetKnownTypes());    }    private IEnumerable&lt;Type&gt; GetKnownTypes()    {      // here return all your types inside the header      yield return typeof(MyHeader);      yield return typeof(SubType);    }    private MessageHeader GetMyHeader()    {      var data = new MyHeader();      var serializer = GenerateDataContractSerializer&lt;MyHeader&gt;();      return MessageHeader.CreateHeader(data.GetType().Name, data.GetType().Namespace, data, serializer);    }  }  // this is the header   internal class MyHeader  {    public SubType InternalData { get; set; }  }  internal class SubType  {  }}The second thing you&rsquo;ll need is to attach this stuff to your service and proxy, here is one way to do thisusing System;using System.ServiceModel.Configuration;namespace debugniv.ComplexTypeOverWcf{  public class HeaderExtensionElement : BehaviorExtensionElement  {    public override Type BehaviorType    {      get { return typeof (HeaderHandler); }    }    protected override object CreateBehavior()    {      return new HeaderHandler();    }  }}In you config file add the following        ">
+<meta name="author" content="Chen Kinnrot">
 <link rel="canonical" href="https://kinnrot.github.io/passing-complex-type-through-wcf/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kinnrot.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kinnrot.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kinnrot.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kinnrot.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kinnrot.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kinnrot.github.io/passing-complex-type-through-wcf/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
 
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
 
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kinnrot.github.io/passing-complex-type-through-wcf/">
+  <meta property="og:site_name" content="cdblg">
+  <meta property="og:title" content="Passing complex type through WCF header,The simple always work version.">
+  <meta property="og:description" content="Recently I tried to find a nice code sample for how to pass complex type through WCF, inside the header, meaning I want to send the client execution context to the server side.
+All of the samples passes strings or uses custom header that needs to write and read the object manually, I didn’t like it.
+So I wrote one and it’s working!
+All you need is 2 classes, and one is just a factory for the other, very simple:
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.ServiceModel.Channels;
+using System.ServiceModel.Dispatcher;
+using System.Text;
+namespace debugniv.ComplexTypeOverWcf
+{
+class HeaderHandler : IDispatchMessageInspector, IClientMessageInspector
+{
+#region Implementation of IDispatchMessageInspector
+public object AfterReceiveRequest(ref Message request, IClientChannel channel, InstanceContext instanceContext)
+{
+// Read the complex type from header
+var headerIndex = request.Headers.FindHeader(typeof(MyHeader).Name, typeof(MyHeader).Namespace);
+if (headerIndex &gt;= 0) // found!
+{
+var serializer = GenerateDataContractSerializer&lt;MyHeader&gt;();
+var myHeader = request.Headers.GetHeader&lt;MyHeader&gt;(headerIndex, serializer);
+// here you can do something with your header like push it to a global per request context.
+}
+return null;
+}
+public void BeforeSendReply(ref Message reply, object correlationState)
+{
+// nothing here
+}
+#endregion
+#region Implementation of IClientMessageInspector
+public object BeforeSendRequest(ref Message request, IClientChannel channel)
+{
+var myHeader = GetMyHeader();
+request.Headers.Add(myHeader);
+}
+public void AfterReceiveReply(ref Message reply, object correlationState)
+{
+// nothing to do here
+}
+#endregion
+private DataContractSerializer GenerateDataContractSerializer&lt;T&gt;()
+{
+return new DataContractSerializer(typeof(T), typeof(T).Name, typeof(T).Namespace, GetKnownTypes());
+}
+private IEnumerable&lt;Type&gt; GetKnownTypes()
+{
+// here return all your types inside the header
+yield return typeof(MyHeader);
+yield return typeof(SubType);
+}
+private MessageHeader GetMyHeader()
+{
+var data = new MyHeader();
+var serializer = GenerateDataContractSerializer&lt;MyHeader&gt;();
+return MessageHeader.CreateHeader(data.GetType().Name, data.GetType().Namespace, data, serializer);
+}
+}
+// this is the header internal class MyHeader
+{
+public SubType InternalData { get; set; }
+}
+internal class SubType
+{
+}
+}
+The second thing you’ll need is to attach this stuff to your service and proxy, here is one way to do this
+using System;
+using System.ServiceModel.Configuration;
+namespace debugniv.ComplexTypeOverWcf
+{
+public class HeaderExtensionElement : BehaviorExtensionElement
+{
+public override Type BehaviorType
+{
+get { return typeof (HeaderHandler); }
+}
+protected override object CreateBehavior()
+{
+return new HeaderHandler();
+}
+}
+}
+In you config file add the following ">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2011-05-02T10:05:00-07:00">
+    <meta property="article:modified_time" content="2011-05-02T10:05:00-07:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Passing complex type through WCF header,The simple always work version.">
+<meta name="twitter:description" content="Recently I tried to find a nice code sample for how to pass complex type through WCF, inside the header,  meaning I want to send the client execution context to the server side.All of the samples passes strings or uses custom header that needs to write and read the object manually, I didn&rsquo;t like it.So I wrote one and it&rsquo;s working!All you need is 2 classes, and one is just a factory for the other, very simple:using System;using System.Collections.Generic;using System.Linq;using System.Runtime.Serialization;using System.ServiceModel;using System.ServiceModel.Channels;using System.ServiceModel.Dispatcher;using System.Text;namespace debugniv.ComplexTypeOverWcf{  class HeaderHandler : IDispatchMessageInspector, IClientMessageInspector  {    #region Implementation of IDispatchMessageInspector    public object AfterReceiveRequest(ref Message request, IClientChannel channel, InstanceContext instanceContext)    {      // Read the complex type from header      var headerIndex = request.Headers.FindHeader(typeof(MyHeader).Name, typeof(MyHeader).Namespace);      if (headerIndex &gt;= 0) // found!      {        var serializer = GenerateDataContractSerializer&lt;MyHeader&gt;();        var myHeader = request.Headers.GetHeader&lt;MyHeader&gt;(headerIndex, serializer);        // here you can do something with your header like push it to a global per request context.      }      return null;    }    public void BeforeSendReply(ref Message reply, object correlationState)    {      // nothing here    }    #endregion    #region Implementation of IClientMessageInspector    public object BeforeSendRequest(ref Message request, IClientChannel channel)    {      var myHeader = GetMyHeader();      request.Headers.Add(myHeader);    }    public void AfterReceiveReply(ref Message reply, object correlationState)    {      // nothing to do here    }    #endregion    private DataContractSerializer GenerateDataContractSerializer&lt;T&gt;()    {      return new DataContractSerializer(typeof(T), typeof(T).Name, typeof(T).Namespace, GetKnownTypes());    }    private IEnumerable&lt;Type&gt; GetKnownTypes()    {      // here return all your types inside the header      yield return typeof(MyHeader);      yield return typeof(SubType);    }    private MessageHeader GetMyHeader()    {      var data = new MyHeader();      var serializer = GenerateDataContractSerializer&lt;MyHeader&gt;();      return MessageHeader.CreateHeader(data.GetType().Name, data.GetType().Namespace, data, serializer);    }  }  // this is the header   internal class MyHeader  {    public SubType InternalData { get; set; }  }  internal class SubType  {  }}The second thing you&rsquo;ll need is to attach this stuff to your service and proxy, here is one way to do thisusing System;using System.ServiceModel.Configuration;namespace debugniv.ComplexTypeOverWcf{  public class HeaderExtensionElement : BehaviorExtensionElement  {    public override Type BehaviorType    {      get { return typeof (HeaderHandler); }    }    protected override object CreateBehavior()    {      return new HeaderHandler();    }  }}In you config file add the following        ">
 
 
 <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kinnrot.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Passing complex type through WCF header,The simple always work version.",
+      "item": "https://kinnrot.github.io/passing-complex-type-through-wcf/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Passing complex type through WCF header,The simple always work version.",
+  "name": "Passing complex type through WCF header,The simple always work version.",
+  "description": "Recently I tried to find a nice code sample for how to pass complex type through WCF, inside the header, meaning I want to send the client execution context to the server side.\nAll of the samples passes strings or uses custom header that needs to write and read the object manually, I didn\u0026rsquo;t like it.\nSo I wrote one and it\u0026rsquo;s working!\nAll you need is 2 classes, and one is just a factory for the other, very simple:\nusing System;\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Runtime.Serialization;\nusing System.ServiceModel;\nusing System.ServiceModel.Channels;\nusing System.ServiceModel.Dispatcher;\nusing System.Text;\nnamespace debugniv.ComplexTypeOverWcf\n{\nclass HeaderHandler : IDispatchMessageInspector, IClientMessageInspector\n{\n#region Implementation of IDispatchMessageInspector\npublic object AfterReceiveRequest(ref Message request, IClientChannel channel, InstanceContext instanceContext)\n{\n// Read the complex type from header\nvar headerIndex = request.Headers.FindHeader(typeof(MyHeader).Name, typeof(MyHeader).Namespace);\nif (headerIndex \u0026gt;= 0) // found!\n{\nvar serializer = GenerateDataContractSerializer\u0026lt;MyHeader\u0026gt;();\nvar myHeader = request.Headers.GetHeader\u0026lt;MyHeader\u0026gt;(headerIndex, serializer);\n// here you can do something with your header like push it to a global per request context.\n}\nreturn null;\n}\npublic void BeforeSendReply(ref Message reply, object correlationState)\n{\n// nothing here\n}\n#endregion\n#region Implementation of IClientMessageInspector\npublic object BeforeSendRequest(ref Message request, IClientChannel channel)\n{\nvar myHeader = GetMyHeader();\nrequest.Headers.Add(myHeader);\n}\npublic void AfterReceiveReply(ref Message reply, object correlationState)\n{\n// nothing to do here\n}\n#endregion\nprivate DataContractSerializer GenerateDataContractSerializer\u0026lt;T\u0026gt;()\n{\nreturn new DataContractSerializer(typeof(T), typeof(T).Name, typeof(T).Namespace, GetKnownTypes());\n}\nprivate IEnumerable\u0026lt;Type\u0026gt; GetKnownTypes()\n{\n// here return all your types inside the header\nyield return typeof(MyHeader);\nyield return typeof(SubType);\n}\nprivate MessageHeader GetMyHeader()\n{\nvar data = new MyHeader();\nvar serializer = GenerateDataContractSerializer\u0026lt;MyHeader\u0026gt;();\nreturn MessageHeader.CreateHeader(data.GetType().Name, data.GetType().Namespace, data, serializer);\n}\n}\n// this is the header internal class MyHeader\n{\npublic SubType InternalData { get; set; }\n}\ninternal class SubType\n{\n}\n}\nThe second thing you\u0026rsquo;ll need is to attach this stuff to your service and proxy, here is one way to do this\nusing System;\nusing System.ServiceModel.Configuration;\nnamespace debugniv.ComplexTypeOverWcf\n{\npublic class HeaderExtensionElement : BehaviorExtensionElement\n{\npublic override Type BehaviorType\n{\nget { return typeof (HeaderHandler); }\n}\nprotected override object CreateBehavior()\n{\nreturn new HeaderHandler();\n}\n}\n}\nIn you config file add the following ",
+  "keywords": [
     
-      "@type": "Person",
-      "name": "Chen Kinnrot",
-      "url": "https://kinnrot.github.io/"
-    
+  ],
+  "articleBody": "Recently I tried to find a nice code sample for how to pass complex type through WCF, inside the header, meaning I want to send the client execution context to the server side.\nAll of the samples passes strings or uses custom header that needs to write and read the object manually, I didn’t like it.\nSo I wrote one and it’s working!\nAll you need is 2 classes, and one is just a factory for the other, very simple:\nusing System;\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Runtime.Serialization;\nusing System.ServiceModel;\nusing System.ServiceModel.Channels;\nusing System.ServiceModel.Dispatcher;\nusing System.Text;\nnamespace debugniv.ComplexTypeOverWcf\n{\nclass HeaderHandler : IDispatchMessageInspector, IClientMessageInspector\n{\n#region Implementation of IDispatchMessageInspector\npublic object AfterReceiveRequest(ref Message request, IClientChannel channel, InstanceContext instanceContext)\n{\n// Read the complex type from header\nvar headerIndex = request.Headers.FindHeader(typeof(MyHeader).Name, typeof(MyHeader).Namespace);\nif (headerIndex \u003e= 0) // found!\n{\nvar serializer = GenerateDataContractSerializer();\nvar myHeader = request.Headers.GetHeader(headerIndex, serializer);\n// here you can do something with your header like push it to a global per request context.\n}\nreturn null;\n}\npublic void BeforeSendReply(ref Message reply, object correlationState)\n{\n// nothing here\n}\n#endregion\n#region Implementation of IClientMessageInspector\npublic object BeforeSendRequest(ref Message request, IClientChannel channel)\n{\nvar myHeader = GetMyHeader();\nrequest.Headers.Add(myHeader);\n}\npublic void AfterReceiveReply(ref Message reply, object correlationState)\n{\n// nothing to do here\n}\n#endregion\nprivate DataContractSerializer GenerateDataContractSerializer()\n{\nreturn new DataContractSerializer(typeof(T), typeof(T).Name, typeof(T).Namespace, GetKnownTypes());\n}\nprivate IEnumerable GetKnownTypes()\n{\n// here return all your types inside the header\nyield return typeof(MyHeader);\nyield return typeof(SubType);\n}\nprivate MessageHeader GetMyHeader()\n{\nvar data = new MyHeader();\nvar serializer = GenerateDataContractSerializer();\nreturn MessageHeader.CreateHeader(data.GetType().Name, data.GetType().Namespace, data, serializer);\n}\n}\n// this is the header internal class MyHeader\n{\npublic SubType InternalData { get; set; }\n}\ninternal class SubType\n{\n}\n}\nThe second thing you’ll need is to attach this stuff to your service and proxy, here is one way to do this\nusing System;\nusing System.ServiceModel.Configuration;\nnamespace debugniv.ComplexTypeOverWcf\n{\npublic class HeaderExtensionElement : BehaviorExtensionElement\n{\npublic override Type BehaviorType\n{\nget { return typeof (HeaderHandler); }\n}\nprotected override object CreateBehavior()\n{\nreturn new HeaderHandler();\n}\n}\n}\nIn you config file add the following ",
+  "wordCount" : "354",
+  "inLanguage": "en",
+  "datePublished": "2011-05-02T10:05:00-07:00",
+  "dateModified": "2011-05-02T10:05:00-07:00",
+  "author":{
+    "@type": "Person",
+    "name": "Chen Kinnrot"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kinnrot.github.io/passing-complex-type-through-wcf/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "cdblg",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kinnrot.github.io/favicon.ico"
+    }
   }
+}
 </script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kinnrot.github.io/" accesskey="h" title="cdblg (Alt + H)">cdblg</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
 
-
-
-
-
-
-<!-- end _includes/seo.html -->
-
-
-<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="cdblg Feed">
-
-<!-- https://t.co/dKP3o1e -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<script>
-  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
-</script>
-
-<!-- For all browsers -->
-<link rel="stylesheet" href="/assets/css/main.css">
-
-<!--[if IE]>
-  <style>
-    /* old IE unsupported flexbox fixes */
-    .greedy-nav .site-title {
-      padding-right: 3em;
-    }
-    .greedy-nav button {
-      position: absolute;
-      top: 0;
-      right: 0;
-      height: 100%;
-    }
-  </style>
-<![endif]-->
-
-
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-103259749-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-103259749-1', { 'optimize_id': 'GTM-KXX4C9K'});
-</script>
-<!-- Anti-flicker snippet (recommended)  -->
-<style>.async-hide { opacity: 0 !important} </style>
-<script>(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
-  h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
-  (a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
-})(window,document.documentElement,'async-hide','dataLayer',4000,
-  {'OPT_CONTAINER_ID':true});</script>
-<!-- -->
-
-  </head>
-
-  <body class="layout--post">
-    <nav class="skip-links">
-  <h2 class="screen-reader-text">Skip links</h2>
-  <ul>
-    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
-    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
-    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
-  </ul>
-</nav>
-
-    <!--[if lt IE 9]>
-<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
-<![endif]-->
-
+<article class="post-single">
+  <header class="post-header">
     
+    <h1 class="post-title entry-hint-parent">
+      Passing complex type through WCF header,The simple always work version.
+    </h1>
+    <div class="post-meta"><span title='2011-05-02 10:05:00 -0700 -0700'>May 2, 2011</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span>
 
-<div class="masthead">
-  <div class="masthead__inner-wrap">
-    <div class="masthead__menu">
-      <nav id="site-nav" class="greedy-nav">
-        
-        <a class="site-title" href="/">
-          cdblg
-          
-        </a>
-        <ul class="visible-links"><li class="masthead__menu-item">
-              <a href="/about">About</a>
-            </li></ul>
-        
-        <button class="greedy-nav__toggle hidden" type="button">
-          <span class="visually-hidden">Toggle menu</span>
-          <div class="navicon"></div>
-        </button>
-        <ul class="hidden-links hidden"></ul>
-      </nav>
-    </div>
-  </div>
 </div>
+  </header> 
+  <div class="post-content"><p>Recently I tried to find a nice code sample for how to pass complex type through WCF, inside the header,  meaning I want to send the client execution context to the server side.<br /><br />All of the samples passes strings or uses custom header that needs to write and read the object manually, I didn&rsquo;t like it.<br /><br />So I wrote one and it&rsquo;s working!<br /><div id="stackstack-5443871"></div>All you need is 2 classes, and one is just a factory for the other, very simple:<br /><br /><pre class="brush: csharp;">using System;<br />using System.Collections.Generic;<br />using System.Linq;<br />using System.Runtime.Serialization;<br />using System.ServiceModel;<br />using System.ServiceModel.Channels;<br />using System.ServiceModel.Dispatcher;<br />using System.Text;<br /><br />namespace debugniv.ComplexTypeOverWcf<br />{<br />  class HeaderHandler : IDispatchMessageInspector, IClientMessageInspector<br />  {<br />    #region Implementation of IDispatchMessageInspector<br /><br />    public object AfterReceiveRequest(ref Message request, IClientChannel channel, InstanceContext instanceContext)<br />    {<br />      // Read the complex type from header<br />      var headerIndex = request.Headers.FindHeader(typeof(MyHeader).Name, typeof(MyHeader).Namespace);<br /><br />      if (headerIndex &gt;= 0) // found!<br />      {<br />        var serializer = GenerateDataContractSerializer&lt;MyHeader&gt;();<br />        var myHeader = request.Headers.GetHeader&lt;MyHeader&gt;(headerIndex, serializer);<br />        // here you can do something with your header like push it to a global per request context.<br />      }<br />      return null;<br />    }<br /><br />    public void BeforeSendReply(ref Message reply, object correlationState)<br />    {<br />      // nothing here<br />    }<br /><br />    #endregion<br /><br />    #region Implementation of IClientMessageInspector<br /><br />    public object BeforeSendRequest(ref Message request, IClientChannel channel)<br />    {<br />      var myHeader = GetMyHeader();<br />      request.Headers.Add(myHeader);<br />    }<br /><br />    public void AfterReceiveReply(ref Message reply, object correlationState)<br />    {<br />      // nothing to do here<br />    }<br /><br />    #endregion<br /><br />    private DataContractSerializer GenerateDataContractSerializer&lt;T&gt;()<br />    {<br />      return new DataContractSerializer(typeof(T), typeof(T).Name, typeof(T).Namespace, GetKnownTypes());<br />    }<br /><br />    private IEnumerable&lt;Type&gt; GetKnownTypes()<br />    {<br />      // here return all your types inside the header<br />      yield return typeof(MyHeader);<br />      yield return typeof(SubType);<br />    }<br /><br />    private MessageHeader GetMyHeader()<br />    {<br />      var data = new MyHeader();<br />      var serializer = GenerateDataContractSerializer&lt;MyHeader&gt;();<br />      return MessageHeader.CreateHeader(data.GetType().Name, data.GetType().Namespace, data, serializer);<br />    }<br /><br /><br />  }<br /><br />  // this is the header <br />  internal class MyHeader<br />  {<br />    public SubType InternalData { get; set; }<br />  }<br /><br />  internal class SubType<br />  {<br />  }<br />}<br /><br /></pre><br />The second thing you&rsquo;ll need is to attach this stuff to your service and proxy, here is one way to do this<br /><br /><pre class="brush: csharp;">using System;<br />using System.ServiceModel.Configuration;<br /><br />namespace debugniv.ComplexTypeOverWcf<br />{<br />  public class HeaderExtensionElement : BehaviorExtensionElement<br />  {<br /><br />    public override Type BehaviorType<br />    {<br />      get { return typeof (HeaderHandler); }<br />    }<br /><br />    protected override object CreateBehavior()<br />    {<br />      return new HeaderHandler();<br />    }<br />  }<br />}<br /></pre><br />In you config file add the following <br /><extensions><br />  <behaviorExtensions><br />   <add        name="customEndpointBehavior"        type="your extension type name"/><br />  </behaviorExtensions></p>
 
 
-    <div class="initial-content">
-      
-
-
-  
-    
-
-
-
-<nav class="breadcrumbs">
-  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
-    
-    
-    
-      
-        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="https://kinnrot.github.io/" itemprop="item"><span itemprop="name">Home</span></a>
-          <meta itemprop="position" content="1" />
-        </li>
-        <span class="sep">/</span>
-      
-      
-        <li class="current">Passing complex type through WCF header,The simple always work version.</li>
-      
-    
-  </ol>
-</nav>
-
-  
-
-
-<div id="main" role="main">
-  
-  <div class="sidebar sticky">
-  
-
-
-<div itemscope itemtype="https://schema.org/Person">
-
-  
-
-  <div class="author__content">
-    
-      <h3 class="author__name" itemprop="name"></h3>
-    
-    
   </div>
 
-  <div class="author__urls-wrapper">
-    <button class="btn btn--inverse">Follow</button>
-    <ul class="author__urls social-icons">
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      <!--
-  <li>
-    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
-      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
-    </a>
-  </li>
--->
+  <footer class="post-footer">
+    <ul class="post-tags">
     </ul>
-  </div>
-</div>
-
-  
-  </div>
-
-
-
-  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Passing complex type through WCF header,The simple always work version.">
-    <meta itemprop="description" content="Recently I tried to find a nice code sample for how to pass complex type through WCF, inside the header,  meaning I want to send the client execution context to the server side.All of the samples passes strings or uses custom header that needs to write and read the object manually, I didn’t like it.So I wrote one and it’s working!&lt;div id=&quot;stackstack-5443871&quot;&gt;&lt;/div&gt;All you need is 2 classes, and one is just a factory for the other, very simple:&lt;pre class=&quot;brush: csharp;&quot;&gt;using System;using System.Collections.Generic;using System.Linq;using System.Runtime.Serialization;using System.ServiceModel;using System.ServiceModel.Channels;using System.ServiceModel.Dispatcher;using System.Text;namespace debugniv.ComplexTypeOverWcf{  class HeaderHandler : IDispatchMessageInspector, IClientMessageInspector  {    #region Implementation of IDispatchMessageInspector    public object AfterReceiveRequest(ref Message request, IClientChannel channel, InstanceContext instanceContext)    {      // Read the complex type from header      var headerIndex = request.Headers.FindHeader(typeof(MyHeader).Name, typeof(MyHeader).Namespace);      if (headerIndex &gt;= 0) // found!      {        var serializer = GenerateDataContractSerializer&lt;MyHeader&gt;();        var myHeader = request.Headers.GetHeader&lt;MyHeader&gt;(headerIndex, serializer);        // here you can do something with your header like push it to a global per request context.      }      return null;    }    public void BeforeSendReply(ref Message reply, object correlationState)    {      // nothing here    }    #endregion    #region Implementation of IClientMessageInspector    public object BeforeSendRequest(ref Message request, IClientChannel channel)    {      var myHeader = GetMyHeader();      request.Headers.Add(myHeader);    }    public void AfterReceiveReply(ref Message reply, object correlationState)    {      // nothing to do here    }    #endregion    private DataContractSerializer GenerateDataContractSerializer&lt;T&gt;()    {      return new DataContractSerializer(typeof(T), typeof(T).Name, typeof(T).Namespace, GetKnownTypes());    }    private IEnumerable&lt;Type&gt; GetKnownTypes()    {      // here return all your types inside the header      yield return typeof(MyHeader);      yield return typeof(SubType);    }    private MessageHeader GetMyHeader()    {      var data = new MyHeader();      var serializer = GenerateDataContractSerializer&lt;MyHeader&gt;();      return MessageHeader.CreateHeader(data.GetType().Name, data.GetType().Namespace, data, serializer);    }  }  // this is the header   internal class MyHeader  {    public SubType InternalData { get; set; }  }  internal class SubType  {  }}&lt;/pre&gt;The second thing you’ll need is to attach this stuff to your service and proxy, here is one way to do this&lt;pre class=&quot;brush: csharp;&quot;&gt;using System;using System.ServiceModel.Configuration;namespace debugniv.ComplexTypeOverWcf{  public class HeaderExtensionElement : BehaviorExtensionElement  {    public override Type BehaviorType    {      get { return typeof (HeaderHandler); }    }    protected override object CreateBehavior()    {      return new HeaderHandler();    }  }}&lt;/pre&gt;In you config file add the following        ">
-    <meta itemprop="datePublished" content="May 02, 2011">
+  </footer>
+</article>
+    </main>
     
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kinnrot.github.io/">cdblg</a></span> · 
 
-
-    <div class="page__inner-wrap">
-      
-        <header>
-          <h1 class="page__title" itemprop="headline">Passing complex type through WCF header,The simple always work version.
-</h1>
-          
-            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
-
-
-
-
-  3 minute read
-
-</p>
-          
-
-        </header>
-      
-
-      <section class="page__content" itemprop="text">
-        Recently I tried to find a nice code sample for how to pass complex type through WCF, inside the header,  meaning I want to send the client execution context to the server side.<br /><br />All of the samples passes strings or uses custom header that needs to write and read the object manually, I didn't like it.<br /><br />So I wrote one and it's working!<br /><div id="stackstack-5443871"></div>All you need is 2 classes, and one is just a factory for the other, very simple:<br /><br /><pre class="brush: csharp;">using System;<br />using System.Collections.Generic;<br />using System.Linq;<br />using System.Runtime.Serialization;<br />using System.ServiceModel;<br />using System.ServiceModel.Channels;<br />using System.ServiceModel.Dispatcher;<br />using System.Text;<br /><br />namespace debugniv.ComplexTypeOverWcf<br />{<br />  class HeaderHandler : IDispatchMessageInspector, IClientMessageInspector<br />  {<br />    #region Implementation of IDispatchMessageInspector<br /><br />    public object AfterReceiveRequest(ref Message request, IClientChannel channel, InstanceContext instanceContext)<br />    {<br />      // Read the complex type from header<br />      var headerIndex = request.Headers.FindHeader(typeof(MyHeader).Name, typeof(MyHeader).Namespace);<br /><br />      if (headerIndex &gt;= 0) // found!<br />      {<br />        var serializer = GenerateDataContractSerializer&lt;MyHeader&gt;();<br />        var myHeader = request.Headers.GetHeader&lt;MyHeader&gt;(headerIndex, serializer);<br />        // here you can do something with your header like push it to a global per request context.<br />      }<br />      return null;<br />    }<br /><br />    public void BeforeSendReply(ref Message reply, object correlationState)<br />    {<br />      // nothing here<br />    }<br /><br />    #endregion<br /><br />    #region Implementation of IClientMessageInspector<br /><br />    public object BeforeSendRequest(ref Message request, IClientChannel channel)<br />    {<br />      var myHeader = GetMyHeader();<br />      request.Headers.Add(myHeader);<br />    }<br /><br />    public void AfterReceiveReply(ref Message reply, object correlationState)<br />    {<br />      // nothing to do here<br />    }<br /><br />    #endregion<br /><br />    private DataContractSerializer GenerateDataContractSerializer&lt;T&gt;()<br />    {<br />      return new DataContractSerializer(typeof(T), typeof(T).Name, typeof(T).Namespace, GetKnownTypes());<br />    }<br /><br />    private IEnumerable&lt;Type&gt; GetKnownTypes()<br />    {<br />      // here return all your types inside the header<br />      yield return typeof(MyHeader);<br />      yield return typeof(SubType);<br />    }<br /><br />    private MessageHeader GetMyHeader()<br />    {<br />      var data = new MyHeader();<br />      var serializer = GenerateDataContractSerializer&lt;MyHeader&gt;();<br />      return MessageHeader.CreateHeader(data.GetType().Name, data.GetType().Namespace, data, serializer);<br />    }<br /><br /><br />  }<br /><br />  // this is the header <br />  internal class MyHeader<br />  {<br />    public SubType InternalData { get; set; }<br />  }<br /><br />  internal class SubType<br />  {<br />  }<br />}<br /><br /></pre><br />The second thing you'll need is to attach this stuff to your service and proxy, here is one way to do this<br /><br /><pre class="brush: csharp;">using System;<br />using System.ServiceModel.Configuration;<br /><br />namespace debugniv.ComplexTypeOverWcf<br />{<br />  public class HeaderExtensionElement : BehaviorExtensionElement<br />  {<br /><br />    public override Type BehaviorType<br />    {<br />      get { return typeof (HeaderHandler); }<br />    }<br /><br />    protected override object CreateBehavior()<br />    {<br />      return new HeaderHandler();<br />    }<br />  }<br />}<br /></pre><br />In you config file add the following <br /><extensions><br />  <behaviorExtensions><br />   <add        name="customEndpointBehavior"        type="your extension type name"/><br />  </behaviorExtensions>
-        
-      </section>
-
-      <footer class="page__meta">
-        
-        
-
-
-        
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2011-05-02T20:05:00+03:00">May 02, 2011</time></p>
-        
-
-      </footer>
-
-
-      <section class="page__share">
-  
-
-  <a href="https://twitter.com/intent/tweet?text=Passing+complex+type+through+WCF+header%2CThe+simple+always+work+version.%20https%3A%2F%2Fkinnrot.github.io%2Fpassing-complex-type-through-wcf%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
-
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fkinnrot.github.io%2Fpassing-complex-type-through-wcf%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
-
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fkinnrot.github.io%2Fpassing-complex-type-through-wcf%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
-</section>
-
-
-      
-  <nav class="pagination">
-    
-      <a href="/ioc-container-warning/" class="pagination--pager" title="IOC Container warning
-">Previous</a>
-    
-    
-      <a href="/tpling-background-worker-in-10-min/" class="pagination--pager" title="TPLing Background worker in 10 min
-">Next</a>
-    
-  </nav>
-
-
-    </div>
-
-    
-      <div class="page__comments">
-  
-  
-      <h4 class="page__comments-title">Comments</h4>
-      <section id="disqus_thread"></section>
-    
-</div>
-
-    
-  </article>
-
-  
-  
-    <div class="page__related">
-      <h4 class="page__related-title">You May Also Enjoy</h4>
-      <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/rails-presentation-objects-guide/" rel="permalink">Rails Presentation Objects
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
 </a>
-      
-    </h2>
-    
-      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
 
-
-
-
-  7 minute read
-
-</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">If you ever used any MVC framework, I’m sure you asked yourself more than once, ‘Where should I put this piece of code?’ (If not that’s also fine).
-Well, the...</p>
-  </article>
-</div>
-
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
         
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/simulate-click-on-google-geo-chart/" rel="permalink">Simulate Click on Google Geo Chart
-</a>
-      
-    </h2>
-    
-      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
-
-
-
-
-  1 minute read
-
-</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">So I found out it’s not so documented, hopefully google will index this.
-I have a page on my  system that shows a google geo chart (same as this)
-When clicki...</p>
-  </article>
-</div>
-
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
         
-          
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
 
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
 
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/keep-track-on-coverage/" rel="permalink">Keep Track on Coverage
-</a>
-      
-    </h2>
-    
-      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
-
-
-
-
-  1 minute read
-
-</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">Recently I discovered Danger, an amazing tool you should check out no matter what.
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/building-your-own-rails-form-builder/" rel="permalink">Building your own rails form builder
-</a>
-      
-    </h2>
-    
-      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
-
-
-
-
-  3 minute read
-
-</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">If you’re building forms with rails, whether you’re using a gem for it or working with pure rails forms, you should know this.
-</p>
-  </article>
-</div>
-
-        
-      </div>
-    </div>
-  
-</div>
-<div id="codefund_ad"></div>
-<script src="https://codefund.io/scripts/15927f6c-5043-4514-b0d2-ce3b9090ae4c/embed.js?template=bottom-bar"></script>
-
-    </div>
-
-    
-
-    <div id="footer" class="page__footer">
-      <footer>
-        <!-- start custom footer snippets -->
-
-<!-- end custom footer snippets -->
-        <div class="page__footer-follow">
-  <ul class="social-icons">
-    
-
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-
-    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
-  </ul>
-</div>
-
-<div class="page__footer-copyright">&copy; 2020 Chen Kinnrot. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
-
-      </footer>
-    </div>
-
-    
-  <script src="/assets/js/main.min.js"></script>
-  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
-
-
-
-
-
-
-
-  <script>
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-103259749-1']);
-  
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
 </script>
-
-
-
-
-
-
-    
-  <script>
-    var disqus_config = function () {
-      this.page.url = "https://kinnrot.github.io/passing-complex-type-through-wcf/";  /* Replace PAGE_URL with your page's canonical URL variable */
-      this.page.identifier = "/passing-complex-type-through-wcf"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
     };
-    (function() { /* DON'T EDIT BELOW THIS LINE */
-      var d = document, s = d.createElement('script');
-      s.src = 'https://cdblg.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-    })();
-  </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
 
-  
+</script>
+</body>
 
-
-
-
-
-  </body>
 </html>

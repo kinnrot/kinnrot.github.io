@@ -1,602 +1,338 @@
-<!doctype html>
-<!--
-  Minimal Mistakes Jekyll Theme 4.19.1 by Michael Rose
-  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
-  Free for personal and commercial use under the MIT license
-  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
--->
-<html lang="en" class="no-js">
-  <head>
-    <meta charset="utf-8">
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
 
-<!-- begin _includes/seo.html --><title>WPF Binding and Why you should write defensive code. - cdblg</title>
-<meta name="description" content="I’m overriding equals and implementing IEquatable on some of my objects and bind them as an ObservableCollection to the UI.Here is a sample: (ugly code do not use)&lt;pre class=&quot;brush: csharp;&quot;&gt;&lt;Window x:Class=”BindingToItemsWithIEquality.MainWindow”        xmlns=”http://schemas.microsoft.com/winfx/2006/xaml/presentation”        xmlns:x=”http://schemas.microsoft.com/winfx/2006/xaml”        xmlns:local=”clr-namespace:BindingToItemsWithIEquality”        Title=”MainWindow” Height=”350” Width=”525”        &gt;    &lt;Window.DataContext&gt;        &lt;local:SomeContextWithCollection/&gt;    &lt;/Window.DataContext&gt;    &lt;StackPanel&gt;        &lt;ListBox DisplayMemberPath=”Name” ItemsSource=”{Binding Items}”/&gt;        &lt;Button Click=”Button_Click”&gt;clear&lt;/Button&gt;    &lt;/StackPanel&gt;&lt;/Window&gt;//code behindprivate void Button_Click(object sender, RoutedEventArgs e){  (this.DataContext as SomeContextWithCollection).Items.Clear();}public class SomeContextWithCollection {    public ObservableCollection&lt;SomeIEqutable&gt; Items { get; set; }    public SomeContextWithCollection()    {      Items = new ObservableCollection&lt;SomeIEqutable&gt;();      Items.Add(new SomeIEqutable() { Name = “1” });      Items.Add(new SomeIEqutable() { Name = “2” });    }}public class SomeIEqutable : IEquatable&lt;SomeIEqutable&gt;{  public string Name { get; set; }  public override bool Equals(object obj)  {    if (obj == null)    {      return false;    }              return Equals((SomeIEqutable)obj);  }  public bool Equals(SomeIEqutable other)  {    if (object.ReferenceEquals(this, other))    {      return true;    }    return Name == other.Name;  }  public override int GetHashCode()  {    return Name.GetHashCode();  }}&lt;/pre&gt;When calling collection.Clear() I get an invalid cast inside my equals method, when trying to cast to SomeIEquatable.This is pretty strange, object is not null and not SomeIEquatlabe, how did it get to my Equals?The answer is WPF, when working with binding and clearing a bounded collection WPF will compare his internal new MSInternal.NamedObject(named DisconnectedItem) to your SomeIEquatable object and will fail if you try to implicitly cast it to your type.The simple solution is to use the “as” keyword istead of cast.If my code didn’t smell from the start, I would never got to this dark place. But I’m glad it happened, now I have another excuse to write defensive code. ">
-
-
-
-<meta property="og:type" content="article">
-<meta property="og:locale" content="en">
-<meta property="og:site_name" content="cdblg">
-<meta property="og:title" content="WPF Binding and Why you should write defensive code.">
-<meta property="og:url" content="https://kinnrot.github.io/wpf-binding-and-why-you-should-write/">
-
-
-  <meta property="og:description" content="I’m overriding equals and implementing IEquatable on some of my objects and bind them as an ObservableCollection to the UI.Here is a sample: (ugly code do not use)&lt;pre class=&quot;brush: csharp;&quot;&gt;&lt;Window x:Class=”BindingToItemsWithIEquality.MainWindow”        xmlns=”http://schemas.microsoft.com/winfx/2006/xaml/presentation”        xmlns:x=”http://schemas.microsoft.com/winfx/2006/xaml”        xmlns:local=”clr-namespace:BindingToItemsWithIEquality”        Title=”MainWindow” Height=”350” Width=”525”        &gt;    &lt;Window.DataContext&gt;        &lt;local:SomeContextWithCollection/&gt;    &lt;/Window.DataContext&gt;    &lt;StackPanel&gt;        &lt;ListBox DisplayMemberPath=”Name” ItemsSource=”{Binding Items}”/&gt;        &lt;Button Click=”Button_Click”&gt;clear&lt;/Button&gt;    &lt;/StackPanel&gt;&lt;/Window&gt;//code behindprivate void Button_Click(object sender, RoutedEventArgs e){  (this.DataContext as SomeContextWithCollection).Items.Clear();}public class SomeContextWithCollection {    public ObservableCollection&lt;SomeIEqutable&gt; Items { get; set; }    public SomeContextWithCollection()    {      Items = new ObservableCollection&lt;SomeIEqutable&gt;();      Items.Add(new SomeIEqutable() { Name = “1” });      Items.Add(new SomeIEqutable() { Name = “2” });    }}public class SomeIEqutable : IEquatable&lt;SomeIEqutable&gt;{  public string Name { get; set; }  public override bool Equals(object obj)  {    if (obj == null)    {      return false;    }              return Equals((SomeIEqutable)obj);  }  public bool Equals(SomeIEqutable other)  {    if (object.ReferenceEquals(this, other))    {      return true;    }    return Name == other.Name;  }  public override int GetHashCode()  {    return Name.GetHashCode();  }}&lt;/pre&gt;When calling collection.Clear() I get an invalid cast inside my equals method, when trying to cast to SomeIEquatable.This is pretty strange, object is not null and not SomeIEquatlabe, how did it get to my Equals?The answer is WPF, when working with binding and clearing a bounded collection WPF will compare his internal new MSInternal.NamedObject(named DisconnectedItem) to your SomeIEquatable object and will fail if you try to implicitly cast it to your type.The simple solution is to use the “as” keyword istead of cast.If my code didn’t smell from the start, I would never got to this dark place. But I’m glad it happened, now I have another excuse to write defensive code. ">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2011-01-06T00:47:00+02:00">
-
-
-
-
-
-  
-
-  
-
-
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>WPF Binding and Why you should write defensive code. | cdblg</title>
+<meta name="keywords" content="Binding, IEquatable, WPF">
+<meta name="description" content="I&rsquo;m overriding equals and implementing IEquatable on some of my objects and bind them as an ObservableCollection to the UI.Here is a sample: (ugly code do not use)&lt;Window x:Class=&ldquo;BindingToItemsWithIEquality.MainWindow&rdquo;        xmlns=&ldquo;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;        xmlns:x=&ldquo;http://schemas.microsoft.com/winfx/2006/xaml&quot;        xmlns:local=&ldquo;clr-namespace:BindingToItemsWithIEquality&rdquo;        Title=&ldquo;MainWindow&rdquo; Height=&ldquo;350&rdquo; Width=&ldquo;525&rdquo;        &gt;    &lt;Window.DataContext&gt;        &lt;local:SomeContextWithCollection/&gt;    &lt;/Window.DataContext&gt;    &lt;StackPanel&gt;        &lt;ListBox DisplayMemberPath=&ldquo;Name&rdquo; ItemsSource=&quot;{Binding Items}&rdquo;/&gt;        &lt;Button Click=&ldquo;Button_Click&rdquo;&gt;clear&lt;/Button&gt;    &lt;/StackPanel&gt;&lt;/Window&gt;//code behindprivate void Button_Click(object sender, RoutedEventArgs e){  (this.DataContext as SomeContextWithCollection).Items.Clear();}public class SomeContextWithCollection {    public ObservableCollection&lt;SomeIEqutable&gt; Items { get; set; }    public SomeContextWithCollection()    {      Items = new ObservableCollection&lt;SomeIEqutable&gt;();      Items.Add(new SomeIEqutable() { Name = &ldquo;1&rdquo; });      Items.Add(new SomeIEqutable() { Name = &ldquo;2&rdquo; });    }}public class SomeIEqutable : IEquatable&lt;SomeIEqutable&gt;{  public string Name { get; set; }  public override bool Equals(object obj)  {    if (obj == null)    {      return false;    }              return Equals((SomeIEqutable)obj);  }  public bool Equals(SomeIEqutable other)  {    if (object.ReferenceEquals(this, other))    {      return true;    }    return Name == other.Name;  }  public override int GetHashCode()  {    return Name.GetHashCode();  }}When calling collection.Clear() I get an invalid cast inside my equals method, when trying to cast to SomeIEquatable.This is pretty strange, object is not null and not SomeIEquatlabe, how did it get to my Equals?The answer is WPF, when working with binding and clearing a bounded collection WPF will compare his internal new MSInternal.NamedObject(named DisconnectedItem) to your SomeIEquatable object and will fail if you try to implicitly cast it to your type.The simple solution is to use the &ldquo;as&rdquo; keyword istead of cast.If my code didn&rsquo;t smell from the start, I would never got to this dark place. But I&rsquo;m glad it happened, now I have another excuse to write defensive code.">
+<meta name="author" content="Chen Kinnrot">
 <link rel="canonical" href="https://kinnrot.github.io/wpf-binding-and-why-you-should-write/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kinnrot.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kinnrot.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kinnrot.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kinnrot.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kinnrot.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kinnrot.github.io/wpf-binding-and-why-you-should-write/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
 
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
 
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kinnrot.github.io/wpf-binding-and-why-you-should-write/">
+  <meta property="og:site_name" content="cdblg">
+  <meta property="og:title" content="WPF Binding and Why you should write defensive code.">
+  <meta property="og:description" content="I’m overriding equals and implementing IEquatable on some of my objects and bind them as an ObservableCollection to the UI.
+Here is a sample: (ugly code do not use)
+&lt;Window x:Class=“BindingToItemsWithIEquality.MainWindow”
+xmlns=“http://schemas.microsoft.com/winfx/2006/xaml/presentation&#34;
+xmlns:x=“http://schemas.microsoft.com/winfx/2006/xaml&#34;
+xmlns:local=“clr-namespace:BindingToItemsWithIEquality”
+Title=“MainWindow” Height=“350” Width=“525”
+&gt;
+&lt;Window.DataContext&gt;
+&lt;local:SomeContextWithCollection/&gt;
+&lt;/Window.DataContext&gt;
+&lt;StackPanel&gt;
+&lt;ListBox DisplayMemberPath=“Name” ItemsSource=&#34;{Binding Items}”/&gt;
+&lt;Button Click=“Button_Click”&gt;clear&lt;/Button&gt;
+&lt;/StackPanel&gt;
+&lt;/Window&gt;
+//code behind
+private void Button_Click(object sender, RoutedEventArgs e)
+{
+(this.DataContext as SomeContextWithCollection).Items.Clear();
+}
+public class SomeContextWithCollection {
+public ObservableCollection&lt;SomeIEqutable&gt; Items { get; set; }
+public SomeContextWithCollection()
+{
+Items = new ObservableCollection&lt;SomeIEqutable&gt;();
+Items.Add(new SomeIEqutable() { Name = “1” });
+Items.Add(new SomeIEqutable() { Name = “2” });
+}
+}
+public class SomeIEqutable : IEquatable&lt;SomeIEqutable&gt;
+{
+public string Name { get; set; }
+public override bool Equals(object obj)
+{
+if (obj == null)
+{
+return false;
+}
+return Equals((SomeIEqutable)obj);
+}
+public bool Equals(SomeIEqutable other)
+{
+if (object.ReferenceEquals(this, other))
+{
+return true;
+}
+return Name == other.Name;
+}
+public override int GetHashCode()
+{
+return Name.GetHashCode();
+}
+}
+When calling collection.Clear() I get an invalid cast inside my equals method, when trying to cast to SomeIEquatable.
+This is pretty strange, object is not null and not SomeIEquatlabe, how did it get to my Equals?
+The answer is WPF, when working with binding and clearing a bounded collection WPF will compare his internal new MSInternal.NamedObject(named DisconnectedItem) to your SomeIEquatable object and will fail if you try to implicitly cast it to your type.
+The simple solution is to use the “as” keyword istead of cast.
+If my code didn’t smell from the start, I would never got to this dark place. But I’m glad it happened, now I have another excuse to write defensive code.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2011-01-05T14:47:00-08:00">
+    <meta property="article:modified_time" content="2011-01-05T14:47:00-08:00">
+    <meta property="article:tag" content="Binding">
+    <meta property="article:tag" content="IEquatable">
+    <meta property="article:tag" content="WPF">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WPF Binding and Why you should write defensive code.">
+<meta name="twitter:description" content="I&rsquo;m overriding equals and implementing IEquatable on some of my objects and bind them as an ObservableCollection to the UI.Here is a sample: (ugly code do not use)&lt;Window x:Class=&ldquo;BindingToItemsWithIEquality.MainWindow&rdquo;        xmlns=&ldquo;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;        xmlns:x=&ldquo;http://schemas.microsoft.com/winfx/2006/xaml&quot;        xmlns:local=&ldquo;clr-namespace:BindingToItemsWithIEquality&rdquo;        Title=&ldquo;MainWindow&rdquo; Height=&ldquo;350&rdquo; Width=&ldquo;525&rdquo;        &gt;    &lt;Window.DataContext&gt;        &lt;local:SomeContextWithCollection/&gt;    &lt;/Window.DataContext&gt;    &lt;StackPanel&gt;        &lt;ListBox DisplayMemberPath=&ldquo;Name&rdquo; ItemsSource=&quot;{Binding Items}&rdquo;/&gt;        &lt;Button Click=&ldquo;Button_Click&rdquo;&gt;clear&lt;/Button&gt;    &lt;/StackPanel&gt;&lt;/Window&gt;//code behindprivate void Button_Click(object sender, RoutedEventArgs e){  (this.DataContext as SomeContextWithCollection).Items.Clear();}public class SomeContextWithCollection {    public ObservableCollection&lt;SomeIEqutable&gt; Items { get; set; }    public SomeContextWithCollection()    {      Items = new ObservableCollection&lt;SomeIEqutable&gt;();      Items.Add(new SomeIEqutable() { Name = &ldquo;1&rdquo; });      Items.Add(new SomeIEqutable() { Name = &ldquo;2&rdquo; });    }}public class SomeIEqutable : IEquatable&lt;SomeIEqutable&gt;{  public string Name { get; set; }  public override bool Equals(object obj)  {    if (obj == null)    {      return false;    }              return Equals((SomeIEqutable)obj);  }  public bool Equals(SomeIEqutable other)  {    if (object.ReferenceEquals(this, other))    {      return true;    }    return Name == other.Name;  }  public override int GetHashCode()  {    return Name.GetHashCode();  }}When calling collection.Clear() I get an invalid cast inside my equals method, when trying to cast to SomeIEquatable.This is pretty strange, object is not null and not SomeIEquatlabe, how did it get to my Equals?The answer is WPF, when working with binding and clearing a bounded collection WPF will compare his internal new MSInternal.NamedObject(named DisconnectedItem) to your SomeIEquatable object and will fail if you try to implicitly cast it to your type.The simple solution is to use the &ldquo;as&rdquo; keyword istead of cast.If my code didn&rsquo;t smell from the start, I would never got to this dark place. But I&rsquo;m glad it happened, now I have another excuse to write defensive code.">
 
 
 <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    
-      "@type": "Person",
-      "name": "Chen Kinnrot",
-      "url": "https://kinnrot.github.io/"
-    
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kinnrot.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "WPF Binding and Why you should write defensive code.",
+      "item": "https://kinnrot.github.io/wpf-binding-and-why-you-should-write/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "WPF Binding and Why you should write defensive code.",
+  "name": "WPF Binding and Why you should write defensive code.",
+  "description": "I\u0026rsquo;m overriding equals and implementing IEquatable on some of my objects and bind them as an ObservableCollection to the UI.\nHere is a sample: (ugly code do not use)\n\u0026lt;Window x:Class=\u0026ldquo;BindingToItemsWithIEquality.MainWindow\u0026rdquo;\nxmlns=\u0026ldquo;http://schemas.microsoft.com/winfx/2006/xaml/presentation\u0026quot;\nxmlns:x=\u0026ldquo;http://schemas.microsoft.com/winfx/2006/xaml\u0026quot;\nxmlns:local=\u0026ldquo;clr-namespace:BindingToItemsWithIEquality\u0026rdquo;\nTitle=\u0026ldquo;MainWindow\u0026rdquo; Height=\u0026ldquo;350\u0026rdquo; Width=\u0026ldquo;525\u0026rdquo;\n\u0026gt;\n\u0026lt;Window.DataContext\u0026gt;\n\u0026lt;local:SomeContextWithCollection/\u0026gt;\n\u0026lt;/Window.DataContext\u0026gt;\n\u0026lt;StackPanel\u0026gt;\n\u0026lt;ListBox DisplayMemberPath=\u0026ldquo;Name\u0026rdquo; ItemsSource=\u0026quot;{Binding Items}\u0026rdquo;/\u0026gt;\n\u0026lt;Button Click=\u0026ldquo;Button_Click\u0026rdquo;\u0026gt;clear\u0026lt;/Button\u0026gt;\n\u0026lt;/StackPanel\u0026gt;\n\u0026lt;/Window\u0026gt;\n//code behind\nprivate void Button_Click(object sender, RoutedEventArgs e)\n{\n(this.DataContext as SomeContextWithCollection).Items.Clear();\n}\npublic class SomeContextWithCollection {\npublic ObservableCollection\u0026lt;SomeIEqutable\u0026gt; Items { get; set; }\npublic SomeContextWithCollection()\n{\nItems = new ObservableCollection\u0026lt;SomeIEqutable\u0026gt;();\nItems.Add(new SomeIEqutable() { Name = \u0026ldquo;1\u0026rdquo; });\nItems.Add(new SomeIEqutable() { Name = \u0026ldquo;2\u0026rdquo; });\n}\n}\npublic class SomeIEqutable : IEquatable\u0026lt;SomeIEqutable\u0026gt;\n{\npublic string Name { get; set; }\npublic override bool Equals(object obj)\n{\nif (obj == null)\n{\nreturn false;\n}\nreturn Equals((SomeIEqutable)obj);\n}\npublic bool Equals(SomeIEqutable other)\n{\nif (object.ReferenceEquals(this, other))\n{\nreturn true;\n}\nreturn Name == other.Name;\n}\npublic override int GetHashCode()\n{\nreturn Name.GetHashCode();\n}\n}\nWhen calling collection.Clear() I get an invalid cast inside my equals method, when trying to cast to SomeIEquatable.\nThis is pretty strange, object is not null and not SomeIEquatlabe, how did it get to my Equals?\nThe answer is WPF, when working with binding and clearing a bounded collection WPF will compare his internal new MSInternal.NamedObject(named DisconnectedItem) to your SomeIEquatable object and will fail if you try to implicitly cast it to your type.\nThe simple solution is to use the \u0026ldquo;as\u0026rdquo; keyword istead of cast.\nIf my code didn\u0026rsquo;t smell from the start, I would never got to this dark place. But I\u0026rsquo;m glad it happened, now I have another excuse to write defensive code.\n",
+  "keywords": [
+    "Binding", "IEquatable", "WPF"
+  ],
+  "articleBody": "I’m overriding equals and implementing IEquatable on some of my objects and bind them as an ObservableCollection to the UI.\nHere is a sample: (ugly code do not use)\nhttp://schemas.microsoft.com/winfx/2006/xaml/presentation\"\nxmlns:x=“http://schemas.microsoft.com/winfx/2006/xaml\"\nxmlns:local=“clr-namespace:BindingToItemsWithIEquality”\nTitle=“MainWindow” Height=“350” Width=“525”\n\u003e\n",
+  "wordCount" : "269",
+  "inLanguage": "en",
+  "datePublished": "2011-01-05T14:47:00-08:00",
+  "dateModified": "2011-01-05T14:47:00-08:00",
+  "author":{
+    "@type": "Person",
+    "name": "Chen Kinnrot"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kinnrot.github.io/wpf-binding-and-why-you-should-write/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "cdblg",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kinnrot.github.io/favicon.ico"
+    }
   }
+}
 </script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kinnrot.github.io/" accesskey="h" title="cdblg (Alt + H)">cdblg</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
 
-
-
-
-
-
-<!-- end _includes/seo.html -->
-
-
-<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="cdblg Feed">
-
-<!-- https://t.co/dKP3o1e -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<script>
-  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
-</script>
-
-<!-- For all browsers -->
-<link rel="stylesheet" href="/assets/css/main.css">
-
-<!--[if IE]>
-  <style>
-    /* old IE unsupported flexbox fixes */
-    .greedy-nav .site-title {
-      padding-right: 3em;
-    }
-    .greedy-nav button {
-      position: absolute;
-      top: 0;
-      right: 0;
-      height: 100%;
-    }
-  </style>
-<![endif]-->
-
-
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-103259749-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-103259749-1', { 'optimize_id': 'GTM-KXX4C9K'});
-</script>
-<!-- Anti-flicker snippet (recommended)  -->
-<style>.async-hide { opacity: 0 !important} </style>
-<script>(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
-  h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
-  (a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
-})(window,document.documentElement,'async-hide','dataLayer',4000,
-  {'OPT_CONTAINER_ID':true});</script>
-<!-- -->
-
-  </head>
-
-  <body class="layout--post">
-    <nav class="skip-links">
-  <h2 class="screen-reader-text">Skip links</h2>
-  <ul>
-    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
-    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
-    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
-  </ul>
-</nav>
-
-    <!--[if lt IE 9]>
-<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
-<![endif]-->
-
+<article class="post-single">
+  <header class="post-header">
     
+    <h1 class="post-title entry-hint-parent">
+      WPF Binding and Why you should write defensive code.
+    </h1>
+    <div class="post-meta"><span title='2011-01-05 14:47:00 -0800 -0800'>January 5, 2011</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span>
 
-<div class="masthead">
-  <div class="masthead__inner-wrap">
-    <div class="masthead__menu">
-      <nav id="site-nav" class="greedy-nav">
-        
-        <a class="site-title" href="/">
-          cdblg
-          
-        </a>
-        <ul class="visible-links"><li class="masthead__menu-item">
-              <a href="/about">About</a>
-            </li></ul>
-        
-        <button class="greedy-nav__toggle hidden" type="button">
-          <span class="visually-hidden">Toggle menu</span>
-          <div class="navicon"></div>
-        </button>
-        <ul class="hidden-links hidden"></ul>
-      </nav>
-    </div>
-  </div>
 </div>
+  </header> 
+  <div class="post-content"><p>I&rsquo;m overriding equals and implementing IEquatable on some of my objects and bind them as an ObservableCollection to the UI.<br /><br />Here is a sample: (ugly code do not use)<br /><br /><pre class="brush: csharp;">&lt;Window x:Class=&ldquo;BindingToItemsWithIEquality.MainWindow&rdquo;<br />        xmlns=&ldquo;<a href="http://schemas.microsoft.com/winfx/2006/xaml/presentation%22">http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;</a><br />        xmlns:x=&ldquo;<a href="http://schemas.microsoft.com/winfx/2006/xaml%22">http://schemas.microsoft.com/winfx/2006/xaml&quot;</a><br />        xmlns:local=&ldquo;clr-namespace:BindingToItemsWithIEquality&rdquo;<br />        Title=&ldquo;MainWindow&rdquo; Height=&ldquo;350&rdquo; Width=&ldquo;525&rdquo;<br />        &gt;<br />    &lt;Window.DataContext&gt;<br />        &lt;local:SomeContextWithCollection/&gt;<br />    &lt;/Window.DataContext&gt;<br />    &lt;StackPanel&gt;<br />        &lt;ListBox DisplayMemberPath=&ldquo;Name&rdquo; ItemsSource=&quot;{Binding Items}&rdquo;/&gt;<br />        &lt;Button Click=&ldquo;Button_Click&rdquo;&gt;clear&lt;/Button&gt;<br />    &lt;/StackPanel&gt;<br />&lt;/Window&gt;<br /><br />//code behind<br />private void Button_Click(object sender, RoutedEventArgs e)<br />{<br />  (this.DataContext as SomeContextWithCollection).Items.Clear();<br />}<br /><br />public class SomeContextWithCollection <br />{<br />    public ObservableCollection&lt;SomeIEqutable&gt; Items { get; set; }<br /><br />    public SomeContextWithCollection()<br />    {<br />      Items = new ObservableCollection&lt;SomeIEqutable&gt;();<br />      Items.Add(new SomeIEqutable() { Name = &ldquo;1&rdquo; });<br />      Items.Add(new SomeIEqutable() { Name = &ldquo;2&rdquo; });<br />    }<br />}<br /><br />public class SomeIEqutable : IEquatable&lt;SomeIEqutable&gt;<br />{<br />  public string Name { get; set; }<br /><br />  public override bool Equals(object obj)<br />  {<br />    if (obj == null)<br />    {<br />      return false;<br />    }<br />          <br />    return Equals((SomeIEqutable)obj);<br />  }<br /><br />  public bool Equals(SomeIEqutable other)<br />  {<br />    if (object.ReferenceEquals(this, other))<br />    {<br />      return true;<br />    }<br /><br />    return Name == other.Name;<br />  }<br /><br />  public override int GetHashCode()<br />  {<br />    return Name.GetHashCode();<br />  }<br />}<br /></pre><br />When calling collection.Clear() I get an invalid cast inside my equals method, when trying to cast to SomeIEquatable.<br /><br />This is pretty strange, object is not null and not SomeIEquatlabe, how did it get to my Equals?<br /><br />The answer is WPF, when working with binding and clearing a bounded collection WPF will compare his internal new MSInternal.NamedObject(named DisconnectedItem) to your SomeIEquatable object and will fail if you try to implicitly cast it to your type.<br /><br />The simple solution is to use the &ldquo;as&rdquo; keyword istead of cast.<br /><br />If my code didn&rsquo;t smell from the start, I would never got to this dark place. But I&rsquo;m glad it happened, now I have another excuse to write defensive code.</p>
 
 
-    <div class="initial-content">
-      
-
-
-  
-    
-
-
-
-<nav class="breadcrumbs">
-  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
-    
-    
-    
-      
-        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="https://kinnrot.github.io/" itemprop="item"><span itemprop="name">Home</span></a>
-          <meta itemprop="position" content="1" />
-        </li>
-        <span class="sep">/</span>
-      
-      
-        <li class="current">WPF Binding and Why you should write defensive code.</li>
-      
-    
-  </ol>
-</nav>
-
-  
-
-
-<div id="main" role="main">
-  
-  <div class="sidebar sticky">
-  
-
-
-<div itemscope itemtype="https://schema.org/Person">
-
-  
-
-  <div class="author__content">
-    
-      <h3 class="author__name" itemprop="name"></h3>
-    
-    
   </div>
 
-  <div class="author__urls-wrapper">
-    <button class="btn btn--inverse">Follow</button>
-    <ul class="author__urls social-icons">
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      <!--
-  <li>
-    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
-      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
-    </a>
-  </li>
--->
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kinnrot.github.io/tags/binding/">Binding</a></li>
+      <li><a href="https://kinnrot.github.io/tags/iequatable/">IEquatable</a></li>
+      <li><a href="https://kinnrot.github.io/tags/wpf/">WPF</a></li>
     </ul>
-  </div>
-</div>
-
-  
-  </div>
-
-
-
-  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="WPF Binding and Why you should write defensive code.">
-    <meta itemprop="description" content="I’m overriding equals and implementing IEquatable on some of my objects and bind them as an ObservableCollection to the UI.Here is a sample: (ugly code do not use)&lt;pre class=&quot;brush: csharp;&quot;&gt;&lt;Window x:Class=”BindingToItemsWithIEquality.MainWindow”        xmlns=”http://schemas.microsoft.com/winfx/2006/xaml/presentation”        xmlns:x=”http://schemas.microsoft.com/winfx/2006/xaml”        xmlns:local=”clr-namespace:BindingToItemsWithIEquality”        Title=”MainWindow” Height=”350” Width=”525”        &gt;    &lt;Window.DataContext&gt;        &lt;local:SomeContextWithCollection/&gt;    &lt;/Window.DataContext&gt;    &lt;StackPanel&gt;        &lt;ListBox DisplayMemberPath=”Name” ItemsSource=”{Binding Items}”/&gt;        &lt;Button Click=”Button_Click”&gt;clear&lt;/Button&gt;    &lt;/StackPanel&gt;&lt;/Window&gt;//code behindprivate void Button_Click(object sender, RoutedEventArgs e){  (this.DataContext as SomeContextWithCollection).Items.Clear();}public class SomeContextWithCollection {    public ObservableCollection&lt;SomeIEqutable&gt; Items { get; set; }    public SomeContextWithCollection()    {      Items = new ObservableCollection&lt;SomeIEqutable&gt;();      Items.Add(new SomeIEqutable() { Name = “1” });      Items.Add(new SomeIEqutable() { Name = “2” });    }}public class SomeIEqutable : IEquatable&lt;SomeIEqutable&gt;{  public string Name { get; set; }  public override bool Equals(object obj)  {    if (obj == null)    {      return false;    }              return Equals((SomeIEqutable)obj);  }  public bool Equals(SomeIEqutable other)  {    if (object.ReferenceEquals(this, other))    {      return true;    }    return Name == other.Name;  }  public override int GetHashCode()  {    return Name.GetHashCode();  }}&lt;/pre&gt;When calling collection.Clear() I get an invalid cast inside my equals method, when trying to cast to SomeIEquatable.This is pretty strange, object is not null and not SomeIEquatlabe, how did it get to my Equals?The answer is WPF, when working with binding and clearing a bounded collection WPF will compare his internal new MSInternal.NamedObject(named DisconnectedItem) to your SomeIEquatable object and will fail if you try to implicitly cast it to your type.The simple solution is to use the “as” keyword istead of cast.If my code didn’t smell from the start, I would never got to this dark place. But I’m glad it happened, now I have another excuse to write defensive code.">
-    <meta itemprop="datePublished" content="January 06, 2011">
+  </footer>
+</article>
+    </main>
     
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kinnrot.github.io/">cdblg</a></span> · 
 
-
-    <div class="page__inner-wrap">
-      
-        <header>
-          <h1 class="page__title" itemprop="headline">WPF Binding and Why you should write defensive code.
-</h1>
-          
-            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
-
-
-
-
-  2 minute read
-
-</p>
-          
-
-        </header>
-      
-
-      <section class="page__content" itemprop="text">
-        I'm overriding equals and implementing IEquatable on some of my objects and bind them as an ObservableCollection to the UI.<br /><br />Here is a sample: (ugly code do not use)<br /><br /><pre class="brush: csharp;">&lt;Window x:Class="BindingToItemsWithIEquality.MainWindow"<br />        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"<br />        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"<br />        xmlns:local="clr-namespace:BindingToItemsWithIEquality"<br />        Title="MainWindow" Height="350" Width="525"<br />        &gt;<br />    &lt;Window.DataContext&gt;<br />        &lt;local:SomeContextWithCollection/&gt;<br />    &lt;/Window.DataContext&gt;<br />    &lt;StackPanel&gt;<br />        &lt;ListBox DisplayMemberPath="Name" ItemsSource="{Binding Items}"/&gt;<br />        &lt;Button Click="Button_Click"&gt;clear&lt;/Button&gt;<br />    &lt;/StackPanel&gt;<br />&lt;/Window&gt;<br /><br />//code behind<br />private void Button_Click(object sender, RoutedEventArgs e)<br />{<br />  (this.DataContext as SomeContextWithCollection).Items.Clear();<br />}<br /><br />public class SomeContextWithCollection <br />{<br />    public ObservableCollection&lt;SomeIEqutable&gt; Items { get; set; }<br /><br />    public SomeContextWithCollection()<br />    {<br />      Items = new ObservableCollection&lt;SomeIEqutable&gt;();<br />      Items.Add(new SomeIEqutable() { Name = "1" });<br />      Items.Add(new SomeIEqutable() { Name = "2" });<br />    }<br />}<br /><br />public class SomeIEqutable : IEquatable&lt;SomeIEqutable&gt;<br />{<br />  public string Name { get; set; }<br /><br />  public override bool Equals(object obj)<br />  {<br />    if (obj == null)<br />    {<br />      return false;<br />    }<br />          <br />    return Equals((SomeIEqutable)obj);<br />  }<br /><br />  public bool Equals(SomeIEqutable other)<br />  {<br />    if (object.ReferenceEquals(this, other))<br />    {<br />      return true;<br />    }<br /><br />    return Name == other.Name;<br />  }<br /><br />  public override int GetHashCode()<br />  {<br />    return Name.GetHashCode();<br />  }<br />}<br /></pre><br />When calling collection.Clear() I get an invalid cast inside my equals method, when trying to cast to SomeIEquatable.<br /><br />This is pretty strange, object is not null and not SomeIEquatlabe, how did it get to my Equals?<br /><br />The answer is WPF, when working with binding and clearing a bounded collection WPF will compare his internal new MSInternal.NamedObject(named DisconnectedItem) to your SomeIEquatable object and will fail if you try to implicitly cast it to your type.<br /><br />The simple solution is to use the "as" keyword istead of cast.<br /><br />If my code didn't smell from the start, I would never got to this dark place. But I'm glad it happened, now I have another excuse to write defensive code.
-        
-      </section>
-
-      <footer class="page__meta">
-        
-        
-  
-
-
-  
-  
-  
-
-  <p class="page__taxonomy">
-    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
-    <span itemprop="keywords">
-    
-      
-      
-      <a href="/tags/binding" class="page__taxonomy-item" rel="tag">Binding</a><span class="sep">, </span>
-    
-      
-      
-      <a href="/tags/iequatable" class="page__taxonomy-item" rel="tag">IEquatable</a><span class="sep">, </span>
-    
-      
-      
-      <a href="/tags/wpf" class="page__taxonomy-item" rel="tag">WPF</a>
-    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
-  </p>
-
-
-
-
-        
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2011-01-06T00:47:00+02:00">January 06, 2011</time></p>
-        
-
-      </footer>
-
-
-      <section class="page__share">
-  
-
-  <a href="https://twitter.com/intent/tweet?text=WPF+Binding+and+Why+you+should+write+defensive+code.%20https%3A%2F%2Fkinnrot.github.io%2Fwpf-binding-and-why-you-should-write%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
-
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fkinnrot.github.io%2Fwpf-binding-and-why-you-should-write%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
-
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fkinnrot.github.io%2Fwpf-binding-and-why-you-should-write%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
-</section>
-
-
-      
-  <nav class="pagination">
-    
-      <a href="/what-do-you-think/" class="pagination--pager" title="What do you think?
-">Previous</a>
-    
-    
-      <a href="/building-business-tier-with-nhibernate/" class="pagination--pager" title="Building a business tier with Nhibernate - Tools
-">Next</a>
-    
-  </nav>
-
-
-    </div>
-
-    
-      <div class="page__comments">
-  
-  
-      <h4 class="page__comments-title">Comments</h4>
-      <section id="disqus_thread"></section>
-    
-</div>
-
-    
-  </article>
-
-  
-  
-    <div class="page__related">
-      <h4 class="page__related-title">You May Also Enjoy</h4>
-      <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/rails-presentation-objects-guide/" rel="permalink">Rails Presentation Objects
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
 </a>
-      
-    </h2>
-    
-      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
 
-
-
-
-  7 minute read
-
-</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">If you ever used any MVC framework, I’m sure you asked yourself more than once, ‘Where should I put this piece of code?’ (If not that’s also fine).
-Well, the...</p>
-  </article>
-</div>
-
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
         
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/simulate-click-on-google-geo-chart/" rel="permalink">Simulate Click on Google Geo Chart
-</a>
-      
-    </h2>
-    
-      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
-
-
-
-
-  1 minute read
-
-</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">So I found out it’s not so documented, hopefully google will index this.
-I have a page on my  system that shows a google geo chart (same as this)
-When clicki...</p>
-  </article>
-</div>
-
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
         
-          
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
 
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
 
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/keep-track-on-coverage/" rel="permalink">Keep Track on Coverage
-</a>
-      
-    </h2>
-    
-      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
-
-
-
-
-  1 minute read
-
-</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">Recently I discovered Danger, an amazing tool you should check out no matter what.
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/building-your-own-rails-form-builder/" rel="permalink">Building your own rails form builder
-</a>
-      
-    </h2>
-    
-      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
-
-
-
-
-  3 minute read
-
-</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">If you’re building forms with rails, whether you’re using a gem for it or working with pure rails forms, you should know this.
-</p>
-  </article>
-</div>
-
-        
-      </div>
-    </div>
-  
-</div>
-<div id="codefund_ad"></div>
-<script src="https://codefund.io/scripts/15927f6c-5043-4514-b0d2-ce3b9090ae4c/embed.js?template=bottom-bar"></script>
-
-    </div>
-
-    
-
-    <div id="footer" class="page__footer">
-      <footer>
-        <!-- start custom footer snippets -->
-
-<!-- end custom footer snippets -->
-        <div class="page__footer-follow">
-  <ul class="social-icons">
-    
-
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-
-    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
-  </ul>
-</div>
-
-<div class="page__footer-copyright">&copy; 2020 Chen Kinnrot. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
-
-      </footer>
-    </div>
-
-    
-  <script src="/assets/js/main.min.js"></script>
-  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
-
-
-
-
-
-
-
-  <script>
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-103259749-1']);
-  
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
 </script>
-
-
-
-
-
-
-    
-  <script>
-    var disqus_config = function () {
-      this.page.url = "https://kinnrot.github.io/wpf-binding-and-why-you-should-write/";  /* Replace PAGE_URL with your page's canonical URL variable */
-      this.page.identifier = "/wpf-binding-and-why-you-should-write"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
     };
-    (function() { /* DON'T EDIT BELOW THIS LINE */
-      var d = document, s = d.createElement('script');
-      s.src = 'https://cdblg.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-    })();
-  </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
 
-  
+</script>
+</body>
 
-
-
-
-
-  </body>
 </html>

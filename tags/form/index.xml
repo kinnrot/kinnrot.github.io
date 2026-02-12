@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Form on cdblg</title>
+    <link>https://kinnrot.github.io/tags/form/</link>
+    <description>Recent content in Form on cdblg</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 07 Aug 2019 00:00:00 +0300</lastBuildDate>
+    <atom:link href="https://kinnrot.github.io/tags/form/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building your own rails form builder</title>
+      <link>https://kinnrot.github.io/building-your-own-rails-form-builder/</link>
+      <pubDate>Wed, 07 Aug 2019 00:00:00 +0300</pubDate>
+      <guid>https://kinnrot.github.io/building-your-own-rails-form-builder/</guid>
+      <description>&lt;p&gt;If you&amp;rsquo;re building forms with rails, whether you&amp;rsquo;re using a gem for it or working with pure rails forms, you should know this.&lt;/p&gt;
+&lt;p&gt;Rails uses form builder to allow you to call all the standard label/input/select methods, the exact class name is&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ActionView::Helpers::FormBuilder&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;When calling &amp;lsquo;form_for&amp;rsquo; you get a fresh instance of this FormBuilder which allows you to define your form elements.&lt;/p&gt;
+&lt;p&gt;Lets say you wanna add another reusable form element, for example a form section with title that uses your own custom style/classes.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Thread on cdblg</title>
+    <link>https://kinnrot.github.io/tags/thread/</link>
+    <description>Recent content in Thread on cdblg</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 26 Sep 2012 09:40:00 -0700</lastBuildDate>
+    <atom:link href="https://kinnrot.github.io/tags/thread/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Avoid usage of AsyncTask Class on android</title>
+      <link>https://kinnrot.github.io/avoid-usage-of-asynctask-class-on/</link>
+      <pubDate>Wed, 26 Sep 2012 09:40:00 -0700</pubDate>
+      <guid>https://kinnrot.github.io/avoid-usage-of-asynctask-class-on/</guid>
+      <description>&lt;div&gt;&lt;p&gt;Just noticed this method available from API 11 only,&amp;nbsp; so you should find another implementation to avoid unexpected behaviour.&lt;/p&gt;&lt;p&gt;Or don&#39;t call the execute method,&amp;#160; why?&amp;#160; If you&#39;ll check documentation you&#39;ll see that in some versions of android all tasks will run synchronouslly on the same background thread and on some versions it&#39;ll run on a pool of threads. Always use the executeOnExecutor option for consistent behaviour between platform version and avoid unexpected behaviour.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
