@@ -6,8 +6,18 @@
     <description>Recent content in Android on cdblg</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 25 Oct 2018 18:43:04 +0300</lastBuildDate>
+    <lastBuildDate>Wed, 11 Feb 2026 12:00:00 +0200</lastBuildDate>
     <atom:link href="https://kinnrot.github.io/tags/android/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Android Development: The State of Compose in 2026</title>
+      <link>https://kinnrot.github.io/android-compose-2026/</link>
+      <pubDate>Wed, 11 Feb 2026 12:00:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/android-compose-2026/</guid>
+      <description>&lt;p&gt;Looking back at the XML days of Android development feels like looking at black-and-white television. It worked, but boy, was it clunky.&lt;/p&gt;
+&lt;p&gt;Today, in 2026, Jetpack Compose isn&amp;rsquo;t just &amp;ldquo;the new way&amp;rdquo;—it&amp;rsquo;s the &lt;em&gt;only&lt;/em&gt; way that makes sense for modern Android apps.&lt;/p&gt;
+&lt;h3 id=&#34;declarative-is-king&#34;&gt;Declarative is King&lt;/h3&gt;
+&lt;p&gt;The shift from imperative (&amp;ldquo;find this view and set its text&amp;rdquo;) to declarative (&amp;ldquo;here is the state, describe how it looks&amp;rdquo;) has probably saved me thousands of hours of debugging weird UI states. No more &lt;code&gt;null&lt;/code&gt; view references. No more &lt;code&gt;findViewById&lt;/code&gt;.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Android Lifecycle Aware Modal</title>
       <link>https://kinnrot.github.io/android-lifecycle-aware-modal/</link>

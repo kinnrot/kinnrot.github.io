@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Product on cdblg</title>
+    <link>https://kinnrot.github.io/tags/product/</link>
+    <description>Recent content in Product on cdblg</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 11 Feb 2026 14:00:00 +0200</lastBuildDate>
+    <atom:link href="https://kinnrot.github.io/tags/product/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Art of Saying &#39;No&#39; to a Feature</title>
+      <link>https://kinnrot.github.io/art-of-saying-no-features/</link>
+      <pubDate>Wed, 11 Feb 2026 14:00:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/art-of-saying-no-features/</guid>
+      <description>&lt;p&gt;As developers, we like to build things. When a product manager or a user asks for a feature, our natural response is &amp;ldquo;Sure, I can do that in two days.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;But every &amp;ldquo;Yes&amp;rdquo; is a commitment to maintain that code forever.&lt;/p&gt;
+&lt;h3 id=&#34;the-feature-creep-trap&#34;&gt;The Feature Creep Trap&lt;/h3&gt;
+&lt;p&gt;The most successful products aren&amp;rsquo;t the ones with the &lt;em&gt;most&lt;/em&gt; features; they&amp;rsquo;re the ones with the &lt;em&gt;right&lt;/em&gt; features. Every button you add to a UI makes every other button slightly less important. Every branch in your code makes the next bug slightly harder to find.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

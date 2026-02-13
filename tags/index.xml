@@ -6,13 +6,160 @@
     <description>Recent content in Tags on cdblg</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 18 Jun 2022 20:13:46 +0300</lastBuildDate>
+    <lastBuildDate>Fri, 13 Feb 2026 10:00:00 +0200</lastBuildDate>
     <atom:link href="https://kinnrot.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ai</title>
+      <link>https://kinnrot.github.io/tags/ai/</link>
+      <pubDate>Fri, 13 Feb 2026 10:00:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/tags/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cloud</title>
+      <link>https://kinnrot.github.io/tags/cloud/</link>
+      <pubDate>Fri, 13 Feb 2026 10:00:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/tags/cloud/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hosting</title>
+      <link>https://kinnrot.github.io/tags/hosting/</link>
+      <pubDate>Fri, 13 Feb 2026 10:00:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/tags/hosting/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Openclaw</title>
+      <link>https://kinnrot.github.io/tags/openclaw/</link>
+      <pubDate>Fri, 13 Feb 2026 10:00:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/tags/openclaw/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Self-Hosted</title>
+      <link>https://kinnrot.github.io/tags/self-hosted/</link>
+      <pubDate>Fri, 13 Feb 2026 10:00:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/tags/self-hosted/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Engineering</title>
       <link>https://kinnrot.github.io/tags/engineering/</link>
-      <pubDate>Sat, 18 Jun 2022 20:13:46 +0300</pubDate>
+      <pubDate>Wed, 11 Feb 2026 14:00:00 +0200</pubDate>
       <guid>https://kinnrot.github.io/tags/engineering/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Philosophy</title>
+      <link>https://kinnrot.github.io/tags/philosophy/</link>
+      <pubDate>Wed, 11 Feb 2026 14:00:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/tags/philosophy/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Product</title>
+      <link>https://kinnrot.github.io/tags/product/</link>
+      <pubDate>Wed, 11 Feb 2026 14:00:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/tags/product/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Startups</title>
+      <link>https://kinnrot.github.io/tags/startups/</link>
+      <pubDate>Wed, 11 Feb 2026 14:00:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/tags/startups/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ci-Cd</title>
+      <link>https://kinnrot.github.io/tags/ci-cd/</link>
+      <pubDate>Wed, 11 Feb 2026 13:00:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/tags/ci-cd/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Devops</title>
+      <link>https://kinnrot.github.io/tags/devops/</link>
+      <pubDate>Wed, 11 Feb 2026 13:00:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/tags/devops/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Process</title>
+      <link>https://kinnrot.github.io/tags/process/</link>
+      <pubDate>Wed, 11 Feb 2026 13:00:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/tags/process/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Android</title>
+      <link>https://kinnrot.github.io/tags/android/</link>
+      <pubDate>Wed, 11 Feb 2026 12:00:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/tags/android/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Jetpack-Compose</title>
+      <link>https://kinnrot.github.io/tags/jetpack-compose/</link>
+      <pubDate>Wed, 11 Feb 2026 12:00:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/tags/jetpack-compose/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Kotlin</title>
+      <link>https://kinnrot.github.io/tags/kotlin/</link>
+      <pubDate>Wed, 11 Feb 2026 12:00:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/tags/kotlin/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Mobile</title>
+      <link>https://kinnrot.github.io/tags/mobile/</link>
+      <pubDate>Wed, 11 Feb 2026 12:00:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/tags/mobile/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Architecture</title>
+      <link>https://kinnrot.github.io/tags/architecture/</link>
+      <pubDate>Wed, 11 Feb 2026 11:00:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/tags/architecture/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Clean-Code</title>
+      <link>https://kinnrot.github.io/tags/clean-code/</link>
+      <pubDate>Wed, 11 Feb 2026 11:00:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/tags/clean-code/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Rails</title>
+      <link>https://kinnrot.github.io/tags/rails/</link>
+      <pubDate>Wed, 11 Feb 2026 11:00:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/tags/rails/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ruby</title>
+      <link>https://kinnrot.github.io/tags/ruby/</link>
+      <pubDate>Wed, 11 Feb 2026 11:00:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/tags/ruby/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Maintenance</title>
+      <link>https://kinnrot.github.io/tags/maintenance/</link>
+      <pubDate>Wed, 11 Feb 2026 10:00:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/tags/maintenance/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Productivity</title>
+      <link>https://kinnrot.github.io/tags/productivity/</link>
+      <pubDate>Wed, 11 Feb 2026 10:00:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/tags/productivity/</guid>
       <description></description>
     </item>
     <item>
@@ -51,13 +198,6 @@
       <description></description>
     </item>
     <item>
-      <title>Startups</title>
-      <link>https://kinnrot.github.io/tags/startups/</link>
-      <pubDate>Thu, 03 Mar 2022 23:19:59 +0200</pubDate>
-      <guid>https://kinnrot.github.io/tags/startups/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Mvc</title>
       <link>https://kinnrot.github.io/tags/mvc/</link>
       <pubDate>Sun, 23 Feb 2020 09:19:37 +0200</pubDate>
@@ -69,13 +209,6 @@
       <link>https://kinnrot.github.io/tags/presenter/</link>
       <pubDate>Sun, 23 Feb 2020 09:19:37 +0200</pubDate>
       <guid>https://kinnrot.github.io/tags/presenter/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Rails</title>
-      <link>https://kinnrot.github.io/tags/rails/</link>
-      <pubDate>Sun, 23 Feb 2020 09:19:37 +0200</pubDate>
-      <guid>https://kinnrot.github.io/tags/rails/</guid>
       <description></description>
     </item>
     <item>
@@ -170,20 +303,6 @@
       <description></description>
     </item>
     <item>
-      <title>Ruby</title>
-      <link>https://kinnrot.github.io/tags/ruby/</link>
-      <pubDate>Wed, 07 Aug 2019 00:00:00 +0300</pubDate>
-      <guid>https://kinnrot.github.io/tags/ruby/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Android</title>
-      <link>https://kinnrot.github.io/tags/android/</link>
-      <pubDate>Thu, 25 Oct 2018 18:43:04 +0300</pubDate>
-      <guid>https://kinnrot.github.io/tags/android/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Arch</title>
       <link>https://kinnrot.github.io/tags/arch/</link>
       <pubDate>Thu, 25 Oct 2018 18:43:04 +0300</pubDate>
@@ -202,13 +321,6 @@
       <link>https://kinnrot.github.io/tags/bluehost/</link>
       <pubDate>Mon, 10 Sep 2018 21:35:12 +0300</pubDate>
       <guid>https://kinnrot.github.io/tags/bluehost/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Hosting</title>
-      <link>https://kinnrot.github.io/tags/hosting/</link>
-      <pubDate>Mon, 10 Sep 2018 21:35:12 +0300</pubDate>
-      <guid>https://kinnrot.github.io/tags/hosting/</guid>
       <description></description>
     </item>
     <item>

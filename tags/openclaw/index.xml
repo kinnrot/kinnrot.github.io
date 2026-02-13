@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Openclaw on cdblg</title>
+    <link>https://kinnrot.github.io/tags/openclaw/</link>
+    <description>Recent content in Openclaw on cdblg</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 13 Feb 2026 10:00:00 +0200</lastBuildDate>
+    <atom:link href="https://kinnrot.github.io/tags/openclaw/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Best Ways to Run OpenClaw in the Cloud (2026 Edition)</title>
+      <link>https://kinnrot.github.io/run-openclaw-cloud-2026/</link>
+      <pubDate>Fri, 13 Feb 2026 10:00:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/run-openclaw-cloud-2026/</guid>
+      <description>&lt;p&gt;If you&amp;rsquo;ve been following the AI agent space lately, you know that &lt;strong&gt;OpenClaw&lt;/strong&gt; (the project formerly known as Clawdbot and briefly Moltbot) has become the gold standard for self-hosted autonomous assistants.&lt;/p&gt;
+&lt;p&gt;While running it on your local machine is great for testing, the real power of OpenClaw comes when it&amp;rsquo;s running 24/7 in the cloud. Whether it&amp;rsquo;s managing your WhatsApp messages while you sleep or executing long-running web automations, a cloud VPS is the way to go.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

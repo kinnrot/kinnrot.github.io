@@ -131,6 +131,101 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Keep Track on Coverage
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Recently I discovered Danger, an amazing tool you should check out no matter what.
+I can write a ton of use cases that serves me on my day to day work, but let’s start with one which I like a lot.
+Do you know how much of your code is covered by tests?
+Do you keep track on how your code coverage changes over time ?
+I didn’t till I installed a simple danger plugin called ‘danger-simplecov_json’, It’s a ruby gem it’s configuration is super easy (check this link to the gem), Once you configure Danger on your CI or locally, you can see after each build (spec run or whatever you use) the percentage of code coverage.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2020-01-21 17:40:16 +0200 IST'>January 21, 2020</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Keep Track on Coverage" href="https://kinnrot.github.io/keep-track-on-coverage/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Building your own rails form builder
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>If you’re building forms with rails, whether you’re using a gem for it or working with pure rails forms, you should know this.
+Rails uses form builder to allow you to call all the standard label/input/select methods, the exact class name is
+ActionView::Helpers::FormBuilder
+When calling ‘form_for’ you get a fresh instance of this FormBuilder which allows you to define your form elements.
+Lets say you wanna add another reusable form element, for example a form section with title that uses your own custom style/classes.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2019-08-07 00:00:00 +0300 IDT'>August 7, 2019</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Building your own rails form builder" href="https://kinnrot.github.io/building-your-own-rails-form-builder/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Android Lifecycle Aware Modal
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Sometimes we want to show the user an alert when somethings wrong or we just need to give some extra info, For example; Ask the user if he is sure he wanna leave the app.
+This can be achieved with the following code (runs inside activity):
+AlertDialog.Builder(this) .setMessage(&#34;Are you sure you want to exit?&#34;) .setCancelable(false) .setPositiveButton(&#34;Yes&#34;, object:DialogInterface.OnClickListener() { fun onClick(dialog:DialogInterface, id:Int) { this@YourActivity.finish() } }) .setNegativeButton(&#34;No&#34;, null) .show() This works fine, buy there is one annoying issue, If user clicks home button while dialog displayed, and go back to the app, the dialog will still be there. Now your user experience is seeing a question about getting out of the app while he just went in.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2018-10-25 18:43:04 +0300 IDT'>October 25, 2018</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Android Lifecycle Aware Modal" href="https://kinnrot.github.io/android-lifecycle-aware-modal/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Live Data Pitfall You Should Be Aware Of
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>When working with MutableLiveData you can update the observable value in 2 ways:
+setValue postValue Both will update the live data value as expected as long as your code is running from the main thread.
+If you need to update a value from other thread you can use the postValue which is thread safe, and will make sure to notify observers on main thread.
+This is all nice, but be aware!
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2018-10-22 08:12:18 +0300 IDT'>October 22, 2018</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Live Data Pitfall You Should Be Aware Of" href="https://kinnrot.github.io/live-data-pitfall-you-should-be-aware-of/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Choosing the Right WordPress Hosting Service
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>I needed to choose WordPress hosting service for some of clients and decided to do some research to figure out what’s best value for each client needs.
+There are many service providers in this area, After lots of googling I decided to focus on the following:
+WordPress BlueHost Kinsta WordPress If you’re building a new site/blog without any technical knowledge, WordPress is the right place for you, owned by the official word press organization offering limited capabilities cheap plans, and more expensive plans with more options like upload a custom theme, and charging money via paypal.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2018-09-10 21:35:12 +0300 IDT'>September 10, 2018</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Choosing the Right WordPress Hosting Service" href="https://kinnrot.github.io/choosing-the-right-wordpress-hosting-service/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">From jQuery to Stimulus
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>I tried to build an SPA without a shiny client side framework, I wanted to build something fast with good user experience and keeping it as simple as possible.
+I decided to take rails, use turbolinks and a avoid javascript till its a must.
+It didn’t take more than a few hours and I found myself writing javascript. What I needed to do is simple, I had an input with number, and 2 buttons next to it, one to increase values by 1 and on to decrease it looked like this:
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2018-05-22 12:10:10 +0300 IDT'>May 22, 2018</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to From jQuery to Stimulus" href="https://kinnrot.github.io/from-jquery-to-stimulus/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Ruby async await
     </h2>
   </header>
@@ -199,137 +294,6 @@ And best part, my code that consume the data, didn’t change because of the [] 
   </div>
   <footer class="entry-footer"><span title='2017-06-05 05:11:00.001 -0700 -0700'>June 5, 2017</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
   <a class="entry-link" aria-label="post link to Ruby Lazy chunked hash like behavior" href="https://kinnrot.github.io/ruby-lazy-chunked-hash-like-behavior/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Rubymine on OSX memory issues
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>I found this only today, you should run Rubymine as 32 bit process.
-It works much faster and consume half the memory.
-To set this got to the Applicaitons folder right click on rubymine-&gt;get info and check the “open in 32 bit mode”
-Thats all!
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2015-01-06 13:32:00.001 -0800 -0800'>January 6, 2015</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to Rubymine on OSX memory issues" href="https://kinnrot.github.io/rubymine-on-osx/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Use FactoryGirl And Faker for easy data generation in unit testing (Part1)
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>The most irritating thing in writing tests is the data generation preparation process, sometimes you want to create an object with 20 fields that 10 of them are mandatory but you only care about the value of 1, and you don’t want to mock, cause you interact with other methods and object that fetch this model from db.
-To me it happens a lot so I found the FactoryGirl &#43; Faker combination that made my life much more easy and now I can write tests in peace.
-To add them just put in Gemfile:
-gem “factory_girl_rails”, “~&gt; 4.0”
-gem “faker”
-So lets take a complex sample to explain all there is to know.
-We have a User, the User belongs to a Company, User has many tasks.
-Company has many irritating mandatory fields
-Lets define the Company Factory:
-FactoryGirl.define do
-factory :company do
-name {Faker::Name.name}
-trp {Faker::Number.between(0,10)}
-grp {Faker::Number.between(0,5)}
-budget {Faker::Number.number(4)}
-cpm {Faker::Number.between(1,70)}
-trp_price {Faker::Number.between(100,700)}
-viewer {Faker::Number.between(0,100000)}
-total_viewer {Faker::Number.between(0,200000)}
-unique_viewer {Faker::Number.between(0,50000)}
-spots {Faker::Number.between(0,1000)}
-end
-end
-As you can see I define lots of fields with random values.
-Now we can create a company by writing
-create(:company)Or just build one (without save to db) by calling
-build(:company) That’s all for now, I’ll continue in part2.
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2014-11-15 07:52:00.001 -0800 -0800'>November 15, 2014</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to Use FactoryGirl And Faker for easy data generation in unit testing (Part1)" href="https://kinnrot.github.io/use-factorygirl-and-faker-for-easy-data/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Get the user locale from http headers
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>If you want to provide default localization support for guest user in your website yo can locate their browser locale by the following code:
-def extract_locale_from_header
-unless request.env[‘HTTP_ACCEPT_LANGUAGE’].nil?
-return request.env[‘HTTP_ACCEPT_LANGUAGE’].scan(/^[a-z]{2}/).first
-end
-‘en’
-end
-This way you can determine on server side the locale of the user currently entered your site.
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2014-11-15 07:42:00.001 -0800 -0800'>November 15, 2014</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to Get the user locale from http headers" href="https://kinnrot.github.io/get-user-locale-from-http-headers/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Dedicating a DJ(Delayed job) worker to a specific queue in heroku.
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Let’s say you have a vey important procedure that takes a while, and you need to process it in background, but you still want to execute ASAP.
-I’m using Delayed Job on Heroku, and could not find a lot of tutorials to do this simple task.
-So here is the simplest way to achieve this ability, you can raise a process/deamon that will have only one queue to work on. (Dealyed job worker by default is queue agnostic, just process all jobs)
-In procfile:
-urgentworker: QUEUE=urgent bundle exec rake jobs:work
-You can call the worker in any name you want and even define multiple workers for multiple queues.
-And in the “urgent” job just define the queue name to be “urgent” the worker will process only jobs in this queue.
-example:
-handle_asynchronously :some_job, :queue =&gt; “urgent’
-This will also work for Resque.
-Notice that for rescue you can write QUEUE=* but for delayed job you can’t.
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2014-11-15 07:34:00.002 -0800 -0800'>November 15, 2014</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to Dedicating a DJ(Delayed job) worker to a specific queue in heroku." href="https://kinnrot.github.io/dedicating-djdelayed-job-worker-to/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Overriding default id in mongoid
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>This is an easy one, just want to make sure it’s clear.
-Add the following field to your model:
-field :_id, type: Moped::BSON::ObjectId
-And to allow setting it:
-1 def id=(id)
-2 self[:_id] = id
-3 end
-Now you can just do obj.id=[Some ObjectId] and save the object.
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2014-11-15 07:20:00 -0800 -0800'>November 15, 2014</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to Overriding default id in mongoid" href="https://kinnrot.github.io/overriding-default-id-in-mongoid/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Nice post about cyber war
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Popular Science: The War Of Zeros And Ones. http://google.com/newsstand/s/CBIwvZm5zho
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2014-10-05 00:42:00.001 -0700 -0700'>October 5, 2014</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to Nice post about cyber war" href="https://kinnrot.github.io/nice-post-about-cyber-war/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

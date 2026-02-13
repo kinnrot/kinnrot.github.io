@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Clean-Code on cdblg</title>
+    <link>https://kinnrot.github.io/tags/clean-code/</link>
+    <description>Recent content in Clean-Code on cdblg</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 11 Feb 2026 11:00:00 +0200</lastBuildDate>
+    <atom:link href="https://kinnrot.github.io/tags/clean-code/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Why I still prefer Thin Models in Rails</title>
+      <link>https://kinnrot.github.io/why-thin-models-rails/</link>
+      <pubDate>Wed, 11 Feb 2026 11:00:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/why-thin-models-rails/</guid>
+      <description>&lt;p&gt;&amp;ldquo;Fat models, skinny controllers.&amp;rdquo; That was the mantra for years. But if you&amp;rsquo;ve ever worked on a Rails app that&amp;rsquo;s more than two years old, you know where that leads: a &lt;code&gt;User.rb&lt;/code&gt; file that&amp;rsquo;s 2,000 lines long and handles everything from authentication to generating PDF invoices.&lt;/p&gt;
+&lt;h3 id=&#34;the-problem-with-fat-models&#34;&gt;The Problem with Fat Models&lt;/h3&gt;
+&lt;p&gt;When a model knows too much, it becomes impossible to test in isolation. You want to test a simple validation, but you end up triggering five callbacks that send emails and ping Slack hooks.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

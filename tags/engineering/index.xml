@@ -6,8 +6,37 @@
     <description>Recent content in Engineering on cdblg</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 18 Jun 2022 20:13:46 +0300</lastBuildDate>
+    <lastBuildDate>Wed, 11 Feb 2026 14:00:00 +0200</lastBuildDate>
     <atom:link href="https://kinnrot.github.io/tags/engineering/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Art of Saying &#39;No&#39; to a Feature</title>
+      <link>https://kinnrot.github.io/art-of-saying-no-features/</link>
+      <pubDate>Wed, 11 Feb 2026 14:00:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/art-of-saying-no-features/</guid>
+      <description>&lt;p&gt;As developers, we like to build things. When a product manager or a user asks for a feature, our natural response is &amp;ldquo;Sure, I can do that in two days.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;But every &amp;ldquo;Yes&amp;rdquo; is a commitment to maintain that code forever.&lt;/p&gt;
+&lt;h3 id=&#34;the-feature-creep-trap&#34;&gt;The Feature Creep Trap&lt;/h3&gt;
+&lt;p&gt;The most successful products aren&amp;rsquo;t the ones with the &lt;em&gt;most&lt;/em&gt; features; they&amp;rsquo;re the ones with the &lt;em&gt;right&lt;/em&gt; features. Every button you add to a UI makes every other button slightly less important. Every branch in your code makes the next bug slightly harder to find.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Is Your CI/CD Actually Continuous?</title>
+      <link>https://kinnrot.github.io/is-your-cicd-actually-continuous/</link>
+      <pubDate>Wed, 11 Feb 2026 13:00:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/is-your-cicd-actually-continuous/</guid>
+      <description>&lt;p&gt;I see many teams claim they have &amp;ldquo;CI/CD&amp;rdquo; because they have a Jenkins or GitHub Actions pipeline that runs tests. But if your process involves a &amp;ldquo;Freeze Week&amp;rdquo; or a &amp;ldquo;Manual QA Sign-off&amp;rdquo; that takes 3 days, you don&amp;rsquo;t have CI/CD. You have an automated build process.&lt;/p&gt;
+&lt;h3 id=&#34;the-goal-confidence&#34;&gt;The Goal: Confidence&lt;/h3&gt;
+&lt;p&gt;The goal of CI/CD isn&amp;rsquo;t to run scripts. It&amp;rsquo;s to give the team enough &lt;strong&gt;confidence&lt;/strong&gt; that a commit can go to production without human intervention.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>The Hidden Cost of &#39;Just One More Dependency&#39;</title>
+      <link>https://kinnrot.github.io/hidden-cost-of-dependencies/</link>
+      <pubDate>Wed, 11 Feb 2026 10:00:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/hidden-cost-of-dependencies/</guid>
+      <description>&lt;p&gt;We&amp;rsquo;ve all been there. You&amp;rsquo;re working on a feature, and you need to parse some weirdly formatted date or handle a complex file upload. Your first instinct? &lt;code&gt;npm install&lt;/code&gt; or &lt;code&gt;bundle add&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;It feels like winning. Someone else already solved this problem! Why should I reinvent the wheel?&lt;/p&gt;
+&lt;h3 id=&#34;the-free-wheel&#34;&gt;The &amp;ldquo;Free&amp;rdquo; Wheel&lt;/h3&gt;
+&lt;p&gt;But here&amp;rsquo;s the thing: every dependency you add is a liability. It&amp;rsquo;s code you didn&amp;rsquo;t write, but code you now own. You own its bugs, its security vulnerabilities, and its breaking changes when it decides to &amp;ldquo;improve&amp;rdquo; its API.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Why focus on why</title>
       <link>https://kinnrot.github.io/freedom-and-trust/</link>

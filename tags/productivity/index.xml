@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Productivity on cdblg</title>
+    <link>https://kinnrot.github.io/tags/productivity/</link>
+    <description>Recent content in Productivity on cdblg</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 11 Feb 2026 10:00:00 +0200</lastBuildDate>
+    <atom:link href="https://kinnrot.github.io/tags/productivity/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Hidden Cost of &#39;Just One More Dependency&#39;</title>
+      <link>https://kinnrot.github.io/hidden-cost-of-dependencies/</link>
+      <pubDate>Wed, 11 Feb 2026 10:00:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/hidden-cost-of-dependencies/</guid>
+      <description>&lt;p&gt;We&amp;rsquo;ve all been there. You&amp;rsquo;re working on a feature, and you need to parse some weirdly formatted date or handle a complex file upload. Your first instinct? &lt;code&gt;npm install&lt;/code&gt; or &lt;code&gt;bundle add&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;It feels like winning. Someone else already solved this problem! Why should I reinvent the wheel?&lt;/p&gt;
+&lt;h3 id=&#34;the-free-wheel&#34;&gt;The &amp;ldquo;Free&amp;rdquo; Wheel&lt;/h3&gt;
+&lt;p&gt;But here&amp;rsquo;s the thing: every dependency you add is a liability. It&amp;rsquo;s code you didn&amp;rsquo;t write, but code you now own. You own its bugs, its security vulnerabilities, and its breaking changes when it decides to &amp;ldquo;improve&amp;rdquo; its API.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

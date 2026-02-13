@@ -131,6 +131,339 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Prevent setting a property value after already been set
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Let’s say we write an infrastructure of entities and their interaction with Nhibernate and the rest of the server side logic.
+We want Nhibernate to do whatever it needs. But we also want to limit the application programmer from doing crazy things, for example: Setting the Unique Identifier of an existing entity to another value. I know it sounds crazy but in a medium-sized team, anything can happen and this stuff is critical for the future.
+So I thought about a very KIS way to implement this kind of protection.
+* What I write here is the most readable version of my code, you can extract method, use interceptor, AOP, whatever works for you.
+private long _id;
+public long ID
+{
+get { return _id; }
+set
+{
+if (!_id.Equals(default(long)) &amp;&amp; !_id.Equals(value))
+{
+throw new InvalidOperationException(
+“You can’t set this property, it has already been set”);
+}
+_id = value;
+}
+}
+Very simple, easy to test, and it works with NHibernate proxy.
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2011-04-04 08:52:00 -0700 -0700'>April 4, 2011</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Prevent setting a property value after already been set" href="https://kinnrot.github.io/preventing-from-setting-property-value/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Per DB Conventions With FluentNhibernate
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>I need to support 2 db types on my app, so I thought about a nice pattern that will help me achieve this.
+// I’m working with latest Fluent Nhibernate version.
+Define a folder for each db type you want to support like this:
+contain conventions for MSSQLCE and the second will contain conventions for OracleClient.
+For example: Oracle support schemas and sequences, SQLCE does not. lets define some simple conventions
+For Oracle:
+public class SchemaConvention : IClassConvention
+{
+public void Apply(IClassInstance instance)
+{
+instance.Schema(“MY_ORACLE_SPECIFIC_SCHEMA”);
+}
+}
+public class SequenceConvention : IIdConvention
+{
+public void Apply(IIdentityInstance instance)
+{
+instance.GeneratedBy.Sequence(instance.Columns.First().Name &#43; “_SEQ”);
+}
+}
+And for SqlCe:
+class IdentityConvention : IIdConvention
+{
+public void Apply(IIdentityInstance instance)
+{
+instance.GeneratedBy.Identity();
+}
+}
+So the folders will look like this:
+Next thing that we will need is some kind of type retriever that knows what conventions to load according to the db we are currently configuring his nhibernate stuff.
+Lets call it PerDBConventionSource and this is how its implemented:
+internal class PerDBConventionSource : ITypeSource
+{
+private readonly string _name;
+private IEnumerable&lt;Type&gt; _types;
+public PerDBConventionSource(string name)
+{
+_name = name;
+}
+public IEnumerable&lt;Type&gt; GetTypes()
+{
+_types = typeof (PerDBConventionSource).Assembly.GetTypes().Where(t =&gt; t.Namespace.EndsWith(_name));
+return _types;
+}
+/// &lt;summary&gt;
+/// Logs the activity of this type source.
+/// &lt;/summary&gt;
+/// &lt;param name=“logger”&gt;The logger.&lt;/param&gt;
+public void LogSource(IDiagnosticLogger logger)
+{
+// TODO : Log if you want
+}
+public string GetIdentifier()
+{
+return _name;
+}
+}
+Notice that i’m implementing ITypeSource, an interface belong to FluentNhibernate, this is how i tell FluentNhibernate to use this as a convention source: (I used only fluentMappings so I add the conventions only on fluentMappings)
+private static IPersistenceConfigurer _persistenceConfigurer;
+private static void ConfigureNH(IPersistenceConfigurer persistenceConfigurer)
+{
+_persistenceConfigurer = persistenceConfigurer;
+Fluently.
+Configure().
+Database(persistenceConfigurer).
+Diagnostics(x =&gt; x.Enable(true).OutputToConsole()).
+Mappings(SomeMappings).
+BuildConfiguration();
+}
+private static void SomeMappings(MappingConfiguration mappingConfiguration)
+{
+string name = _persistenceConfigurer.GetType().Name.Replace(“Configuration”, string.Empty);
+mappingConfiguration.FluentMappings.Conventions.AddSource(new PerDBConventionSource(name));
+}
+So when I’ll run the following code:
+Console.BackgroundColor = ConsoleColor.DarkGreen;
+Console.ForegroundColor= ConsoleColor.Green;
+ConfigureNH(OracleClientConfiguration.Oracle10.ConnectionString(“some OracleClient connection”));
+Console.BackgroundColor = ConsoleColor.DarkBlue;
+Console.ForegroundColor = ConsoleColor.Blue;
+ConfigureNH(MsSqlCeConfiguration.Standard.ConnectionString(“some MsSqlCe connection”));
+The result will be
+Why you should use his pattern anyway(even if you work with 1 db):
+1. unit testing with sqlite in memory will not work with sequence conventions, so you shouldn’t load them when you are unit testing.
+2. If you’ll some day change the db type, you’ll know where to add its own conventions, just create a folder with db name and add it’s conventions inside no other change is necessary.
+You can find the source here:
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2011-02-18 11:30:00 -0800 -0800'>February 18, 2011</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Per DB Conventions With FluentNhibernate" href="https://kinnrot.github.io/per-db-conventions-with/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Building a business tier with Nhibernate - Tools
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>I got a new task: Build Nhibernate based infrastructure, so I decided to check the existing third party tools and my boss gave me a day at home to check them ;-D .
+I only check tools that:
+based on existing DB support oracle works with NH 3First tool I got my hands on is NH3SQLLogger NH3SQLLogger - Nhibernate 3 SQL logger, this is a cool utility that will help you understand what the hell nhibernate is doing , where he is doing his stuff (yes yes a stack trace) and all parameters of queries are also reflected, this is the perfect development time logger.
+do not active it on production by default, only if you need to debug prod.
+Here is a sample output of this util:
+—&#43; 01/24/2011 10:14:42.57 &#43;—
+– Void Logic.Test.UserRepositoryTest.SaveUser() [File=UserRepositoryTest.cs, Line=86]
+INSERT INTO
+“User”
+(FirstName, LastName, BirthDate, Gender, PhoneNumber, IsDeleted, Created, LastUpdated, Name, Address_id, FacebookProfile_id) VALUES
+(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10);
+select
+last_insert_rowid();
+@p0 = ‘Chen’ [Type: String (0)]
+@p1 = ‘Kinnrot’ [Type: String (0)]
+@p2 = 24/01/2011 00:00:00 [Type: DateTime (0)]
+@p3 = ‘Male’ [Type: String (0)]
+@p4 = ‘0578149177’ [Type: String (0)]
+@p5 = False [Type: Boolean (0)]
+@p6 = 01/01/0001 00:00:00 [Type: DateTime (0)]
+@p7 = 01/01/0001 00:00:00 [Type: DateTime (0)]
+@p8 = ‘kinnrot’ [Type: String (0)]
+@p9 = 1 [Type: Int64 (0)]
+@p10 = 1 [Type: Int64 (0)]
+NHibernator
+Allows you to load db configuration by a key in the configuration file, good for application that works with more than one DB.Wraps sessions and transactions for session per HTTP session and session per thread. No download available only codeNHibernateIt Allows you to do some basic crud through a generic repository implementation. Has the same session and transaction encapsulation as in Nhibernator.Nhibenrate Mapping Generator - Don’t know if working(Need to test on a big DB), but should generate mappings and classes from existing db, support MSSQL,Oracle and Postgre SQL.
+If you got a DB and don’t go fluent, this is probably good solution for a quick start.
+Fluent Nhibernate - Framework with fluent interface based mapping and configuration.
+Has an auto map feature with a lot of flexible convention over configuration options. One more thing they supply is an easy to use mapping test classes (called PersistenceSpecification ).
+You should consider auto mapping if your DB got name conventions, but you loose the flexibility of the mapping file per entity built in Nhibernate, and non conventional changes will make you write patches (AutoMappingOverride).
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2011-01-24 08:06:00 -0800 -0800'>January 24, 2011</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Building a business tier with Nhibernate - Tools" href="https://kinnrot.github.io/building-business-tier-with-nhibernate/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">WPF Binding and Why you should write defensive code.
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>I’m overriding equals and implementing IEquatable on some of my objects and bind them as an ObservableCollection to the UI.
+Here is a sample: (ugly code do not use)
+&lt;Window x:Class=“BindingToItemsWithIEquality.MainWindow”
+xmlns=“http://schemas.microsoft.com/winfx/2006/xaml/presentation&#34;
+xmlns:x=“http://schemas.microsoft.com/winfx/2006/xaml&#34;
+xmlns:local=“clr-namespace:BindingToItemsWithIEquality”
+Title=“MainWindow” Height=“350” Width=“525”
+&gt;
+&lt;Window.DataContext&gt;
+&lt;local:SomeContextWithCollection/&gt;
+&lt;/Window.DataContext&gt;
+&lt;StackPanel&gt;
+&lt;ListBox DisplayMemberPath=“Name” ItemsSource=&#34;{Binding Items}”/&gt;
+&lt;Button Click=“Button_Click”&gt;clear&lt;/Button&gt;
+&lt;/StackPanel&gt;
+&lt;/Window&gt;
+//code behind
+private void Button_Click(object sender, RoutedEventArgs e)
+{
+(this.DataContext as SomeContextWithCollection).Items.Clear();
+}
+public class SomeContextWithCollection {
+public ObservableCollection&lt;SomeIEqutable&gt; Items { get; set; }
+public SomeContextWithCollection()
+{
+Items = new ObservableCollection&lt;SomeIEqutable&gt;();
+Items.Add(new SomeIEqutable() { Name = “1” });
+Items.Add(new SomeIEqutable() { Name = “2” });
+}
+}
+public class SomeIEqutable : IEquatable&lt;SomeIEqutable&gt;
+{
+public string Name { get; set; }
+public override bool Equals(object obj)
+{
+if (obj == null)
+{
+return false;
+}
+return Equals((SomeIEqutable)obj);
+}
+public bool Equals(SomeIEqutable other)
+{
+if (object.ReferenceEquals(this, other))
+{
+return true;
+}
+return Name == other.Name;
+}
+public override int GetHashCode()
+{
+return Name.GetHashCode();
+}
+}
+When calling collection.Clear() I get an invalid cast inside my equals method, when trying to cast to SomeIEquatable.
+This is pretty strange, object is not null and not SomeIEquatlabe, how did it get to my Equals?
+The answer is WPF, when working with binding and clearing a bounded collection WPF will compare his internal new MSInternal.NamedObject(named DisconnectedItem) to your SomeIEquatable object and will fail if you try to implicitly cast it to your type.
+The simple solution is to use the “as” keyword istead of cast.
+If my code didn’t smell from the start, I would never got to this dark place. But I’m glad it happened, now I have another excuse to write defensive code.
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2011-01-05 14:47:00 -0800 -0800'>January 5, 2011</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to WPF Binding and Why you should write defensive code." href="https://kinnrot.github.io/wpf-binding-and-why-you-should-write/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">What do you think?
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>About a year ago I asked the following question
+This week I got one more answer and I wanna ask you guys what do you think is the best practice?
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2011-01-05 13:12:00 -0800 -0800'>January 5, 2011</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to What do you think?" href="https://kinnrot.github.io/what-do-you-think/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Simple way to avoid hard coded strings in xaml
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hard coded strings are annoying,
+In XAML, we have a lot of cases of hard coded strings.
+Here is a simple way of implementing static naming class, and use it instead of hard coded strings.
+Suppose this is my xaml:
+&lt;Window x:Class=“How.MainWindow”
+xmlns=“http://schemas.microsoft.com/winfx/2006/xaml/presentation&#34;
+xmlns:x=“http://schemas.microsoft.com/winfx/2006/xaml&#34;
+xmlns:local=“clr-namespace:How”
+Title=“MainWindow” Height=“350” Width=“525”&gt;
+&lt;Window.Resources&gt;
+&lt;Style TargetType=&#34;{x:Type Button}” x:Key=“LazyGuyMeaninglessName”&gt;
+&lt;Setter Property=“Margin” Value=“30”/&gt;
+&lt;Setter Property=“Height” Value=“30”/&gt;
+&lt;Setter Property=“Width” Value=“200”/&gt;
+&lt;/Style&gt;
+&lt;/Window.Resources&gt;
+&lt;StackPanel&gt;
+&lt;Button Click=“Button_Click”&gt;Click me to activate my style&lt;/Button&gt;
+&lt;Button Style=&#34;{DynamicResource LazyGuyMeaninglessName}”/&gt;
+&lt;/StackPanel&gt;
+&lt;/Window&gt;
+This is code behind:
+private void Button_Click(object sender, RoutedEventArgs e)
+{
+var button = sender as Button;
+if (button != null)
+{
+button.Style = (Style)this.FindResource(“LazyGuyMeaninglessNameWithMistake”);
+}
+}
+I have a mistake in my code behind, and the program will crash, not so fun, and not simple to test this kind of stuff.
+There is a very simple solution, Lets define this class:
+public static class StyleNames
+{
+public static string ButtonStyleName = “Some Hard To write style name”;
+}
+The benefits of using this class instead of hard coded strings are:
+No need to avoid long meaningful names, cause you have auto complete built in the IDE.The obvious: avoid type mistakes, and unexpected crashes.Make your programmers less lazy, they’ll be able to change the resource name in a single place, and even his member name if needed, VS will rename it in all references and in XAML(VS 2010) (with a “Ctrl &#43; .” after editing the member name).If the style name is not readonly(like in my sample), I’m sure there is a simple way to support theming and dynamic style changing, by just assigning new names for all the resource names inside StyleNames class, and telling the app to do something that will reload all styles, I’m not sure about it, so don’t count on it.No crashes of “could not find resource bla bla”.
+Here is the code after the use of static class:
+&lt;Window x:Class=“How.MainWindow”
+xmlns=“http://schemas.microsoft.com/winfx/2006/xaml/presentation&#34;
+xmlns:x=“http://schemas.microsoft.com/winfx/2006/xaml&#34;
+xmlns:local=“clr-namespace:How”
+Title=“MainWindow” Height=“350” Width=“525”&gt;
+&lt;Window.Resources&gt;
+&lt;Style TargetType=&#34;{x:Type Button}” x:Key=&#34;{x:Static local:StyleNames.ButtonStyleName}&#34;&gt;
+&lt;Setter Property=“Margin” Value=“30”/&gt;
+&lt;Setter Property=“Height” Value=“30”/&gt;
+&lt;Setter Property=“Width” Value=“200”/&gt;
+&lt;/Style&gt;
+&lt;/Window.Resources&gt;
+&lt;StackPanel&gt;
+&lt;Button Click=“Button_Click”&gt;Click me to activate my style&lt;/Button&gt;
+&lt;Button Style=&#34;{DynamicResource ResourceKey={x:Static local:StyleNames.ButtonStyleName}}”/&gt;
+&lt;/StackPanel&gt;
+&lt;/Window&gt;
+private void Button_Click(object sender, RoutedEventArgs e)
+{
+var button = sender as Button;
+if (button != null)
+{
+button.Style = (Style)this.FindResource(StyleNames.ButtonStyleName);
+}
+}
+Enjoy :)
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2011-01-03 11:20:00 -0800 -0800'>January 3, 2011</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Simple way to avoid hard coded strings in xaml" href="https://kinnrot.github.io/simple-way-to-avoid-hard-coded-strings/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Nice PHP IDE
     </h2>
   </header>
@@ -239,221 +572,12 @@ viewer.Log(message);
   <footer class="entry-footer"><span title='2010-09-22 14:49:00 -0700 -0700'>September 22, 2010</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
   <a class="entry-link" aria-label="post link to Simple abstraction and decoupling example" href="https://kinnrot.github.io/simple-abstraction-and-decoupling/"></a>
 </article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Simple Rx Sample - UI Performance tuning
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>The case I’m talking about is Binding with the UpdateSourceTrigger = PropertyChanged, and a heavy logic behind each change that can cause bad UX, like ui freeze on each key press in a text box.
-Here is a nice sample that demonstrate this case:
-I have a window with a text box and 2 buttons, the IsEnabled of the buttons is bounded to custom properties that depends on the TextBox text bounded field to decide if the button should be enabled (just like commands).
-This is the window
-This is the window xaml
-&lt;Window x:Class=“ReactivlyPropertyChanged.MainWindow”
-xmlns=“http://schemas.microsoft.com/winfx/2006/xaml/presentation&#34;
-xmlns:x=“http://schemas.microsoft.com/winfx/2006/xaml&#34;
-Title=“MainWindow” Height=“350” Width=“525” x:Name=“this”&gt;
-&lt;Grid&gt;
-&lt;StackPanel&gt;
-&lt;TextBox Text=&#34;{Binding SomeText, ElementName=this, UpdateSourceTrigger=PropertyChanged}”/&gt;
-&lt;Button IsEnabled=&#34;{Binding ElementName=this, Path=CanSplitInMiddle}&#34;&gt;2&lt;/Button&gt;
-&lt;Button IsEnabled=&#34;{Binding ElementName=this, Path=CanSplitToThreeParts}&#34;&gt;3&lt;/Button&gt;
-&lt;/StackPanel&gt;
-&lt;/Grid&gt;
-&lt;/Window&gt;
-This is the bounded properties implementation (I added sleep to demonstrate long time consumers)
-private string _someText;
-public string SomeText
-{
-get { return _someText; }
-set
-{
-_someText = value;
-RaisePropertyChanged(“SomeText”);
-}
-}
-public bool CanSplitInMiddle
-{
-get
-{
-if (SomeText == null)
-return false;
-Thread.Sleep(100);
-return SomeText.Length % 2 == 0;
-}
-}
-public bool CanSplitToThreeParts
-{
-get
-{
-if (SomeText == null)
-return false;
-Thread.Sleep(100);
-return SomeText.Length % 3 == 0;
-}
-}
-As you can see there is a simple length check of the entered string, now you probably think that the application would get stuck for each key press for at least 200 ms.
-Take a look at the property changed handling:
-public MainWindow()
-{
-// Sets the buffer time for property changed
-var interval = 500;
-InitializeComponent();
-// Create observable from the property changed event
-var propertyChangedObservable = Observable.FromEvent&lt;PropertyChangedEventArgs&gt;(this, “PropertyChanged”).
-BufferWithTime(TimeSpan.FromMilliseconds(interval));
-// Define our query from the event, we want to get all fired propertyChanged
-var query = from changedProps in propertyChangedObservable
-where changedProps.Count &gt; 0 select changedProps;
-// start listening
-query.Subscribe(listOfChangedStuff =&gt;
-{
-// When fired group all events by property name and handle each property with Changed method
-var events = from distinctEvent in listOfChangedStuff
-group distinctEvent by distinctEvent.EventArgs.PropertyName into byPropertyName
-select byPropertyName;
-foreach (IGrouping&lt;string,IEvent&lt;PropertyChangedEventArgs&gt;&gt; groupedEvent in events)
-{
-Changed(groupedEvent.Key);
-}
-}); }
-public void Changed(string propertyName)
-{
-if (propertyName == “SomeText”)
-{
-// Make the properties recalculate themself
-RaisePropertyChanged(“CanSplitInMiddle”);
-RaisePropertyChanged(“CanSplitToThreeParts”);
-}
-}
-public void RaisePropertyChanged(string propertyName)
-{
-var handlers = PropertyChanged;
-if (handlers != null)
-{
-PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-}
-}
-So WTF?
-One of Rx many features is buffer,I can tell property changed event to buffer himself for some time, and when the time passed take all fired events and work with them, what I did is to group all events by the property name (like distinct in sql) and handled each group as a single event.
-So even if the user is a super turbo writer(or the bot that test the ui) , the event will fired only 2 times in a second, for 500 ms interval.
-I think this is awesome, you can configure the buffer interval according to how complex and time consuming your logic is, and avoid freezing ui.
-I wanted to upload the code to somewhere but o got to fly…
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2010-09-14 14:43:00 -0700 -0700'>September 14, 2010</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to Simple Rx Sample - UI Performance tuning" href="https://kinnrot.github.io/simple-rx-sample-ui-performance-tuning/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">For AMT Rx for .net
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Here is a good place to start with Rx for .net
-And here you have the wiki with examples
-Enjoy!
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2010-09-06 09:26:00 -0700 -0700'>September 6, 2010</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to For AMT Rx for .net" href="https://kinnrot.github.io/for-amt-rx-for-net/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">WCF client side proxy memory leaks
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Today I ran into a guy who worked with me on my previous project.
-On that project I was responsible to rewrite the WCF channels (proxies) generation management and lifetime management of them.
-I decided to do some research and found some good stuff here.
-So this guy (aka Kurki) tells me they found a memory leak in my manager, what was the problem?
-So i messed up like I always do (well, only 90% of the time, like a good programmer).
-I wrote a code that registers to the Faulted event of the channel, kills the channel when Faulted and creates a new one to work with, everything looked fine, only one screw up (I’m sure some of you can guess).
-I forgot to unregister from the Faulted Event.
-On the web they tell you to do some unique logic to kill your channel in a safe way, what they don’t talk about is that it’ll stay in memory and fire events if you won’t unregister from stuff although you think it is dead.
-So please do not forget to unregister from stuff even if the object is disposable.
-Or consider the use of weak event listeners and problem solved.
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2010-09-02 12:34:00 -0700 -0700'>September 2, 2010</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to WCF client side proxy memory leaks" href="https://kinnrot.github.io/wcf-client-side-proxy-memory-leaks/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Unit Test PropertyChanged
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>One of the basic stuff you wanna test as a client side developer, is that all of your UI bounded classes aka Controller, Model, ViewModel, Presenter, PresentationModel, or the code behind of your view if your just having fun.
-Let’s assume we have a person class with a name property:
-public class Person : INotifyPropertyChanged
-{
-public event PropertyChangedEventHandler PropertyChanged;
-private string _name;
-public virtual string Name
-{
-get { return _name; }
-set { _name = value;
-FirePropertyChanged(“Name”);
-}
-}
-protected virtual void FirePropertyChanged(string propertyName)
-{
-var handlers = PropertyChanged;
-if (handlers != null)
-{
-handlers(this, new PropertyChangedEventArgs(propertyName));
-}
-}
-}
-The simplest way to perform this test is to write this code:
-[TestFixture]
-public class PersonTest
-{
-[Test]
-public void SetName_SomeNewString_FirePropertyChanged()
-{
-Person person = new Person();
-string changedPropertyName = string.Empty;
-person.PropertyChanged &#43;= (sender, args) =&gt; changedPropertyName = args.PropertyName;
-person.Name = “Test”;
-Assert.AreEqual(“Name”, changedPropertyName);
-}
-}
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2010-09-01 15:01:00 -0700 -0700'>September 1, 2010</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to Unit Test PropertyChanged" href="https://kinnrot.github.io/unit-test-propertychanged/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hello World
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>public class Chen
-{
-public void SayHello()
-{
-Console.WriteLine(&#34;Hello everyone! this is my first blog post, its about time&#34;);
-}
-}
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2010-09-01 08:23:00 -0700 -0700'>September 1, 2010</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to Hello World" href="https://kinnrot.github.io/hello-world/"></a>
-</article>
 <footer class="page-footer">
   <nav class="pagination">
     <a class="prev" href="https://kinnrot.github.io/page/5/">
       «&nbsp;Prev&nbsp;
+    </a>
+    <a class="next" href="https://kinnrot.github.io/page/7/">Next&nbsp;&nbsp;»
     </a>
   </nav>
 </footer>

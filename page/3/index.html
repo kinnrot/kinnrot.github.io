@@ -131,6 +131,137 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Rubymine on OSX memory issues
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>I found this only today, you should run Rubymine as 32 bit process.
+It works much faster and consume half the memory.
+To set this got to the Applicaitons folder right click on rubymine-&gt;get info and check the “open in 32 bit mode”
+Thats all!
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2015-01-06 13:32:00.001 -0800 -0800'>January 6, 2015</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Rubymine on OSX memory issues" href="https://kinnrot.github.io/rubymine-on-osx/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Use FactoryGirl And Faker for easy data generation in unit testing (Part1)
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>The most irritating thing in writing tests is the data generation preparation process, sometimes you want to create an object with 20 fields that 10 of them are mandatory but you only care about the value of 1, and you don’t want to mock, cause you interact with other methods and object that fetch this model from db.
+To me it happens a lot so I found the FactoryGirl &#43; Faker combination that made my life much more easy and now I can write tests in peace.
+To add them just put in Gemfile:
+gem “factory_girl_rails”, “~&gt; 4.0”
+gem “faker”
+So lets take a complex sample to explain all there is to know.
+We have a User, the User belongs to a Company, User has many tasks.
+Company has many irritating mandatory fields
+Lets define the Company Factory:
+FactoryGirl.define do
+factory :company do
+name {Faker::Name.name}
+trp {Faker::Number.between(0,10)}
+grp {Faker::Number.between(0,5)}
+budget {Faker::Number.number(4)}
+cpm {Faker::Number.between(1,70)}
+trp_price {Faker::Number.between(100,700)}
+viewer {Faker::Number.between(0,100000)}
+total_viewer {Faker::Number.between(0,200000)}
+unique_viewer {Faker::Number.between(0,50000)}
+spots {Faker::Number.between(0,1000)}
+end
+end
+As you can see I define lots of fields with random values.
+Now we can create a company by writing
+create(:company)Or just build one (without save to db) by calling
+build(:company) That’s all for now, I’ll continue in part2.
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2014-11-15 07:52:00.001 -0800 -0800'>November 15, 2014</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Use FactoryGirl And Faker for easy data generation in unit testing (Part1)" href="https://kinnrot.github.io/use-factorygirl-and-faker-for-easy-data/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Get the user locale from http headers
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>If you want to provide default localization support for guest user in your website yo can locate their browser locale by the following code:
+def extract_locale_from_header
+unless request.env[‘HTTP_ACCEPT_LANGUAGE’].nil?
+return request.env[‘HTTP_ACCEPT_LANGUAGE’].scan(/^[a-z]{2}/).first
+end
+‘en’
+end
+This way you can determine on server side the locale of the user currently entered your site.
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2014-11-15 07:42:00.001 -0800 -0800'>November 15, 2014</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Get the user locale from http headers" href="https://kinnrot.github.io/get-user-locale-from-http-headers/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Dedicating a DJ(Delayed job) worker to a specific queue in heroku.
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Let’s say you have a vey important procedure that takes a while, and you need to process it in background, but you still want to execute ASAP.
+I’m using Delayed Job on Heroku, and could not find a lot of tutorials to do this simple task.
+So here is the simplest way to achieve this ability, you can raise a process/deamon that will have only one queue to work on. (Dealyed job worker by default is queue agnostic, just process all jobs)
+In procfile:
+urgentworker: QUEUE=urgent bundle exec rake jobs:work
+You can call the worker in any name you want and even define multiple workers for multiple queues.
+And in the “urgent” job just define the queue name to be “urgent” the worker will process only jobs in this queue.
+example:
+handle_asynchronously :some_job, :queue =&gt; “urgent’
+This will also work for Resque.
+Notice that for rescue you can write QUEUE=* but for delayed job you can’t.
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2014-11-15 07:34:00.002 -0800 -0800'>November 15, 2014</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Dedicating a DJ(Delayed job) worker to a specific queue in heroku." href="https://kinnrot.github.io/dedicating-djdelayed-job-worker-to/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Overriding default id in mongoid
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>This is an easy one, just want to make sure it’s clear.
+Add the following field to your model:
+field :_id, type: Moped::BSON::ObjectId
+And to allow setting it:
+1 def id=(id)
+2 self[:_id] = id
+3 end
+Now you can just do obj.id=[Some ObjectId] and save the object.
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2014-11-15 07:20:00 -0800 -0800'>November 15, 2014</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Overriding default id in mongoid" href="https://kinnrot.github.io/overriding-default-id-in-mongoid/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Nice post about cyber war
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Popular Science: The War Of Zeros And Ones. http://google.com/newsstand/s/CBIwvZm5zho
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2014-10-05 00:42:00.001 -0700 -0700'>October 5, 2014</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Nice post about cyber war" href="https://kinnrot.github.io/nice-post-about-cyber-war/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">ClusteTV is hiring
     </h2>
   </header>
@@ -225,119 +356,6 @@ Good luck.
   </div>
   <footer class="entry-footer"><span title='2013-01-28 06:10:00.001 -0800 -0800'>January 28, 2013</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
   <a class="entry-link" aria-label="post link to Home Base SDK" href="https://kinnrot.github.io/home-base-sdk/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">SpineJS Tip
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Never create multiple instances of a controller that generates the same view, cause you&#39;re event&#39;s registrations will be duplicated over and over again!
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2012-12-05 06:02:00.003 -0800 -0800'>December 5, 2012</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to SpineJS Tip" href="https://kinnrot.github.io/spinejs-tip/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Avoid usage of AsyncTask Class on android
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Just noticed this method available from API 11 only,  so you should find another implementation to avoid unexpected behaviour.
-Or don&#39;t call the execute method,  why?  If you&#39;ll check documentation you&#39;ll see that in some versions of android all tasks will run synchronouslly on the same background thread and on some versions it&#39;ll run on a pool of threads. Always use the executeOnExecutor option for consistent behaviour between platform version and avoid unexpected behaviour.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2012-09-26 09:40:00.001 -0700 -0700'>September 26, 2012</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to Avoid usage of AsyncTask Class on android" href="https://kinnrot.github.io/avoid-usage-of-asynctask-class-on/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Nice idea for what&#39;s new in my app
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>People probably don&#39;t read/understand what&#39;s new in an app when they update it.  Skype did a very nice screen that shows you that something did change
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2012-08-31 01:05:00.001 -0700 -0700'>August 31, 2012</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to Nice idea for what&#39;s new in my app" href="https://kinnrot.github.io/nice-idea-for-what-new-in-my-app/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">coffee-script is just another version of javascript
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Hi,
-A few months ago I discovered this new stuff called coffee script, and thought to myself, “this is awesome I’ll write less and do more” Today, I tried to continue a development of a pretty fat client side and tried to find myself in the 1000 lines of code I wrote so far (not so many). It was pretty hard, and I’m the only programmer for now, can’t imagine how a new programmer would enter to this project.
-So…
-coffee-script is java-script that look better, no other benefits, and if you plan to write a little more than 200 lines of code, consider using some strongly typed language(that can generate debugable java script) with good IDE that’ll help you maintain your code. </p>
-  </div>
-  <footer class="entry-footer"><span title='2012-07-08 15:18:00.004 -0700 -0700'>July 8, 2012</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to coffee-script is just another version of javascript" href="https://kinnrot.github.io/coffee-script-is-another-piece-of-shit/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">php post response script execution
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>I guess it’s nice to have so here you go
-/
-basically allow a php script to return a response and continue with
-* code execution, good for statistics.
-* before echo anything to user call begin and after call end, than you can continue doing stuff
-/
-class ScriptContinuationManager
-{
-/**
-this is the point where we need to give a sign to this class
-* that we wanna write our response.
-* @return void
-/
-public function beginRespone()
-{
-ob_end_clean();
-header(“Connection: close”);
-ignore_user_abort(); // optional
-ob_start();
-}
-/
-* after this function execution the response will be sent to the
-* client, and code continue without client need to wait.
-*/
-public function endResponse()
-{
-$size = ob_get_length();
-header(“Content-Length: $size”);
-ob_end_flush(); // Strange behaviour, will not work
-flush(); // Unless both are called !
-}
-}
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2012-07-07 09:27:00.003 -0700 -0700'>July 7, 2012</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to php post response script execution" href="https://kinnrot.github.io/php-post-response-script-execution/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>For all you android developers, If you ever installed a new rom and didn’t see any logs from your cat, just do this:
-http://stackoverflow.com/a/7272831/67505
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2012-06-12 04:57:00.003 -0700 -0700'>June 12, 2012</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to " href="https://kinnrot.github.io/for-all-you-android-developers-if-you/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

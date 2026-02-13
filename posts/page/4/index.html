@@ -137,6 +137,119 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">SpineJS Tip
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Never create multiple instances of a controller that generates the same view, cause you&#39;re event&#39;s registrations will be duplicated over and over again!
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2012-12-05 06:02:00.003 -0800 -0800'>December 5, 2012</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to SpineJS Tip" href="https://kinnrot.github.io/spinejs-tip/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Avoid usage of AsyncTask Class on android
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Just noticed this method available from API 11 only,  so you should find another implementation to avoid unexpected behaviour.
+Or don&#39;t call the execute method,  why?  If you&#39;ll check documentation you&#39;ll see that in some versions of android all tasks will run synchronouslly on the same background thread and on some versions it&#39;ll run on a pool of threads. Always use the executeOnExecutor option for consistent behaviour between platform version and avoid unexpected behaviour.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2012-09-26 09:40:00.001 -0700 -0700'>September 26, 2012</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Avoid usage of AsyncTask Class on android" href="https://kinnrot.github.io/avoid-usage-of-asynctask-class-on/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Nice idea for what&#39;s new in my app
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>People probably don&#39;t read/understand what&#39;s new in an app when they update it.  Skype did a very nice screen that shows you that something did change
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2012-08-31 01:05:00.001 -0700 -0700'>August 31, 2012</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Nice idea for what&#39;s new in my app" href="https://kinnrot.github.io/nice-idea-for-what-new-in-my-app/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">coffee-script is just another version of javascript
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hi,
+A few months ago I discovered this new stuff called coffee script, and thought to myself, “this is awesome I’ll write less and do more” Today, I tried to continue a development of a pretty fat client side and tried to find myself in the 1000 lines of code I wrote so far (not so many). It was pretty hard, and I’m the only programmer for now, can’t imagine how a new programmer would enter to this project.
+So…
+coffee-script is java-script that look better, no other benefits, and if you plan to write a little more than 200 lines of code, consider using some strongly typed language(that can generate debugable java script) with good IDE that’ll help you maintain your code. </p>
+  </div>
+  <footer class="entry-footer"><span title='2012-07-08 15:18:00.004 -0700 -0700'>July 8, 2012</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to coffee-script is just another version of javascript" href="https://kinnrot.github.io/coffee-script-is-another-piece-of-shit/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">php post response script execution
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>I guess it’s nice to have so here you go
+/
+basically allow a php script to return a response and continue with
+* code execution, good for statistics.
+* before echo anything to user call begin and after call end, than you can continue doing stuff
+/
+class ScriptContinuationManager
+{
+/**
+this is the point where we need to give a sign to this class
+* that we wanna write our response.
+* @return void
+/
+public function beginRespone()
+{
+ob_end_clean();
+header(“Connection: close”);
+ignore_user_abort(); // optional
+ob_start();
+}
+/
+* after this function execution the response will be sent to the
+* client, and code continue without client need to wait.
+*/
+public function endResponse()
+{
+$size = ob_get_length();
+header(“Content-Length: $size”);
+ob_end_flush(); // Strange behaviour, will not work
+flush(); // Unless both are called !
+}
+}
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2012-07-07 09:27:00.003 -0700 -0700'>July 7, 2012</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to php post response script execution" href="https://kinnrot.github.io/php-post-response-script-execution/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>For all you android developers, If you ever installed a new rom and didn’t see any logs from your cat, just do this:
+http://stackoverflow.com/a/7272831/67505
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2012-06-12 04:57:00.003 -0700 -0700'>June 12, 2012</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to " href="https://kinnrot.github.io/for-all-you-android-developers-if-you/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Rails &#43; Mongo &#43; Heroku how?
     </h2>
   </header>
@@ -204,102 +317,6 @@ If I didn’t help, continue the journey.
   </div>
   <footer class="entry-footer"><span title='2012-01-06 01:49:00 -0800 -0800'>January 6, 2012</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
   <a class="entry-link" aria-label="post link to PHP sessions - stuff to check when things goes wrong." href="https://kinnrot.github.io/php-sessions-stuff-to-check-when-things/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">End of job check list
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>I&#39;m about to end my first gig(already end! yay I&#39;m free!) as a programmer, and want to leave a clean desk. So here is a list of things I&#39;m doing and suggest you all do before you move to your next gig:
-1. Write about your major infrastructure developments on your wiki or any other system you got, in an easy to understand language.
-2. Start lecturing your co-workers about complex parts you developed.
-3. Make sure you got full code coverage with unit tests.
-4. Search for to-do comments and make sure you do those todo&#39;s.
-5. If you got unfinished work and think it&#39;s worth something make sure someone complete.
-And the most important: change your phone number :-) (Bazinga).
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2011-11-16 00:30:00 -0800 -0800'>November 16, 2011</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to End of job check list" href="https://kinnrot.github.io/end-of-job-check-list/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Startups: reshare very nice research
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>The Startup Gamble [infographic] | Daily Infographic
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2011-10-28 02:00:00.001 -0700 -0700'>October 28, 2011</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to Startups: reshare very nice research" href="https://kinnrot.github.io/startups-reshare-very-nice-research/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Rubymine recommended font for windows
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Didn’t find a lot about it on internet so:
-File-&gt;Settings-&gt;Editor-&gt;colors &amp; fonts-&gt;Font
-first save as current schema
-than click the … button choose Consolas and set size to 14
-looks much better!
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2011-09-27 06:43:00 -0700 -0700'>September 27, 2011</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to Rubymine recommended font for windows" href="https://kinnrot.github.io/rubymine-recommended-font-for-windows/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">MVC Frameworks and dynamic languages
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Warning! just figure out a mistake that can happen to every other programmer, and even brogrammers.
-I defined a method on my model that has the same name as one of the field of the model, because I used a dynamic language (ruby on rails) it was pretty hard to understand this issue (took me more than 1 hour).
-So a little tip:
-When thinking about names of actions and fields of your model, work with conventions and guidelines like:
-Don’t name your fields after action names!!!
-that’s it.
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2011-09-27 06:40:00 -0700 -0700'>September 27, 2011</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to MVC Frameworks and dynamic languages" href="https://kinnrot.github.io/mvc-frameworks-and-dynamic-languages/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Boolean parameters
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>It’s not fun to look at a method call that sends more than 0 boolean parameters.
-Code SnippetSetBinding(false, false, comboBox);
-There is 100% guarantee that you will look for the documentation about this parameters and it&#39;ll slow your code reading speed.
-Here is a nice way to avoid the unreadable code and keep on using this meaningless Boolean.
-Code Snippet SetBinding(/* auto resolve= */ false, /* two way binding? = */ false, comboBox); This is not my idea though, it&#39;s from Microsoft pdb&#39;s, and I think its awesome.</p>
-  </div>
-  <footer class="entry-footer"><span title='2011-08-31 07:30:00 -0700 -0700'>August 31, 2011</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to Boolean parameters" href="https://kinnrot.github.io/boolean-parameters/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">If you&#39;re searching for a good place to grow
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>http://crossrider.com/pages/jobs
-I know this guys and worked with them a little, very recommended for any developer. </p>
-  </div>
-  <footer class="entry-footer"><span title='2011-08-04 23:47:00.001 -0700 -0700'>August 4, 2011</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to If you&#39;re searching for a good place to grow" href="https://kinnrot.github.io/if-you-searching-for-good-place-to-grow/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
