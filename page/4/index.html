@@ -131,6 +131,26 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Overriding default id in mongoid
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>This is an easy one, just want to make sure it’s clear.
+Add the following field to your model:
+field :_id, type: Moped::BSON::ObjectId
+And to allow setting it:
+1 def id=(id)
+2 self[:_id] = id
+3 end
+Now you can just do obj.id=[Some ObjectId] and save the object.
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2014-11-15 07:20:00 -0800 -0800'>November 15, 2014</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Overriding default id in mongoid" href="https://kinnrot.github.io/overriding-default-id-in-mongoid/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Nice post about cyber war
     </h2>
   </header>
@@ -293,50 +313,6 @@ coffee-script is java-script that look better, no other benefits, and if you pl
   </div>
   <footer class="entry-footer"><span title='2012-07-08 15:18:00.004 -0700 -0700'>July 8, 2012</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
   <a class="entry-link" aria-label="post link to coffee-script is just another version of javascript" href="https://kinnrot.github.io/coffee-script-is-another-piece-of-shit/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">php post response script execution
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>I guess it’s nice to have so here you go
-/
-basically allow a php script to return a response and continue with
-* code execution, good for statistics.
-* before echo anything to user call begin and after call end, than you can continue doing stuff
-/
-class ScriptContinuationManager
-{
-/**
-this is the point where we need to give a sign to this class
-* that we wanna write our response.
-* @return void
-/
-public function beginRespone()
-{
-ob_end_clean();
-header(“Connection: close”);
-ignore_user_abort(); // optional
-ob_start();
-}
-/
-* after this function execution the response will be sent to the
-* client, and code continue without client need to wait.
-*/
-public function endResponse()
-{
-$size = ob_get_length();
-header(“Content-Length: $size”);
-ob_end_flush(); // Strange behaviour, will not work
-flush(); // Unless both are called !
-}
-}
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2012-07-07 09:27:00.003 -0700 -0700'>July 7, 2012</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to php post response script execution" href="https://kinnrot.github.io/php-post-response-script-execution/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Strands on cdblg</title>
+    <link>https://kinnrot.github.io/tags/strands/</link>
+    <description>Recent content in Strands on cdblg</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 13 Feb 2026 14:00:00 +0200</lastBuildDate>
+    <atom:link href="https://kinnrot.github.io/tags/strands/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Getting Started with Strands Agents: Build Multi-Agent AI on AWS</title>
+      <link>https://kinnrot.github.io/getting-started-with-strands-agents/</link>
+      <pubDate>Fri, 13 Feb 2026 14:00:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/getting-started-with-strands-agents/</guid>
+      <description>&lt;p&gt;The world of AI agents is exploding, and while frameworks like LangChain and AutoGen have been dominating the conversation, there&amp;rsquo;s a new player in town that&amp;rsquo;s worth your attention: &lt;strong&gt;Strands Agents&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Strands Agents is an open-source framework developed by AWS, designed to help developers build production-ready, multi-agent AI systems with minimal code. Unlike some heavier frameworks, Strands focuses on providing simple primitives for complex orchestration patterns like handoffs, swarms, and graph workflows.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

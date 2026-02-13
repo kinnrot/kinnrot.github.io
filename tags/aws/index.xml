@@ -6,8 +6,16 @@
     <description>Recent content in Aws on cdblg</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 13 Feb 2026 13:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 13 Feb 2026 14:00:00 +0200</lastBuildDate>
     <atom:link href="https://kinnrot.github.io/tags/aws/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Getting Started with Strands Agents: Build Multi-Agent AI on AWS</title>
+      <link>https://kinnrot.github.io/getting-started-with-strands-agents/</link>
+      <pubDate>Fri, 13 Feb 2026 14:00:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/getting-started-with-strands-agents/</guid>
+      <description>&lt;p&gt;The world of AI agents is exploding, and while frameworks like LangChain and AutoGen have been dominating the conversation, there&amp;rsquo;s a new player in town that&amp;rsquo;s worth your attention: &lt;strong&gt;Strands Agents&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Strands Agents is an open-source framework developed by AWS, designed to help developers build production-ready, multi-agent AI systems with minimal code. Unlike some heavier frameworks, Strands focuses on providing simple primitives for complex orchestration patterns like handoffs, swarms, and graph workflows.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Enterprise OpenClaw: Setting up on AWS EC2</title>
       <link>https://kinnrot.github.io/enterprise-openclaw-aws-ec2/</link>

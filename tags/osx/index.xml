@@ -13,7 +13,7 @@
       <link>https://kinnrot.github.io/rubymine-on-osx/</link>
       <pubDate>Tue, 06 Jan 2015 13:32:00 -0800</pubDate>
       <guid>https://kinnrot.github.io/rubymine-on-osx/</guid>
-      <description>&lt;p&gt;I found this only today, you should run Rubymine as 32 bit process.&lt;br /&gt;It works much faster and consume half the memory.&lt;br /&gt;&lt;br /&gt;To set this got to the Applicaitons folder right click on rubymine-&amp;gt;get info and check the &amp;ldquo;open in 32 bit mode&amp;rdquo;&lt;br /&gt;&lt;br /&gt;Thats all!&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;I found this only today, you should run Rubymine as 32 bit process.&lt;br /&gt;It works much faster and consume half the memory.&lt;br /&gt;&lt;br /&gt;To set this got to the Applications folder right click on rubymine-&amp;gt;get info and check the &amp;ldquo;open in 32 bit mode&amp;rdquo;&lt;br /&gt;&lt;br /&gt;That&amp;rsquo;s all!&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

@@ -20,7 +20,7 @@
       <link>https://kinnrot.github.io/rails-mongo-heroku-how/</link>
       <pubDate>Wed, 28 Mar 2012 17:12:00 -0700</pubDate>
       <guid>https://kinnrot.github.io/rails-mongo-heroku-how/</guid>
-      <description>&lt;p dir=ltr&gt;After a few hours of fighting with google I decided to write it all here:&lt;/p&gt;&lt;p dir=ltr&gt;*This post is more relevant for windows users but can help others.&lt;/p&gt;&lt;p dir=ltr&gt;What do you need to have:&lt;br&gt;First you need to have ruby 1.9.2+&lt;br&gt;Devkit&lt;br&gt;then you need rails 3+&lt;br&gt;then u need the bundler gem&lt;br&gt;then go to getting started with mongoid &lt;br&gt;then install mongo locally&lt;br&gt;then check it all good&lt;br&gt;then add acoount in heroku&lt;br&gt;then create app&lt;br&gt;then add your key&lt;br&gt;then push&lt;/p&gt;</description>
+      <description>&lt;p dir=ltr&gt;After a few hours of fighting with google I decided to write it all here:&lt;/p&gt;&lt;p dir=ltr&gt;*This post is more relevant for windows users but can help others.&lt;/p&gt;&lt;p dir=ltr&gt;What do you need to have:&lt;br&gt;First you need to have ruby 1.9.2+&lt;br&gt;Devkit&lt;br&gt;then you need rails 3+&lt;br&gt;then u need the bundler gem&lt;br&gt;then go to getting started with mongoid &lt;br&gt;then install mongo locally&lt;br&gt;then check it all good&lt;br&gt;then add account in heroku&lt;br&gt;then create app&lt;br&gt;then add your key&lt;br&gt;then push&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

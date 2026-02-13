@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Getting Started with Strands Agents: Build Multi-Agent AI on AWS | cdblg</title>
+<meta name="keywords" content="ai, agents, aws, strands, python">
+<meta name="description" content="The world of AI agents is exploding, and while frameworks like LangChain and AutoGen have been dominating the conversation, there&rsquo;s a new player in town that&rsquo;s worth your attention: Strands Agents.
+Strands Agents is an open-source framework developed by AWS, designed to help developers build production-ready, multi-agent AI systems with minimal code. Unlike some heavier frameworks, Strands focuses on providing simple primitives for complex orchestration patterns like handoffs, swarms, and graph workflows.">
+<meta name="author" content="Chen Kinnrot">
+<link rel="canonical" href="https://kinnrot.github.io/getting-started-with-strands-agents/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kinnrot.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kinnrot.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kinnrot.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kinnrot.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kinnrot.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kinnrot.github.io/getting-started-with-strands-agents/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kinnrot.github.io/getting-started-with-strands-agents/">
+  <meta property="og:site_name" content="cdblg">
+  <meta property="og:title" content="Getting Started with Strands Agents: Build Multi-Agent AI on AWS">
+  <meta property="og:description" content="The world of AI agents is exploding, and while frameworks like LangChain and AutoGen have been dominating the conversation, there’s a new player in town that’s worth your attention: Strands Agents.
+Strands Agents is an open-source framework developed by AWS, designed to help developers build production-ready, multi-agent AI systems with minimal code. Unlike some heavier frameworks, Strands focuses on providing simple primitives for complex orchestration patterns like handoffs, swarms, and graph workflows.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-02-13T14:00:00+02:00">
+    <meta property="article:modified_time" content="2026-02-13T14:00:00+02:00">
+    <meta property="article:tag" content="Ai">
+    <meta property="article:tag" content="Agents">
+    <meta property="article:tag" content="Aws">
+    <meta property="article:tag" content="Strands">
+    <meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Getting Started with Strands Agents: Build Multi-Agent AI on AWS">
+<meta name="twitter:description" content="The world of AI agents is exploding, and while frameworks like LangChain and AutoGen have been dominating the conversation, there&rsquo;s a new player in town that&rsquo;s worth your attention: Strands Agents.
+Strands Agents is an open-source framework developed by AWS, designed to help developers build production-ready, multi-agent AI systems with minimal code. Unlike some heavier frameworks, Strands focuses on providing simple primitives for complex orchestration patterns like handoffs, swarms, and graph workflows.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kinnrot.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Getting Started with Strands Agents: Build Multi-Agent AI on AWS",
+      "item": "https://kinnrot.github.io/getting-started-with-strands-agents/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Getting Started with Strands Agents: Build Multi-Agent AI on AWS",
+  "name": "Getting Started with Strands Agents: Build Multi-Agent AI on AWS",
+  "description": "The world of AI agents is exploding, and while frameworks like LangChain and AutoGen have been dominating the conversation, there\u0026rsquo;s a new player in town that\u0026rsquo;s worth your attention: Strands Agents.\nStrands Agents is an open-source framework developed by AWS, designed to help developers build production-ready, multi-agent AI systems with minimal code. Unlike some heavier frameworks, Strands focuses on providing simple primitives for complex orchestration patterns like handoffs, swarms, and graph workflows.\n",
+  "keywords": [
+    "ai", "agents", "aws", "strands", "python"
+  ],
+  "articleBody": "The world of AI agents is exploding, and while frameworks like LangChain and AutoGen have been dominating the conversation, there’s a new player in town that’s worth your attention: Strands Agents.\nStrands Agents is an open-source framework developed by AWS, designed to help developers build production-ready, multi-agent AI systems with minimal code. Unlike some heavier frameworks, Strands focuses on providing simple primitives for complex orchestration patterns like handoffs, swarms, and graph workflows.\nIn this post, we’ll walk through what makes Strands special and how to get your first agent running in minutes.\nWhy Strands Agents? While you can build agents with just raw LLM calls, things get messy quickly when you need multiple agents to coordinate. Strands solves this by offering:\nModel-Driven Orchestration: Agents decide how to interact based on the model’s reasoning capabilities. Model Agnostic: While it integrates seamlessly with Amazon Bedrock, it supports other providers like OpenAI and Anthropic. Type Safety: If you are using the TypeScript SDK, you get first-class type support. The Python SDK is equally robust. Installation Getting started is straightforward. We’ll use the Python SDK for this guide.\nFirst, ensure you have Python 3.10+ installed. Then, install the core package and standard tools:\npip install strands-agents strands-agents-tools Your First Agent: Hello World Let’s build a simple agent that can perform a basic task. We’ll define a tool and give it to an agent.\nCreate a file named agent.py:\nfrom strands import Agent, tool # 1. Define a tool @tool def word_count(text: str) -\u003e int: \"\"\"Count words in text. Useful for checking length constraints.\"\"\" return len(text.split()) # 2. Initialize the Agent # Note: Ensure you have your AWS credentials or other provider API keys configured. # By default, Strands looks for Amazon Bedrock configuration. agent = Agent( name=\"Editor\", instructions=\"You are a helpful editor. Use tools to analyze text.\", tools=[word_count] ) # 3. Run the agent response = agent(\"How many words are in this sentence?\") print(response) Running the Code Before running the script, make sure you have your model provider configured. If you are using AWS Bedrock (the default), you’ll need standard AWS credentials set up in your environment.\npython agent.py The agent will analyze your prompt, realize it needs to count words, call the word_count tool, and return the result naturally.\nNext Steps This is just the tip of the iceberg. Strands Agents really shines when you have multiple agents interacting—for example, a “Researcher” agent handing off findings to a “Writer” agent.\nIf you are looking to build scalable AI systems on AWS, Strands is definitely a framework to keep on your radar.\nCheck out the official documentation for more advanced patterns and examples.\n",
+  "wordCount" : "439",
+  "inLanguage": "en",
+  "datePublished": "2026-02-13T14:00:00+02:00",
+  "dateModified": "2026-02-13T14:00:00+02:00",
+  "author":{
+    "@type": "Person",
+    "name": "Chen Kinnrot"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kinnrot.github.io/getting-started-with-strands-agents/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "cdblg",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kinnrot.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kinnrot.github.io/" accesskey="h" title="cdblg (Alt + H)">cdblg</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Getting Started with Strands Agents: Build Multi-Agent AI on AWS
+    </h1>
+    <div class="post-meta"><span title='2026-02-13 14:00:00 +0200 IST'>February 13, 2026</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>The world of AI agents is exploding, and while frameworks like LangChain and AutoGen have been dominating the conversation, there&rsquo;s a new player in town that&rsquo;s worth your attention: <strong>Strands Agents</strong>.</p>
+<p>Strands Agents is an open-source framework developed by AWS, designed to help developers build production-ready, multi-agent AI systems with minimal code. Unlike some heavier frameworks, Strands focuses on providing simple primitives for complex orchestration patterns like handoffs, swarms, and graph workflows.</p>
+<p>In this post, we&rsquo;ll walk through what makes Strands special and how to get your first agent running in minutes.</p>
+<h3 id="why-strands-agents">Why Strands Agents?<a hidden class="anchor" aria-hidden="true" href="#why-strands-agents">#</a></h3>
+<p>While you can build agents with just raw LLM calls, things get messy quickly when you need multiple agents to coordinate. Strands solves this by offering:</p>
+<ul>
+<li><strong>Model-Driven Orchestration:</strong> Agents decide how to interact based on the model&rsquo;s reasoning capabilities.</li>
+<li><strong>Model Agnostic:</strong> While it integrates seamlessly with Amazon Bedrock, it supports other providers like OpenAI and Anthropic.</li>
+<li><strong>Type Safety:</strong> If you are using the TypeScript SDK, you get first-class type support. The Python SDK is equally robust.</li>
+</ul>
+<h3 id="installation">Installation<a hidden class="anchor" aria-hidden="true" href="#installation">#</a></h3>
+<p>Getting started is straightforward. We&rsquo;ll use the Python SDK for this guide.</p>
+<p>First, ensure you have Python 3.10+ installed. Then, install the core package and standard tools:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install strands-agents strands-agents-tools
+</span></span></code></pre></div><h3 id="your-first-agent-hello-world">Your First Agent: Hello World<a hidden class="anchor" aria-hidden="true" href="#your-first-agent-hello-world">#</a></h3>
+<p>Let&rsquo;s build a simple agent that can perform a basic task. We&rsquo;ll define a tool and give it to an agent.</p>
+<p>Create a file named <code>agent.py</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> strands <span style="color:#f92672">import</span> Agent, tool
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1. Define a tool</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@tool</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">word_count</span>(text: str) <span style="color:#f92672">-&gt;</span> int:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Count words in text. Useful for checking length constraints.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> len(text<span style="color:#f92672">.</span>split())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2. Initialize the Agent</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Note: Ensure you have your AWS credentials or other provider API keys configured.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># By default, Strands looks for Amazon Bedrock configuration.</span>
+</span></span><span style="display:flex;"><span>agent <span style="color:#f92672">=</span> Agent(
+</span></span><span style="display:flex;"><span>    name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Editor&#34;</span>,
+</span></span><span style="display:flex;"><span>    instructions<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;You are a helpful editor. Use tools to analyze text.&#34;</span>,
+</span></span><span style="display:flex;"><span>    tools<span style="color:#f92672">=</span>[word_count]
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 3. Run the agent</span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> agent(<span style="color:#e6db74">&#34;How many words are in this sentence?&#34;</span>)
+</span></span><span style="display:flex;"><span>print(response)
+</span></span></code></pre></div><h3 id="running-the-code">Running the Code<a hidden class="anchor" aria-hidden="true" href="#running-the-code">#</a></h3>
+<p>Before running the script, make sure you have your model provider configured. If you are using AWS Bedrock (the default), you&rsquo;ll need standard AWS credentials set up in your environment.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python agent.py
+</span></span></code></pre></div><p>The agent will analyze your prompt, realize it needs to count words, call the <code>word_count</code> tool, and return the result naturally.</p>
+<h3 id="next-steps">Next Steps<a hidden class="anchor" aria-hidden="true" href="#next-steps">#</a></h3>
+<p>This is just the tip of the iceberg. Strands Agents really shines when you have multiple agents interacting—for example, a &ldquo;Researcher&rdquo; agent handing off findings to a &ldquo;Writer&rdquo; agent.</p>
+<p>If you are looking to build scalable AI systems on AWS, Strands is definitely a framework to keep on your radar.</p>
+<p>Check out the <a href="https://strandsagents.com/latest/">official documentation</a> for more advanced patterns and examples.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kinnrot.github.io/tags/ai/">Ai</a></li>
+      <li><a href="https://kinnrot.github.io/tags/agents/">Agents</a></li>
+      <li><a href="https://kinnrot.github.io/tags/aws/">Aws</a></li>
+      <li><a href="https://kinnrot.github.io/tags/strands/">Strands</a></li>
+      <li><a href="https://kinnrot.github.io/tags/python/">Python</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kinnrot.github.io/">cdblg</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

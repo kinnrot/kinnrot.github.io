@@ -183,7 +183,7 @@ return Name.GetHashCode();
 When calling collection.Clear() I get an invalid cast inside my equals method, when trying to cast to SomeIEquatable.
 This is pretty strange, object is not null and not SomeIEquatlabe, how did it get to my Equals?
 The answer is WPF, when working with binding and clearing a bounded collection WPF will compare his internal new MSInternal.NamedObject(named DisconnectedItem) to your SomeIEquatable object and will fail if you try to implicitly cast it to your type.
-The simple solution is to use the “as” keyword istead of cast.
+The simple solution is to use the “as” keyword instead of cast.
 If my code didn’t smell from the start, I would never got to this dark place. But I’m glad it happened, now I have another excuse to write defensive code.
 </p>
   </div>

@@ -131,6 +131,22 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Boolean parameters
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>It’s not fun to look at a method call that sends more than 0 boolean parameters.
+Code SnippetSetBinding(false, false, comboBox);
+There is 100% guarantee that you will look for the documentation about this parameters and it&#39;ll slow your code reading speed.
+Here is a nice way to avoid the unreadable code and keep on using this meaningless Boolean.
+Code Snippet SetBinding(/* auto resolve= */ false, /* two way binding? = */ false, comboBox); This is not my idea though, it&#39;s from Microsoft pdb&#39;s, and I think its awesome.</p>
+  </div>
+  <footer class="entry-footer"><span title='2011-08-31 07:30:00 -0700 -0700'>August 31, 2011</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Boolean parameters" href="https://kinnrot.github.io/boolean-parameters/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">If you&#39;re searching for a good place to grow
     </h2>
   </header>
@@ -519,26 +535,12 @@ return Name.GetHashCode();
 When calling collection.Clear() I get an invalid cast inside my equals method, when trying to cast to SomeIEquatable.
 This is pretty strange, object is not null and not SomeIEquatlabe, how did it get to my Equals?
 The answer is WPF, when working with binding and clearing a bounded collection WPF will compare his internal new MSInternal.NamedObject(named DisconnectedItem) to your SomeIEquatable object and will fail if you try to implicitly cast it to your type.
-The simple solution is to use the “as” keyword istead of cast.
+The simple solution is to use the “as” keyword instead of cast.
 If my code didn’t smell from the start, I would never got to this dark place. But I’m glad it happened, now I have another excuse to write defensive code.
 </p>
   </div>
   <footer class="entry-footer"><span title='2011-01-05 14:47:00 -0800 -0800'>January 5, 2011</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
   <a class="entry-link" aria-label="post link to WPF Binding and Why you should write defensive code." href="https://kinnrot.github.io/wpf-binding-and-why-you-should-write/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">What do you think?
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>About a year ago I asked the following question
-This week I got one more answer and I wanna ask you guys what do you think is the best practice?
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2011-01-05 13:12:00 -0800 -0800'>January 5, 2011</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to What do you think?" href="https://kinnrot.github.io/what-do-you-think/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

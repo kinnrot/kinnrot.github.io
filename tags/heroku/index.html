@@ -128,7 +128,7 @@
   <div class="entry-content">
     <p>Let’s say you have a vey important procedure that takes a while, and you need to process it in background, but you still want to execute ASAP.
 I’m using Delayed Job on Heroku, and could not find a lot of tutorials to do this simple task.
-So here is the simplest way to achieve this ability, you can raise a process/deamon that will have only one queue to work on. (Dealyed job worker by default is queue agnostic, just process all jobs)
+So here is the simplest way to achieve this ability, you can raise a process/daemon that will have only one queue to work on. (Dealyed job worker by default is queue agnostic, just process all jobs)
 In procfile:
 urgentworker: QUEUE=urgent bundle exec rake jobs:work
 You can call the worker in any name you want and even define multiple workers for multiple queues.
@@ -158,7 +158,7 @@ then you need rails 3&#43;
 then u need the bundler gem
 then go to getting started with mongoid then install mongo locally
 then check it all good
-then add acoount in heroku
+then add account in heroku
 then create app
 then add your key
 then push
