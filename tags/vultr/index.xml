@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Vultr on cdblg</title>
+    <link>https://kinnrot.github.io/tags/vultr/</link>
+    <description>Recent content in Vultr on cdblg</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 13 Feb 2026 12:15:00 +0200</lastBuildDate>
+    <atom:link href="https://kinnrot.github.io/tags/vultr/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Run OpenClaw on Vultr for High-Frequency Performance</title>
+      <link>https://kinnrot.github.io/run-openclaw-vultr-performance/</link>
+      <pubDate>Fri, 13 Feb 2026 12:15:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/run-openclaw-vultr-performance/</guid>
+      <description>&lt;p&gt;When latency matters, &lt;strong&gt;Vultr&lt;/strong&gt; is the cloud provider to beat. Their High Frequency Compute instances are powered by high clock speed CPUs and NVMe storage, making them significantly snappier for IO-heavy operations.&lt;/p&gt;
+&lt;p&gt;For an AI agent like OpenClaw, which might be scraping web pages or processing large context files, this speed difference is noticeable.&lt;/p&gt;
+&lt;h3 id=&#34;why-vultr-for-openclaw&#34;&gt;Why Vultr for OpenClaw?&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;32+ Locations:&lt;/strong&gt; Put your agent geographically close to the services it interacts with.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;NVMe Storage:&lt;/strong&gt; Faster database reads/writes for your agent&amp;rsquo;s long-term memory.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Simple Pricing:&lt;/strong&gt; You know exactly what you&amp;rsquo;re paying.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;step-by-step-setup&#34;&gt;Step-by-Step Setup&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Sign Up:&lt;/strong&gt; Create an account at &lt;a href=&#34;https://www.vultr.com/?utm_source=kinnrot_blog&#34;&gt;Vultr&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Deploy Instance:&lt;/strong&gt; Select &lt;strong&gt;Cloud Compute&lt;/strong&gt; -&amp;gt; &lt;strong&gt;High Frequency&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Server Location:&lt;/strong&gt; Pick your preferred region.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Server Type:&lt;/strong&gt; &lt;strong&gt;Ubuntu 24.04 LTS&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Server Size:&lt;/strong&gt; The &lt;strong&gt;32GB NVMe / 1 vCPU / 1GB Memory&lt;/strong&gt; plan is often sufficient, but the &lt;strong&gt;2GB Memory&lt;/strong&gt; plan is safer for stability.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;installation-quick-start&#34;&gt;Installation Quick-Start&lt;/h3&gt;
+&lt;p&gt;Once your instance is live, the process is similar to other Linux environments.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

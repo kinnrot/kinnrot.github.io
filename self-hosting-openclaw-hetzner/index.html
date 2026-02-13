@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>The Budget Guide: Self-Hosting OpenClaw on Hetzner | cdblg</title>
+<meta name="keywords" content="openclaw, hetzner, budget, arm64">
+<meta name="description" content="Let&rsquo;s be honest: cloud costs add up. If you are running multiple AI agents or just want to experiment with OpenClaw without a monthly bill that hurts, Hetzner is the answer.
+Known for their incredible price-to-performance ratio, specifically with their new ARM64 instances, Hetzner is a favorite among the self-hosting community.
+ARM64: The Secret Weapon
+OpenClaw, being a Node.js application, runs natively on ARM architecture (like the chip in your MacBook or Raspberry Pi). Hetzner&rsquo;s ARM instances are often cheaper and faster than their x86 equivalents.">
+<meta name="author" content="Chen Kinnrot">
+<link rel="canonical" href="https://kinnrot.github.io/self-hosting-openclaw-hetzner/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kinnrot.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kinnrot.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kinnrot.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kinnrot.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kinnrot.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kinnrot.github.io/self-hosting-openclaw-hetzner/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kinnrot.github.io/self-hosting-openclaw-hetzner/">
+  <meta property="og:site_name" content="cdblg">
+  <meta property="og:title" content="The Budget Guide: Self-Hosting OpenClaw on Hetzner">
+  <meta property="og:description" content="Let’s be honest: cloud costs add up. If you are running multiple AI agents or just want to experiment with OpenClaw without a monthly bill that hurts, Hetzner is the answer.
+Known for their incredible price-to-performance ratio, specifically with their new ARM64 instances, Hetzner is a favorite among the self-hosting community.
+ARM64: The Secret Weapon OpenClaw, being a Node.js application, runs natively on ARM architecture (like the chip in your MacBook or Raspberry Pi). Hetzner’s ARM instances are often cheaper and faster than their x86 equivalents.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-02-13T12:30:00+02:00">
+    <meta property="article:modified_time" content="2026-02-13T12:30:00+02:00">
+    <meta property="article:tag" content="Openclaw">
+    <meta property="article:tag" content="Hetzner">
+    <meta property="article:tag" content="Budget">
+    <meta property="article:tag" content="Arm64">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="The Budget Guide: Self-Hosting OpenClaw on Hetzner">
+<meta name="twitter:description" content="Let&rsquo;s be honest: cloud costs add up. If you are running multiple AI agents or just want to experiment with OpenClaw without a monthly bill that hurts, Hetzner is the answer.
+Known for their incredible price-to-performance ratio, specifically with their new ARM64 instances, Hetzner is a favorite among the self-hosting community.
+ARM64: The Secret Weapon
+OpenClaw, being a Node.js application, runs natively on ARM architecture (like the chip in your MacBook or Raspberry Pi). Hetzner&rsquo;s ARM instances are often cheaper and faster than their x86 equivalents.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kinnrot.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "The Budget Guide: Self-Hosting OpenClaw on Hetzner",
+      "item": "https://kinnrot.github.io/self-hosting-openclaw-hetzner/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "The Budget Guide: Self-Hosting OpenClaw on Hetzner",
+  "name": "The Budget Guide: Self-Hosting OpenClaw on Hetzner",
+  "description": "Let\u0026rsquo;s be honest: cloud costs add up. If you are running multiple AI agents or just want to experiment with OpenClaw without a monthly bill that hurts, Hetzner is the answer.\nKnown for their incredible price-to-performance ratio, specifically with their new ARM64 instances, Hetzner is a favorite among the self-hosting community.\nARM64: The Secret Weapon OpenClaw, being a Node.js application, runs natively on ARM architecture (like the chip in your MacBook or Raspberry Pi). Hetzner\u0026rsquo;s ARM instances are often cheaper and faster than their x86 equivalents.\n",
+  "keywords": [
+    "openclaw", "hetzner", "budget", "arm64"
+  ],
+  "articleBody": "Let’s be honest: cloud costs add up. If you are running multiple AI agents or just want to experiment with OpenClaw without a monthly bill that hurts, Hetzner is the answer.\nKnown for their incredible price-to-performance ratio, specifically with their new ARM64 instances, Hetzner is a favorite among the self-hosting community.\nARM64: The Secret Weapon OpenClaw, being a Node.js application, runs natively on ARM architecture (like the chip in your MacBook or Raspberry Pi). Hetzner’s ARM instances are often cheaper and faster than their x86 equivalents.\nGetting Started on Hetzner Cloud Go to Hetzner Cloud. Create a Project. Add Server: Location: Falkenstein or Nuremberg (Germany), or Ashburn (USA). Image: Ubuntu 24.04. Type: Shared vCPU (ARM64) -\u003e CAX11 (2 vCPU, 4GB RAM). Price: This CAX11 instance usually costs less than a cup of coffee per month and is more than powerful enough for OpenClaw. Setting Up the Server The setup on ARM is identical to x86 for Node.js apps.\nssh root@ Install Dependencies:\napt update \u0026\u0026 apt install -y git Install Node.js:\n# Verify you are getting the ARM64 version automatically curl -fsSL https://deb.nodesource.com/setup_22.x | bash - apt install -y nodejs Clone OpenClaw:\ngit clone https://github.com/openclaw/openclaw.git cd openclaw npm install Why Hetzner? The CAX11 instance gives you 4GB of RAM. Compare this to DigitalOcean or Vultr, where the entry-level price often gets you only 1GB. For an AI agent that might need to hold large conversation contexts in memory, that extra RAM is a game-changer for stability.\nDisclaimer: I am not responsible for how much time you spend tweaking your new affordable server fleet!\n",
+  "wordCount" : "263",
+  "inLanguage": "en",
+  "datePublished": "2026-02-13T12:30:00+02:00",
+  "dateModified": "2026-02-13T12:30:00+02:00",
+  "author":{
+    "@type": "Person",
+    "name": "Chen Kinnrot"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kinnrot.github.io/self-hosting-openclaw-hetzner/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "cdblg",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kinnrot.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kinnrot.github.io/" accesskey="h" title="cdblg (Alt + H)">cdblg</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      The Budget Guide: Self-Hosting OpenClaw on Hetzner
+    </h1>
+    <div class="post-meta"><span title='2026-02-13 12:30:00 +0200 IST'>February 13, 2026</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>Let&rsquo;s be honest: cloud costs add up. If you are running multiple AI agents or just want to experiment with <strong>OpenClaw</strong> without a monthly bill that hurts, <strong>Hetzner</strong> is the answer.</p>
+<p>Known for their incredible price-to-performance ratio, specifically with their new ARM64 instances, Hetzner is a favorite among the self-hosting community.</p>
+<h3 id="arm64-the-secret-weapon">ARM64: The Secret Weapon<a hidden class="anchor" aria-hidden="true" href="#arm64-the-secret-weapon">#</a></h3>
+<p>OpenClaw, being a Node.js application, runs natively on ARM architecture (like the chip in your MacBook or Raspberry Pi). Hetzner&rsquo;s ARM instances are often cheaper and faster than their x86 equivalents.</p>
+<h3 id="getting-started-on-hetzner-cloud">Getting Started on Hetzner Cloud<a hidden class="anchor" aria-hidden="true" href="#getting-started-on-hetzner-cloud">#</a></h3>
+<ol>
+<li>Go to <a href="https://www.hetzner.com/cloud?utm_source=kinnrot_blog">Hetzner Cloud</a>.</li>
+<li>Create a Project.</li>
+<li><strong>Add Server:</strong>
+<ul>
+<li><strong>Location:</strong> Falkenstein or Nuremberg (Germany), or Ashburn (USA).</li>
+<li><strong>Image:</strong> Ubuntu 24.04.</li>
+<li><strong>Type:</strong> <strong>Shared vCPU (ARM64)</strong> -&gt; <strong>CAX11</strong> (2 vCPU, 4GB RAM).</li>
+<li><strong>Price:</strong> This CAX11 instance usually costs less than a cup of coffee per month and is <em>more</em> than powerful enough for OpenClaw.</li>
+</ul>
+</li>
+</ol>
+<h3 id="setting-up-the-server">Setting Up the Server<a hidden class="anchor" aria-hidden="true" href="#setting-up-the-server">#</a></h3>
+<p>The setup on ARM is identical to x86 for Node.js apps.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh root@&lt;your-ip&gt;
+</span></span></code></pre></div><p><strong>Install Dependencies:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apt update <span style="color:#f92672">&amp;&amp;</span> apt install -y git
+</span></span></code></pre></div><p><strong>Install Node.js:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Verify you are getting the ARM64 version automatically</span>
+</span></span><span style="display:flex;"><span>curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
+</span></span><span style="display:flex;"><span>apt install -y nodejs
+</span></span></code></pre></div><p><strong>Clone OpenClaw:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/openclaw/openclaw.git
+</span></span><span style="display:flex;"><span>cd openclaw
+</span></span><span style="display:flex;"><span>npm install
+</span></span></code></pre></div><h3 id="why-hetzner">Why Hetzner?<a hidden class="anchor" aria-hidden="true" href="#why-hetzner">#</a></h3>
+<p>The CAX11 instance gives you <strong>4GB of RAM</strong>. Compare this to DigitalOcean or Vultr, where the entry-level price often gets you only 1GB. For an AI agent that might need to hold large conversation contexts in memory, that extra RAM is a game-changer for stability.</p>
+<p><em>Disclaimer: I am not responsible for how much time you spend tweaking your new affordable server fleet!</em></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kinnrot.github.io/tags/openclaw/">Openclaw</a></li>
+      <li><a href="https://kinnrot.github.io/tags/hetzner/">Hetzner</a></li>
+      <li><a href="https://kinnrot.github.io/tags/budget/">Budget</a></li>
+      <li><a href="https://kinnrot.github.io/tags/arm64/">Arm64</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kinnrot.github.io/">cdblg</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

@@ -131,6 +131,194 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Simple way to avoid hard coded strings in xaml
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hard coded strings are annoying,
+In XAML, we have a lot of cases of hard coded strings.
+Here is a simple way of implementing static naming class, and use it instead of hard coded strings.
+Suppose this is my xaml:
+&lt;Window x:Class=“How.MainWindow”
+xmlns=“http://schemas.microsoft.com/winfx/2006/xaml/presentation&#34;
+xmlns:x=“http://schemas.microsoft.com/winfx/2006/xaml&#34;
+xmlns:local=“clr-namespace:How”
+Title=“MainWindow” Height=“350” Width=“525”&gt;
+&lt;Window.Resources&gt;
+&lt;Style TargetType=&#34;{x:Type Button}” x:Key=“LazyGuyMeaninglessName”&gt;
+&lt;Setter Property=“Margin” Value=“30”/&gt;
+&lt;Setter Property=“Height” Value=“30”/&gt;
+&lt;Setter Property=“Width” Value=“200”/&gt;
+&lt;/Style&gt;
+&lt;/Window.Resources&gt;
+&lt;StackPanel&gt;
+&lt;Button Click=“Button_Click”&gt;Click me to activate my style&lt;/Button&gt;
+&lt;Button Style=&#34;{DynamicResource LazyGuyMeaninglessName}”/&gt;
+&lt;/StackPanel&gt;
+&lt;/Window&gt;
+This is code behind:
+private void Button_Click(object sender, RoutedEventArgs e)
+{
+var button = sender as Button;
+if (button != null)
+{
+button.Style = (Style)this.FindResource(“LazyGuyMeaninglessNameWithMistake”);
+}
+}
+I have a mistake in my code behind, and the program will crash, not so fun, and not simple to test this kind of stuff.
+There is a very simple solution, Lets define this class:
+public static class StyleNames
+{
+public static string ButtonStyleName = “Some Hard To write style name”;
+}
+The benefits of using this class instead of hard coded strings are:
+No need to avoid long meaningful names, cause you have auto complete built in the IDE.The obvious: avoid type mistakes, and unexpected crashes.Make your programmers less lazy, they’ll be able to change the resource name in a single place, and even his member name if needed, VS will rename it in all references and in XAML(VS 2010) (with a “Ctrl &#43; .” after editing the member name).If the style name is not readonly(like in my sample), I’m sure there is a simple way to support theming and dynamic style changing, by just assigning new names for all the resource names inside StyleNames class, and telling the app to do something that will reload all styles, I’m not sure about it, so don’t count on it.No crashes of “could not find resource bla bla”.
+Here is the code after the use of static class:
+&lt;Window x:Class=“How.MainWindow”
+xmlns=“http://schemas.microsoft.com/winfx/2006/xaml/presentation&#34;
+xmlns:x=“http://schemas.microsoft.com/winfx/2006/xaml&#34;
+xmlns:local=“clr-namespace:How”
+Title=“MainWindow” Height=“350” Width=“525”&gt;
+&lt;Window.Resources&gt;
+&lt;Style TargetType=&#34;{x:Type Button}” x:Key=&#34;{x:Static local:StyleNames.ButtonStyleName}&#34;&gt;
+&lt;Setter Property=“Margin” Value=“30”/&gt;
+&lt;Setter Property=“Height” Value=“30”/&gt;
+&lt;Setter Property=“Width” Value=“200”/&gt;
+&lt;/Style&gt;
+&lt;/Window.Resources&gt;
+&lt;StackPanel&gt;
+&lt;Button Click=“Button_Click”&gt;Click me to activate my style&lt;/Button&gt;
+&lt;Button Style=&#34;{DynamicResource ResourceKey={x:Static local:StyleNames.ButtonStyleName}}”/&gt;
+&lt;/StackPanel&gt;
+&lt;/Window&gt;
+private void Button_Click(object sender, RoutedEventArgs e)
+{
+var button = sender as Button;
+if (button != null)
+{
+button.Style = (Style)this.FindResource(StyleNames.ButtonStyleName);
+}
+}
+Enjoy :)
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2011-01-03 11:20:00 -0800 -0800'>January 3, 2011</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Simple way to avoid hard coded strings in xaml" href="https://kinnrot.github.io/simple-way-to-avoid-hard-coded-strings/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Nice PHP IDE
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Recently a friend recommend me to check the PHP Storm IDE.
+I must say that its a grate IDE, almost same capabilities as IntelliJ, I’v never seen a PHP IDE with this refactoring and navigation features.
+So check it out.
+Thank you Gal Batat for the recommendation.
+Features and download is here
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2010-12-24 00:54:00 -0800 -0800'>December 24, 2010</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Nice PHP IDE" href="https://kinnrot.github.io/nice-php-ide/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Unit testing with mock framework and IEquatable&lt;&gt;
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>This post is relevant for the one’s who write tests, all you other programmers, you should learn unit testing and read it.
+One of the most useful tools in unit testing is a good mocking framework. (I’m currently using Moq, and before that I used rhino) We all know that for mocking we need interfaces.
+My tip is very simple, if you have a class Foo and you wanna mock it, first you should have Interface IFoo (this should be obvious to most of you).Implement on Foo IEquatable&lt;IFoo&gt;, so if you test a list of IFoo and you want to assert Contains() you won’t have any problems with the proxy of IFoo that mocking framework generates on the interface and no one will blame you for your awful class that throws cast exception in its equals method :).
+Hope it’ll save you time in future.
+That it, KIS.
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2010-11-17 11:03:00 -0800 -0800'>November 17, 2010</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Unit testing with mock framework and IEquatable&lt;&gt;" href="https://kinnrot.github.io/unit-testing-with-mock-framework-and/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Event Base WPF Navigation
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hello,
+My Recent problem was: How can I implement minimal decoupling navigation between views?
+I thought about using the EventAggregator already built in my system and create some kind of event that represents a navigation request, so I created a NavigationRequestEvent that contains the view model I want to activate and view.
+Next question I asked myself was: Who needs to request for navigation?
+This is easy navigation is caused 99% of the times by user interaction, views is a good answer, through their view models or some commands (if not DelegateCommands or SmarterStuff).
+The problem is that my view models are being created from my IOC Container (not a problem) and I don’t want all of my view models to have access to my container cause this is an anti pattern.
+Who’ll construct the view model and fire the event?
+Create a view models factory that will be responsible for creating the view models, he is not the actual factory, just a mediator between the request and the container.
+So far we got:
+NavigationRequestEvent that holds the view model to showViewModelsFactory - can create view models
+Now I just need someone to listen, this is the advantage of this pattern, anyone can listen and no one is also an option, but nothing will happen of course.
+In my case the shell is the default listener and each event would be translated to a view shown at the main region of the ui , there is also an option of a split view, when split view activated the main region unregister from event and secondary view is listening to the event.
+We can also expend this behavior and allow user to choose where next views will be opened.
+IsNice = True;
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2010-10-12 12:44:00 -0700 -0700'>October 12, 2010</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Event Base WPF Navigation" href="https://kinnrot.github.io/event-base-wpf-navigation/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Simple abstraction and decoupling example
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Just code.
+We have a logger and a log viewer, could be better but I wanted it to be simple.
+This is the window that is also the log viewer
+/// &lt;summary&gt;
+/// Interaction logic for MainWindow.xaml
+/// &lt;/summary&gt;
+public partial class MainWindow : Window, ILogViewer
+{
+public MainWindow()
+{
+InitializeComponent();
+Logger.RegisterViewer(this);
+}
+public void Log(string message)
+{
+// do the write logic
+}
+}
+This is the interface of viewers
+public interface ILogViewer
+{
+void Log(string message);
+}
+This is logger
+public static class Logger
+{
+static List&lt;ILogViewer&gt; viewers = new List&lt;ILogViewer&gt;();
+public static void RegisterViewer(ILogViewer viewer)
+{
+viewers.Add(viewer);
+}
+public static void Log(string message)
+{
+foreach (ILogViewer viewer in viewers)
+{
+viewer.Log(message);
+}
+}
+}
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2010-09-22 14:49:00 -0700 -0700'>September 22, 2010</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Simple abstraction and decoupling example" href="https://kinnrot.github.io/simple-abstraction-and-decoupling/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Simple Rx Sample - UI Performance tuning
     </h2>
   </header>

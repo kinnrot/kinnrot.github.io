@@ -131,6 +131,117 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Nice post about cyber war
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Popular Science: The War Of Zeros And Ones. http://google.com/newsstand/s/CBIwvZm5zho
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2014-10-05 00:42:00.001 -0700 -0700'>October 5, 2014</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Nice post about cyber war" href="https://kinnrot.github.io/nice-post-about-cyber-war/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">ClusteTV is hiring
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Cluster TV is looking for it&#39;s next programmer/Superstar!
+If you can:
+* Write code like an Effin&#39; machine* Test your OWN code* Speak English like it&#39;s your mother&#39;s tongue* Handle challenges* Be self-driven &amp; independent
+We would also appreciate if you&#39;ll have:
+* Great communications skills* Independent thinking* Passion to learn new things* RoR or Angular experience* Coffee script knowledge* NOSQL understanding
+Then we want you!
+What we offer:
+* Great and professional team.* Opportunity to become an integral part of an innovative TV solution.* A chance to learn from the best in the industry.* Full time job in the Tel Aviv area.* Unlimited supply of food and beer. Really.* Flexible work hours.
+If you like what you see and have da skillz, drop us an email at chen@clustertv.com
+Or, call me tel: &#43;972 542124335.
+Good luck!</p>
+  </div>
+  <footer class="entry-footer"><span title='2014-08-08 07:40:00 -0700 -0700'>August 8, 2014</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to ClusteTV is hiring" href="https://kinnrot.github.io/clustetv-is-hiring/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Karma Rails Angular Jasmine testing - set up in 5 minutes
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>It took me about an hours and a half because google is not up to date, so here it is:
+First - as a rails developer, if you don’t have node.js, this is the time to install it.
+If you don’t use RubyMine as you IDE, I recommend it as well, but whatever you prefer is fine by me.
+Here you’ll fins instructions about karma installation, follow them carefully.
+You’ll see that you need to tell karma where is your sources and test sources.
+I’m working with jasmine, and using angular as a gem, check my configuration:
+frameworks: [‘jasmine’],
+// list of files / patterns to load in the browser
+files: [
+//libs
+‘http://0.0.0.0:3000/assets/application.js’,
+’/Users/chen/.rvm/gems/ruby-1.9.3-p448/gems/angularjs-rails-1.2.9/vendor/assets/javascripts/angular-mocks.js’,
+‘spec/javascripts/controllers/sample.js’,
+‘spec/javascripts/controllers//_spec.js.coffee’,
+‘spec/javascripts/controllers//*_spec.js.coffee’,
+‘spec/javascripts/controllers//_spec.coffee’,
+‘spec/javascripts/controllers/**/_spec.js’
+]
+To things you should notice:
+1. I use rails assets pipeline to give all my app code js, (just run your server before you test)
+2. I add the angular mocks lib
+All other stuff are basic, I got code in coffee and js so needed a little more lines to find all my tests.
+this is the way to make this work pretty fast.
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2014-02-02 23:32:00.001 -0800 -0800'>February 2, 2014</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Karma Rails Angular Jasmine testing - set up in 5 minutes" href="https://kinnrot.github.io/karma-rails-angular-jasmine-testing-set/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Export Hebrew (or any non english language) with php to excel
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>I found it very annoying that php data to excel is not so straight forward as one might think ,lots of wrong stuff here.
+The thing is, as a developer you don’t know a lot about encoding.
+So you don’t really think about it until you have bugs, than you start searching for a better solution, I found this.
+Meaning you manually convert encoding to support excel, and add BOM.
+Just wanted to gather a few links together for future use.
+Enjoy.
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2014-01-12 14:09:00.002 -0800 -0800'>January 12, 2014</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Export Hebrew (or any non english language) with php to excel" href="https://kinnrot.github.io/export-hebrew-or-any-non-english/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Home Base SDK
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>As a developer@widdit’s incredible android team, I decided to write a how to embed Widdit’s home base sdk in 5 minutes guide, so here it is:
+Step 1:
+go to widdit.com and create an account.
+Step 2:
+create your first home base in the home base section at widdit site.
+step 3: go to sdk’s tab and follow the installation instructions
+step 4:
+upload your new apk to the market
+step 5:
+make money!
+Good luck.
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2013-01-28 06:10:00.001 -0800 -0800'>January 28, 2013</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Home Base SDK" href="https://kinnrot.github.io/home-base-sdk/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">SpineJS Tip
     </h2>
   </header>
@@ -226,91 +337,6 @@ flush(); // Unless both are called !
   </div>
   <footer class="entry-footer"><span title='2012-07-07 09:27:00.003 -0700 -0700'>July 7, 2012</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
   <a class="entry-link" aria-label="post link to php post response script execution" href="https://kinnrot.github.io/php-post-response-script-execution/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>For all you android developers, If you ever installed a new rom and didn’t see any logs from your cat, just do this:
-http://stackoverflow.com/a/7272831/67505
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2012-06-12 04:57:00.003 -0700 -0700'>June 12, 2012</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to " href="https://kinnrot.github.io/for-all-you-android-developers-if-you/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Rails &#43; Mongo &#43; Heroku how?
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>After a few hours of fighting with google I decided to write it all here:
-*This post is more relevant for windows users but can help others.
-What do you need to have:
-First you need to have ruby 1.9.2&#43;
-Devkit
-then you need rails 3&#43;
-then u need the bundler gem
-then go to getting started with mongoid then install mongo locally
-then check it all good
-then add acoount in heroku
-then create app
-then add your key
-then push
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2012-03-28 17:12:00.001 -0700 -0700'>March 28, 2012</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to Rails &#43; Mongo &#43; Heroku how?" href="https://kinnrot.github.io/rails-mongo-heroku-how/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">CoffeeScript - language review
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>This weekend I learned a new programming language, called coffee script, It’s not a real language it’s actually compiled to JavaScript, so it’s a way to write JavaScript differently.
-After a little hands-on and one book read I can say that this is a good language for experienced and non experienced JavaScript programmers. What’s awesome about this language is that is fills like someone took all the good stuff from ruby python and java, and put it in one language that eliminates all the crap you need to take form JavaScript programming.
-I can start writing all the good stuff about coffee but there is no need just dive into http://coffeescript.org/ and you’ll understand all the benefits.
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2012-02-18 06:30:00 -0800 -0800'>February 18, 2012</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to CoffeeScript - language review" href="https://kinnrot.github.io/coffeescript-language-review/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">PHP Sessions
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>One more thing,
-If you do stuff like put instances of classes inside a session and expect to call methods of this classes later, you must put the session start after you include the classes definitions.
-But I suggest not to do this kind of stuff.
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2012-01-07 14:42:00 -0800 -0800'>January 7, 2012</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to PHP Sessions" href="https://kinnrot.github.io/php-sessions/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">PHP sessions - stuff to check when things goes wrong.
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>There is too much information about problems with sessions in PHP, every dude got it’s own problem and it’s own solution.
-The probability that the problem you experiencing is the same is very low. So here is what my little (and very annoying) google journey came up to:
-You must call session_start(); on each pageIf you use the header(‘Location: blabla’); you should use relative url to keep preserve session some people say before using the header action you need to call session_write_close(); - I’m not using it.session_write_close(); could be the reason to your problems, cause after calling it you can’t modify the session (in the current http context), that was my problem.on php docs, they say that “Session ID is not passed with Location header even if session.use_trans_sid is enabled. It must by passed manually using SID constant.&#34;So first make sure you use session start, if you passed this search for voodoos like session_write_close() in the middle of your infrastructure and remove them.
-If I didn’t help, continue the journey.
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2012-01-06 01:49:00 -0800 -0800'>January 6, 2012</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to PHP sessions - stuff to check when things goes wrong." href="https://kinnrot.github.io/php-sessions-stuff-to-check-when-things/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

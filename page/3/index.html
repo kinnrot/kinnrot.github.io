@@ -131,6 +131,93 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">From jQuery to Stimulus
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>I tried to build an SPA without a shiny client side framework, I wanted to build something fast with good user experience and keeping it as simple as possible.
+I decided to take rails, use turbolinks and a avoid javascript till its a must.
+It didn’t take more than a few hours and I found myself writing javascript. What I needed to do is simple, I had an input with number, and 2 buttons next to it, one to increase values by 1 and on to decrease it looked like this:
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2018-05-22 12:10:10 +0300 IDT'>May 22, 2018</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to From jQuery to Stimulus" href="https://kinnrot.github.io/from-jquery-to-stimulus/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Ruby async await
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>There is a lot of buzz about asyc await from the javascript world, the concept is very simple and make your code much more readable.
+You want to execute something without blocking the main thread but you want the next line of code to run once the non blocking code finish, meaning continue code execution in its written order.
+Ruby has a great concurrency gem which basically encapsulate low level threading and synchronization code to common patterns like Future, Promise, Actor and much more.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2017-08-08 18:12:46 +0300 IDT'>August 8, 2017</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Ruby async await" href="https://kinnrot.github.io/ruby-async-await/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Octopress 101
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>I decided to develop my own blog like all the other cool developers. If you got here, this is what I got so far, it’s not too much, but it’s a start.
+When I develop something my rules are very simple
+Avoid writing any code. Keep it simple. Easy to deploy on free hosting environment. Decent code syntax highlight So I heard(mostly in www) people talking about jekyll as a static web site generator and began to dig dipper, I searched a few ruby gems for blogging and found a gem called [octopress](https://github.com/octopress/octopress octopress v3). They, the guys who developed it, calls it Jekyll’s Ferrari, sounds good to me, looked pretty straight forward so I gave it a spin.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2017-07-25 22:45:07 +0300 IDT'>July 25, 2017</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Octopress 101" href="https://kinnrot.github.io/octopress101/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Watch out for reference duplication instead of instance duplication
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>
+# This code will generate 96 instancesViewStatData = Struct.new(:total, :target, :ratio)96.times.map {|_|ViewStatData.new(0, 0, 0)}# And this will not, it’ll generate 96 pointers[ViewStatData.new(0, 0, 0)] * 96# So Watch out!!!
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2017-07-18 04:42:00.003 -0700 -0700'>July 18, 2017</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Watch out for reference duplication instead of instance duplication" href="https://kinnrot.github.io/watch-out-for-reference-duplication/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Ruby Lazy chunked hash like behavior
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>When we want to iterate a long list, we can simply write a query and get a cursor, ActiveRecord will do all the heavy lifting for us.
+What happens when we need to do some complicated computations on a set of data, which sometimes can be too big to be stored in memory for the entire computing process?
+This is when we need to start being more creational.
+I’d like to introduce what I came up with.
+The problem:
+- Complex calculation on time based data series for a period of 3 months.
+- Each calculation may depends on previous one and on future and past data.
+- Must be in order.
+- When fetching all data server crash on memory.
+The solution:
+I wanted to do the most minor code change possible, and currently the data was accessed via a hash. I decided to encapsulate the hash with something I called lazy chunked hash (tried google it see it as standard behavior in clojure).
+It looks like this:
+class ValuesProvider def initialize()
+@loaded_date = nil @hash = Hash.new(0) end def [](time_slot) get(time_slot) end private def get(time_slot) relevant_date = time_slot.to_date unless relevant_date == @loaded_date load(relevant_date) end @hash[time_slot.to_i] endend
+Pretty simple and does the work, instead of loading the data all at once, the data is being loaded for each day separately, this way we keep it chunky but not too chunky.
+And best part, my code that consume the data, didn’t change because of the [] method, which makes my ValueProvider behave like an array. This solution is good when the consumer data request(call for[]) implies on what data should be loaded, which most of the times will, but in some cases it won’t)
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2017-06-05 05:11:00.001 -0700 -0700'>June 5, 2017</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Ruby Lazy chunked hash like behavior" href="https://kinnrot.github.io/ruby-lazy-chunked-hash-like-behavior/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Rubymine on OSX memory issues
     </h2>
   </header>
@@ -245,117 +332,6 @@ Now you can just do obj.id=[Some ObjectId] and save the object.
   </div>
   <footer class="entry-footer"><span title='2014-11-15 07:20:00 -0800 -0800'>November 15, 2014</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
   <a class="entry-link" aria-label="post link to Overriding default id in mongoid" href="https://kinnrot.github.io/overriding-default-id-in-mongoid/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Nice post about cyber war
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Popular Science: The War Of Zeros And Ones. http://google.com/newsstand/s/CBIwvZm5zho
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2014-10-05 00:42:00.001 -0700 -0700'>October 5, 2014</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to Nice post about cyber war" href="https://kinnrot.github.io/nice-post-about-cyber-war/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">ClusteTV is hiring
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Cluster TV is looking for it&#39;s next programmer/Superstar!
-If you can:
-* Write code like an Effin&#39; machine* Test your OWN code* Speak English like it&#39;s your mother&#39;s tongue* Handle challenges* Be self-driven &amp; independent
-We would also appreciate if you&#39;ll have:
-* Great communications skills* Independent thinking* Passion to learn new things* RoR or Angular experience* Coffee script knowledge* NOSQL understanding
-Then we want you!
-What we offer:
-* Great and professional team.* Opportunity to become an integral part of an innovative TV solution.* A chance to learn from the best in the industry.* Full time job in the Tel Aviv area.* Unlimited supply of food and beer. Really.* Flexible work hours.
-If you like what you see and have da skillz, drop us an email at chen@clustertv.com
-Or, call me tel: &#43;972 542124335.
-Good luck!</p>
-  </div>
-  <footer class="entry-footer"><span title='2014-08-08 07:40:00 -0700 -0700'>August 8, 2014</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to ClusteTV is hiring" href="https://kinnrot.github.io/clustetv-is-hiring/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Karma Rails Angular Jasmine testing - set up in 5 minutes
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>It took me about an hours and a half because google is not up to date, so here it is:
-First - as a rails developer, if you don’t have node.js, this is the time to install it.
-If you don’t use RubyMine as you IDE, I recommend it as well, but whatever you prefer is fine by me.
-Here you’ll fins instructions about karma installation, follow them carefully.
-You’ll see that you need to tell karma where is your sources and test sources.
-I’m working with jasmine, and using angular as a gem, check my configuration:
-frameworks: [‘jasmine’],
-// list of files / patterns to load in the browser
-files: [
-//libs
-‘http://0.0.0.0:3000/assets/application.js’,
-’/Users/chen/.rvm/gems/ruby-1.9.3-p448/gems/angularjs-rails-1.2.9/vendor/assets/javascripts/angular-mocks.js’,
-‘spec/javascripts/controllers/sample.js’,
-‘spec/javascripts/controllers//_spec.js.coffee’,
-‘spec/javascripts/controllers//*_spec.js.coffee’,
-‘spec/javascripts/controllers//_spec.coffee’,
-‘spec/javascripts/controllers/**/_spec.js’
-]
-To things you should notice:
-1. I use rails assets pipeline to give all my app code js, (just run your server before you test)
-2. I add the angular mocks lib
-All other stuff are basic, I got code in coffee and js so needed a little more lines to find all my tests.
-this is the way to make this work pretty fast.
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2014-02-02 23:32:00.001 -0800 -0800'>February 2, 2014</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to Karma Rails Angular Jasmine testing - set up in 5 minutes" href="https://kinnrot.github.io/karma-rails-angular-jasmine-testing-set/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Export Hebrew (or any non english language) with php to excel
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>I found it very annoying that php data to excel is not so straight forward as one might think ,lots of wrong stuff here.
-The thing is, as a developer you don’t know a lot about encoding.
-So you don’t really think about it until you have bugs, than you start searching for a better solution, I found this.
-Meaning you manually convert encoding to support excel, and add BOM.
-Just wanted to gather a few links together for future use.
-Enjoy.
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2014-01-12 14:09:00.002 -0800 -0800'>January 12, 2014</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to Export Hebrew (or any non english language) with php to excel" href="https://kinnrot.github.io/export-hebrew-or-any-non-english/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Home Base SDK
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>As a developer@widdit’s incredible android team, I decided to write a how to embed Widdit’s home base sdk in 5 minutes guide, so here it is:
-Step 1:
-go to widdit.com and create an account.
-Step 2:
-create your first home base in the home base section at widdit site.
-step 3: go to sdk’s tab and follow the installation instructions
-step 4:
-upload your new apk to the market
-step 5:
-make money!
-Good luck.
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2013-01-28 06:10:00.001 -0800 -0800'>January 28, 2013</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to Home Base SDK" href="https://kinnrot.github.io/home-base-sdk/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

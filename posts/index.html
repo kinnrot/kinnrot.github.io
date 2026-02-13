@@ -137,6 +137,81 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Enterprise OpenClaw: Setting up on AWS EC2
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>For many, AWS is synonymous with “cloud.” If you are building a serious business around your AI agents, or if you simply want to integrate OpenClaw with other AWS services like S3 (for storage) or Lambda (for serverless functions), running on EC2 is the logical step.
+Here is how to deploy OpenClaw on an Amazon EC2 instance.
+1. Launching the Instance Log in to the AWS Console. Navigate to EC2 -&gt; Launch Instance. Name: OpenClaw-Agent-01. AMI: Ubuntu Server 24.04 LTS (HVM), SSD Volume Type. Instance Type: t3.small. Why? The t3.micro only has 1GB RAM, which can be tight. t3.small gives you 2GB RAM and 2 vCPUs, which is much safer for production. Key Pair: Create a new key pair (openclaw-key) and download the .pem file. 2. Security Groups (The Firewall) AWS blocks everything by default. You need to open ports.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-13 13:00:00 +0200 IST'>February 13, 2026</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Enterprise OpenClaw: Setting up on AWS EC2" href="https://kinnrot.github.io/enterprise-openclaw-aws-ec2/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Deploying OpenClaw on Linode: A Developer&#39;s Walkthrough
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Linode (now part of Akamai) has maintained its reputation as the “developer’s cloud.” It doesn’t have the flashy UI of some competitors, but it offers rock-solid reliability, excellent documentation, and a great CLI.
+If you prefer managing your OpenClaw infrastructure with precision, Linode is a great home for it.
+The Linode Setup Sign up at Linode. Create Linode: Distro: Ubuntu 24.04 LTS. Region: Select one close to you. Plan: Shared CPU -&gt; Nanode 1GB (good for testing) or Linode 2GB (recommended for production). Using StackScripts (Optional) One of Linode’s coolest features is StackScripts. You can write a script that runs automatically upon deployment.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-13 12:45:00 +0200 IST'>February 13, 2026</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Deploying OpenClaw on Linode: A Developer&#39;s Walkthrough" href="https://kinnrot.github.io/deploy-openclaw-linode/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">The Budget Guide: Self-Hosting OpenClaw on Hetzner
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Let’s be honest: cloud costs add up. If you are running multiple AI agents or just want to experiment with OpenClaw without a monthly bill that hurts, Hetzner is the answer.
+Known for their incredible price-to-performance ratio, specifically with their new ARM64 instances, Hetzner is a favorite among the self-hosting community.
+ARM64: The Secret Weapon OpenClaw, being a Node.js application, runs natively on ARM architecture (like the chip in your MacBook or Raspberry Pi). Hetzner’s ARM instances are often cheaper and faster than their x86 equivalents.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-13 12:30:00 +0200 IST'>February 13, 2026</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to The Budget Guide: Self-Hosting OpenClaw on Hetzner" href="https://kinnrot.github.io/self-hosting-openclaw-hetzner/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">How to Run OpenClaw on Vultr for High-Frequency Performance
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>When latency matters, Vultr is the cloud provider to beat. Their High Frequency Compute instances are powered by high clock speed CPUs and NVMe storage, making them significantly snappier for IO-heavy operations.
+For an AI agent like OpenClaw, which might be scraping web pages or processing large context files, this speed difference is noticeable.
+Why Vultr for OpenClaw? 32&#43; Locations: Put your agent geographically close to the services it interacts with. NVMe Storage: Faster database reads/writes for your agent’s long-term memory. Simple Pricing: You know exactly what you’re paying. Step-by-Step Setup Sign Up: Create an account at Vultr. Deploy Instance: Select Cloud Compute -&gt; High Frequency. Server Location: Pick your preferred region. Server Type: Ubuntu 24.04 LTS. Server Size: The 32GB NVMe / 1 vCPU / 1GB Memory plan is often sufficient, but the 2GB Memory plan is safer for stability. Installation Quick-Start Once your instance is live, the process is similar to other Linux environments.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-13 12:15:00 +0200 IST'>February 13, 2026</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to How to Run OpenClaw on Vultr for High-Frequency Performance" href="https://kinnrot.github.io/run-openclaw-vultr-performance/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Step-by-Step Guide: Deploying OpenClaw on DigitalOcean
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>DigitalOcean is often the first stop for developers wanting to self-host tools because of its simplicity. If you’re looking to get your OpenClaw AI agent running 24/7 without breaking the bank, a DigitalOcean Droplet is a fantastic choice.
+Here is a comprehensive guide to getting started.
+1. Create a Droplet Log in to your DigitalOcean account. Click Create -&gt; Droplets. Region: Choose the datacenter closest to you or your target audience. OS: Ubuntu 24.04 LTS is the standard recommendation. Size: OpenClaw is reasonably lightweight. The Basic plan with 2GB RAM / 1 CPU is the sweet spot. You might get away with 1GB, but 2GB ensures your agent doesn’t crash during memory-intensive tasks. Authentication: Upload your SSH Key. Never use a password for a public server. 2. Initial Server Setup SSH into your new droplet:
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-13 12:00:00 +0200 IST'>February 13, 2026</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Step-by-Step Guide: Deploying OpenClaw on DigitalOcean" href="https://kinnrot.github.io/deploy-openclaw-digitalocean-guide/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">The Best Ways to Run OpenClaw in the Cloud (2026 Edition)
     </h2>
   </header>
@@ -205,78 +280,6 @@ The Problem with Fat Models When a model knows too much, it becomes impossible t
   </div>
   <footer class="entry-footer"><span title='2026-02-11 11:00:00 +0200 IST'>February 11, 2026</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
   <a class="entry-link" aria-label="post link to Why I still prefer Thin Models in Rails" href="https://kinnrot.github.io/why-thin-models-rails/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">The Hidden Cost of &#39;Just One More Dependency&#39;
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>We’ve all been there. You’re working on a feature, and you need to parse some weirdly formatted date or handle a complex file upload. Your first instinct? npm install or bundle add.
-It feels like winning. Someone else already solved this problem! Why should I reinvent the wheel?
-The “Free” Wheel But here’s the thing: every dependency you add is a liability. It’s code you didn’t write, but code you now own. You own its bugs, its security vulnerabilities, and its breaking changes when it decides to “improve” its API.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-11 10:00:00 +0200 IST'>February 11, 2026</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to The Hidden Cost of &#39;Just One More Dependency&#39;" href="https://kinnrot.github.io/hidden-cost-of-dependencies/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Why focus on why
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Around 2 years ago, I started a new management gig. it wasn’t the first, but it was the first with a relatively large team. One of the most basic things I needed to do as a manager was to bind the team to its mission, and in simple terms: get them super motivated to do their day to day tasks.
-I’m a strong preacher for freedom, it gives people a sense of ownership.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2022-06-18 20:13:46 +0300 IDT'>June 18, 2022</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to Why focus on why" href="https://kinnrot.github.io/freedom-and-trust/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">The value of fast feedback loop for developers
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>We all wanna get from 0 to 1 (with many trailing zeros), the sooner the better.
-So, what’s the problem? You build something and you’re brave enough to put it out there, now what? Now you start the endless feedback loop cycle, you look at the data, analytics, user recordings, product inputs, and decide whats the next thing that’ll make your product better then ever, it’s an iterative process that never ends. The faster you iterate, the faster you’ll get to your target.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2022-03-03 23:19:59 +0200 IST'>March 3, 2022</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to The value of fast feedback loop for developers" href="https://kinnrot.github.io/the-value-of-fast-feedback-loop/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Rails Presentation Objects
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>If you ever used any MVC framework, I’m sure you asked yourself more than once, ‘Where should I put this piece of code?’ (If not that’s also fine). Well, there is no one answer for all problems but, I asked it a lot.
-In this post, I’m gonna focus about the view part.
-View objects, AKA view models, but any other name is fine (presenter view object, view controller mediator, whatever).
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2020-02-23 09:19:37 +0200 IST'>February 23, 2020</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to Rails Presentation Objects" href="https://kinnrot.github.io/rails-presentation-objects-guide/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Simulate Click on Google Geo Chart
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>So I found out it’s not so documented, hopefully google will index this. I have a page on my system that shows a google geo chart (same as this) When clicking on a country on the map lot’s of interesting things happens. And I wanted to implement a ui automation test to cover this use case.
-It’s not so easy cause even if you find the right svg path object and try clicking on it you get some interception errors. So I googled a bit without any luck, but the geo chart documents came to the rescue.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2020-01-22 21:27:38 +0200 IST'>January 22, 2020</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to Simulate Click on Google Geo Chart" href="https://kinnrot.github.io/simulate-click-on-google-geo-chart/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

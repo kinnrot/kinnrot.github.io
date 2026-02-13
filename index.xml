@@ -6,8 +6,105 @@
     <description>Recent content on cdblg</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 13 Feb 2026 10:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 13 Feb 2026 13:00:00 +0200</lastBuildDate>
     <atom:link href="https://kinnrot.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Enterprise OpenClaw: Setting up on AWS EC2</title>
+      <link>https://kinnrot.github.io/enterprise-openclaw-aws-ec2/</link>
+      <pubDate>Fri, 13 Feb 2026 13:00:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/enterprise-openclaw-aws-ec2/</guid>
+      <description>&lt;p&gt;For many, &lt;strong&gt;AWS&lt;/strong&gt; is synonymous with &amp;ldquo;cloud.&amp;rdquo; If you are building a serious business around your AI agents, or if you simply want to integrate &lt;strong&gt;OpenClaw&lt;/strong&gt; with other AWS services like S3 (for storage) or Lambda (for serverless functions), running on EC2 is the logical step.&lt;/p&gt;
+&lt;p&gt;Here is how to deploy OpenClaw on an Amazon EC2 instance.&lt;/p&gt;
+&lt;h3 id=&#34;1-launching-the-instance&#34;&gt;1. Launching the Instance&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Log in to the &lt;a href=&#34;https://aws.amazon.com/?utm_source=kinnrot_blog&#34;&gt;AWS Console&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Navigate to &lt;strong&gt;EC2&lt;/strong&gt; -&amp;gt; &lt;strong&gt;Launch Instance&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Name:&lt;/strong&gt; &lt;code&gt;OpenClaw-Agent-01&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AMI:&lt;/strong&gt; Ubuntu Server 24.04 LTS (HVM), SSD Volume Type.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Instance Type:&lt;/strong&gt; &lt;code&gt;t3.small&lt;/code&gt;.
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Why?&lt;/em&gt; The &lt;code&gt;t3.micro&lt;/code&gt; only has 1GB RAM, which can be tight. &lt;code&gt;t3.small&lt;/code&gt; gives you 2GB RAM and 2 vCPUs, which is much safer for production.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Key Pair:&lt;/strong&gt; Create a new key pair (&lt;code&gt;openclaw-key&lt;/code&gt;) and download the &lt;code&gt;.pem&lt;/code&gt; file.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;2-security-groups-the-firewall&#34;&gt;2. Security Groups (The Firewall)&lt;/h3&gt;
+&lt;p&gt;AWS blocks everything by default. You need to open ports.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Deploying OpenClaw on Linode: A Developer&#39;s Walkthrough</title>
+      <link>https://kinnrot.github.io/deploy-openclaw-linode/</link>
+      <pubDate>Fri, 13 Feb 2026 12:45:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/deploy-openclaw-linode/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Linode&lt;/strong&gt; (now part of Akamai) has maintained its reputation as the &amp;ldquo;developer&amp;rsquo;s cloud.&amp;rdquo; It doesn&amp;rsquo;t have the flashy UI of some competitors, but it offers rock-solid reliability, excellent documentation, and a great CLI.&lt;/p&gt;
+&lt;p&gt;If you prefer managing your &lt;strong&gt;OpenClaw&lt;/strong&gt; infrastructure with precision, Linode is a great home for it.&lt;/p&gt;
+&lt;h3 id=&#34;the-linode-setup&#34;&gt;The Linode Setup&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Sign up at &lt;a href=&#34;https://www.linode.com/?utm_source=kinnrot_blog&#34;&gt;Linode&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Create Linode:&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Distro:&lt;/strong&gt; Ubuntu 24.04 LTS.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Region:&lt;/strong&gt; Select one close to you.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Plan:&lt;/strong&gt; Shared CPU -&amp;gt; &lt;strong&gt;Nanode 1GB&lt;/strong&gt; (good for testing) or &lt;strong&gt;Linode 2GB&lt;/strong&gt; (recommended for production).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;using-stackscripts-optional&#34;&gt;Using StackScripts (Optional)&lt;/h3&gt;
+&lt;p&gt;One of Linode&amp;rsquo;s coolest features is StackScripts. You can write a script that runs automatically upon deployment.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>The Budget Guide: Self-Hosting OpenClaw on Hetzner</title>
+      <link>https://kinnrot.github.io/self-hosting-openclaw-hetzner/</link>
+      <pubDate>Fri, 13 Feb 2026 12:30:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/self-hosting-openclaw-hetzner/</guid>
+      <description>&lt;p&gt;Let&amp;rsquo;s be honest: cloud costs add up. If you are running multiple AI agents or just want to experiment with &lt;strong&gt;OpenClaw&lt;/strong&gt; without a monthly bill that hurts, &lt;strong&gt;Hetzner&lt;/strong&gt; is the answer.&lt;/p&gt;
+&lt;p&gt;Known for their incredible price-to-performance ratio, specifically with their new ARM64 instances, Hetzner is a favorite among the self-hosting community.&lt;/p&gt;
+&lt;h3 id=&#34;arm64-the-secret-weapon&#34;&gt;ARM64: The Secret Weapon&lt;/h3&gt;
+&lt;p&gt;OpenClaw, being a Node.js application, runs natively on ARM architecture (like the chip in your MacBook or Raspberry Pi). Hetzner&amp;rsquo;s ARM instances are often cheaper and faster than their x86 equivalents.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>How to Run OpenClaw on Vultr for High-Frequency Performance</title>
+      <link>https://kinnrot.github.io/run-openclaw-vultr-performance/</link>
+      <pubDate>Fri, 13 Feb 2026 12:15:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/run-openclaw-vultr-performance/</guid>
+      <description>&lt;p&gt;When latency matters, &lt;strong&gt;Vultr&lt;/strong&gt; is the cloud provider to beat. Their High Frequency Compute instances are powered by high clock speed CPUs and NVMe storage, making them significantly snappier for IO-heavy operations.&lt;/p&gt;
+&lt;p&gt;For an AI agent like OpenClaw, which might be scraping web pages or processing large context files, this speed difference is noticeable.&lt;/p&gt;
+&lt;h3 id=&#34;why-vultr-for-openclaw&#34;&gt;Why Vultr for OpenClaw?&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;32+ Locations:&lt;/strong&gt; Put your agent geographically close to the services it interacts with.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;NVMe Storage:&lt;/strong&gt; Faster database reads/writes for your agent&amp;rsquo;s long-term memory.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Simple Pricing:&lt;/strong&gt; You know exactly what you&amp;rsquo;re paying.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;step-by-step-setup&#34;&gt;Step-by-Step Setup&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Sign Up:&lt;/strong&gt; Create an account at &lt;a href=&#34;https://www.vultr.com/?utm_source=kinnrot_blog&#34;&gt;Vultr&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Deploy Instance:&lt;/strong&gt; Select &lt;strong&gt;Cloud Compute&lt;/strong&gt; -&amp;gt; &lt;strong&gt;High Frequency&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Server Location:&lt;/strong&gt; Pick your preferred region.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Server Type:&lt;/strong&gt; &lt;strong&gt;Ubuntu 24.04 LTS&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Server Size:&lt;/strong&gt; The &lt;strong&gt;32GB NVMe / 1 vCPU / 1GB Memory&lt;/strong&gt; plan is often sufficient, but the &lt;strong&gt;2GB Memory&lt;/strong&gt; plan is safer for stability.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;installation-quick-start&#34;&gt;Installation Quick-Start&lt;/h3&gt;
+&lt;p&gt;Once your instance is live, the process is similar to other Linux environments.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Step-by-Step Guide: Deploying OpenClaw on DigitalOcean</title>
+      <link>https://kinnrot.github.io/deploy-openclaw-digitalocean-guide/</link>
+      <pubDate>Fri, 13 Feb 2026 12:00:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/deploy-openclaw-digitalocean-guide/</guid>
+      <description>&lt;p&gt;DigitalOcean is often the first stop for developers wanting to self-host tools because of its simplicity. If you&amp;rsquo;re looking to get your &lt;strong&gt;OpenClaw&lt;/strong&gt; AI agent running 24/7 without breaking the bank, a DigitalOcean Droplet is a fantastic choice.&lt;/p&gt;
+&lt;p&gt;Here is a comprehensive guide to getting started.&lt;/p&gt;
+&lt;h3 id=&#34;1-create-a-droplet&#34;&gt;1. Create a Droplet&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Log in to your &lt;a href=&#34;https://www.digitalocean.com/?utm_source=kinnrot_blog&#34;&gt;DigitalOcean account&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Click &lt;strong&gt;Create&lt;/strong&gt; -&amp;gt; &lt;strong&gt;Droplets&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Region:&lt;/strong&gt; Choose the datacenter closest to you or your target audience.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;OS:&lt;/strong&gt; Ubuntu 24.04 LTS is the standard recommendation.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Size:&lt;/strong&gt; OpenClaw is reasonably lightweight. The &lt;strong&gt;Basic&lt;/strong&gt; plan with &lt;strong&gt;2GB RAM / 1 CPU&lt;/strong&gt; is the sweet spot. You might get away with 1GB, but 2GB ensures your agent doesn&amp;rsquo;t crash during memory-intensive tasks.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Authentication:&lt;/strong&gt; Upload your SSH Key. &lt;em&gt;Never&lt;/em&gt; use a password for a public server.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;2-initial-server-setup&#34;&gt;2. Initial Server Setup&lt;/h3&gt;
+&lt;p&gt;SSH into your new droplet:&lt;/p&gt;</description>
+    </item>
     <item>
       <title>The Best Ways to Run OpenClaw in the Cloud (2026 Edition)</title>
       <link>https://kinnrot.github.io/run-openclaw-cloud-2026/</link>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Digitalocean on cdblg</title>
+    <link>https://kinnrot.github.io/tags/digitalocean/</link>
+    <description>Recent content in Digitalocean on cdblg</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 13 Feb 2026 12:00:00 +0200</lastBuildDate>
+    <atom:link href="https://kinnrot.github.io/tags/digitalocean/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Step-by-Step Guide: Deploying OpenClaw on DigitalOcean</title>
+      <link>https://kinnrot.github.io/deploy-openclaw-digitalocean-guide/</link>
+      <pubDate>Fri, 13 Feb 2026 12:00:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/deploy-openclaw-digitalocean-guide/</guid>
+      <description>&lt;p&gt;DigitalOcean is often the first stop for developers wanting to self-host tools because of its simplicity. If you&amp;rsquo;re looking to get your &lt;strong&gt;OpenClaw&lt;/strong&gt; AI agent running 24/7 without breaking the bank, a DigitalOcean Droplet is a fantastic choice.&lt;/p&gt;
+&lt;p&gt;Here is a comprehensive guide to getting started.&lt;/p&gt;
+&lt;h3 id=&#34;1-create-a-droplet&#34;&gt;1. Create a Droplet&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Log in to your &lt;a href=&#34;https://www.digitalocean.com/?utm_source=kinnrot_blog&#34;&gt;DigitalOcean account&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Click &lt;strong&gt;Create&lt;/strong&gt; -&amp;gt; &lt;strong&gt;Droplets&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Region:&lt;/strong&gt; Choose the datacenter closest to you or your target audience.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;OS:&lt;/strong&gt; Ubuntu 24.04 LTS is the standard recommendation.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Size:&lt;/strong&gt; OpenClaw is reasonably lightweight. The &lt;strong&gt;Basic&lt;/strong&gt; plan with &lt;strong&gt;2GB RAM / 1 CPU&lt;/strong&gt; is the sweet spot. You might get away with 1GB, but 2GB ensures your agent doesn&amp;rsquo;t crash during memory-intensive tasks.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Authentication:&lt;/strong&gt; Upload your SSH Key. &lt;em&gt;Never&lt;/em&gt; use a password for a public server.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;2-initial-server-setup&#34;&gt;2. Initial Server Setup&lt;/h3&gt;
+&lt;p&gt;SSH into your new droplet:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

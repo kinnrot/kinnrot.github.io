@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Aws on cdblg</title>
+    <link>https://kinnrot.github.io/tags/aws/</link>
+    <description>Recent content in Aws on cdblg</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 13 Feb 2026 13:00:00 +0200</lastBuildDate>
+    <atom:link href="https://kinnrot.github.io/tags/aws/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Enterprise OpenClaw: Setting up on AWS EC2</title>
+      <link>https://kinnrot.github.io/enterprise-openclaw-aws-ec2/</link>
+      <pubDate>Fri, 13 Feb 2026 13:00:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/enterprise-openclaw-aws-ec2/</guid>
+      <description>&lt;p&gt;For many, &lt;strong&gt;AWS&lt;/strong&gt; is synonymous with &amp;ldquo;cloud.&amp;rdquo; If you are building a serious business around your AI agents, or if you simply want to integrate &lt;strong&gt;OpenClaw&lt;/strong&gt; with other AWS services like S3 (for storage) or Lambda (for serverless functions), running on EC2 is the logical step.&lt;/p&gt;
+&lt;p&gt;Here is how to deploy OpenClaw on an Amazon EC2 instance.&lt;/p&gt;
+&lt;h3 id=&#34;1-launching-the-instance&#34;&gt;1. Launching the Instance&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Log in to the &lt;a href=&#34;https://aws.amazon.com/?utm_source=kinnrot_blog&#34;&gt;AWS Console&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Navigate to &lt;strong&gt;EC2&lt;/strong&gt; -&amp;gt; &lt;strong&gt;Launch Instance&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Name:&lt;/strong&gt; &lt;code&gt;OpenClaw-Agent-01&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AMI:&lt;/strong&gt; Ubuntu Server 24.04 LTS (HVM), SSD Volume Type.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Instance Type:&lt;/strong&gt; &lt;code&gt;t3.small&lt;/code&gt;.
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Why?&lt;/em&gt; The &lt;code&gt;t3.micro&lt;/code&gt; only has 1GB RAM, which can be tight. &lt;code&gt;t3.small&lt;/code&gt; gives you 2GB RAM and 2 vCPUs, which is much safer for production.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Key Pair:&lt;/strong&gt; Create a new key pair (&lt;code&gt;openclaw-key&lt;/code&gt;) and download the &lt;code&gt;.pem&lt;/code&gt; file.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;2-security-groups-the-firewall&#34;&gt;2. Security Groups (The Firewall)&lt;/h3&gt;
+&lt;p&gt;AWS blocks everything by default. You need to open ports.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

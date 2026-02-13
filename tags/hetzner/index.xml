@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Hetzner on cdblg</title>
+    <link>https://kinnrot.github.io/tags/hetzner/</link>
+    <description>Recent content in Hetzner on cdblg</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 13 Feb 2026 12:30:00 +0200</lastBuildDate>
+    <atom:link href="https://kinnrot.github.io/tags/hetzner/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Budget Guide: Self-Hosting OpenClaw on Hetzner</title>
+      <link>https://kinnrot.github.io/self-hosting-openclaw-hetzner/</link>
+      <pubDate>Fri, 13 Feb 2026 12:30:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/self-hosting-openclaw-hetzner/</guid>
+      <description>&lt;p&gt;Let&amp;rsquo;s be honest: cloud costs add up. If you are running multiple AI agents or just want to experiment with &lt;strong&gt;OpenClaw&lt;/strong&gt; without a monthly bill that hurts, &lt;strong&gt;Hetzner&lt;/strong&gt; is the answer.&lt;/p&gt;
+&lt;p&gt;Known for their incredible price-to-performance ratio, specifically with their new ARM64 instances, Hetzner is a favorite among the self-hosting community.&lt;/p&gt;
+&lt;h3 id=&#34;arm64-the-secret-weapon&#34;&gt;ARM64: The Secret Weapon&lt;/h3&gt;
+&lt;p&gt;OpenClaw, being a Node.js application, runs natively on ARM architecture (like the chip in your MacBook or Raspberry Pi). Hetzner&amp;rsquo;s ARM instances are often cheaper and faster than their x86 equivalents.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Akamai on cdblg</title>
+    <link>https://kinnrot.github.io/tags/akamai/</link>
+    <description>Recent content in Akamai on cdblg</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 13 Feb 2026 12:45:00 +0200</lastBuildDate>
+    <atom:link href="https://kinnrot.github.io/tags/akamai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Deploying OpenClaw on Linode: A Developer&#39;s Walkthrough</title>
+      <link>https://kinnrot.github.io/deploy-openclaw-linode/</link>
+      <pubDate>Fri, 13 Feb 2026 12:45:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/deploy-openclaw-linode/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Linode&lt;/strong&gt; (now part of Akamai) has maintained its reputation as the &amp;ldquo;developer&amp;rsquo;s cloud.&amp;rdquo; It doesn&amp;rsquo;t have the flashy UI of some competitors, but it offers rock-solid reliability, excellent documentation, and a great CLI.&lt;/p&gt;
+&lt;p&gt;If you prefer managing your &lt;strong&gt;OpenClaw&lt;/strong&gt; infrastructure with precision, Linode is a great home for it.&lt;/p&gt;
+&lt;h3 id=&#34;the-linode-setup&#34;&gt;The Linode Setup&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Sign up at &lt;a href=&#34;https://www.linode.com/?utm_source=kinnrot_blog&#34;&gt;Linode&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Create Linode:&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Distro:&lt;/strong&gt; Ubuntu 24.04 LTS.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Region:&lt;/strong&gt; Select one close to you.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Plan:&lt;/strong&gt; Shared CPU -&amp;gt; &lt;strong&gt;Nanode 1GB&lt;/strong&gt; (good for testing) or &lt;strong&gt;Linode 2GB&lt;/strong&gt; (recommended for production).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;using-stackscripts-optional&#34;&gt;Using StackScripts (Optional)&lt;/h3&gt;
+&lt;p&gt;One of Linode&amp;rsquo;s coolest features is StackScripts. You can write a script that runs automatically upon deployment.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
