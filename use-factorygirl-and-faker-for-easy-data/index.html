@@ -70,7 +70,17 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
-</script><meta property="og:url" content="https://kinnrot.github.io/use-factorygirl-and-faker-for-easy-data/">
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BYC49T802E"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BYC49T802E');
+</script>
+<meta property="og:url" content="https://kinnrot.github.io/use-factorygirl-and-faker-for-easy-data/">
   <meta property="og:site_name" content="cdblg">
   <meta property="og:title" content="Use FactoryGirl And Faker for easy data generation in unit testing (Part1)">
   <meta property="og:description" content="The most irritating thing in writing tests is the data generation preparation process, sometimes you want to create an object with 20 fields that 10 of them are mandatory but you only care about the value of 1, and you don’t want to mock, cause you interact with other methods and object that fetch this model from db.

@@ -72,7 +72,17 @@ When a model knows too much, it becomes impossible to test in isolation. You wan
         document.querySelector("html").dataset.theme = 'light';
     }
 
-</script><meta property="og:url" content="https://kinnrot.github.io/why-thin-models-rails/">
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BYC49T802E"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BYC49T802E');
+</script>
+<meta property="og:url" content="https://kinnrot.github.io/why-thin-models-rails/">
   <meta property="og:site_name" content="cdblg">
   <meta property="og:title" content="Why I still prefer Thin Models in Rails">
   <meta property="og:description" content="“Fat models, skinny controllers.” That was the mantra for years. But if you’ve ever worked on a Rails app that’s more than two years old, you know where that leads: a User.rb file that’s 2,000 lines long and handles everything from authentication to generating PDF invoices.

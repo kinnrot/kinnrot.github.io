@@ -77,7 +77,17 @@ This is all nice, but be aware!">
         document.querySelector("html").dataset.theme = 'light';
     }
 
-</script><meta property="og:url" content="https://kinnrot.github.io/live-data-pitfall-you-should-be-aware-of/">
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BYC49T802E"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BYC49T802E');
+</script>
+<meta property="og:url" content="https://kinnrot.github.io/live-data-pitfall-you-should-be-aware-of/">
   <meta property="og:site_name" content="cdblg">
   <meta property="og:title" content="Live Data Pitfall You Should Be Aware Of">
   <meta property="og:description" content="When working with MutableLiveData you can update the observable value in 2 ways:
