@@ -569,6 +569,12 @@
     <loc>https://kinnrot.github.io/hello-world/</loc>
     <lastmod>2010-09-01T08:23:00-07:00</lastmod>
   </url><url>
+    <loc>https://kinnrot.github.io/about/</loc>
+  </url><url>
+    <loc>https://kinnrot.github.io/archives/</loc>
+  </url><url>
     <loc>https://kinnrot.github.io/categories/</loc>
+  </url><url>
+    <loc>https://kinnrot.github.io/search/</loc>
   </url>
 </urlset>

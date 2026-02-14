@@ -120,11 +120,31 @@
             </div>
         </div>
         <ul id="menu">
+            <li>
+                <a href="https://kinnrot.github.io/archives/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kinnrot.github.io/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kinnrot.github.io/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kinnrot.github.io/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
         </ul>
     </nav>
 </header>
 <main class="main"> 
-<header class="page-header">
+<header class="page-header"><div class="breadcrumbs"><a href="https://kinnrot.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://kinnrot.github.io/tags/">Tags</a></div>
   <h1>
     Enterprise
   </h1>
@@ -141,7 +161,7 @@ Here is how to deploy OpenClaw on an Amazon EC2 instance.
 1. Launching the Instance Log in to the AWS Console. Navigate to EC2 -&gt; Launch Instance. Name: OpenClaw-Agent-01. AMI: Ubuntu Server 24.04 LTS (HVM), SSD Volume Type. Instance Type: t3.small. Why? The t3.micro only has 1GB RAM, which can be tight. t3.small gives you 2GB RAM and 2 vCPUs, which is much safer for production. Key Pair: Create a new key pair (openclaw-key) and download the .pem file. 2. Security Groups (The Firewall) AWS blocks everything by default. You need to open ports.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-02-13 13:00:00 +0200 IST'>February 13, 2026</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <footer class="entry-footer"><span title='2026-02-13 13:00:00 +0200 IST'>February 13, 2026</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
   <a class="entry-link" aria-label="post link to Enterprise OpenClaw: Setting up on AWS EC2" href="https://kinnrot.github.io/enterprise-openclaw-aws-ec2/"></a>
 </article>
     </main>

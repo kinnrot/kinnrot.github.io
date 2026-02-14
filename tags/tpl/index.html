@@ -120,11 +120,31 @@
             </div>
         </div>
         <ul id="menu">
+            <li>
+                <a href="https://kinnrot.github.io/archives/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kinnrot.github.io/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kinnrot.github.io/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kinnrot.github.io/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
         </ul>
     </nav>
 </header>
 <main class="main"> 
-<header class="page-header">
+<header class="page-header"><div class="breadcrumbs"><a href="https://kinnrot.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://kinnrot.github.io/tags/">Tags</a></div>
   <h1>
     TPL
   </h1>
@@ -140,7 +160,7 @@
 usage
 Code Snippetusing System;using System.Collections.Generic;using System.Linq;using System.Text;using System.Threading;using System.Windows;using System.Windows.Controls;using System.Windows.Data;using System.Windows.Documents;using System.Windows.Input;using System.Windows.Media;using System.Windows.Media.Imaging;using System.Windows.Navigation;using System.Windows.Shapes; namespace WpfApplication1{ /// &lt;summary&gt; /// Interaction logic for MainWindow.xaml /// &lt;/summary&gt; public partial class MainWindow : Window { private TBackgroundWorker&lt;string, int&gt; _bg;  public MainWindow() { InitializeComponent(); }  private void a_Click(object sender, RoutedEventArgs e) { _bg = TBackgroundWorker&lt;string, int&gt;.New(). StartWith(StartSomething). FinishWith(ShowResult). Begin(); }  private void ShowResult(string obj,object state) { a.Content = obj; }  private string StartSomething(object arg, CancellationToken cancellationToken) { int i = 0; while (i &lt; 200) { if (cancellationToken.IsCancellationRequested) { return &#34;Cacncelled&#34;; } i&#43;&#43;; Thread.Sleep(50); _bg.ReportProgress(Report,i); }  return &#34;Done&#34;; }  private void Report(int obj) { a.Content = obj; }  private void Button_Click(object sender, RoutedEventArgs e) { _bg.Cancel(); }  }}</p>
   </div>
-  <footer class="entry-footer"><span title='2011-06-16 01:40:00 -0700 -0700'>June 16, 2011</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <footer class="entry-footer"><span title='2011-06-16 01:40:00 -0700 -0700'>June 16, 2011</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
   <a class="entry-link" aria-label="post link to TPLing Background worker in 10 min" href="https://kinnrot.github.io/tpling-background-worker-in-10-min/"></a>
 </article>
     </main>

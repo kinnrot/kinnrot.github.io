@@ -120,11 +120,31 @@
             </div>
         </div>
         <ul id="menu">
+            <li>
+                <a href="https://kinnrot.github.io/archives/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kinnrot.github.io/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kinnrot.github.io/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kinnrot.github.io/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
         </ul>
     </nav>
 </header>
 <main class="main"> 
-<header class="page-header">
+<header class="page-header"><div class="breadcrumbs"><a href="https://kinnrot.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://kinnrot.github.io/tags/">Tags</a></div>
   <h1>
     Openclaw
   </h1>
@@ -141,7 +161,7 @@ Here is how to deploy OpenClaw on an Amazon EC2 instance.
 1. Launching the Instance Log in to the AWS Console. Navigate to EC2 -&gt; Launch Instance. Name: OpenClaw-Agent-01. AMI: Ubuntu Server 24.04 LTS (HVM), SSD Volume Type. Instance Type: t3.small. Why? The t3.micro only has 1GB RAM, which can be tight. t3.small gives you 2GB RAM and 2 vCPUs, which is much safer for production. Key Pair: Create a new key pair (openclaw-key) and download the .pem file. 2. Security Groups (The Firewall) AWS blocks everything by default. You need to open ports.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-02-13 13:00:00 +0200 IST'>February 13, 2026</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <footer class="entry-footer"><span title='2026-02-13 13:00:00 +0200 IST'>February 13, 2026</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
   <a class="entry-link" aria-label="post link to Enterprise OpenClaw: Setting up on AWS EC2" href="https://kinnrot.github.io/enterprise-openclaw-aws-ec2/"></a>
 </article>
 
@@ -156,7 +176,7 @@ If you prefer managing your OpenClaw infrastructure with precision, Linode is a 
 The Linode Setup Sign up at Linode. Create Linode: Distro: Ubuntu 24.04 LTS. Region: Select one close to you. Plan: Shared CPU -&gt; Nanode 1GB (good for testing) or Linode 2GB (recommended for production). Using StackScripts (Optional) One of Linode’s coolest features is StackScripts. You can write a script that runs automatically upon deployment.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-02-13 12:45:00 +0200 IST'>February 13, 2026</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <footer class="entry-footer"><span title='2026-02-13 12:45:00 +0200 IST'>February 13, 2026</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
   <a class="entry-link" aria-label="post link to Deploying OpenClaw on Linode: A Developer&#39;s Walkthrough" href="https://kinnrot.github.io/deploy-openclaw-linode/"></a>
 </article>
 
@@ -171,7 +191,7 @@ Known for their incredible price-to-performance ratio, specifically with their n
 ARM64: The Secret Weapon OpenClaw, being a Node.js application, runs natively on ARM architecture (like the chip in your MacBook or Raspberry Pi). Hetzner’s ARM instances are often cheaper and faster than their x86 equivalents.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-02-13 12:30:00 +0200 IST'>February 13, 2026</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <footer class="entry-footer"><span title='2026-02-13 12:30:00 +0200 IST'>February 13, 2026</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
   <a class="entry-link" aria-label="post link to The Budget Guide: Self-Hosting OpenClaw on Hetzner" href="https://kinnrot.github.io/self-hosting-openclaw-hetzner/"></a>
 </article>
 
@@ -186,7 +206,7 @@ For an AI agent like OpenClaw, which might be scraping web pages or processing l
 Why Vultr for OpenClaw? 32&#43; Locations: Put your agent geographically close to the services it interacts with. NVMe Storage: Faster database reads/writes for your agent’s long-term memory. Simple Pricing: You know exactly what you’re paying. Step-by-Step Setup Sign Up: Create an account at Vultr. Deploy Instance: Select Cloud Compute -&gt; High Frequency. Server Location: Pick your preferred region. Server Type: Ubuntu 24.04 LTS. Server Size: The 32GB NVMe / 1 vCPU / 1GB Memory plan is often sufficient, but the 2GB Memory plan is safer for stability. Installation Quick-Start Once your instance is live, the process is similar to other Linux environments.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-02-13 12:15:00 +0200 IST'>February 13, 2026</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <footer class="entry-footer"><span title='2026-02-13 12:15:00 +0200 IST'>February 13, 2026</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
   <a class="entry-link" aria-label="post link to How to Run OpenClaw on Vultr for High-Frequency Performance" href="https://kinnrot.github.io/run-openclaw-vultr-performance/"></a>
 </article>
 
@@ -201,7 +221,7 @@ Here is a comprehensive guide to getting started.
 1. Create a Droplet Log in to your DigitalOcean account. Click Create -&gt; Droplets. Region: Choose the datacenter closest to you or your target audience. OS: Ubuntu 24.04 LTS is the standard recommendation. Size: OpenClaw is reasonably lightweight. The Basic plan with 2GB RAM / 1 CPU is the sweet spot. You might get away with 1GB, but 2GB ensures your agent doesn’t crash during memory-intensive tasks. Authentication: Upload your SSH Key. Never use a password for a public server. 2. Initial Server Setup SSH into your new droplet:
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-02-13 12:00:00 +0200 IST'>February 13, 2026</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <footer class="entry-footer"><span title='2026-02-13 12:00:00 +0200 IST'>February 13, 2026</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
   <a class="entry-link" aria-label="post link to Step-by-Step Guide: Deploying OpenClaw on DigitalOcean" href="https://kinnrot.github.io/deploy-openclaw-digitalocean-guide/"></a>
 </article>
 
@@ -215,7 +235,7 @@ Here is a comprehensive guide to getting started.
 While running it on your local machine is great for testing, the real power of OpenClaw comes when it’s running 24/7 in the cloud. Whether it’s managing your WhatsApp messages while you sleep or executing long-running web automations, a cloud VPS is the way to go.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-02-13 10:00:00 +0200 IST'>February 13, 2026</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <footer class="entry-footer"><span title='2026-02-13 10:00:00 +0200 IST'>February 13, 2026</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
   <a class="entry-link" aria-label="post link to The Best Ways to Run OpenClaw in the Cloud (2026 Edition)" href="https://kinnrot.github.io/run-openclaw-cloud-2026/"></a>
 </article>
     </main>

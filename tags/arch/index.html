@@ -120,11 +120,31 @@
             </div>
         </div>
         <ul id="menu">
+            <li>
+                <a href="https://kinnrot.github.io/archives/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kinnrot.github.io/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kinnrot.github.io/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kinnrot.github.io/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
         </ul>
     </nav>
 </header>
 <main class="main"> 
-<header class="page-header">
+<header class="page-header"><div class="breadcrumbs"><a href="https://kinnrot.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://kinnrot.github.io/tags/">Tags</a></div>
   <h1>
     Arch
   </h1>
@@ -141,7 +161,7 @@ This can be achieved with the following code (runs inside activity):
 AlertDialog.Builder(this) .setMessage(&#34;Are you sure you want to exit?&#34;) .setCancelable(false) .setPositiveButton(&#34;Yes&#34;, object:DialogInterface.OnClickListener() { fun onClick(dialog:DialogInterface, id:Int) { this@YourActivity.finish() } }) .setNegativeButton(&#34;No&#34;, null) .show() This works fine, buy there is one annoying issue, If user clicks home button while dialog displayed, and go back to the app, the dialog will still be there. Now your user experience is seeing a question about getting out of the app while he just went in.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-10-25 18:43:04 +0300 IDT'>October 25, 2018</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <footer class="entry-footer"><span title='2018-10-25 18:43:04 +0300 IDT'>October 25, 2018</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
   <a class="entry-link" aria-label="post link to Android Lifecycle Aware Modal" href="https://kinnrot.github.io/android-lifecycle-aware-modal/"></a>
 </article>
 
@@ -157,7 +177,7 @@ If you need to update a value from other thread you can use the postValue which 
 This is all nice, but be aware!
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-10-22 08:12:18 +0300 IDT'>October 22, 2018</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <footer class="entry-footer"><span title='2018-10-22 08:12:18 +0300 IDT'>October 22, 2018</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
   <a class="entry-link" aria-label="post link to Live Data Pitfall You Should Be Aware Of" href="https://kinnrot.github.io/live-data-pitfall-you-should-be-aware-of/"></a>
 </article>
     </main>
