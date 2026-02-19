@@ -167,6 +167,29 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Dedicating a DJ(Delayed job) worker to a specific queue in heroku.
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Let’s say you have a vey important procedure that takes a while, and you need to process it in background, but you still want to execute ASAP.
+I’m using Delayed Job on Heroku, and could not find a lot of tutorials to do this simple task.
+So here is the simplest way to achieve this ability, you can raise a process/daemon that will have only one queue to work on. (Dealyed job worker by default is queue agnostic, just process all jobs)
+In procfile:
+urgentworker: QUEUE=urgent bundle exec rake jobs:work
+You can call the worker in any name you want and even define multiple workers for multiple queues.
+And in the “urgent” job just define the queue name to be “urgent” the worker will process only jobs in this queue.
+example:
+handle_asynchronously :some_job, :queue =&gt; “urgent’
+This will also work for Resque.
+Notice that for rescue you can write QUEUE=* but for delayed job you can’t.
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2014-11-15 07:34:00.002 -0800 -0800'>November 15, 2014</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Dedicating a DJ(Delayed job) worker to a specific queue in heroku." href="https://kinnrot.github.io/dedicating-djdelayed-job-worker-to/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Overriding default id in mongoid
     </h2>
   </header>
@@ -334,21 +357,6 @@ Or don&#39;t call the execute method,  why?  If you&#39;ll check documentation
   </div>
   <footer class="entry-footer"><span title='2012-08-31 01:05:00.001 -0700 -0700'>August 31, 2012</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
   <a class="entry-link" aria-label="post link to Nice idea for what&#39;s new in my app" href="https://kinnrot.github.io/nice-idea-for-what-new-in-my-app/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">coffee-script is just another version of javascript
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Hi,
-A few months ago I discovered this new stuff called coffee script, and thought to myself, “this is awesome I’ll write less and do more” Today, I tried to continue a development of a pretty fat client side and tried to find myself in the 1000 lines of code I wrote so far (not so many). It was pretty hard, and I’m the only programmer for now, can’t imagine how a new programmer would enter to this project.
-So…
-coffee-script is java-script that look better, no other benefits, and if you plan to write a little more than 200 lines of code, consider using some strongly typed language(that can generate debugable java script) with good IDE that’ll help you maintain your code. </p>
-  </div>
-  <footer class="entry-footer"><span title='2012-07-08 15:18:00.004 -0700 -0700'>July 8, 2012</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to coffee-script is just another version of javascript" href="https://kinnrot.github.io/coffee-script-is-another-piece-of-shit/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

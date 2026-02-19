@@ -167,6 +167,54 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Unit Test PropertyChanged
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>One of the basic stuff you wanna test as a client side developer, is that all of your UI bounded classes aka Controller, Model, ViewModel, Presenter, PresentationModel, or the code behind of your view if your just having fun.
+Let’s assume we have a person class with a name property:
+public class Person : INotifyPropertyChanged
+{
+public event PropertyChangedEventHandler PropertyChanged;
+private string _name;
+public virtual string Name
+{
+get { return _name; }
+set { _name = value;
+FirePropertyChanged(“Name”);
+}
+}
+protected virtual void FirePropertyChanged(string propertyName)
+{
+var handlers = PropertyChanged;
+if (handlers != null)
+{
+handlers(this, new PropertyChangedEventArgs(propertyName));
+}
+}
+}
+The simplest way to perform this test is to write this code:
+[TestFixture]
+public class PersonTest
+{
+[Test]
+public void SetName_SomeNewString_FirePropertyChanged()
+{
+Person person = new Person();
+string changedPropertyName = string.Empty;
+person.PropertyChanged &#43;= (sender, args) =&gt; changedPropertyName = args.PropertyName;
+person.Name = “Test”;
+Assert.AreEqual(“Name”, changedPropertyName);
+}
+}
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2010-09-01 15:01:00 -0700 -0700'>September 1, 2010</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Unit Test PropertyChanged" href="https://kinnrot.github.io/unit-test-propertychanged/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hello World
     </h2>
   </header>

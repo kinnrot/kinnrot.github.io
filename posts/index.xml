@@ -6,8 +6,18 @@
     <description>Recent content in Posts on cdblg</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 13 Feb 2026 14:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 19 Feb 2026 10:00:00 +0200</lastBuildDate>
     <atom:link href="https://kinnrot.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Rise of Agentic AI: Building Autonomous Workflows in 2026</title>
+      <link>https://kinnrot.github.io/rise-of-agentic-ai-2026/</link>
+      <pubDate>Thu, 19 Feb 2026 10:00:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/rise-of-agentic-ai-2026/</guid>
+      <description>&lt;p&gt;If 2023 was the year of the Chatbot and 2024 was the year of RAG (Retrieval-Augmented Generation), then 2026 is officially the year of &lt;strong&gt;Agentic AI&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;We’ve moved past the novelty of &amp;ldquo;talking to a document.&amp;rdquo; Today’s developers aren&amp;rsquo;t just building interfaces for LLMs; they are building autonomous systems capable of planning, executing, and correcting their own workflows. We are shifting from &lt;em&gt;Generative AI&lt;/em&gt; to &lt;em&gt;Agentic AI&lt;/em&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;what-makes-an-ai-agentic&#34;&gt;What Makes an AI &amp;ldquo;Agentic&amp;rdquo;?&lt;/h3&gt;
+&lt;p&gt;An agent isn&amp;rsquo;t just a wrapper around an LLM. To be truly agentic, a system needs three core capabilities:&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Getting Started with Strands Agents: Build Multi-Agent AI on AWS</title>
       <link>https://kinnrot.github.io/getting-started-with-strands-agents/</link>
