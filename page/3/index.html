@@ -162,6 +162,21 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Android Lifecycle Aware Modal
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Sometimes we want to show the user an alert when somethings wrong or we just need to give some extra info, For example; Ask the user if he is sure he wanna leave the app.
+This can be achieved with the following code (runs inside activity):
+AlertDialog.Builder(this) .setMessage(&#34;Are you sure you want to exit?&#34;) .setCancelable(false) .setPositiveButton(&#34;Yes&#34;, object:DialogInterface.OnClickListener() { fun onClick(dialog:DialogInterface, id:Int) { this@YourActivity.finish() } }) .setNegativeButton(&#34;No&#34;, null) .show() This works fine, buy there is one annoying issue, If user clicks home button while dialog displayed, and go back to the app, the dialog will still be there. Now your user experience is seeing a question about getting out of the app while he just went in.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2018-10-25 18:43:04 +0300 IDT'>October 25, 2018</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Android Lifecycle Aware Modal" href="https://kinnrot.github.io/android-lifecycle-aware-modal/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Live Data Pitfall You Should Be Aware Of
     </h2>
   </header>
@@ -331,26 +346,6 @@ build(:company) That’s all for now, I’ll continue in part2.
   </div>
   <footer class="entry-footer"><span title='2014-11-15 07:52:00.001 -0800 -0800'>November 15, 2014</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
   <a class="entry-link" aria-label="post link to Use FactoryGirl And Faker for easy data generation in unit testing (Part1)" href="https://kinnrot.github.io/use-factorygirl-and-faker-for-easy-data/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Get the user locale from http headers
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>If you want to provide default localization support for guest user in your website yo can locate their browser locale by the following code:
-def extract_locale_from_header
-unless request.env[‘HTTP_ACCEPT_LANGUAGE’].nil?
-return request.env[‘HTTP_ACCEPT_LANGUAGE’].scan(/^[a-z]{2}/).first
-end
-‘en’
-end
-This way you can determine on server side the locale of the user currently entered your site.
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2014-11-15 07:42:00.001 -0800 -0800'>November 15, 2014</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to Get the user locale from http headers" href="https://kinnrot.github.io/get-user-locale-from-http-headers/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
