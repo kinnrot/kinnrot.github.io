@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Posts | cdblg</title>
+<title>Software-Engineering | cdblg</title>
 <meta name="keywords" content="">
-<meta name="description" content="Posts - cdblg">
+<meta name="description" content="">
 <meta name="author" content="">
-<link rel="canonical" href="https://kinnrot.github.io/posts/">
+<link rel="canonical" href="https://kinnrot.github.io/tags/software-engineering/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://kinnrot.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://kinnrot.github.io/favicon-16x16.png">
@@ -18,8 +18,8 @@
 <link rel="mask-icon" href="https://kinnrot.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://kinnrot.github.io/posts/index.xml" title="rss">
-<link rel="alternate" hreflang="en" href="https://kinnrot.github.io/posts/">
+<link rel="alternate" type="application/rss+xml" href="https://kinnrot.github.io/tags/software-engineering/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="https://kinnrot.github.io/tags/software-engineering/">
 <noscript>
     <style>
         #theme-toggle,
@@ -81,30 +81,15 @@
 
   gtag('config', 'G-BYC49T802E');
 </script>
-<meta property="og:url" content="https://kinnrot.github.io/posts/">
+<meta property="og:url" content="https://kinnrot.github.io/tags/software-engineering/">
   <meta property="og:site_name" content="cdblg">
-  <meta property="og:title" content="Posts">
+  <meta property="og:title" content="Software-Engineering">
   <meta property="og:locale" content="en-us">
   <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Posts">
+<meta name="twitter:title" content="Software-Engineering">
 <meta name="twitter:description" content="">
 
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Posts",
-      "item": "https://kinnrot.github.io/posts/"
-    }
-  ]
-}
-</script>
 </head>
 <body class="list" id="top">
     <header class="header">
@@ -159,122 +144,25 @@
     </nav>
 </header>
 <main class="main"> 
-<header class="page-header"><div class="breadcrumbs"><a href="https://kinnrot.github.io/">Home</a></div>
+<header class="page-header"><div class="breadcrumbs"><a href="https://kinnrot.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://kinnrot.github.io/tags/">Tags</a></div>
   <h1>
-    Posts
+    Software-Engineering
   </h1>
 </header>
 
-<article class="post-entry"> 
+<article class="post-entry tag-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">For AMT Rx for .net
+    <h2 class="entry-hint-parent">The Evolution of Code Quality: AI-Powered Refactoring and Technical Debt Management
     </h2>
   </header>
   <div class="entry-content">
-    <p>Here is a good place to start with Rx for .net
-And here you have the wiki with examples
-Enjoy!
-</p>
+    <p>As we move further into 2026, the role of the software engineer continues to shift from “code writer” to “system architect.” One of the most significant shifts we’ve seen this year is the maturation of AI-powered refactoring tools. No longer just simple linters, today’s Generative AI agents are capable of understanding complex architectural patterns and proactively managing technical debt.
+Beyond Simple Auto-Complete In the early days of AI coding assistants, we were impressed by simple completions. Today, we have agents that can ingest an entire repository, identify “code smells,” and propose large-scale structural changes that align with modern best practices.
+...</p>
   </div>
-  <footer class="entry-footer"><span title='2010-09-06 09:26:00 -0700 -0700'>September 6, 2010</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to For AMT Rx for .net" href="https://kinnrot.github.io/for-amt-rx-for-net/"></a>
+  <footer class="entry-footer"><span title='2026-02-20 09:00:00 +0200 IST'>February 20, 2026</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to The Evolution of Code Quality: AI-Powered Refactoring and Technical Debt Management" href="https://kinnrot.github.io/the-evolution-of-code-quality-ai-powered-refactoring-and-technical-debt-management/"></a>
 </article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">WCF client side proxy memory leaks
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Today I ran into a guy who worked with me on my previous project.
-On that project I was responsible to rewrite the WCF channels (proxies) generation management and lifetime management of them.
-I decided to do some research and found some good stuff here.
-So this guy (aka Kurki) tells me they found a memory leak in my manager, what was the problem?
-So i messed up like I always do (well, only 90% of the time, like a good programmer).
-I wrote a code that registers to the Faulted event of the channel, kills the channel when Faulted and creates a new one to work with, everything looked fine, only one screw up (I’m sure some of you can guess).
-I forgot to unregister from the Faulted Event.
-On the web they tell you to do some unique logic to kill your channel in a safe way, what they don’t talk about is that it’ll stay in memory and fire events if you won’t unregister from stuff although you think it is dead.
-So please do not forget to unregister from stuff even if the object is disposable.
-Or consider the use of weak event listeners and problem solved.
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2010-09-02 12:34:00 -0700 -0700'>September 2, 2010</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to WCF client side proxy memory leaks" href="https://kinnrot.github.io/wcf-client-side-proxy-memory-leaks/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Unit Test PropertyChanged
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>One of the basic stuff you wanna test as a client side developer, is that all of your UI bounded classes aka Controller, Model, ViewModel, Presenter, PresentationModel, or the code behind of your view if your just having fun.
-Let’s assume we have a person class with a name property:
-public class Person : INotifyPropertyChanged
-{
-public event PropertyChangedEventHandler PropertyChanged;
-private string _name;
-public virtual string Name
-{
-get { return _name; }
-set { _name = value;
-FirePropertyChanged(“Name”);
-}
-}
-protected virtual void FirePropertyChanged(string propertyName)
-{
-var handlers = PropertyChanged;
-if (handlers != null)
-{
-handlers(this, new PropertyChangedEventArgs(propertyName));
-}
-}
-}
-The simplest way to perform this test is to write this code:
-[TestFixture]
-public class PersonTest
-{
-[Test]
-public void SetName_SomeNewString_FirePropertyChanged()
-{
-Person person = new Person();
-string changedPropertyName = string.Empty;
-person.PropertyChanged &#43;= (sender, args) =&gt; changedPropertyName = args.PropertyName;
-person.Name = “Test”;
-Assert.AreEqual(“Name”, changedPropertyName);
-}
-}
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2010-09-01 15:01:00 -0700 -0700'>September 1, 2010</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to Unit Test PropertyChanged" href="https://kinnrot.github.io/unit-test-propertychanged/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hello World
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>public class Chen
-{
-public void SayHello()
-{
-Console.WriteLine(&#34;Hello everyone! this is my first blog post, its about time&#34;);
-}
-}
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2010-09-01 08:23:00 -0700 -0700'>September 1, 2010</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to Hello World" href="https://kinnrot.github.io/hello-world/"></a>
-</article>
-<footer class="page-footer">
-  <nav class="pagination">
-    <a class="prev" href="https://kinnrot.github.io/posts/page/7/">
-      «&nbsp;Prev&nbsp;
-    </a>
-  </nav>
-</footer>
     </main>
     
 <footer class="footer">

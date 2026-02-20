@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Generative-Ai on cdblg</title>
-    <link>https://kinnrot.github.io/tags/generative-ai/</link>
-    <description>Recent content in Generative-Ai on cdblg</description>
+    <title>Refactoring on cdblg</title>
+    <link>https://kinnrot.github.io/tags/refactoring/</link>
+    <description>Recent content in Refactoring on cdblg</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 20 Feb 2026 09:00:00 +0200</lastBuildDate>
-    <atom:link href="https://kinnrot.github.io/tags/generative-ai/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://kinnrot.github.io/tags/refactoring/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The Evolution of Code Quality: AI-Powered Refactoring and Technical Debt Management</title>
       <link>https://kinnrot.github.io/the-evolution-of-code-quality-ai-powered-refactoring-and-technical-debt-management/</link>
@@ -16,16 +16,6 @@
       <description>&lt;p&gt;As we move further into 2026, the role of the software engineer continues to shift from &amp;ldquo;code writer&amp;rdquo; to &amp;ldquo;system architect.&amp;rdquo; One of the most significant shifts we&amp;rsquo;ve seen this year is the maturation of AI-powered refactoring tools. No longer just simple linters, today&amp;rsquo;s Generative AI agents are capable of understanding complex architectural patterns and proactively managing technical debt.&lt;/p&gt;
 &lt;h2 id=&#34;beyond-simple-auto-complete&#34;&gt;Beyond Simple Auto-Complete&lt;/h2&gt;
 &lt;p&gt;In the early days of AI coding assistants, we were impressed by simple completions. Today, we have agents that can ingest an entire repository, identify &amp;ldquo;code smells,&amp;rdquo; and propose large-scale structural changes that align with modern best practices.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>The Rise of Agentic AI: Building Autonomous Workflows in 2026</title>
-      <link>https://kinnrot.github.io/rise-of-agentic-ai-2026/</link>
-      <pubDate>Thu, 19 Feb 2026 10:00:00 +0200</pubDate>
-      <guid>https://kinnrot.github.io/rise-of-agentic-ai-2026/</guid>
-      <description>&lt;p&gt;If 2023 was the year of the Chatbot and 2024 was the year of RAG (Retrieval-Augmented Generation), then 2026 is officially the year of &lt;strong&gt;Agentic AI&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;We’ve moved past the novelty of &amp;ldquo;talking to a document.&amp;rdquo; Today’s developers aren&amp;rsquo;t just building interfaces for LLMs; they are building autonomous systems capable of planning, executing, and correcting their own workflows. We are shifting from &lt;em&gt;Generative AI&lt;/em&gt; to &lt;em&gt;Agentic AI&lt;/em&gt;.&lt;/p&gt;
-&lt;h3 id=&#34;what-makes-an-ai-agentic&#34;&gt;What Makes an AI &amp;ldquo;Agentic&amp;rdquo;?&lt;/h3&gt;
-&lt;p&gt;An agent isn&amp;rsquo;t just a wrapper around an LLM. To be truly agentic, a system needs three core capabilities:&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

@@ -6,8 +6,17 @@
     <description>Recent content in Posts on cdblg</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 19 Feb 2026 11:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 20 Feb 2026 09:00:00 +0200</lastBuildDate>
     <atom:link href="https://kinnrot.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Evolution of Code Quality: AI-Powered Refactoring and Technical Debt Management</title>
+      <link>https://kinnrot.github.io/the-evolution-of-code-quality-ai-powered-refactoring-and-technical-debt-management/</link>
+      <pubDate>Fri, 20 Feb 2026 09:00:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/the-evolution-of-code-quality-ai-powered-refactoring-and-technical-debt-management/</guid>
+      <description>&lt;p&gt;As we move further into 2026, the role of the software engineer continues to shift from &amp;ldquo;code writer&amp;rdquo; to &amp;ldquo;system architect.&amp;rdquo; One of the most significant shifts we&amp;rsquo;ve seen this year is the maturation of AI-powered refactoring tools. No longer just simple linters, today&amp;rsquo;s Generative AI agents are capable of understanding complex architectural patterns and proactively managing technical debt.&lt;/p&gt;
+&lt;h2 id=&#34;beyond-simple-auto-complete&#34;&gt;Beyond Simple Auto-Complete&lt;/h2&gt;
+&lt;p&gt;In the early days of AI coding assistants, we were impressed by simple completions. Today, we have agents that can ingest an entire repository, identify &amp;ldquo;code smells,&amp;rdquo; and propose large-scale structural changes that align with modern best practices.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Multi-modal AI: Beyond Text - Building with Vision and Voice in 2026</title>
       <link>https://kinnrot.github.io/multi-modal-ai-beyond-text-2026/</link>

@@ -162,6 +162,23 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Building your own rails form builder
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>If you’re building forms with rails, whether you’re using a gem for it or working with pure rails forms, you should know this.
+Rails uses form builder to allow you to call all the standard label/input/select methods, the exact class name is
+ActionView::Helpers::FormBuilder
+When calling ‘form_for’ you get a fresh instance of this FormBuilder which allows you to define your form elements.
+Lets say you wanna add another reusable form element, for example a form section with title that uses your own custom style/classes.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2019-08-07 00:00:00 +0300 IDT'>August 7, 2019</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Building your own rails form builder" href="https://kinnrot.github.io/building-your-own-rails-form-builder/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Android Lifecycle Aware Modal
     </h2>
   </header>
@@ -307,45 +324,6 @@ That’s all!
   </div>
   <footer class="entry-footer"><span title='2015-01-06 13:32:00.001 -0800 -0800'>January 6, 2015</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
   <a class="entry-link" aria-label="post link to Rubymine on OSX memory issues" href="https://kinnrot.github.io/rubymine-on-osx/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Use FactoryGirl And Faker for easy data generation in unit testing (Part1)
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>The most irritating thing in writing tests is the data generation preparation process, sometimes you want to create an object with 20 fields that 10 of them are mandatory but you only care about the value of 1, and you don’t want to mock, cause you interact with other methods and object that fetch this model from db.
-To me it happens a lot so I found the FactoryGirl &#43; Faker combination that made my life much more easy and now I can write tests in peace.
-To add them just put in Gemfile:
-gem “factory_girl_rails”, “~&gt; 4.0”
-gem “faker”
-So lets take a complex sample to explain all there is to know.
-We have a User, the User belongs to a Company, User has many tasks.
-Company has many irritating mandatory fields
-Lets define the Company Factory:
-FactoryGirl.define do
-factory :company do
-name {Faker::Name.name}
-trp {Faker::Number.between(0,10)}
-grp {Faker::Number.between(0,5)}
-budget {Faker::Number.number(4)}
-cpm {Faker::Number.between(1,70)}
-trp_price {Faker::Number.between(100,700)}
-viewer {Faker::Number.between(0,100000)}
-total_viewer {Faker::Number.between(0,200000)}
-unique_viewer {Faker::Number.between(0,50000)}
-spots {Faker::Number.between(0,1000)}
-end
-end
-As you can see I define lots of fields with random values.
-Now we can create a company by writing
-create(:company)Or just build one (without save to db) by calling
-build(:company) That’s all for now, I’ll continue in part2.
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2014-11-15 07:52:00.001 -0800 -0800'>November 15, 2014</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to Use FactoryGirl And Faker for easy data generation in unit testing (Part1)" href="https://kinnrot.github.io/use-factorygirl-and-faker-for-easy-data/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

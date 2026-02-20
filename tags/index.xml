@@ -6,13 +6,41 @@
     <description>Recent content in Tags on cdblg</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 19 Feb 2026 11:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 20 Feb 2026 09:00:00 +0200</lastBuildDate>
     <atom:link href="https://kinnrot.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Ai</title>
       <link>https://kinnrot.github.io/tags/ai/</link>
-      <pubDate>Thu, 19 Feb 2026 11:00:00 +0200</pubDate>
+      <pubDate>Fri, 20 Feb 2026 09:00:00 +0200</pubDate>
       <guid>https://kinnrot.github.io/tags/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Generative-Ai</title>
+      <link>https://kinnrot.github.io/tags/generative-ai/</link>
+      <pubDate>Fri, 20 Feb 2026 09:00:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/tags/generative-ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Refactoring</title>
+      <link>https://kinnrot.github.io/tags/refactoring/</link>
+      <pubDate>Fri, 20 Feb 2026 09:00:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/tags/refactoring/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Software-Engineering</title>
+      <link>https://kinnrot.github.io/tags/software-engineering/</link>
+      <pubDate>Fri, 20 Feb 2026 09:00:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/tags/software-engineering/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Technical-Debt</title>
+      <link>https://kinnrot.github.io/tags/technical-debt/</link>
+      <pubDate>Fri, 20 Feb 2026 09:00:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/tags/technical-debt/</guid>
       <description></description>
     </item>
     <item>
@@ -55,13 +83,6 @@
       <link>https://kinnrot.github.io/tags/automation/</link>
       <pubDate>Thu, 19 Feb 2026 10:00:00 +0200</pubDate>
       <guid>https://kinnrot.github.io/tags/automation/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Generative-Ai</title>
-      <link>https://kinnrot.github.io/tags/generative-ai/</link>
-      <pubDate>Thu, 19 Feb 2026 10:00:00 +0200</pubDate>
-      <guid>https://kinnrot.github.io/tags/generative-ai/</guid>
       <description></description>
     </item>
     <item>

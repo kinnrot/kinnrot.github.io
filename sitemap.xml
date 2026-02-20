@@ -3,10 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://kinnrot.github.io/tags/ai/</loc>
-    <lastmod>2026-02-19T11:00:00+02:00</lastmod>
+    <lastmod>2026-02-20T09:00:00+02:00</lastmod>
   </url><url>
     <loc>https://kinnrot.github.io/</loc>
-    <lastmod>2026-02-19T11:00:00+02:00</lastmod>
+    <lastmod>2026-02-20T09:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/generative-ai/</loc>
+    <lastmod>2026-02-20T09:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/posts/</loc>
+    <lastmod>2026-02-20T09:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/refactoring/</loc>
+    <lastmod>2026-02-20T09:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/software-engineering/</loc>
+    <lastmod>2026-02-20T09:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/</loc>
+    <lastmod>2026-02-20T09:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/technical-debt/</loc>
+    <lastmod>2026-02-20T09:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/the-evolution-of-code-quality-ai-powered-refactoring-and-technical-debt-management/</loc>
+    <lastmod>2026-02-20T09:00:00+02:00</lastmod>
   </url><url>
     <loc>https://kinnrot.github.io/tags/development/</loc>
     <lastmod>2026-02-19T11:00:00+02:00</lastmod>
@@ -15,12 +36,6 @@
     <lastmod>2026-02-19T11:00:00+02:00</lastmod>
   </url><url>
     <loc>https://kinnrot.github.io/multi-modal-ai-beyond-text-2026/</loc>
-    <lastmod>2026-02-19T11:00:00+02:00</lastmod>
-  </url><url>
-    <loc>https://kinnrot.github.io/posts/</loc>
-    <lastmod>2026-02-19T11:00:00+02:00</lastmod>
-  </url><url>
-    <loc>https://kinnrot.github.io/tags/</loc>
     <lastmod>2026-02-19T11:00:00+02:00</lastmod>
   </url><url>
     <loc>https://kinnrot.github.io/tags/vision/</loc>
@@ -33,9 +48,6 @@
     <lastmod>2026-02-19T10:00:00+02:00</lastmod>
   </url><url>
     <loc>https://kinnrot.github.io/tags/automation/</loc>
-    <lastmod>2026-02-19T10:00:00+02:00</lastmod>
-  </url><url>
-    <loc>https://kinnrot.github.io/tags/generative-ai/</loc>
     <lastmod>2026-02-19T10:00:00+02:00</lastmod>
   </url><url>
     <loc>https://kinnrot.github.io/tags/python/</loc>
