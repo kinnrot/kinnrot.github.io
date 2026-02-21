@@ -6,8 +6,16 @@
     <description>Recent content in Productivity on cdblg</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 11 Feb 2026 10:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 21 Feb 2026 14:30:00 +0200</lastBuildDate>
     <atom:link href="https://kinnrot.github.io/tags/productivity/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Domain-Specific Models: The Shift from General to Specialized AI in 2026</title>
+      <link>https://kinnrot.github.io/domain-specific-models-2026/</link>
+      <pubDate>Sat, 21 Feb 2026 14:30:00 +0200</pubDate>
+      <guid>https://kinnrot.github.io/domain-specific-models-2026/</guid>
+      <description>&lt;p&gt;In early 2024, the mantra for developers was &amp;ldquo;bigger is better.&amp;rdquo; We reached for the largest, most general-purpose models for every task—from writing code to summarizing medical records. But as we move through 2026, the industry has undergone a massive correction.&lt;/p&gt;
+&lt;p&gt;The trend today isn&amp;rsquo;t toward &lt;em&gt;Larger&lt;/em&gt; Language Models, but toward &lt;strong&gt;Domain-Specific Models (DSMs)&lt;/strong&gt;. Developers are increasingly realizing that a 7B parameter model fine-tuned for a specific vertical often outperforms a 1T+ parameter general model in accuracy, latency, and—most importantly—cost.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>The Hidden Cost of &#39;Just One More Dependency&#39;</title>
       <link>https://kinnrot.github.io/hidden-cost-of-dependencies/</link>

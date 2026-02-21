@@ -162,6 +162,25 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">End of job check list
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>I&#39;m about to end my first gig(already end! yay I&#39;m free!) as a programmer, and want to leave a clean desk. So here is a list of things I&#39;m doing and suggest you all do before you move to your next gig:
+1. Write about your major infrastructure developments on your wiki or any other system you got, in an easy to understand language.
+2. Start lecturing your co-workers about complex parts you developed.
+3. Make sure you got full code coverage with unit tests.
+4. Search for to-do comments and make sure you do those todo&#39;s.
+5. If you got unfinished work and think it&#39;s worth something make sure someone complete.
+And the most important: change your phone number :-) (Bazinga).
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2011-11-16 00:30:00 -0800 -0800'>November 16, 2011</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to End of job check list" href="https://kinnrot.github.io/end-of-job-check-list/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Startups: reshare very nice research
     </h2>
   </header>
@@ -378,37 +397,6 @@ So avoid it.
   </div>
   <footer class="entry-footer"><span title='2011-04-23 11:44:00 -0700 -0700'>April 23, 2011</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
   <a class="entry-link" aria-label="post link to IOC Container warning" href="https://kinnrot.github.io/ioc-container-warning/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Prevent setting a property value after already been set
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Let’s say we write an infrastructure of entities and their interaction with Nhibernate and the rest of the server side logic.
-We want Nhibernate to do whatever it needs. But we also want to limit the application programmer from doing crazy things, for example: Setting the Unique Identifier of an existing entity to another value. I know it sounds crazy but in a medium-sized team, anything can happen and this stuff is critical for the future.
-So I thought about a very KIS way to implement this kind of protection.
-* What I write here is the most readable version of my code, you can extract method, use interceptor, AOP, whatever works for you.
-private long _id;
-public long ID
-{
-get { return _id; }
-set
-{
-if (!_id.Equals(default(long)) &amp;&amp; !_id.Equals(value))
-{
-throw new InvalidOperationException(
-“You can’t set this property, it has already been set”);
-}
-_id = value;
-}
-}
-Very simple, easy to test, and it works with NHibernate proxy.
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2011-04-04 08:52:00 -0700 -0700'>April 4, 2011</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
-  <a class="entry-link" aria-label="post link to Prevent setting a property value after already been set" href="https://kinnrot.github.io/preventing-from-setting-property-value/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

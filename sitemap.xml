@@ -3,24 +3,39 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://kinnrot.github.io/tags/ai/</loc>
-    <lastmod>2026-02-20T09:00:00+02:00</lastmod>
+    <lastmod>2026-02-21T14:30:00+02:00</lastmod>
   </url><url>
     <loc>https://kinnrot.github.io/</loc>
-    <lastmod>2026-02-20T09:00:00+02:00</lastmod>
+    <lastmod>2026-02-21T14:30:00+02:00</lastmod>
   </url><url>
-    <loc>https://kinnrot.github.io/tags/generative-ai/</loc>
-    <lastmod>2026-02-20T09:00:00+02:00</lastmod>
+    <loc>https://kinnrot.github.io/tags/developers/</loc>
+    <lastmod>2026-02-21T14:30:00+02:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/domain-specific-models-2026/</loc>
+    <lastmod>2026-02-21T14:30:00+02:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/domain-specific-models/</loc>
+    <lastmod>2026-02-21T14:30:00+02:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/machine-learning/</loc>
+    <lastmod>2026-02-21T14:30:00+02:00</lastmod>
   </url><url>
     <loc>https://kinnrot.github.io/posts/</loc>
+    <lastmod>2026-02-21T14:30:00+02:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/productivity/</loc>
+    <lastmod>2026-02-21T14:30:00+02:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/</loc>
+    <lastmod>2026-02-21T14:30:00+02:00</lastmod>
+  </url><url>
+    <loc>https://kinnrot.github.io/tags/generative-ai/</loc>
     <lastmod>2026-02-20T09:00:00+02:00</lastmod>
   </url><url>
     <loc>https://kinnrot.github.io/tags/refactoring/</loc>
     <lastmod>2026-02-20T09:00:00+02:00</lastmod>
   </url><url>
     <loc>https://kinnrot.github.io/tags/software-engineering/</loc>
-    <lastmod>2026-02-20T09:00:00+02:00</lastmod>
-  </url><url>
-    <loc>https://kinnrot.github.io/tags/</loc>
     <lastmod>2026-02-20T09:00:00+02:00</lastmod>
   </url><url>
     <loc>https://kinnrot.github.io/tags/technical-debt/</loc>
@@ -186,9 +201,6 @@
     <lastmod>2026-02-11T11:00:00+02:00</lastmod>
   </url><url>
     <loc>https://kinnrot.github.io/tags/maintenance/</loc>
-    <lastmod>2026-02-11T10:00:00+02:00</lastmod>
-  </url><url>
-    <loc>https://kinnrot.github.io/tags/productivity/</loc>
     <lastmod>2026-02-11T10:00:00+02:00</lastmod>
   </url><url>
     <loc>https://kinnrot.github.io/hidden-cost-of-dependencies/</loc>

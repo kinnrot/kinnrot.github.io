@@ -167,6 +167,113 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Simple Rx Sample - UI Performance tuning
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>The case I’m talking about is Binding with the UpdateSourceTrigger = PropertyChanged, and a heavy logic behind each change that can cause bad UX, like ui freeze on each key press in a text box.
+Here is a nice sample that demonstrate this case:
+I have a window with a text box and 2 buttons, the IsEnabled of the buttons is bounded to custom properties that depends on the TextBox text bounded field to decide if the button should be enabled (just like commands).
+This is the window
+This is the window xaml
+&lt;Window x:Class=“ReactivlyPropertyChanged.MainWindow”
+xmlns=“http://schemas.microsoft.com/winfx/2006/xaml/presentation&#34;
+xmlns:x=“http://schemas.microsoft.com/winfx/2006/xaml&#34;
+Title=“MainWindow” Height=“350” Width=“525” x:Name=“this”&gt;
+&lt;Grid&gt;
+&lt;StackPanel&gt;
+&lt;TextBox Text=&#34;{Binding SomeText, ElementName=this, UpdateSourceTrigger=PropertyChanged}”/&gt;
+&lt;Button IsEnabled=&#34;{Binding ElementName=this, Path=CanSplitInMiddle}&#34;&gt;2&lt;/Button&gt;
+&lt;Button IsEnabled=&#34;{Binding ElementName=this, Path=CanSplitToThreeParts}&#34;&gt;3&lt;/Button&gt;
+&lt;/StackPanel&gt;
+&lt;/Grid&gt;
+&lt;/Window&gt;
+This is the bounded properties implementation (I added sleep to demonstrate long time consumers)
+private string _someText;
+public string SomeText
+{
+get { return _someText; }
+set
+{
+_someText = value;
+RaisePropertyChanged(“SomeText”);
+}
+}
+public bool CanSplitInMiddle
+{
+get
+{
+if (SomeText == null)
+return false;
+Thread.Sleep(100);
+return SomeText.Length % 2 == 0;
+}
+}
+public bool CanSplitToThreeParts
+{
+get
+{
+if (SomeText == null)
+return false;
+Thread.Sleep(100);
+return SomeText.Length % 3 == 0;
+}
+}
+As you can see there is a simple length check of the entered string, now you probably think that the application would get stuck for each key press for at least 200 ms.
+Take a look at the property changed handling:
+public MainWindow()
+{
+// Sets the buffer time for property changed
+var interval = 500;
+InitializeComponent();
+// Create observable from the property changed event
+var propertyChangedObservable = Observable.FromEvent&lt;PropertyChangedEventArgs&gt;(this, “PropertyChanged”).
+BufferWithTime(TimeSpan.FromMilliseconds(interval));
+// Define our query from the event, we want to get all fired propertyChanged
+var query = from changedProps in propertyChangedObservable
+where changedProps.Count &gt; 0 select changedProps;
+// start listening
+query.Subscribe(listOfChangedStuff =&gt;
+{
+// When fired group all events by property name and handle each property with Changed method
+var events = from distinctEvent in listOfChangedStuff
+group distinctEvent by distinctEvent.EventArgs.PropertyName into byPropertyName
+select byPropertyName;
+foreach (IGrouping&lt;string,IEvent&lt;PropertyChangedEventArgs&gt;&gt; groupedEvent in events)
+{
+Changed(groupedEvent.Key);
+}
+}); }
+public void Changed(string propertyName)
+{
+if (propertyName == “SomeText”)
+{
+// Make the properties recalculate themself
+RaisePropertyChanged(“CanSplitInMiddle”);
+RaisePropertyChanged(“CanSplitToThreeParts”);
+}
+}
+public void RaisePropertyChanged(string propertyName)
+{
+var handlers = PropertyChanged;
+if (handlers != null)
+{
+PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+}
+}
+So WTF?
+One of Rx many features is buffer,I can tell property changed event to buffer himself for some time, and when the time passed take all fired events and work with them, what I did is to group all events by the property name (like distinct in sql) and handled each group as a single event.
+So even if the user is a super turbo writer(or the bot that test the ui) , the event will fired only 2 times in a second, for 500 ms interval.
+I think this is awesome, you can configure the buffer interval according to how complex and time consuming your logic is, and avoid freezing ui.
+I wanted to upload the code to somewhere but o got to fly…
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2010-09-14 14:43:00 -0700 -0700'>September 14, 2010</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>Chen Kinnrot</span></footer>
+  <a class="entry-link" aria-label="post link to Simple Rx Sample - UI Performance tuning" href="https://kinnrot.github.io/simple-rx-sample-ui-performance-tuning/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">For AMT Rx for .net
     </h2>
   </header>
